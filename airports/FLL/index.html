@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLL Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for FLL (Fort Lauderdale-Hollywood International Airport). 91,897 flights analyzed across 92 origin routes, 10 airlines. 70 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/FLL/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="FLL">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      FLL
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">FLL</div>
+      <div class="header-name">Fort Lauderdale-Hollywood International Airport</div>
+      <div class="header-title">FLL Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-expansion">Representative Expansion Airport</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>FLL</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>FLL</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">91,897</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">92</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">10</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">70</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">14</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">8</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">92</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">1.66%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">9.19%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">1.82%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+9.8 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+56.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">+0.3 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>FLL</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>ATL</td>
+          <td><code>ATL→FLL</code></td>
+          <td class="td-num">7,702</td>
+          <td class="td-num">1.19%</td>
+          <td class="td-num">9.29%</td>
+          <td class="td-num">+12.7 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/atl-to-fll/">ATL→FLL</a></td>
+        </tr>
+        <tr>
+          <td>EWR</td>
+          <td><code>EWR→FLL</code></td>
+          <td class="td-num">5,263</td>
+          <td class="td-num">2.68%</td>
+          <td class="td-num">10.72%</td>
+          <td class="td-num">+8.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ewr-to-fll/">EWR→FLL</a></td>
+        </tr>
+        <tr>
+          <td>LGA</td>
+          <td><code>LGA→FLL</code></td>
+          <td class="td-num">4,647</td>
+          <td class="td-num">1.85%</td>
+          <td class="td-num">10.48%</td>
+          <td class="td-num">+9.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lga-to-fll/">LGA→FLL</a></td>
+        </tr>
+        <tr>
+          <td>JFK</td>
+          <td><code>JFK→FLL</code></td>
+          <td class="td-num">3,908</td>
+          <td class="td-num">2.25%</td>
+          <td class="td-num">11.07%</td>
+          <td class="td-num">+10.4 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/jfk-to-fll/">JFK→FLL</a></td>
+        </tr>
+        <tr>
+          <td>BWI</td>
+          <td><code>BWI→FLL</code></td>
+          <td class="td-num">3,886</td>
+          <td class="td-num">1.62%</td>
+          <td class="td-num">8.68%</td>
+          <td class="td-num">+9.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bwi-to-fll/">BWI→FLL</a></td>
+        </tr>
+        <tr>
+          <td>CLT</td>
+          <td><code>CLT→FLL</code></td>
+          <td class="td-num">3,607</td>
+          <td class="td-num">1.58%</td>
+          <td class="td-num">11.04%</td>
+          <td class="td-num">+16.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/clt-to-fll/">CLT→FLL</a></td>
+        </tr>
+        <tr>
+          <td>BOS</td>
+          <td><code>BOS→FLL</code></td>
+          <td class="td-num">3,172</td>
+          <td class="td-num">1.61%</td>
+          <td class="td-num">10.80%</td>
+          <td class="td-num">+12.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bos-to-fll/">BOS→FLL</a></td>
+        </tr>
+        <tr>
+          <td>DFW</td>
+          <td><code>DFW→FLL</code></td>
+          <td class="td-num">3,053</td>
+          <td class="td-num">2.29%</td>
+          <td class="td-num">11.00%</td>
+          <td class="td-num">+15.7 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dfw-to-fll/">DFW→FLL</a></td>
+        </tr>
+        <tr>
+          <td>ORD</td>
+          <td><code>ORD→FLL</code></td>
+          <td class="td-num">3,012</td>
+          <td class="td-num">1.93%</td>
+          <td class="td-num">10.12%</td>
+          <td class="td-num">+13.4 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ord-to-fll/">ORD→FLL</a></td>
+        </tr>
+        <tr>
+          <td>IAH</td>
+          <td><code>IAH→FLL</code></td>
+          <td class="td-num">2,613</td>
+          <td class="td-num">2.18%</td>
+          <td class="td-num">11.03%</td>
+          <td class="td-num">+12.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/iah-to-fll/">IAH→FLL</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      70 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      92 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/acy-to-fll/">acy-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/alb-to-fll/">alb-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-fll/">atl-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-fll/">aus-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/avl-to-fll/">avl-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bdl-to-fll/">bdl-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-fll/">bna-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-fll/">bos-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bqn-to-fll/">bqn-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/buf-to-fll/">buf-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-fll/">bwi-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/chs-to-fll/">chs-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-fll/">cle-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-fll/">clt-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-fll/">cmh-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-fll/">cvg-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dal-to-fll/">dal-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-fll/">dca-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-fll/">den-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-fll/">dfw-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-fll/">dtw-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-fll/">ewr-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hou-to-fll/">hou-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hpn-to-fll/">hpn-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-fll/">iad-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-fll/">iah-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-fll/">ind-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/isp-to-fll/">isp-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jax-to-fll/">jax-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-fll/">jfk-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-fll/">las-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-fll/">lax-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lex-to-fll/">lex-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lga-to-fll/">lga-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-fll/">mci-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mco-to-fll/">mco-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mdw-to-fll/">mdw-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mem-to-fll/">mem-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-fll/">mke-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-fll/">msp-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-fll/">msy-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/myr-to-fll/">myr-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-fll/">ord-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orf-to-fll/">orf-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orh-to-fll/">orh-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pbg-to-fll/">pbg-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-fll/">pdx-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phl-to-fll/">phl-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-fll/">phx-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-fll/">pit-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pns-to-fll/">pns-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pvd-to-fll/">pvd-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-fll/">rdu-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ric-to-fll/">ric-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/roc-to-fll/">roc-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-fll/">san-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-fll/">sat-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sdf-to-fll/">sdf-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-fll/">sea-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-fll/">sfo-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sju-to-fll/">sju-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-fll/">slc-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stl-to-fll/">stl-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stt-to-fll/">stt-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stx-to-fll/">stx-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/syr-to-fll/">syr-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tlh-to-fll/">tlh-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tpa-to-fll/">tpa-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tys-to-fll/">tys-to-fll</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/usa-to-fll/">usa-to-fll</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for FLL.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "FLL",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 91897,
+    "origin_routes_count": 92,
+    "operating_airlines_count": 10,
+    "route_sample_quality": {
+      "usable": 70,
+      "thin": 14,
+      "too_small": 8,
+      "total": 92
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.016606,
+    "delay_over_60min_rate": 0.091866,
+    "delay_over_180min_rate": 0.018214,
+    "avg_arrival_delay_minutes": 9.81,
+    "p90_arrival_delay_minutes": 56.0,
+    "avg_delay_recovery_minutes": 0.27
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→FLL",
+      "total_scheduled_flights": 7702,
+      "cancellation_rate": 0.011945,
+      "delay_over_60min_rate": 0.092904,
+      "avg_arrival_delay_minutes": 12.69,
+      "route_page_url": "/routes/atl-to-fll/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→FLL",
+      "total_scheduled_flights": 5263,
+      "cancellation_rate": 0.026791,
+      "delay_over_60min_rate": 0.107185,
+      "avg_arrival_delay_minutes": 8.3,
+      "route_page_url": "/routes/ewr-to-fll/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→FLL",
+      "total_scheduled_flights": 4647,
+      "cancellation_rate": 0.018507,
+      "delay_over_60min_rate": 0.104802,
+      "avg_arrival_delay_minutes": 9.57,
+      "route_page_url": "/routes/lga-to-fll/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→FLL",
+      "total_scheduled_flights": 3908,
+      "cancellation_rate": 0.022518,
+      "delay_over_60min_rate": 0.110733,
+      "avg_arrival_delay_minutes": 10.45,
+      "route_page_url": "/routes/jfk-to-fll/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→FLL",
+      "total_scheduled_flights": 3886,
+      "cancellation_rate": 0.016212,
+      "delay_over_60min_rate": 0.086843,
+      "avg_arrival_delay_minutes": 9.0,
+      "route_page_url": "/routes/bwi-to-fll/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→FLL",
+      "total_scheduled_flights": 3607,
+      "cancellation_rate": 0.015803,
+      "delay_over_60min_rate": 0.110423,
+      "avg_arrival_delay_minutes": 16.01,
+      "route_page_url": "/routes/clt-to-fll/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→FLL",
+      "total_scheduled_flights": 3172,
+      "cancellation_rate": 0.016078,
+      "delay_over_60min_rate": 0.107978,
+      "avg_arrival_delay_minutes": 12.48,
+      "route_page_url": "/routes/bos-to-fll/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→FLL",
+      "total_scheduled_flights": 3053,
+      "cancellation_rate": 0.022928,
+      "delay_over_60min_rate": 0.109956,
+      "avg_arrival_delay_minutes": 15.7,
+      "route_page_url": "/routes/dfw-to-fll/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→FLL",
+      "total_scheduled_flights": 3012,
+      "cancellation_rate": 0.019256,
+      "delay_over_60min_rate": 0.101219,
+      "avg_arrival_delay_minutes": 13.39,
+      "route_page_url": "/routes/ord-to-fll/"
+    },
+    {
+      "origin": "IAH",
+      "route": "IAH→FLL",
+      "total_scheduled_flights": 2613,
+      "cancellation_rate": 0.021814,
+      "delay_over_60min_rate": 0.110329,
+      "avg_arrival_delay_minutes": 12.95,
+      "route_page_url": "/routes/iah-to-fll/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "acy-to-fll",
+      "url": "/routes/acy-to-fll/"
+    },
+    {
+      "route_key": "alb-to-fll",
+      "url": "/routes/alb-to-fll/"
+    },
+    {
+      "route_key": "atl-to-fll",
+      "url": "/routes/atl-to-fll/"
+    },
+    {
+      "route_key": "aus-to-fll",
+      "url": "/routes/aus-to-fll/"
+    },
+    {
+      "route_key": "avl-to-fll",
+      "url": "/routes/avl-to-fll/"
+    },
+    {
+      "route_key": "bdl-to-fll",
+      "url": "/routes/bdl-to-fll/"
+    },
+    {
+      "route_key": "bna-to-fll",
+      "url": "/routes/bna-to-fll/"
+    },
+    {
+      "route_key": "bos-to-fll",
+      "url": "/routes/bos-to-fll/"
+    },
+    {
+      "route_key": "bqn-to-fll",
+      "url": "/routes/bqn-to-fll/"
+    },
+    {
+      "route_key": "buf-to-fll",
+      "url": "/routes/buf-to-fll/"
+    },
+    {
+      "route_key": "bwi-to-fll",
+      "url": "/routes/bwi-to-fll/"
+    },
+    {
+      "route_key": "chs-to-fll",
+      "url": "/routes/chs-to-fll/"
+    },
+    {
+      "route_key": "cle-to-fll",
+      "url": "/routes/cle-to-fll/"
+    },
+    {
+      "route_key": "clt-to-fll",
+      "url": "/routes/clt-to-fll/"
+    },
+    {
+      "route_key": "cmh-to-fll",
+      "url": "/routes/cmh-to-fll/"
+    },
+    {
+      "route_key": "cvg-to-fll",
+      "url": "/routes/cvg-to-fll/"
+    },
+    {
+      "route_key": "dal-to-fll",
+      "url": "/routes/dal-to-fll/"
+    },
+    {
+      "route_key": "dca-to-fll",
+      "url": "/routes/dca-to-fll/"
+    },
+    {
+      "route_key": "den-to-fll",
+      "url": "/routes/den-to-fll/"
+    },
+    {
+      "route_key": "dfw-to-fll",
+      "url": "/routes/dfw-to-fll/"
+    },
+    {
+      "route_key": "dtw-to-fll",
+      "url": "/routes/dtw-to-fll/"
+    },
+    {
+      "route_key": "ewr-to-fll",
+      "url": "/routes/ewr-to-fll/"
+    },
+    {
+      "route_key": "hou-to-fll",
+      "url": "/routes/hou-to-fll/"
+    },
+    {
+      "route_key": "hpn-to-fll",
+      "url": "/routes/hpn-to-fll/"
+    },
+    {
+      "route_key": "iad-to-fll",
+      "url": "/routes/iad-to-fll/"
+    },
+    {
+      "route_key": "iah-to-fll",
+      "url": "/routes/iah-to-fll/"
+    },
+    {
+      "route_key": "ind-to-fll",
+      "url": "/routes/ind-to-fll/"
+    },
+    {
+      "route_key": "isp-to-fll",
+      "url": "/routes/isp-to-fll/"
+    },
+    {
+      "route_key": "jax-to-fll",
+      "url": "/routes/jax-to-fll/"
+    },
+    {
+      "route_key": "jfk-to-fll",
+      "url": "/routes/jfk-to-fll/"
+    },
+    {
+      "route_key": "las-to-fll",
+      "url": "/routes/las-to-fll/"
+    },
+    {
+      "route_key": "lax-to-fll",
+      "url": "/routes/lax-to-fll/"
+    },
+    {
+      "route_key": "lex-to-fll",
+      "url": "/routes/lex-to-fll/"
+    },
+    {
+      "route_key": "lga-to-fll",
+      "url": "/routes/lga-to-fll/"
+    },
+    {
+      "route_key": "mci-to-fll",
+      "url": "/routes/mci-to-fll/"
+    },
+    {
+      "route_key": "mco-to-fll",
+      "url": "/routes/mco-to-fll/"
+    },
+    {
+      "route_key": "mdw-to-fll",
+      "url": "/routes/mdw-to-fll/"
+    },
+    {
+      "route_key": "mem-to-fll",
+      "url": "/routes/mem-to-fll/"
+    },
+    {
+      "route_key": "mke-to-fll",
+      "url": "/routes/mke-to-fll/"
+    },
+    {
+      "route_key": "msp-to-fll",
+      "url": "/routes/msp-to-fll/"
+    },
+    {
+      "route_key": "msy-to-fll",
+      "url": "/routes/msy-to-fll/"
+    },
+    {
+      "route_key": "myr-to-fll",
+      "url": "/routes/myr-to-fll/"
+    },
+    {
+      "route_key": "ord-to-fll",
+      "url": "/routes/ord-to-fll/"
+    },
+    {
+      "route_key": "orf-to-fll",
+      "url": "/routes/orf-to-fll/"
+    },
+    {
+      "route_key": "orh-to-fll",
+      "url": "/routes/orh-to-fll/"
+    },
+    {
+      "route_key": "pbg-to-fll",
+      "url": "/routes/pbg-to-fll/"
+    },
+    {
+      "route_key": "pdx-to-fll",
+      "url": "/routes/pdx-to-fll/"
+    },
+    {
+      "route_key": "phl-to-fll",
+      "url": "/routes/phl-to-fll/"
+    },
+    {
+      "route_key": "phx-to-fll",
+      "url": "/routes/phx-to-fll/"
+    },
+    {
+      "route_key": "pit-to-fll",
+      "url": "/routes/pit-to-fll/"
+    },
+    {
+      "route_key": "pns-to-fll",
+      "url": "/routes/pns-to-fll/"
+    },
+    {
+      "route_key": "pvd-to-fll",
+      "url": "/routes/pvd-to-fll/"
+    },
+    {
+      "route_key": "rdu-to-fll",
+      "url": "/routes/rdu-to-fll/"
+    },
+    {
+      "route_key": "ric-to-fll",
+      "url": "/routes/ric-to-fll/"
+    },
+    {
+      "route_key": "roc-to-fll",
+      "url": "/routes/roc-to-fll/"
+    },
+    {
+      "route_key": "san-to-fll",
+      "url": "/routes/san-to-fll/"
+    },
+    {
+      "route_key": "sat-to-fll",
+      "url": "/routes/sat-to-fll/"
+    },
+    {
+      "route_key": "sdf-to-fll",
+      "url": "/routes/sdf-to-fll/"
+    },
+    {
+      "route_key": "sea-to-fll",
+      "url": "/routes/sea-to-fll/"
+    },
+    {
+      "route_key": "sfo-to-fll",
+      "url": "/routes/sfo-to-fll/"
+    },
+    {
+      "route_key": "sju-to-fll",
+      "url": "/routes/sju-to-fll/"
+    },
+    {
+      "route_key": "slc-to-fll",
+      "url": "/routes/slc-to-fll/"
+    },
+    {
+      "route_key": "stl-to-fll",
+      "url": "/routes/stl-to-fll/"
+    },
+    {
+      "route_key": "stt-to-fll",
+      "url": "/routes/stt-to-fll/"
+    },
+    {
+      "route_key": "stx-to-fll",
+      "url": "/routes/stx-to-fll/"
+    },
+    {
+      "route_key": "syr-to-fll",
+      "url": "/routes/syr-to-fll/"
+    },
+    {
+      "route_key": "tlh-to-fll",
+      "url": "/routes/tlh-to-fll/"
+    },
+    {
+      "route_key": "tpa-to-fll",
+      "url": "/routes/tpa-to-fll/"
+    },
+    {
+      "route_key": "tys-to-fll",
+      "url": "/routes/tys-to-fll/"
+    },
+    {
+      "route_key": "usa-to-fll",
+      "url": "/routes/usa-to-fll/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "FLL",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 91897,
+    "origin_routes": 92,
+    "usable_routes": 70,
+    "operating_airlines": 10,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/FLL/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "FLL Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for FLL (Fort Lauderdale-Hollywood International Airport). 91,897 flights analyzed across 92 origin routes, 10 airlines. 70 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "FLL",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "FLL airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

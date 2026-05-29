@@ -1,0 +1,465 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "FLL",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 91897,
+    "origin_routes_count": 92,
+    "operating_airlines_count": 10,
+    "route_sample_quality": {
+      "usable": 70,
+      "thin": 14,
+      "too_small": 8,
+      "total": 92
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.016606,
+    "delay_over_60min_rate": 0.091866,
+    "delay_over_180min_rate": 0.018214,
+    "avg_arrival_delay_minutes": 9.81,
+    "p90_arrival_delay_minutes": 56.0,
+    "avg_delay_recovery_minutes": 0.27
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→FLL",
+      "total_scheduled_flights": 7702,
+      "cancellation_rate": 0.011945,
+      "delay_over_60min_rate": 0.092904,
+      "avg_arrival_delay_minutes": 12.69,
+      "route_page_url": "/routes/atl-to-fll/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→FLL",
+      "total_scheduled_flights": 5263,
+      "cancellation_rate": 0.026791,
+      "delay_over_60min_rate": 0.107185,
+      "avg_arrival_delay_minutes": 8.3,
+      "route_page_url": "/routes/ewr-to-fll/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→FLL",
+      "total_scheduled_flights": 4647,
+      "cancellation_rate": 0.018507,
+      "delay_over_60min_rate": 0.104802,
+      "avg_arrival_delay_minutes": 9.57,
+      "route_page_url": "/routes/lga-to-fll/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→FLL",
+      "total_scheduled_flights": 3908,
+      "cancellation_rate": 0.022518,
+      "delay_over_60min_rate": 0.110733,
+      "avg_arrival_delay_minutes": 10.45,
+      "route_page_url": "/routes/jfk-to-fll/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→FLL",
+      "total_scheduled_flights": 3886,
+      "cancellation_rate": 0.016212,
+      "delay_over_60min_rate": 0.086843,
+      "avg_arrival_delay_minutes": 9.0,
+      "route_page_url": "/routes/bwi-to-fll/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→FLL",
+      "total_scheduled_flights": 3607,
+      "cancellation_rate": 0.015803,
+      "delay_over_60min_rate": 0.110423,
+      "avg_arrival_delay_minutes": 16.01,
+      "route_page_url": "/routes/clt-to-fll/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→FLL",
+      "total_scheduled_flights": 3172,
+      "cancellation_rate": 0.016078,
+      "delay_over_60min_rate": 0.107978,
+      "avg_arrival_delay_minutes": 12.48,
+      "route_page_url": "/routes/bos-to-fll/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→FLL",
+      "total_scheduled_flights": 3053,
+      "cancellation_rate": 0.022928,
+      "delay_over_60min_rate": 0.109956,
+      "avg_arrival_delay_minutes": 15.7,
+      "route_page_url": "/routes/dfw-to-fll/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→FLL",
+      "total_scheduled_flights": 3012,
+      "cancellation_rate": 0.019256,
+      "delay_over_60min_rate": 0.101219,
+      "avg_arrival_delay_minutes": 13.39,
+      "route_page_url": "/routes/ord-to-fll/"
+    },
+    {
+      "origin": "IAH",
+      "route": "IAH→FLL",
+      "total_scheduled_flights": 2613,
+      "cancellation_rate": 0.021814,
+      "delay_over_60min_rate": 0.110329,
+      "avg_arrival_delay_minutes": 12.95,
+      "route_page_url": "/routes/iah-to-fll/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "acy-to-fll",
+      "url": "/routes/acy-to-fll/"
+    },
+    {
+      "route_key": "alb-to-fll",
+      "url": "/routes/alb-to-fll/"
+    },
+    {
+      "route_key": "atl-to-fll",
+      "url": "/routes/atl-to-fll/"
+    },
+    {
+      "route_key": "aus-to-fll",
+      "url": "/routes/aus-to-fll/"
+    },
+    {
+      "route_key": "avl-to-fll",
+      "url": "/routes/avl-to-fll/"
+    },
+    {
+      "route_key": "bdl-to-fll",
+      "url": "/routes/bdl-to-fll/"
+    },
+    {
+      "route_key": "bna-to-fll",
+      "url": "/routes/bna-to-fll/"
+    },
+    {
+      "route_key": "bos-to-fll",
+      "url": "/routes/bos-to-fll/"
+    },
+    {
+      "route_key": "bqn-to-fll",
+      "url": "/routes/bqn-to-fll/"
+    },
+    {
+      "route_key": "buf-to-fll",
+      "url": "/routes/buf-to-fll/"
+    },
+    {
+      "route_key": "bwi-to-fll",
+      "url": "/routes/bwi-to-fll/"
+    },
+    {
+      "route_key": "chs-to-fll",
+      "url": "/routes/chs-to-fll/"
+    },
+    {
+      "route_key": "cle-to-fll",
+      "url": "/routes/cle-to-fll/"
+    },
+    {
+      "route_key": "clt-to-fll",
+      "url": "/routes/clt-to-fll/"
+    },
+    {
+      "route_key": "cmh-to-fll",
+      "url": "/routes/cmh-to-fll/"
+    },
+    {
+      "route_key": "cvg-to-fll",
+      "url": "/routes/cvg-to-fll/"
+    },
+    {
+      "route_key": "dal-to-fll",
+      "url": "/routes/dal-to-fll/"
+    },
+    {
+      "route_key": "dca-to-fll",
+      "url": "/routes/dca-to-fll/"
+    },
+    {
+      "route_key": "den-to-fll",
+      "url": "/routes/den-to-fll/"
+    },
+    {
+      "route_key": "dfw-to-fll",
+      "url": "/routes/dfw-to-fll/"
+    },
+    {
+      "route_key": "dtw-to-fll",
+      "url": "/routes/dtw-to-fll/"
+    },
+    {
+      "route_key": "ewr-to-fll",
+      "url": "/routes/ewr-to-fll/"
+    },
+    {
+      "route_key": "hou-to-fll",
+      "url": "/routes/hou-to-fll/"
+    },
+    {
+      "route_key": "hpn-to-fll",
+      "url": "/routes/hpn-to-fll/"
+    },
+    {
+      "route_key": "iad-to-fll",
+      "url": "/routes/iad-to-fll/"
+    },
+    {
+      "route_key": "iah-to-fll",
+      "url": "/routes/iah-to-fll/"
+    },
+    {
+      "route_key": "ind-to-fll",
+      "url": "/routes/ind-to-fll/"
+    },
+    {
+      "route_key": "isp-to-fll",
+      "url": "/routes/isp-to-fll/"
+    },
+    {
+      "route_key": "jax-to-fll",
+      "url": "/routes/jax-to-fll/"
+    },
+    {
+      "route_key": "jfk-to-fll",
+      "url": "/routes/jfk-to-fll/"
+    },
+    {
+      "route_key": "las-to-fll",
+      "url": "/routes/las-to-fll/"
+    },
+    {
+      "route_key": "lax-to-fll",
+      "url": "/routes/lax-to-fll/"
+    },
+    {
+      "route_key": "lex-to-fll",
+      "url": "/routes/lex-to-fll/"
+    },
+    {
+      "route_key": "lga-to-fll",
+      "url": "/routes/lga-to-fll/"
+    },
+    {
+      "route_key": "mci-to-fll",
+      "url": "/routes/mci-to-fll/"
+    },
+    {
+      "route_key": "mco-to-fll",
+      "url": "/routes/mco-to-fll/"
+    },
+    {
+      "route_key": "mdw-to-fll",
+      "url": "/routes/mdw-to-fll/"
+    },
+    {
+      "route_key": "mem-to-fll",
+      "url": "/routes/mem-to-fll/"
+    },
+    {
+      "route_key": "mke-to-fll",
+      "url": "/routes/mke-to-fll/"
+    },
+    {
+      "route_key": "msp-to-fll",
+      "url": "/routes/msp-to-fll/"
+    },
+    {
+      "route_key": "msy-to-fll",
+      "url": "/routes/msy-to-fll/"
+    },
+    {
+      "route_key": "myr-to-fll",
+      "url": "/routes/myr-to-fll/"
+    },
+    {
+      "route_key": "ord-to-fll",
+      "url": "/routes/ord-to-fll/"
+    },
+    {
+      "route_key": "orf-to-fll",
+      "url": "/routes/orf-to-fll/"
+    },
+    {
+      "route_key": "orh-to-fll",
+      "url": "/routes/orh-to-fll/"
+    },
+    {
+      "route_key": "pbg-to-fll",
+      "url": "/routes/pbg-to-fll/"
+    },
+    {
+      "route_key": "pdx-to-fll",
+      "url": "/routes/pdx-to-fll/"
+    },
+    {
+      "route_key": "phl-to-fll",
+      "url": "/routes/phl-to-fll/"
+    },
+    {
+      "route_key": "phx-to-fll",
+      "url": "/routes/phx-to-fll/"
+    },
+    {
+      "route_key": "pit-to-fll",
+      "url": "/routes/pit-to-fll/"
+    },
+    {
+      "route_key": "pns-to-fll",
+      "url": "/routes/pns-to-fll/"
+    },
+    {
+      "route_key": "pvd-to-fll",
+      "url": "/routes/pvd-to-fll/"
+    },
+    {
+      "route_key": "rdu-to-fll",
+      "url": "/routes/rdu-to-fll/"
+    },
+    {
+      "route_key": "ric-to-fll",
+      "url": "/routes/ric-to-fll/"
+    },
+    {
+      "route_key": "roc-to-fll",
+      "url": "/routes/roc-to-fll/"
+    },
+    {
+      "route_key": "san-to-fll",
+      "url": "/routes/san-to-fll/"
+    },
+    {
+      "route_key": "sat-to-fll",
+      "url": "/routes/sat-to-fll/"
+    },
+    {
+      "route_key": "sdf-to-fll",
+      "url": "/routes/sdf-to-fll/"
+    },
+    {
+      "route_key": "sea-to-fll",
+      "url": "/routes/sea-to-fll/"
+    },
+    {
+      "route_key": "sfo-to-fll",
+      "url": "/routes/sfo-to-fll/"
+    },
+    {
+      "route_key": "sju-to-fll",
+      "url": "/routes/sju-to-fll/"
+    },
+    {
+      "route_key": "slc-to-fll",
+      "url": "/routes/slc-to-fll/"
+    },
+    {
+      "route_key": "stl-to-fll",
+      "url": "/routes/stl-to-fll/"
+    },
+    {
+      "route_key": "stt-to-fll",
+      "url": "/routes/stt-to-fll/"
+    },
+    {
+      "route_key": "stx-to-fll",
+      "url": "/routes/stx-to-fll/"
+    },
+    {
+      "route_key": "syr-to-fll",
+      "url": "/routes/syr-to-fll/"
+    },
+    {
+      "route_key": "tlh-to-fll",
+      "url": "/routes/tlh-to-fll/"
+    },
+    {
+      "route_key": "tpa-to-fll",
+      "url": "/routes/tpa-to-fll/"
+    },
+    {
+      "route_key": "tys-to-fll",
+      "url": "/routes/tys-to-fll/"
+    },
+    {
+      "route_key": "usa-to-fll",
+      "url": "/routes/usa-to-fll/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "FLL",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 91897,
+    "origin_routes": 92,
+    "usable_routes": 70,
+    "operating_airlines": 10,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/FLL/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

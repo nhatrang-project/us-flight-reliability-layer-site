@@ -1,0 +1,317 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "HNL",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 61558,
+    "origin_routes_count": 33,
+    "operating_airlines_count": 6,
+    "route_sample_quality": {
+      "usable": 33,
+      "thin": 0,
+      "too_small": 0,
+      "total": 33
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.009454,
+    "delay_over_60min_rate": 0.033882,
+    "delay_over_180min_rate": 0.006068,
+    "avg_arrival_delay_minutes": 2.48,
+    "p90_arrival_delay_minutes": 24.0,
+    "avg_delay_recovery_minutes": -0.48
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "OGG",
+      "route": "OGG→HNL",
+      "total_scheduled_flights": 11642,
+      "cancellation_rate": 0.010995,
+      "delay_over_60min_rate": 0.018499,
+      "avg_arrival_delay_minutes": 0.37,
+      "route_page_url": "/routes/ogg-to-hnl/"
+    },
+    {
+      "origin": "LIH",
+      "route": "LIH→HNL",
+      "total_scheduled_flights": 8640,
+      "cancellation_rate": 0.012616,
+      "delay_over_60min_rate": 0.018403,
+      "avg_arrival_delay_minutes": -0.06,
+      "route_page_url": "/routes/lih-to-hnl/"
+    },
+    {
+      "origin": "KOA",
+      "route": "KOA→HNL",
+      "total_scheduled_flights": 8048,
+      "cancellation_rate": 0.009071,
+      "delay_over_60min_rate": 0.01931,
+      "avg_arrival_delay_minutes": 1.15,
+      "route_page_url": "/routes/koa-to-hnl/"
+    },
+    {
+      "origin": "ITO",
+      "route": "ITO→HNL",
+      "total_scheduled_flights": 6432,
+      "cancellation_rate": 0.009173,
+      "delay_over_60min_rate": 0.019928,
+      "avg_arrival_delay_minutes": 1.34,
+      "route_page_url": "/routes/ito-to-hnl/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→HNL",
+      "total_scheduled_flights": 5612,
+      "cancellation_rate": 0.006771,
+      "delay_over_60min_rate": 0.053642,
+      "avg_arrival_delay_minutes": 4.06,
+      "route_page_url": "/routes/lax-to-hnl/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→HNL",
+      "total_scheduled_flights": 2912,
+      "cancellation_rate": 0.01511,
+      "delay_over_60min_rate": 0.053696,
+      "avg_arrival_delay_minutes": 5.85,
+      "route_page_url": "/routes/sea-to-hnl/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→HNL",
+      "total_scheduled_flights": 2528,
+      "cancellation_rate": 0.011076,
+      "delay_over_60min_rate": 0.0644,
+      "avg_arrival_delay_minutes": 5.32,
+      "route_page_url": "/routes/sfo-to-hnl/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→HNL",
+      "total_scheduled_flights": 1666,
+      "cancellation_rate": 0.009604,
+      "delay_over_60min_rate": 0.070303,
+      "avg_arrival_delay_minutes": 10.52,
+      "route_page_url": "/routes/san-to-hnl/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→HNL",
+      "total_scheduled_flights": 1563,
+      "cancellation_rate": 0.00128,
+      "delay_over_60min_rate": 0.044202,
+      "avg_arrival_delay_minutes": 11.23,
+      "route_page_url": "/routes/las-to-hnl/"
+    },
+    {
+      "origin": "SJC",
+      "route": "SJC→HNL",
+      "total_scheduled_flights": 1389,
+      "cancellation_rate": 0.007199,
+      "delay_over_60min_rate": 0.026831,
+      "avg_arrival_delay_minutes": -3.93,
+      "route_page_url": "/routes/sjc-to-hnl/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "anc-to-hnl",
+      "url": "/routes/anc-to-hnl/"
+    },
+    {
+      "route_key": "atl-to-hnl",
+      "url": "/routes/atl-to-hnl/"
+    },
+    {
+      "route_key": "aus-to-hnl",
+      "url": "/routes/aus-to-hnl/"
+    },
+    {
+      "route_key": "bos-to-hnl",
+      "url": "/routes/bos-to-hnl/"
+    },
+    {
+      "route_key": "den-to-hnl",
+      "url": "/routes/den-to-hnl/"
+    },
+    {
+      "route_key": "dfw-to-hnl",
+      "url": "/routes/dfw-to-hnl/"
+    },
+    {
+      "route_key": "dtw-to-hnl",
+      "url": "/routes/dtw-to-hnl/"
+    },
+    {
+      "route_key": "ewr-to-hnl",
+      "url": "/routes/ewr-to-hnl/"
+    },
+    {
+      "route_key": "gum-to-hnl",
+      "url": "/routes/gum-to-hnl/"
+    },
+    {
+      "route_key": "iad-to-hnl",
+      "url": "/routes/iad-to-hnl/"
+    },
+    {
+      "route_key": "iah-to-hnl",
+      "url": "/routes/iah-to-hnl/"
+    },
+    {
+      "route_key": "ito-to-hnl",
+      "url": "/routes/ito-to-hnl/"
+    },
+    {
+      "route_key": "jfk-to-hnl",
+      "url": "/routes/jfk-to-hnl/"
+    },
+    {
+      "route_key": "koa-to-hnl",
+      "url": "/routes/koa-to-hnl/"
+    },
+    {
+      "route_key": "las-to-hnl",
+      "url": "/routes/las-to-hnl/"
+    },
+    {
+      "route_key": "lax-to-hnl",
+      "url": "/routes/lax-to-hnl/"
+    },
+    {
+      "route_key": "lgb-to-hnl",
+      "url": "/routes/lgb-to-hnl/"
+    },
+    {
+      "route_key": "lih-to-hnl",
+      "url": "/routes/lih-to-hnl/"
+    },
+    {
+      "route_key": "msp-to-hnl",
+      "url": "/routes/msp-to-hnl/"
+    },
+    {
+      "route_key": "oak-to-hnl",
+      "url": "/routes/oak-to-hnl/"
+    },
+    {
+      "route_key": "ogg-to-hnl",
+      "url": "/routes/ogg-to-hnl/"
+    },
+    {
+      "route_key": "ont-to-hnl",
+      "url": "/routes/ont-to-hnl/"
+    },
+    {
+      "route_key": "ord-to-hnl",
+      "url": "/routes/ord-to-hnl/"
+    },
+    {
+      "route_key": "pae-to-hnl",
+      "url": "/routes/pae-to-hnl/"
+    },
+    {
+      "route_key": "pdx-to-hnl",
+      "url": "/routes/pdx-to-hnl/"
+    },
+    {
+      "route_key": "phx-to-hnl",
+      "url": "/routes/phx-to-hnl/"
+    },
+    {
+      "route_key": "ppg-to-hnl",
+      "url": "/routes/ppg-to-hnl/"
+    },
+    {
+      "route_key": "san-to-hnl",
+      "url": "/routes/san-to-hnl/"
+    },
+    {
+      "route_key": "sea-to-hnl",
+      "url": "/routes/sea-to-hnl/"
+    },
+    {
+      "route_key": "sfo-to-hnl",
+      "url": "/routes/sfo-to-hnl/"
+    },
+    {
+      "route_key": "sjc-to-hnl",
+      "url": "/routes/sjc-to-hnl/"
+    },
+    {
+      "route_key": "slc-to-hnl",
+      "url": "/routes/slc-to-hnl/"
+    },
+    {
+      "route_key": "smf-to-hnl",
+      "url": "/routes/smf-to-hnl/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "HNL",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 61558,
+    "origin_routes": 33,
+    "usable_routes": 33,
+    "operating_airlines": 6,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/HNL/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

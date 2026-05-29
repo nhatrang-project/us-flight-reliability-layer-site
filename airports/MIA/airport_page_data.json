@@ -1,0 +1,477 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "MIA",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 109923,
+    "origin_routes_count": 88,
+    "operating_airlines_count": 11,
+    "route_sample_quality": {
+      "usable": 73,
+      "thin": 5,
+      "too_small": 10,
+      "total": 88
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.017349,
+    "delay_over_60min_rate": 0.087987,
+    "delay_over_180min_rate": 0.02083,
+    "avg_arrival_delay_minutes": 11.12,
+    "p90_arrival_delay_minutes": 53.0,
+    "avg_delay_recovery_minutes": -0.48
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→MIA",
+      "total_scheduled_flights": 6699,
+      "cancellation_rate": 0.011345,
+      "delay_over_60min_rate": 0.102823,
+      "avg_arrival_delay_minutes": 16.97,
+      "route_page_url": "/routes/atl-to-mia/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→MIA",
+      "total_scheduled_flights": 5675,
+      "cancellation_rate": 0.022203,
+      "delay_over_60min_rate": 0.097135,
+      "avg_arrival_delay_minutes": 7.61,
+      "route_page_url": "/routes/lga-to-mia/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→MIA",
+      "total_scheduled_flights": 5473,
+      "cancellation_rate": 0.017358,
+      "delay_over_60min_rate": 0.095575,
+      "avg_arrival_delay_minutes": 8.15,
+      "route_page_url": "/routes/jfk-to-mia/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→MIA",
+      "total_scheduled_flights": 5003,
+      "cancellation_rate": 0.018989,
+      "delay_over_60min_rate": 0.115729,
+      "avg_arrival_delay_minutes": 17.63,
+      "route_page_url": "/routes/dfw-to-mia/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→MIA",
+      "total_scheduled_flights": 4343,
+      "cancellation_rate": 0.012664,
+      "delay_over_60min_rate": 0.08722,
+      "avg_arrival_delay_minutes": 7.81,
+      "route_page_url": "/routes/ord-to-mia/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→MIA",
+      "total_scheduled_flights": 4202,
+      "cancellation_rate": 0.030462,
+      "delay_over_60min_rate": 0.098184,
+      "avg_arrival_delay_minutes": 8.06,
+      "route_page_url": "/routes/ewr-to-mia/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→MIA",
+      "total_scheduled_flights": 3911,
+      "cancellation_rate": 0.020455,
+      "delay_over_60min_rate": 0.09397,
+      "avg_arrival_delay_minutes": 8.49,
+      "route_page_url": "/routes/dca-to-mia/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→MIA",
+      "total_scheduled_flights": 3788,
+      "cancellation_rate": 0.015048,
+      "delay_over_60min_rate": 0.077191,
+      "avg_arrival_delay_minutes": 2.53,
+      "route_page_url": "/routes/bos-to-mia/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→MIA",
+      "total_scheduled_flights": 3746,
+      "cancellation_rate": 0.020822,
+      "delay_over_60min_rate": 0.097874,
+      "avg_arrival_delay_minutes": 12.48,
+      "route_page_url": "/routes/mco-to-mia/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→MIA",
+      "total_scheduled_flights": 3629,
+      "cancellation_rate": 0.013227,
+      "delay_over_60min_rate": 0.092991,
+      "avg_arrival_delay_minutes": 13.78,
+      "route_page_url": "/routes/clt-to-mia/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "atl-to-mia",
+      "url": "/routes/atl-to-mia/"
+    },
+    {
+      "route_key": "aus-to-mia",
+      "url": "/routes/aus-to-mia/"
+    },
+    {
+      "route_key": "avl-to-mia",
+      "url": "/routes/avl-to-mia/"
+    },
+    {
+      "route_key": "bdl-to-mia",
+      "url": "/routes/bdl-to-mia/"
+    },
+    {
+      "route_key": "bhm-to-mia",
+      "url": "/routes/bhm-to-mia/"
+    },
+    {
+      "route_key": "bna-to-mia",
+      "url": "/routes/bna-to-mia/"
+    },
+    {
+      "route_key": "bos-to-mia",
+      "url": "/routes/bos-to-mia/"
+    },
+    {
+      "route_key": "bwi-to-mia",
+      "url": "/routes/bwi-to-mia/"
+    },
+    {
+      "route_key": "chs-to-mia",
+      "url": "/routes/chs-to-mia/"
+    },
+    {
+      "route_key": "cle-to-mia",
+      "url": "/routes/cle-to-mia/"
+    },
+    {
+      "route_key": "clt-to-mia",
+      "url": "/routes/clt-to-mia/"
+    },
+    {
+      "route_key": "cmh-to-mia",
+      "url": "/routes/cmh-to-mia/"
+    },
+    {
+      "route_key": "cvg-to-mia",
+      "url": "/routes/cvg-to-mia/"
+    },
+    {
+      "route_key": "dal-to-mia",
+      "url": "/routes/dal-to-mia/"
+    },
+    {
+      "route_key": "dca-to-mia",
+      "url": "/routes/dca-to-mia/"
+    },
+    {
+      "route_key": "den-to-mia",
+      "url": "/routes/den-to-mia/"
+    },
+    {
+      "route_key": "dfw-to-mia",
+      "url": "/routes/dfw-to-mia/"
+    },
+    {
+      "route_key": "dsm-to-mia",
+      "url": "/routes/dsm-to-mia/"
+    },
+    {
+      "route_key": "dtw-to-mia",
+      "url": "/routes/dtw-to-mia/"
+    },
+    {
+      "route_key": "ege-to-mia",
+      "url": "/routes/ege-to-mia/"
+    },
+    {
+      "route_key": "ewr-to-mia",
+      "url": "/routes/ewr-to-mia/"
+    },
+    {
+      "route_key": "eyw-to-mia",
+      "url": "/routes/eyw-to-mia/"
+    },
+    {
+      "route_key": "gnv-to-mia",
+      "url": "/routes/gnv-to-mia/"
+    },
+    {
+      "route_key": "grr-to-mia",
+      "url": "/routes/grr-to-mia/"
+    },
+    {
+      "route_key": "gso-to-mia",
+      "url": "/routes/gso-to-mia/"
+    },
+    {
+      "route_key": "gsp-to-mia",
+      "url": "/routes/gsp-to-mia/"
+    },
+    {
+      "route_key": "hou-to-mia",
+      "url": "/routes/hou-to-mia/"
+    },
+    {
+      "route_key": "hpn-to-mia",
+      "url": "/routes/hpn-to-mia/"
+    },
+    {
+      "route_key": "iad-to-mia",
+      "url": "/routes/iad-to-mia/"
+    },
+    {
+      "route_key": "iah-to-mia",
+      "url": "/routes/iah-to-mia/"
+    },
+    {
+      "route_key": "ilm-to-mia",
+      "url": "/routes/ilm-to-mia/"
+    },
+    {
+      "route_key": "ind-to-mia",
+      "url": "/routes/ind-to-mia/"
+    },
+    {
+      "route_key": "jax-to-mia",
+      "url": "/routes/jax-to-mia/"
+    },
+    {
+      "route_key": "jfk-to-mia",
+      "url": "/routes/jfk-to-mia/"
+    },
+    {
+      "route_key": "las-to-mia",
+      "url": "/routes/las-to-mia/"
+    },
+    {
+      "route_key": "lax-to-mia",
+      "url": "/routes/lax-to-mia/"
+    },
+    {
+      "route_key": "lga-to-mia",
+      "url": "/routes/lga-to-mia/"
+    },
+    {
+      "route_key": "mci-to-mia",
+      "url": "/routes/mci-to-mia/"
+    },
+    {
+      "route_key": "mco-to-mia",
+      "url": "/routes/mco-to-mia/"
+    },
+    {
+      "route_key": "mdw-to-mia",
+      "url": "/routes/mdw-to-mia/"
+    },
+    {
+      "route_key": "mem-to-mia",
+      "url": "/routes/mem-to-mia/"
+    },
+    {
+      "route_key": "mke-to-mia",
+      "url": "/routes/mke-to-mia/"
+    },
+    {
+      "route_key": "msp-to-mia",
+      "url": "/routes/msp-to-mia/"
+    },
+    {
+      "route_key": "msy-to-mia",
+      "url": "/routes/msy-to-mia/"
+    },
+    {
+      "route_key": "okc-to-mia",
+      "url": "/routes/okc-to-mia/"
+    },
+    {
+      "route_key": "oma-to-mia",
+      "url": "/routes/oma-to-mia/"
+    },
+    {
+      "route_key": "ord-to-mia",
+      "url": "/routes/ord-to-mia/"
+    },
+    {
+      "route_key": "orf-to-mia",
+      "url": "/routes/orf-to-mia/"
+    },
+    {
+      "route_key": "pdx-to-mia",
+      "url": "/routes/pdx-to-mia/"
+    },
+    {
+      "route_key": "phl-to-mia",
+      "url": "/routes/phl-to-mia/"
+    },
+    {
+      "route_key": "phx-to-mia",
+      "url": "/routes/phx-to-mia/"
+    },
+    {
+      "route_key": "pit-to-mia",
+      "url": "/routes/pit-to-mia/"
+    },
+    {
+      "route_key": "pns-to-mia",
+      "url": "/routes/pns-to-mia/"
+    },
+    {
+      "route_key": "rdu-to-mia",
+      "url": "/routes/rdu-to-mia/"
+    },
+    {
+      "route_key": "ric-to-mia",
+      "url": "/routes/ric-to-mia/"
+    },
+    {
+      "route_key": "san-to-mia",
+      "url": "/routes/san-to-mia/"
+    },
+    {
+      "route_key": "sat-to-mia",
+      "url": "/routes/sat-to-mia/"
+    },
+    {
+      "route_key": "sav-to-mia",
+      "url": "/routes/sav-to-mia/"
+    },
+    {
+      "route_key": "sdf-to-mia",
+      "url": "/routes/sdf-to-mia/"
+    },
+    {
+      "route_key": "sea-to-mia",
+      "url": "/routes/sea-to-mia/"
+    },
+    {
+      "route_key": "sfo-to-mia",
+      "url": "/routes/sfo-to-mia/"
+    },
+    {
+      "route_key": "sju-to-mia",
+      "url": "/routes/sju-to-mia/"
+    },
+    {
+      "route_key": "slc-to-mia",
+      "url": "/routes/slc-to-mia/"
+    },
+    {
+      "route_key": "smf-to-mia",
+      "url": "/routes/smf-to-mia/"
+    },
+    {
+      "route_key": "sna-to-mia",
+      "url": "/routes/sna-to-mia/"
+    },
+    {
+      "route_key": "stl-to-mia",
+      "url": "/routes/stl-to-mia/"
+    },
+    {
+      "route_key": "stt-to-mia",
+      "url": "/routes/stt-to-mia/"
+    },
+    {
+      "route_key": "stx-to-mia",
+      "url": "/routes/stx-to-mia/"
+    },
+    {
+      "route_key": "tlh-to-mia",
+      "url": "/routes/tlh-to-mia/"
+    },
+    {
+      "route_key": "tpa-to-mia",
+      "url": "/routes/tpa-to-mia/"
+    },
+    {
+      "route_key": "tul-to-mia",
+      "url": "/routes/tul-to-mia/"
+    },
+    {
+      "route_key": "tys-to-mia",
+      "url": "/routes/tys-to-mia/"
+    },
+    {
+      "route_key": "xna-to-mia",
+      "url": "/routes/xna-to-mia/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "MIA",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 109923,
+    "origin_routes": 88,
+    "usable_routes": 73,
+    "operating_airlines": 11,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/MIA/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

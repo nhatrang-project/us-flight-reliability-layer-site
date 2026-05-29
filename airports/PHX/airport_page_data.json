@@ -1,0 +1,597 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "PHX",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 193542,
+    "origin_routes_count": 111,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 103,
+      "thin": 3,
+      "too_small": 5,
+      "total": 111
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.006758,
+    "delay_over_60min_rate": 0.06065,
+    "delay_over_180min_rate": 0.012532,
+    "avg_arrival_delay_minutes": 6.46,
+    "p90_arrival_delay_minutes": 36.0,
+    "avg_delay_recovery_minutes": 0.51
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "DEN",
+      "route": "DEN→PHX",
+      "total_scheduled_flights": 9446,
+      "cancellation_rate": 0.010692,
+      "delay_over_60min_rate": 0.073194,
+      "avg_arrival_delay_minutes": 7.56,
+      "route_page_url": "/routes/den-to-phx/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→PHX",
+      "total_scheduled_flights": 7176,
+      "cancellation_rate": 0.00864,
+      "delay_over_60min_rate": 0.046106,
+      "avg_arrival_delay_minutes": 4.28,
+      "route_page_url": "/routes/sea-to-phx/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→PHX",
+      "total_scheduled_flights": 7159,
+      "cancellation_rate": 0.004749,
+      "delay_over_60min_rate": 0.061614,
+      "avg_arrival_delay_minutes": 7.91,
+      "route_page_url": "/routes/lax-to-phx/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→PHX",
+      "total_scheduled_flights": 7047,
+      "cancellation_rate": 0.006528,
+      "delay_over_60min_rate": 0.069847,
+      "avg_arrival_delay_minutes": 6.28,
+      "route_page_url": "/routes/las-to-phx/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→PHX",
+      "total_scheduled_flights": 5957,
+      "cancellation_rate": 0.010072,
+      "delay_over_60min_rate": 0.08021,
+      "avg_arrival_delay_minutes": 8.56,
+      "route_page_url": "/routes/ord-to-phx/"
+    },
+    {
+      "origin": "SLC",
+      "route": "SLC→PHX",
+      "total_scheduled_flights": 5883,
+      "cancellation_rate": 0.004589,
+      "delay_over_60min_rate": 0.048497,
+      "avg_arrival_delay_minutes": 3.18,
+      "route_page_url": "/routes/slc-to-phx/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→PHX",
+      "total_scheduled_flights": 5688,
+      "cancellation_rate": 0.011955,
+      "delay_over_60min_rate": 0.067616,
+      "avg_arrival_delay_minutes": 11.17,
+      "route_page_url": "/routes/san-to-phx/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→PHX",
+      "total_scheduled_flights": 5205,
+      "cancellation_rate": 0.013449,
+      "delay_over_60min_rate": 0.110419,
+      "avg_arrival_delay_minutes": 18.73,
+      "route_page_url": "/routes/dfw-to-phx/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→PHX",
+      "total_scheduled_flights": 4777,
+      "cancellation_rate": 0.007117,
+      "delay_over_60min_rate": 0.087708,
+      "avg_arrival_delay_minutes": 13.9,
+      "route_page_url": "/routes/sfo-to-phx/"
+    },
+    {
+      "origin": "SNA",
+      "route": "SNA→PHX",
+      "total_scheduled_flights": 4350,
+      "cancellation_rate": 0.008046,
+      "delay_over_60min_rate": 0.049131,
+      "avg_arrival_delay_minutes": 5.57,
+      "route_page_url": "/routes/sna-to-phx/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-phx",
+      "url": "/routes/abq-to-phx/"
+    },
+    {
+      "route_key": "anc-to-phx",
+      "url": "/routes/anc-to-phx/"
+    },
+    {
+      "route_key": "ase-to-phx",
+      "url": "/routes/ase-to-phx/"
+    },
+    {
+      "route_key": "atl-to-phx",
+      "url": "/routes/atl-to-phx/"
+    },
+    {
+      "route_key": "aus-to-phx",
+      "url": "/routes/aus-to-phx/"
+    },
+    {
+      "route_key": "avl-to-phx",
+      "url": "/routes/avl-to-phx/"
+    },
+    {
+      "route_key": "bfl-to-phx",
+      "url": "/routes/bfl-to-phx/"
+    },
+    {
+      "route_key": "bil-to-phx",
+      "url": "/routes/bil-to-phx/"
+    },
+    {
+      "route_key": "bna-to-phx",
+      "url": "/routes/bna-to-phx/"
+    },
+    {
+      "route_key": "boi-to-phx",
+      "url": "/routes/boi-to-phx/"
+    },
+    {
+      "route_key": "bos-to-phx",
+      "url": "/routes/bos-to-phx/"
+    },
+    {
+      "route_key": "buf-to-phx",
+      "url": "/routes/buf-to-phx/"
+    },
+    {
+      "route_key": "bur-to-phx",
+      "url": "/routes/bur-to-phx/"
+    },
+    {
+      "route_key": "bwi-to-phx",
+      "url": "/routes/bwi-to-phx/"
+    },
+    {
+      "route_key": "cid-to-phx",
+      "url": "/routes/cid-to-phx/"
+    },
+    {
+      "route_key": "cle-to-phx",
+      "url": "/routes/cle-to-phx/"
+    },
+    {
+      "route_key": "clt-to-phx",
+      "url": "/routes/clt-to-phx/"
+    },
+    {
+      "route_key": "cmh-to-phx",
+      "url": "/routes/cmh-to-phx/"
+    },
+    {
+      "route_key": "cos-to-phx",
+      "url": "/routes/cos-to-phx/"
+    },
+    {
+      "route_key": "cvg-to-phx",
+      "url": "/routes/cvg-to-phx/"
+    },
+    {
+      "route_key": "dal-to-phx",
+      "url": "/routes/dal-to-phx/"
+    },
+    {
+      "route_key": "dca-to-phx",
+      "url": "/routes/dca-to-phx/"
+    },
+    {
+      "route_key": "den-to-phx",
+      "url": "/routes/den-to-phx/"
+    },
+    {
+      "route_key": "dfw-to-phx",
+      "url": "/routes/dfw-to-phx/"
+    },
+    {
+      "route_key": "dro-to-phx",
+      "url": "/routes/dro-to-phx/"
+    },
+    {
+      "route_key": "dsm-to-phx",
+      "url": "/routes/dsm-to-phx/"
+    },
+    {
+      "route_key": "dtw-to-phx",
+      "url": "/routes/dtw-to-phx/"
+    },
+    {
+      "route_key": "elp-to-phx",
+      "url": "/routes/elp-to-phx/"
+    },
+    {
+      "route_key": "eug-to-phx",
+      "url": "/routes/eug-to-phx/"
+    },
+    {
+      "route_key": "ewr-to-phx",
+      "url": "/routes/ewr-to-phx/"
+    },
+    {
+      "route_key": "far-to-phx",
+      "url": "/routes/far-to-phx/"
+    },
+    {
+      "route_key": "fat-to-phx",
+      "url": "/routes/fat-to-phx/"
+    },
+    {
+      "route_key": "flg-to-phx",
+      "url": "/routes/flg-to-phx/"
+    },
+    {
+      "route_key": "fll-to-phx",
+      "url": "/routes/fll-to-phx/"
+    },
+    {
+      "route_key": "fsd-to-phx",
+      "url": "/routes/fsd-to-phx/"
+    },
+    {
+      "route_key": "geg-to-phx",
+      "url": "/routes/geg-to-phx/"
+    },
+    {
+      "route_key": "gjt-to-phx",
+      "url": "/routes/gjt-to-phx/"
+    },
+    {
+      "route_key": "grr-to-phx",
+      "url": "/routes/grr-to-phx/"
+    },
+    {
+      "route_key": "hnl-to-phx",
+      "url": "/routes/hnl-to-phx/"
+    },
+    {
+      "route_key": "hou-to-phx",
+      "url": "/routes/hou-to-phx/"
+    },
+    {
+      "route_key": "iad-to-phx",
+      "url": "/routes/iad-to-phx/"
+    },
+    {
+      "route_key": "iah-to-phx",
+      "url": "/routes/iah-to-phx/"
+    },
+    {
+      "route_key": "ict-to-phx",
+      "url": "/routes/ict-to-phx/"
+    },
+    {
+      "route_key": "ida-to-phx",
+      "url": "/routes/ida-to-phx/"
+    },
+    {
+      "route_key": "ind-to-phx",
+      "url": "/routes/ind-to-phx/"
+    },
+    {
+      "route_key": "jax-to-phx",
+      "url": "/routes/jax-to-phx/"
+    },
+    {
+      "route_key": "jfk-to-phx",
+      "url": "/routes/jfk-to-phx/"
+    },
+    {
+      "route_key": "koa-to-phx",
+      "url": "/routes/koa-to-phx/"
+    },
+    {
+      "route_key": "las-to-phx",
+      "url": "/routes/las-to-phx/"
+    },
+    {
+      "route_key": "lax-to-phx",
+      "url": "/routes/lax-to-phx/"
+    },
+    {
+      "route_key": "lbb-to-phx",
+      "url": "/routes/lbb-to-phx/"
+    },
+    {
+      "route_key": "lgb-to-phx",
+      "url": "/routes/lgb-to-phx/"
+    },
+    {
+      "route_key": "lih-to-phx",
+      "url": "/routes/lih-to-phx/"
+    },
+    {
+      "route_key": "maf-to-phx",
+      "url": "/routes/maf-to-phx/"
+    },
+    {
+      "route_key": "mci-to-phx",
+      "url": "/routes/mci-to-phx/"
+    },
+    {
+      "route_key": "mco-to-phx",
+      "url": "/routes/mco-to-phx/"
+    },
+    {
+      "route_key": "mdw-to-phx",
+      "url": "/routes/mdw-to-phx/"
+    },
+    {
+      "route_key": "mem-to-phx",
+      "url": "/routes/mem-to-phx/"
+    },
+    {
+      "route_key": "mfr-to-phx",
+      "url": "/routes/mfr-to-phx/"
+    },
+    {
+      "route_key": "mia-to-phx",
+      "url": "/routes/mia-to-phx/"
+    },
+    {
+      "route_key": "mke-to-phx",
+      "url": "/routes/mke-to-phx/"
+    },
+    {
+      "route_key": "mry-to-phx",
+      "url": "/routes/mry-to-phx/"
+    },
+    {
+      "route_key": "msn-to-phx",
+      "url": "/routes/msn-to-phx/"
+    },
+    {
+      "route_key": "msp-to-phx",
+      "url": "/routes/msp-to-phx/"
+    },
+    {
+      "route_key": "msy-to-phx",
+      "url": "/routes/msy-to-phx/"
+    },
+    {
+      "route_key": "oak-to-phx",
+      "url": "/routes/oak-to-phx/"
+    },
+    {
+      "route_key": "ogg-to-phx",
+      "url": "/routes/ogg-to-phx/"
+    },
+    {
+      "route_key": "okc-to-phx",
+      "url": "/routes/okc-to-phx/"
+    },
+    {
+      "route_key": "oma-to-phx",
+      "url": "/routes/oma-to-phx/"
+    },
+    {
+      "route_key": "ont-to-phx",
+      "url": "/routes/ont-to-phx/"
+    },
+    {
+      "route_key": "ord-to-phx",
+      "url": "/routes/ord-to-phx/"
+    },
+    {
+      "route_key": "pae-to-phx",
+      "url": "/routes/pae-to-phx/"
+    },
+    {
+      "route_key": "pdx-to-phx",
+      "url": "/routes/pdx-to-phx/"
+    },
+    {
+      "route_key": "phl-to-phx",
+      "url": "/routes/phl-to-phx/"
+    },
+    {
+      "route_key": "pit-to-phx",
+      "url": "/routes/pit-to-phx/"
+    },
+    {
+      "route_key": "psc-to-phx",
+      "url": "/routes/psc-to-phx/"
+    },
+    {
+      "route_key": "psp-to-phx",
+      "url": "/routes/psp-to-phx/"
+    },
+    {
+      "route_key": "pvu-to-phx",
+      "url": "/routes/pvu-to-phx/"
+    },
+    {
+      "route_key": "rdm-to-phx",
+      "url": "/routes/rdm-to-phx/"
+    },
+    {
+      "route_key": "rdu-to-phx",
+      "url": "/routes/rdu-to-phx/"
+    },
+    {
+      "route_key": "rno-to-phx",
+      "url": "/routes/rno-to-phx/"
+    },
+    {
+      "route_key": "saf-to-phx",
+      "url": "/routes/saf-to-phx/"
+    },
+    {
+      "route_key": "san-to-phx",
+      "url": "/routes/san-to-phx/"
+    },
+    {
+      "route_key": "sat-to-phx",
+      "url": "/routes/sat-to-phx/"
+    },
+    {
+      "route_key": "sba-to-phx",
+      "url": "/routes/sba-to-phx/"
+    },
+    {
+      "route_key": "sbp-to-phx",
+      "url": "/routes/sbp-to-phx/"
+    },
+    {
+      "route_key": "sck-to-phx",
+      "url": "/routes/sck-to-phx/"
+    },
+    {
+      "route_key": "sdf-to-phx",
+      "url": "/routes/sdf-to-phx/"
+    },
+    {
+      "route_key": "sea-to-phx",
+      "url": "/routes/sea-to-phx/"
+    },
+    {
+      "route_key": "sfo-to-phx",
+      "url": "/routes/sfo-to-phx/"
+    },
+    {
+      "route_key": "sgu-to-phx",
+      "url": "/routes/sgu-to-phx/"
+    },
+    {
+      "route_key": "sjc-to-phx",
+      "url": "/routes/sjc-to-phx/"
+    },
+    {
+      "route_key": "slc-to-phx",
+      "url": "/routes/slc-to-phx/"
+    },
+    {
+      "route_key": "smf-to-phx",
+      "url": "/routes/smf-to-phx/"
+    },
+    {
+      "route_key": "sna-to-phx",
+      "url": "/routes/sna-to-phx/"
+    },
+    {
+      "route_key": "stl-to-phx",
+      "url": "/routes/stl-to-phx/"
+    },
+    {
+      "route_key": "sts-to-phx",
+      "url": "/routes/sts-to-phx/"
+    },
+    {
+      "route_key": "tpa-to-phx",
+      "url": "/routes/tpa-to-phx/"
+    },
+    {
+      "route_key": "tul-to-phx",
+      "url": "/routes/tul-to-phx/"
+    },
+    {
+      "route_key": "tus-to-phx",
+      "url": "/routes/tus-to-phx/"
+    },
+    {
+      "route_key": "tys-to-phx",
+      "url": "/routes/tys-to-phx/"
+    },
+    {
+      "route_key": "xna-to-phx",
+      "url": "/routes/xna-to-phx/"
+    },
+    {
+      "route_key": "yum-to-phx",
+      "url": "/routes/yum-to-phx/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "PHX",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 193542,
+    "origin_routes": 111,
+    "usable_routes": 103,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/PHX/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

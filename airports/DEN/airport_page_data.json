@@ -1,0 +1,857 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "DEN",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 308609,
+    "origin_routes_count": 180,
+    "operating_airlines_count": 11,
+    "route_sample_quality": {
+      "usable": 168,
+      "thin": 10,
+      "too_small": 2,
+      "total": 180
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.012401,
+    "delay_over_60min_rate": 0.063645,
+    "delay_over_180min_rate": 0.012816,
+    "avg_arrival_delay_minutes": 4.4,
+    "p90_arrival_delay_minutes": 37.0,
+    "avg_delay_recovery_minutes": 0.44
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "PHX",
+      "route": "PHX→DEN",
+      "total_scheduled_flights": 9479,
+      "cancellation_rate": 0.01171,
+      "delay_over_60min_rate": 0.063087,
+      "avg_arrival_delay_minutes": 5.26,
+      "route_page_url": "/routes/phx-to-den/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→DEN",
+      "total_scheduled_flights": 8192,
+      "cancellation_rate": 0.012207,
+      "delay_over_60min_rate": 0.073777,
+      "avg_arrival_delay_minutes": 6.37,
+      "route_page_url": "/routes/las-to-den/"
+    },
+    {
+      "origin": "SLC",
+      "route": "SLC→DEN",
+      "total_scheduled_flights": 8092,
+      "cancellation_rate": 0.007662,
+      "delay_over_60min_rate": 0.06812,
+      "avg_arrival_delay_minutes": 6.58,
+      "route_page_url": "/routes/slc-to-den/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→DEN",
+      "total_scheduled_flights": 7688,
+      "cancellation_rate": 0.011316,
+      "delay_over_60min_rate": 0.056177,
+      "avg_arrival_delay_minutes": 1.84,
+      "route_page_url": "/routes/lax-to-den/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→DEN",
+      "total_scheduled_flights": 6729,
+      "cancellation_rate": 0.010551,
+      "delay_over_60min_rate": 0.056774,
+      "avg_arrival_delay_minutes": 4.71,
+      "route_page_url": "/routes/sea-to-den/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→DEN",
+      "total_scheduled_flights": 6485,
+      "cancellation_rate": 0.01542,
+      "delay_over_60min_rate": 0.082694,
+      "avg_arrival_delay_minutes": 8.37,
+      "route_page_url": "/routes/ord-to-den/"
+    },
+    {
+      "origin": "MSP",
+      "route": "MSP→DEN",
+      "total_scheduled_flights": 6370,
+      "cancellation_rate": 0.009262,
+      "delay_over_60min_rate": 0.05736,
+      "avg_arrival_delay_minutes": 2.32,
+      "route_page_url": "/routes/msp-to-den/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→DEN",
+      "total_scheduled_flights": 6206,
+      "cancellation_rate": 0.020303,
+      "delay_over_60min_rate": 0.106086,
+      "avg_arrival_delay_minutes": 15.65,
+      "route_page_url": "/routes/dfw-to-den/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→DEN",
+      "total_scheduled_flights": 6076,
+      "cancellation_rate": 0.009217,
+      "delay_over_60min_rate": 0.057973,
+      "avg_arrival_delay_minutes": 5.07,
+      "route_page_url": "/routes/atl-to-den/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→DEN",
+      "total_scheduled_flights": 5588,
+      "cancellation_rate": 0.013064,
+      "delay_over_60min_rate": 0.068722,
+      "avg_arrival_delay_minutes": 5.92,
+      "route_page_url": "/routes/san-to-den/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-den",
+      "url": "/routes/abq-to-den/"
+    },
+    {
+      "route_key": "acv-to-den",
+      "url": "/routes/acv-to-den/"
+    },
+    {
+      "route_key": "alb-to-den",
+      "url": "/routes/alb-to-den/"
+    },
+    {
+      "route_key": "ama-to-den",
+      "url": "/routes/ama-to-den/"
+    },
+    {
+      "route_key": "anc-to-den",
+      "url": "/routes/anc-to-den/"
+    },
+    {
+      "route_key": "ase-to-den",
+      "url": "/routes/ase-to-den/"
+    },
+    {
+      "route_key": "atl-to-den",
+      "url": "/routes/atl-to-den/"
+    },
+    {
+      "route_key": "atw-to-den",
+      "url": "/routes/atw-to-den/"
+    },
+    {
+      "route_key": "aus-to-den",
+      "url": "/routes/aus-to-den/"
+    },
+    {
+      "route_key": "avl-to-den",
+      "url": "/routes/avl-to-den/"
+    },
+    {
+      "route_key": "bdl-to-den",
+      "url": "/routes/bdl-to-den/"
+    },
+    {
+      "route_key": "bff-to-den",
+      "url": "/routes/bff-to-den/"
+    },
+    {
+      "route_key": "bfl-to-den",
+      "url": "/routes/bfl-to-den/"
+    },
+    {
+      "route_key": "bhm-to-den",
+      "url": "/routes/bhm-to-den/"
+    },
+    {
+      "route_key": "bih-to-den",
+      "url": "/routes/bih-to-den/"
+    },
+    {
+      "route_key": "bil-to-den",
+      "url": "/routes/bil-to-den/"
+    },
+    {
+      "route_key": "bis-to-den",
+      "url": "/routes/bis-to-den/"
+    },
+    {
+      "route_key": "bna-to-den",
+      "url": "/routes/bna-to-den/"
+    },
+    {
+      "route_key": "boi-to-den",
+      "url": "/routes/boi-to-den/"
+    },
+    {
+      "route_key": "bos-to-den",
+      "url": "/routes/bos-to-den/"
+    },
+    {
+      "route_key": "btv-to-den",
+      "url": "/routes/btv-to-den/"
+    },
+    {
+      "route_key": "buf-to-den",
+      "url": "/routes/buf-to-den/"
+    },
+    {
+      "route_key": "bur-to-den",
+      "url": "/routes/bur-to-den/"
+    },
+    {
+      "route_key": "bwi-to-den",
+      "url": "/routes/bwi-to-den/"
+    },
+    {
+      "route_key": "bzn-to-den",
+      "url": "/routes/bzn-to-den/"
+    },
+    {
+      "route_key": "chs-to-den",
+      "url": "/routes/chs-to-den/"
+    },
+    {
+      "route_key": "cid-to-den",
+      "url": "/routes/cid-to-den/"
+    },
+    {
+      "route_key": "cle-to-den",
+      "url": "/routes/cle-to-den/"
+    },
+    {
+      "route_key": "clt-to-den",
+      "url": "/routes/clt-to-den/"
+    },
+    {
+      "route_key": "cmh-to-den",
+      "url": "/routes/cmh-to-den/"
+    },
+    {
+      "route_key": "cod-to-den",
+      "url": "/routes/cod-to-den/"
+    },
+    {
+      "route_key": "cos-to-den",
+      "url": "/routes/cos-to-den/"
+    },
+    {
+      "route_key": "cpr-to-den",
+      "url": "/routes/cpr-to-den/"
+    },
+    {
+      "route_key": "cvg-to-den",
+      "url": "/routes/cvg-to-den/"
+    },
+    {
+      "route_key": "cys-to-den",
+      "url": "/routes/cys-to-den/"
+    },
+    {
+      "route_key": "dal-to-den",
+      "url": "/routes/dal-to-den/"
+    },
+    {
+      "route_key": "day-to-den",
+      "url": "/routes/day-to-den/"
+    },
+    {
+      "route_key": "dca-to-den",
+      "url": "/routes/dca-to-den/"
+    },
+    {
+      "route_key": "ddc-to-den",
+      "url": "/routes/ddc-to-den/"
+    },
+    {
+      "route_key": "dfw-to-den",
+      "url": "/routes/dfw-to-den/"
+    },
+    {
+      "route_key": "dik-to-den",
+      "url": "/routes/dik-to-den/"
+    },
+    {
+      "route_key": "dro-to-den",
+      "url": "/routes/dro-to-den/"
+    },
+    {
+      "route_key": "dsm-to-den",
+      "url": "/routes/dsm-to-den/"
+    },
+    {
+      "route_key": "dtw-to-den",
+      "url": "/routes/dtw-to-den/"
+    },
+    {
+      "route_key": "dvl-to-den",
+      "url": "/routes/dvl-to-den/"
+    },
+    {
+      "route_key": "ear-to-den",
+      "url": "/routes/ear-to-den/"
+    },
+    {
+      "route_key": "ecp-to-den",
+      "url": "/routes/ecp-to-den/"
+    },
+    {
+      "route_key": "ege-to-den",
+      "url": "/routes/ege-to-den/"
+    },
+    {
+      "route_key": "elp-to-den",
+      "url": "/routes/elp-to-den/"
+    },
+    {
+      "route_key": "eug-to-den",
+      "url": "/routes/eug-to-den/"
+    },
+    {
+      "route_key": "ewr-to-den",
+      "url": "/routes/ewr-to-den/"
+    },
+    {
+      "route_key": "far-to-den",
+      "url": "/routes/far-to-den/"
+    },
+    {
+      "route_key": "fat-to-den",
+      "url": "/routes/fat-to-den/"
+    },
+    {
+      "route_key": "fca-to-den",
+      "url": "/routes/fca-to-den/"
+    },
+    {
+      "route_key": "fll-to-den",
+      "url": "/routes/fll-to-den/"
+    },
+    {
+      "route_key": "fsd-to-den",
+      "url": "/routes/fsd-to-den/"
+    },
+    {
+      "route_key": "gcc-to-den",
+      "url": "/routes/gcc-to-den/"
+    },
+    {
+      "route_key": "geg-to-den",
+      "url": "/routes/geg-to-den/"
+    },
+    {
+      "route_key": "gjt-to-den",
+      "url": "/routes/gjt-to-den/"
+    },
+    {
+      "route_key": "grr-to-den",
+      "url": "/routes/grr-to-den/"
+    },
+    {
+      "route_key": "gso-to-den",
+      "url": "/routes/gso-to-den/"
+    },
+    {
+      "route_key": "gsp-to-den",
+      "url": "/routes/gsp-to-den/"
+    },
+    {
+      "route_key": "gtf-to-den",
+      "url": "/routes/gtf-to-den/"
+    },
+    {
+      "route_key": "guc-to-den",
+      "url": "/routes/guc-to-den/"
+    },
+    {
+      "route_key": "hdn-to-den",
+      "url": "/routes/hdn-to-den/"
+    },
+    {
+      "route_key": "hln-to-den",
+      "url": "/routes/hln-to-den/"
+    },
+    {
+      "route_key": "hnl-to-den",
+      "url": "/routes/hnl-to-den/"
+    },
+    {
+      "route_key": "hob-to-den",
+      "url": "/routes/hob-to-den/"
+    },
+    {
+      "route_key": "hou-to-den",
+      "url": "/routes/hou-to-den/"
+    },
+    {
+      "route_key": "hsv-to-den",
+      "url": "/routes/hsv-to-den/"
+    },
+    {
+      "route_key": "hys-to-den",
+      "url": "/routes/hys-to-den/"
+    },
+    {
+      "route_key": "iad-to-den",
+      "url": "/routes/iad-to-den/"
+    },
+    {
+      "route_key": "iah-to-den",
+      "url": "/routes/iah-to-den/"
+    },
+    {
+      "route_key": "ict-to-den",
+      "url": "/routes/ict-to-den/"
+    },
+    {
+      "route_key": "ida-to-den",
+      "url": "/routes/ida-to-den/"
+    },
+    {
+      "route_key": "ind-to-den",
+      "url": "/routes/ind-to-den/"
+    },
+    {
+      "route_key": "jac-to-den",
+      "url": "/routes/jac-to-den/"
+    },
+    {
+      "route_key": "jax-to-den",
+      "url": "/routes/jax-to-den/"
+    },
+    {
+      "route_key": "jfk-to-den",
+      "url": "/routes/jfk-to-den/"
+    },
+    {
+      "route_key": "jln-to-den",
+      "url": "/routes/jln-to-den/"
+    },
+    {
+      "route_key": "jms-to-den",
+      "url": "/routes/jms-to-den/"
+    },
+    {
+      "route_key": "koa-to-den",
+      "url": "/routes/koa-to-den/"
+    },
+    {
+      "route_key": "lar-to-den",
+      "url": "/routes/lar-to-den/"
+    },
+    {
+      "route_key": "las-to-den",
+      "url": "/routes/las-to-den/"
+    },
+    {
+      "route_key": "lax-to-den",
+      "url": "/routes/lax-to-den/"
+    },
+    {
+      "route_key": "lbb-to-den",
+      "url": "/routes/lbb-to-den/"
+    },
+    {
+      "route_key": "lbf-to-den",
+      "url": "/routes/lbf-to-den/"
+    },
+    {
+      "route_key": "lbl-to-den",
+      "url": "/routes/lbl-to-den/"
+    },
+    {
+      "route_key": "lex-to-den",
+      "url": "/routes/lex-to-den/"
+    },
+    {
+      "route_key": "lga-to-den",
+      "url": "/routes/lga-to-den/"
+    },
+    {
+      "route_key": "lgb-to-den",
+      "url": "/routes/lgb-to-den/"
+    },
+    {
+      "route_key": "lih-to-den",
+      "url": "/routes/lih-to-den/"
+    },
+    {
+      "route_key": "lit-to-den",
+      "url": "/routes/lit-to-den/"
+    },
+    {
+      "route_key": "lnk-to-den",
+      "url": "/routes/lnk-to-den/"
+    },
+    {
+      "route_key": "lws-to-den",
+      "url": "/routes/lws-to-den/"
+    },
+    {
+      "route_key": "maf-to-den",
+      "url": "/routes/maf-to-den/"
+    },
+    {
+      "route_key": "mci-to-den",
+      "url": "/routes/mci-to-den/"
+    },
+    {
+      "route_key": "mco-to-den",
+      "url": "/routes/mco-to-den/"
+    },
+    {
+      "route_key": "mdw-to-den",
+      "url": "/routes/mdw-to-den/"
+    },
+    {
+      "route_key": "mem-to-den",
+      "url": "/routes/mem-to-den/"
+    },
+    {
+      "route_key": "mfr-to-den",
+      "url": "/routes/mfr-to-den/"
+    },
+    {
+      "route_key": "mia-to-den",
+      "url": "/routes/mia-to-den/"
+    },
+    {
+      "route_key": "mke-to-den",
+      "url": "/routes/mke-to-den/"
+    },
+    {
+      "route_key": "mli-to-den",
+      "url": "/routes/mli-to-den/"
+    },
+    {
+      "route_key": "mot-to-den",
+      "url": "/routes/mot-to-den/"
+    },
+    {
+      "route_key": "mry-to-den",
+      "url": "/routes/mry-to-den/"
+    },
+    {
+      "route_key": "msn-to-den",
+      "url": "/routes/msn-to-den/"
+    },
+    {
+      "route_key": "mso-to-den",
+      "url": "/routes/mso-to-den/"
+    },
+    {
+      "route_key": "msp-to-den",
+      "url": "/routes/msp-to-den/"
+    },
+    {
+      "route_key": "msy-to-den",
+      "url": "/routes/msy-to-den/"
+    },
+    {
+      "route_key": "mtj-to-den",
+      "url": "/routes/mtj-to-den/"
+    },
+    {
+      "route_key": "oak-to-den",
+      "url": "/routes/oak-to-den/"
+    },
+    {
+      "route_key": "ogg-to-den",
+      "url": "/routes/ogg-to-den/"
+    },
+    {
+      "route_key": "okc-to-den",
+      "url": "/routes/okc-to-den/"
+    },
+    {
+      "route_key": "oma-to-den",
+      "url": "/routes/oma-to-den/"
+    },
+    {
+      "route_key": "ont-to-den",
+      "url": "/routes/ont-to-den/"
+    },
+    {
+      "route_key": "ord-to-den",
+      "url": "/routes/ord-to-den/"
+    },
+    {
+      "route_key": "orf-to-den",
+      "url": "/routes/orf-to-den/"
+    },
+    {
+      "route_key": "pdx-to-den",
+      "url": "/routes/pdx-to-den/"
+    },
+    {
+      "route_key": "phl-to-den",
+      "url": "/routes/phl-to-den/"
+    },
+    {
+      "route_key": "phx-to-den",
+      "url": "/routes/phx-to-den/"
+    },
+    {
+      "route_key": "pia-to-den",
+      "url": "/routes/pia-to-den/"
+    },
+    {
+      "route_key": "pit-to-den",
+      "url": "/routes/pit-to-den/"
+    },
+    {
+      "route_key": "pns-to-den",
+      "url": "/routes/pns-to-den/"
+    },
+    {
+      "route_key": "prc-to-den",
+      "url": "/routes/prc-to-den/"
+    },
+    {
+      "route_key": "psc-to-den",
+      "url": "/routes/psc-to-den/"
+    },
+    {
+      "route_key": "psp-to-den",
+      "url": "/routes/psp-to-den/"
+    },
+    {
+      "route_key": "pvd-to-den",
+      "url": "/routes/pvd-to-den/"
+    },
+    {
+      "route_key": "pwm-to-den",
+      "url": "/routes/pwm-to-den/"
+    },
+    {
+      "route_key": "rap-to-den",
+      "url": "/routes/rap-to-den/"
+    },
+    {
+      "route_key": "rdm-to-den",
+      "url": "/routes/rdm-to-den/"
+    },
+    {
+      "route_key": "rdu-to-den",
+      "url": "/routes/rdu-to-den/"
+    },
+    {
+      "route_key": "ric-to-den",
+      "url": "/routes/ric-to-den/"
+    },
+    {
+      "route_key": "riw-to-den",
+      "url": "/routes/riw-to-den/"
+    },
+    {
+      "route_key": "rks-to-den",
+      "url": "/routes/rks-to-den/"
+    },
+    {
+      "route_key": "rno-to-den",
+      "url": "/routes/rno-to-den/"
+    },
+    {
+      "route_key": "rsw-to-den",
+      "url": "/routes/rsw-to-den/"
+    },
+    {
+      "route_key": "saf-to-den",
+      "url": "/routes/saf-to-den/"
+    },
+    {
+      "route_key": "san-to-den",
+      "url": "/routes/san-to-den/"
+    },
+    {
+      "route_key": "sat-to-den",
+      "url": "/routes/sat-to-den/"
+    },
+    {
+      "route_key": "sav-to-den",
+      "url": "/routes/sav-to-den/"
+    },
+    {
+      "route_key": "sba-to-den",
+      "url": "/routes/sba-to-den/"
+    },
+    {
+      "route_key": "sbp-to-den",
+      "url": "/routes/sbp-to-den/"
+    },
+    {
+      "route_key": "sdf-to-den",
+      "url": "/routes/sdf-to-den/"
+    },
+    {
+      "route_key": "sea-to-den",
+      "url": "/routes/sea-to-den/"
+    },
+    {
+      "route_key": "sfo-to-den",
+      "url": "/routes/sfo-to-den/"
+    },
+    {
+      "route_key": "sgf-to-den",
+      "url": "/routes/sgf-to-den/"
+    },
+    {
+      "route_key": "sgu-to-den",
+      "url": "/routes/sgu-to-den/"
+    },
+    {
+      "route_key": "shr-to-den",
+      "url": "/routes/shr-to-den/"
+    },
+    {
+      "route_key": "shv-to-den",
+      "url": "/routes/shv-to-den/"
+    },
+    {
+      "route_key": "sjc-to-den",
+      "url": "/routes/sjc-to-den/"
+    },
+    {
+      "route_key": "sju-to-den",
+      "url": "/routes/sju-to-den/"
+    },
+    {
+      "route_key": "slc-to-den",
+      "url": "/routes/slc-to-den/"
+    },
+    {
+      "route_key": "sln-to-den",
+      "url": "/routes/sln-to-den/"
+    },
+    {
+      "route_key": "smf-to-den",
+      "url": "/routes/smf-to-den/"
+    },
+    {
+      "route_key": "sna-to-den",
+      "url": "/routes/sna-to-den/"
+    },
+    {
+      "route_key": "srq-to-den",
+      "url": "/routes/srq-to-den/"
+    },
+    {
+      "route_key": "stl-to-den",
+      "url": "/routes/stl-to-den/"
+    },
+    {
+      "route_key": "sun-to-den",
+      "url": "/routes/sun-to-den/"
+    },
+    {
+      "route_key": "sux-to-den",
+      "url": "/routes/sux-to-den/"
+    },
+    {
+      "route_key": "syr-to-den",
+      "url": "/routes/syr-to-den/"
+    },
+    {
+      "route_key": "tpa-to-den",
+      "url": "/routes/tpa-to-den/"
+    },
+    {
+      "route_key": "tul-to-den",
+      "url": "/routes/tul-to-den/"
+    },
+    {
+      "route_key": "tus-to-den",
+      "url": "/routes/tus-to-den/"
+    },
+    {
+      "route_key": "tvc-to-den",
+      "url": "/routes/tvc-to-den/"
+    },
+    {
+      "route_key": "tys-to-den",
+      "url": "/routes/tys-to-den/"
+    },
+    {
+      "route_key": "xna-to-den",
+      "url": "/routes/xna-to-den/"
+    },
+    {
+      "route_key": "xwa-to-den",
+      "url": "/routes/xwa-to-den/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "DEN",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 308609,
+    "origin_routes": 180,
+    "usable_routes": 168,
+    "operating_airlines": 11,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/DEN/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

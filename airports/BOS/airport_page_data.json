@@ -1,0 +1,441 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "BOS",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 143491,
+    "origin_routes_count": 76,
+    "operating_airlines_count": 14,
+    "route_sample_quality": {
+      "usable": 64,
+      "thin": 6,
+      "too_small": 6,
+      "total": 76
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.014287,
+    "delay_over_60min_rate": 0.089126,
+    "delay_over_180min_rate": 0.016438,
+    "avg_arrival_delay_minutes": 8.4,
+    "p90_arrival_delay_minutes": 54.0,
+    "avg_delay_recovery_minutes": 0.17
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "DCA",
+      "route": "DCA→BOS",
+      "total_scheduled_flights": 9658,
+      "cancellation_rate": 0.016463,
+      "delay_over_60min_rate": 0.088851,
+      "avg_arrival_delay_minutes": 5.82,
+      "route_page_url": "/routes/dca-to-bos/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→BOS",
+      "total_scheduled_flights": 7765,
+      "cancellation_rate": 0.023181,
+      "delay_over_60min_rate": 0.078708,
+      "avg_arrival_delay_minutes": 2.74,
+      "route_page_url": "/routes/lga-to-bos/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→BOS",
+      "total_scheduled_flights": 6937,
+      "cancellation_rate": 0.012686,
+      "delay_over_60min_rate": 0.104541,
+      "avg_arrival_delay_minutes": 11.41,
+      "route_page_url": "/routes/ord-to-bos/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→BOS",
+      "total_scheduled_flights": 5593,
+      "cancellation_rate": 0.02074,
+      "delay_over_60min_rate": 0.103706,
+      "avg_arrival_delay_minutes": 9.28,
+      "route_page_url": "/routes/jfk-to-bos/"
+    },
+    {
+      "origin": "PHL",
+      "route": "PHL→BOS",
+      "total_scheduled_flights": 5264,
+      "cancellation_rate": 0.015388,
+      "delay_over_60min_rate": 0.088559,
+      "avg_arrival_delay_minutes": 7.95,
+      "route_page_url": "/routes/phl-to-bos/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→BOS",
+      "total_scheduled_flights": 5210,
+      "cancellation_rate": 0.013436,
+      "delay_over_60min_rate": 0.100973,
+      "avg_arrival_delay_minutes": 12.11,
+      "route_page_url": "/routes/clt-to-bos/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→BOS",
+      "total_scheduled_flights": 5025,
+      "cancellation_rate": 0.008159,
+      "delay_over_60min_rate": 0.070827,
+      "avg_arrival_delay_minutes": 7.08,
+      "route_page_url": "/routes/atl-to-bos/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→BOS",
+      "total_scheduled_flights": 4846,
+      "cancellation_rate": 0.018985,
+      "delay_over_60min_rate": 0.107278,
+      "avg_arrival_delay_minutes": 11.37,
+      "route_page_url": "/routes/mco-to-bos/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→BOS",
+      "total_scheduled_flights": 4660,
+      "cancellation_rate": 0.003648,
+      "delay_over_60min_rate": 0.056214,
+      "avg_arrival_delay_minutes": 1.9,
+      "route_page_url": "/routes/lax-to-bos/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→BOS",
+      "total_scheduled_flights": 4445,
+      "cancellation_rate": 0.009224,
+      "delay_over_60min_rate": 0.081517,
+      "avg_arrival_delay_minutes": 5.62,
+      "route_page_url": "/routes/sfo-to-bos/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "ack-to-bos",
+      "url": "/routes/ack-to-bos/"
+    },
+    {
+      "route_key": "atl-to-bos",
+      "url": "/routes/atl-to-bos/"
+    },
+    {
+      "route_key": "aus-to-bos",
+      "url": "/routes/aus-to-bos/"
+    },
+    {
+      "route_key": "avl-to-bos",
+      "url": "/routes/avl-to-bos/"
+    },
+    {
+      "route_key": "bna-to-bos",
+      "url": "/routes/bna-to-bos/"
+    },
+    {
+      "route_key": "buf-to-bos",
+      "url": "/routes/buf-to-bos/"
+    },
+    {
+      "route_key": "bwi-to-bos",
+      "url": "/routes/bwi-to-bos/"
+    },
+    {
+      "route_key": "chs-to-bos",
+      "url": "/routes/chs-to-bos/"
+    },
+    {
+      "route_key": "cle-to-bos",
+      "url": "/routes/cle-to-bos/"
+    },
+    {
+      "route_key": "clt-to-bos",
+      "url": "/routes/clt-to-bos/"
+    },
+    {
+      "route_key": "cmh-to-bos",
+      "url": "/routes/cmh-to-bos/"
+    },
+    {
+      "route_key": "cvg-to-bos",
+      "url": "/routes/cvg-to-bos/"
+    },
+    {
+      "route_key": "dca-to-bos",
+      "url": "/routes/dca-to-bos/"
+    },
+    {
+      "route_key": "den-to-bos",
+      "url": "/routes/den-to-bos/"
+    },
+    {
+      "route_key": "dfw-to-bos",
+      "url": "/routes/dfw-to-bos/"
+    },
+    {
+      "route_key": "dtw-to-bos",
+      "url": "/routes/dtw-to-bos/"
+    },
+    {
+      "route_key": "ewr-to-bos",
+      "url": "/routes/ewr-to-bos/"
+    },
+    {
+      "route_key": "eyw-to-bos",
+      "url": "/routes/eyw-to-bos/"
+    },
+    {
+      "route_key": "fll-to-bos",
+      "url": "/routes/fll-to-bos/"
+    },
+    {
+      "route_key": "hnl-to-bos",
+      "url": "/routes/hnl-to-bos/"
+    },
+    {
+      "route_key": "iad-to-bos",
+      "url": "/routes/iad-to-bos/"
+    },
+    {
+      "route_key": "iah-to-bos",
+      "url": "/routes/iah-to-bos/"
+    },
+    {
+      "route_key": "ilm-to-bos",
+      "url": "/routes/ilm-to-bos/"
+    },
+    {
+      "route_key": "ind-to-bos",
+      "url": "/routes/ind-to-bos/"
+    },
+    {
+      "route_key": "jax-to-bos",
+      "url": "/routes/jax-to-bos/"
+    },
+    {
+      "route_key": "jfk-to-bos",
+      "url": "/routes/jfk-to-bos/"
+    },
+    {
+      "route_key": "las-to-bos",
+      "url": "/routes/las-to-bos/"
+    },
+    {
+      "route_key": "lax-to-bos",
+      "url": "/routes/lax-to-bos/"
+    },
+    {
+      "route_key": "lga-to-bos",
+      "url": "/routes/lga-to-bos/"
+    },
+    {
+      "route_key": "mci-to-bos",
+      "url": "/routes/mci-to-bos/"
+    },
+    {
+      "route_key": "mco-to-bos",
+      "url": "/routes/mco-to-bos/"
+    },
+    {
+      "route_key": "mdw-to-bos",
+      "url": "/routes/mdw-to-bos/"
+    },
+    {
+      "route_key": "mem-to-bos",
+      "url": "/routes/mem-to-bos/"
+    },
+    {
+      "route_key": "mia-to-bos",
+      "url": "/routes/mia-to-bos/"
+    },
+    {
+      "route_key": "mke-to-bos",
+      "url": "/routes/mke-to-bos/"
+    },
+    {
+      "route_key": "msp-to-bos",
+      "url": "/routes/msp-to-bos/"
+    },
+    {
+      "route_key": "msy-to-bos",
+      "url": "/routes/msy-to-bos/"
+    },
+    {
+      "route_key": "myr-to-bos",
+      "url": "/routes/myr-to-bos/"
+    },
+    {
+      "route_key": "ord-to-bos",
+      "url": "/routes/ord-to-bos/"
+    },
+    {
+      "route_key": "orf-to-bos",
+      "url": "/routes/orf-to-bos/"
+    },
+    {
+      "route_key": "pbi-to-bos",
+      "url": "/routes/pbi-to-bos/"
+    },
+    {
+      "route_key": "pdx-to-bos",
+      "url": "/routes/pdx-to-bos/"
+    },
+    {
+      "route_key": "phl-to-bos",
+      "url": "/routes/phl-to-bos/"
+    },
+    {
+      "route_key": "phx-to-bos",
+      "url": "/routes/phx-to-bos/"
+    },
+    {
+      "route_key": "pit-to-bos",
+      "url": "/routes/pit-to-bos/"
+    },
+    {
+      "route_key": "pqi-to-bos",
+      "url": "/routes/pqi-to-bos/"
+    },
+    {
+      "route_key": "rdu-to-bos",
+      "url": "/routes/rdu-to-bos/"
+    },
+    {
+      "route_key": "ric-to-bos",
+      "url": "/routes/ric-to-bos/"
+    },
+    {
+      "route_key": "rsw-to-bos",
+      "url": "/routes/rsw-to-bos/"
+    },
+    {
+      "route_key": "san-to-bos",
+      "url": "/routes/san-to-bos/"
+    },
+    {
+      "route_key": "sat-to-bos",
+      "url": "/routes/sat-to-bos/"
+    },
+    {
+      "route_key": "sav-to-bos",
+      "url": "/routes/sav-to-bos/"
+    },
+    {
+      "route_key": "sdf-to-bos",
+      "url": "/routes/sdf-to-bos/"
+    },
+    {
+      "route_key": "sea-to-bos",
+      "url": "/routes/sea-to-bos/"
+    },
+    {
+      "route_key": "sfo-to-bos",
+      "url": "/routes/sfo-to-bos/"
+    },
+    {
+      "route_key": "sjc-to-bos",
+      "url": "/routes/sjc-to-bos/"
+    },
+    {
+      "route_key": "sju-to-bos",
+      "url": "/routes/sju-to-bos/"
+    },
+    {
+      "route_key": "slc-to-bos",
+      "url": "/routes/slc-to-bos/"
+    },
+    {
+      "route_key": "srq-to-bos",
+      "url": "/routes/srq-to-bos/"
+    },
+    {
+      "route_key": "stl-to-bos",
+      "url": "/routes/stl-to-bos/"
+    },
+    {
+      "route_key": "syr-to-bos",
+      "url": "/routes/syr-to-bos/"
+    },
+    {
+      "route_key": "tpa-to-bos",
+      "url": "/routes/tpa-to-bos/"
+    },
+    {
+      "route_key": "tvc-to-bos",
+      "url": "/routes/tvc-to-bos/"
+    },
+    {
+      "route_key": "tys-to-bos",
+      "url": "/routes/tys-to-bos/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "BOS",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 143491,
+    "origin_routes": 76,
+    "usable_routes": 64,
+    "operating_airlines": 14,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/BOS/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

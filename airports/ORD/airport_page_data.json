@@ -1,0 +1,789 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "ORD",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 280009,
+    "origin_routes_count": 163,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 151,
+      "thin": 4,
+      "too_small": 8,
+      "total": 163
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.014542,
+    "delay_over_60min_rate": 0.078728,
+    "delay_over_180min_rate": 0.018671,
+    "avg_arrival_delay_minutes": 7.9,
+    "p90_arrival_delay_minutes": 46.0,
+    "avg_delay_recovery_minutes": -1.1
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LGA",
+      "route": "LGA→ORD",
+      "total_scheduled_flights": 10971,
+      "cancellation_rate": 0.02224,
+      "delay_over_60min_rate": 0.089214,
+      "avg_arrival_delay_minutes": 5.6,
+      "route_page_url": "/routes/lga-to-ord/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→ORD",
+      "total_scheduled_flights": 6932,
+      "cancellation_rate": 0.01356,
+      "delay_over_60min_rate": 0.075461,
+      "avg_arrival_delay_minutes": 4.45,
+      "route_page_url": "/routes/bos-to-ord/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→ORD",
+      "total_scheduled_flights": 6646,
+      "cancellation_rate": 0.013392,
+      "delay_over_60min_rate": 0.066189,
+      "avg_arrival_delay_minutes": 5.22,
+      "route_page_url": "/routes/lax-to-ord/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→ORD",
+      "total_scheduled_flights": 6522,
+      "cancellation_rate": 0.012726,
+      "delay_over_60min_rate": 0.093803,
+      "avg_arrival_delay_minutes": 12.19,
+      "route_page_url": "/routes/dfw-to-ord/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→ORD",
+      "total_scheduled_flights": 6480,
+      "cancellation_rate": 0.012654,
+      "delay_over_60min_rate": 0.087215,
+      "avg_arrival_delay_minutes": 10.32,
+      "route_page_url": "/routes/den-to-ord/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→ORD",
+      "total_scheduled_flights": 6158,
+      "cancellation_rate": 0.013641,
+      "delay_over_60min_rate": 0.077873,
+      "avg_arrival_delay_minutes": 5.1,
+      "route_page_url": "/routes/dca-to-ord/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→ORD",
+      "total_scheduled_flights": 6104,
+      "cancellation_rate": 0.024246,
+      "delay_over_60min_rate": 0.106111,
+      "avg_arrival_delay_minutes": 11.64,
+      "route_page_url": "/routes/ewr-to-ord/"
+    },
+    {
+      "origin": "MSP",
+      "route": "MSP→ORD",
+      "total_scheduled_flights": 6002,
+      "cancellation_rate": 0.01083,
+      "delay_over_60min_rate": 0.081186,
+      "avg_arrival_delay_minutes": 8.2,
+      "route_page_url": "/routes/msp-to-ord/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→ORD",
+      "total_scheduled_flights": 5946,
+      "cancellation_rate": 0.012445,
+      "delay_over_60min_rate": 0.066417,
+      "avg_arrival_delay_minutes": 3.85,
+      "route_page_url": "/routes/phx-to-ord/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→ORD",
+      "total_scheduled_flights": 5668,
+      "cancellation_rate": 0.011644,
+      "delay_over_60min_rate": 0.081935,
+      "avg_arrival_delay_minutes": 11.59,
+      "route_page_url": "/routes/atl-to-ord/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abe-to-ord",
+      "url": "/routes/abe-to-ord/"
+    },
+    {
+      "route_key": "abq-to-ord",
+      "url": "/routes/abq-to-ord/"
+    },
+    {
+      "route_key": "alb-to-ord",
+      "url": "/routes/alb-to-ord/"
+    },
+    {
+      "route_key": "anc-to-ord",
+      "url": "/routes/anc-to-ord/"
+    },
+    {
+      "route_key": "ase-to-ord",
+      "url": "/routes/ase-to-ord/"
+    },
+    {
+      "route_key": "atl-to-ord",
+      "url": "/routes/atl-to-ord/"
+    },
+    {
+      "route_key": "atw-to-ord",
+      "url": "/routes/atw-to-ord/"
+    },
+    {
+      "route_key": "aus-to-ord",
+      "url": "/routes/aus-to-ord/"
+    },
+    {
+      "route_key": "avl-to-ord",
+      "url": "/routes/avl-to-ord/"
+    },
+    {
+      "route_key": "avp-to-ord",
+      "url": "/routes/avp-to-ord/"
+    },
+    {
+      "route_key": "bdl-to-ord",
+      "url": "/routes/bdl-to-ord/"
+    },
+    {
+      "route_key": "bgr-to-ord",
+      "url": "/routes/bgr-to-ord/"
+    },
+    {
+      "route_key": "bhm-to-ord",
+      "url": "/routes/bhm-to-ord/"
+    },
+    {
+      "route_key": "bil-to-ord",
+      "url": "/routes/bil-to-ord/"
+    },
+    {
+      "route_key": "bna-to-ord",
+      "url": "/routes/bna-to-ord/"
+    },
+    {
+      "route_key": "boi-to-ord",
+      "url": "/routes/boi-to-ord/"
+    },
+    {
+      "route_key": "bos-to-ord",
+      "url": "/routes/bos-to-ord/"
+    },
+    {
+      "route_key": "btv-to-ord",
+      "url": "/routes/btv-to-ord/"
+    },
+    {
+      "route_key": "buf-to-ord",
+      "url": "/routes/buf-to-ord/"
+    },
+    {
+      "route_key": "bwi-to-ord",
+      "url": "/routes/bwi-to-ord/"
+    },
+    {
+      "route_key": "bzn-to-ord",
+      "url": "/routes/bzn-to-ord/"
+    },
+    {
+      "route_key": "cae-to-ord",
+      "url": "/routes/cae-to-ord/"
+    },
+    {
+      "route_key": "cak-to-ord",
+      "url": "/routes/cak-to-ord/"
+    },
+    {
+      "route_key": "cha-to-ord",
+      "url": "/routes/cha-to-ord/"
+    },
+    {
+      "route_key": "cho-to-ord",
+      "url": "/routes/cho-to-ord/"
+    },
+    {
+      "route_key": "chs-to-ord",
+      "url": "/routes/chs-to-ord/"
+    },
+    {
+      "route_key": "cid-to-ord",
+      "url": "/routes/cid-to-ord/"
+    },
+    {
+      "route_key": "cle-to-ord",
+      "url": "/routes/cle-to-ord/"
+    },
+    {
+      "route_key": "clt-to-ord",
+      "url": "/routes/clt-to-ord/"
+    },
+    {
+      "route_key": "cmh-to-ord",
+      "url": "/routes/cmh-to-ord/"
+    },
+    {
+      "route_key": "cmi-to-ord",
+      "url": "/routes/cmi-to-ord/"
+    },
+    {
+      "route_key": "cmx-to-ord",
+      "url": "/routes/cmx-to-ord/"
+    },
+    {
+      "route_key": "cos-to-ord",
+      "url": "/routes/cos-to-ord/"
+    },
+    {
+      "route_key": "cou-to-ord",
+      "url": "/routes/cou-to-ord/"
+    },
+    {
+      "route_key": "crw-to-ord",
+      "url": "/routes/crw-to-ord/"
+    },
+    {
+      "route_key": "cvg-to-ord",
+      "url": "/routes/cvg-to-ord/"
+    },
+    {
+      "route_key": "dal-to-ord",
+      "url": "/routes/dal-to-ord/"
+    },
+    {
+      "route_key": "day-to-ord",
+      "url": "/routes/day-to-ord/"
+    },
+    {
+      "route_key": "dca-to-ord",
+      "url": "/routes/dca-to-ord/"
+    },
+    {
+      "route_key": "dec-to-ord",
+      "url": "/routes/dec-to-ord/"
+    },
+    {
+      "route_key": "den-to-ord",
+      "url": "/routes/den-to-ord/"
+    },
+    {
+      "route_key": "dfw-to-ord",
+      "url": "/routes/dfw-to-ord/"
+    },
+    {
+      "route_key": "dlh-to-ord",
+      "url": "/routes/dlh-to-ord/"
+    },
+    {
+      "route_key": "dsm-to-ord",
+      "url": "/routes/dsm-to-ord/"
+    },
+    {
+      "route_key": "dtw-to-ord",
+      "url": "/routes/dtw-to-ord/"
+    },
+    {
+      "route_key": "ecp-to-ord",
+      "url": "/routes/ecp-to-ord/"
+    },
+    {
+      "route_key": "ege-to-ord",
+      "url": "/routes/ege-to-ord/"
+    },
+    {
+      "route_key": "elp-to-ord",
+      "url": "/routes/elp-to-ord/"
+    },
+    {
+      "route_key": "ewr-to-ord",
+      "url": "/routes/ewr-to-ord/"
+    },
+    {
+      "route_key": "eyw-to-ord",
+      "url": "/routes/eyw-to-ord/"
+    },
+    {
+      "route_key": "fai-to-ord",
+      "url": "/routes/fai-to-ord/"
+    },
+    {
+      "route_key": "far-to-ord",
+      "url": "/routes/far-to-ord/"
+    },
+    {
+      "route_key": "fat-to-ord",
+      "url": "/routes/fat-to-ord/"
+    },
+    {
+      "route_key": "fca-to-ord",
+      "url": "/routes/fca-to-ord/"
+    },
+    {
+      "route_key": "fll-to-ord",
+      "url": "/routes/fll-to-ord/"
+    },
+    {
+      "route_key": "fnt-to-ord",
+      "url": "/routes/fnt-to-ord/"
+    },
+    {
+      "route_key": "fod-to-ord",
+      "url": "/routes/fod-to-ord/"
+    },
+    {
+      "route_key": "fsd-to-ord",
+      "url": "/routes/fsd-to-ord/"
+    },
+    {
+      "route_key": "fwa-to-ord",
+      "url": "/routes/fwa-to-ord/"
+    },
+    {
+      "route_key": "geg-to-ord",
+      "url": "/routes/geg-to-ord/"
+    },
+    {
+      "route_key": "grb-to-ord",
+      "url": "/routes/grb-to-ord/"
+    },
+    {
+      "route_key": "grr-to-ord",
+      "url": "/routes/grr-to-ord/"
+    },
+    {
+      "route_key": "gso-to-ord",
+      "url": "/routes/gso-to-ord/"
+    },
+    {
+      "route_key": "gsp-to-ord",
+      "url": "/routes/gsp-to-ord/"
+    },
+    {
+      "route_key": "hdn-to-ord",
+      "url": "/routes/hdn-to-ord/"
+    },
+    {
+      "route_key": "hnl-to-ord",
+      "url": "/routes/hnl-to-ord/"
+    },
+    {
+      "route_key": "hpn-to-ord",
+      "url": "/routes/hpn-to-ord/"
+    },
+    {
+      "route_key": "hsv-to-ord",
+      "url": "/routes/hsv-to-ord/"
+    },
+    {
+      "route_key": "iad-to-ord",
+      "url": "/routes/iad-to-ord/"
+    },
+    {
+      "route_key": "iah-to-ord",
+      "url": "/routes/iah-to-ord/"
+    },
+    {
+      "route_key": "ict-to-ord",
+      "url": "/routes/ict-to-ord/"
+    },
+    {
+      "route_key": "ilm-to-ord",
+      "url": "/routes/ilm-to-ord/"
+    },
+    {
+      "route_key": "ind-to-ord",
+      "url": "/routes/ind-to-ord/"
+    },
+    {
+      "route_key": "jac-to-ord",
+      "url": "/routes/jac-to-ord/"
+    },
+    {
+      "route_key": "jax-to-ord",
+      "url": "/routes/jax-to-ord/"
+    },
+    {
+      "route_key": "jfk-to-ord",
+      "url": "/routes/jfk-to-ord/"
+    },
+    {
+      "route_key": "jln-to-ord",
+      "url": "/routes/jln-to-ord/"
+    },
+    {
+      "route_key": "jst-to-ord",
+      "url": "/routes/jst-to-ord/"
+    },
+    {
+      "route_key": "las-to-ord",
+      "url": "/routes/las-to-ord/"
+    },
+    {
+      "route_key": "lax-to-ord",
+      "url": "/routes/lax-to-ord/"
+    },
+    {
+      "route_key": "lex-to-ord",
+      "url": "/routes/lex-to-ord/"
+    },
+    {
+      "route_key": "lga-to-ord",
+      "url": "/routes/lga-to-ord/"
+    },
+    {
+      "route_key": "lit-to-ord",
+      "url": "/routes/lit-to-ord/"
+    },
+    {
+      "route_key": "lnk-to-ord",
+      "url": "/routes/lnk-to-ord/"
+    },
+    {
+      "route_key": "lse-to-ord",
+      "url": "/routes/lse-to-ord/"
+    },
+    {
+      "route_key": "mbs-to-ord",
+      "url": "/routes/mbs-to-ord/"
+    },
+    {
+      "route_key": "mci-to-ord",
+      "url": "/routes/mci-to-ord/"
+    },
+    {
+      "route_key": "mco-to-ord",
+      "url": "/routes/mco-to-ord/"
+    },
+    {
+      "route_key": "mcw-to-ord",
+      "url": "/routes/mcw-to-ord/"
+    },
+    {
+      "route_key": "mdt-to-ord",
+      "url": "/routes/mdt-to-ord/"
+    },
+    {
+      "route_key": "mem-to-ord",
+      "url": "/routes/mem-to-ord/"
+    },
+    {
+      "route_key": "mht-to-ord",
+      "url": "/routes/mht-to-ord/"
+    },
+    {
+      "route_key": "mia-to-ord",
+      "url": "/routes/mia-to-ord/"
+    },
+    {
+      "route_key": "mke-to-ord",
+      "url": "/routes/mke-to-ord/"
+    },
+    {
+      "route_key": "mli-to-ord",
+      "url": "/routes/mli-to-ord/"
+    },
+    {
+      "route_key": "mqt-to-ord",
+      "url": "/routes/mqt-to-ord/"
+    },
+    {
+      "route_key": "msn-to-ord",
+      "url": "/routes/msn-to-ord/"
+    },
+    {
+      "route_key": "mso-to-ord",
+      "url": "/routes/mso-to-ord/"
+    },
+    {
+      "route_key": "msp-to-ord",
+      "url": "/routes/msp-to-ord/"
+    },
+    {
+      "route_key": "msy-to-ord",
+      "url": "/routes/msy-to-ord/"
+    },
+    {
+      "route_key": "mtj-to-ord",
+      "url": "/routes/mtj-to-ord/"
+    },
+    {
+      "route_key": "myr-to-ord",
+      "url": "/routes/myr-to-ord/"
+    },
+    {
+      "route_key": "ogg-to-ord",
+      "url": "/routes/ogg-to-ord/"
+    },
+    {
+      "route_key": "okc-to-ord",
+      "url": "/routes/okc-to-ord/"
+    },
+    {
+      "route_key": "oma-to-ord",
+      "url": "/routes/oma-to-ord/"
+    },
+    {
+      "route_key": "orf-to-ord",
+      "url": "/routes/orf-to-ord/"
+    },
+    {
+      "route_key": "pbi-to-ord",
+      "url": "/routes/pbi-to-ord/"
+    },
+    {
+      "route_key": "pdx-to-ord",
+      "url": "/routes/pdx-to-ord/"
+    },
+    {
+      "route_key": "phl-to-ord",
+      "url": "/routes/phl-to-ord/"
+    },
+    {
+      "route_key": "phx-to-ord",
+      "url": "/routes/phx-to-ord/"
+    },
+    {
+      "route_key": "pia-to-ord",
+      "url": "/routes/pia-to-ord/"
+    },
+    {
+      "route_key": "pit-to-ord",
+      "url": "/routes/pit-to-ord/"
+    },
+    {
+      "route_key": "pns-to-ord",
+      "url": "/routes/pns-to-ord/"
+    },
+    {
+      "route_key": "psp-to-ord",
+      "url": "/routes/psp-to-ord/"
+    },
+    {
+      "route_key": "pvd-to-ord",
+      "url": "/routes/pvd-to-ord/"
+    },
+    {
+      "route_key": "pwm-to-ord",
+      "url": "/routes/pwm-to-ord/"
+    },
+    {
+      "route_key": "rap-to-ord",
+      "url": "/routes/rap-to-ord/"
+    },
+    {
+      "route_key": "rdu-to-ord",
+      "url": "/routes/rdu-to-ord/"
+    },
+    {
+      "route_key": "ric-to-ord",
+      "url": "/routes/ric-to-ord/"
+    },
+    {
+      "route_key": "rno-to-ord",
+      "url": "/routes/rno-to-ord/"
+    },
+    {
+      "route_key": "roa-to-ord",
+      "url": "/routes/roa-to-ord/"
+    },
+    {
+      "route_key": "roc-to-ord",
+      "url": "/routes/roc-to-ord/"
+    },
+    {
+      "route_key": "rst-to-ord",
+      "url": "/routes/rst-to-ord/"
+    },
+    {
+      "route_key": "rsw-to-ord",
+      "url": "/routes/rsw-to-ord/"
+    },
+    {
+      "route_key": "san-to-ord",
+      "url": "/routes/san-to-ord/"
+    },
+    {
+      "route_key": "sat-to-ord",
+      "url": "/routes/sat-to-ord/"
+    },
+    {
+      "route_key": "sav-to-ord",
+      "url": "/routes/sav-to-ord/"
+    },
+    {
+      "route_key": "sbn-to-ord",
+      "url": "/routes/sbn-to-ord/"
+    },
+    {
+      "route_key": "sce-to-ord",
+      "url": "/routes/sce-to-ord/"
+    },
+    {
+      "route_key": "sdf-to-ord",
+      "url": "/routes/sdf-to-ord/"
+    },
+    {
+      "route_key": "sea-to-ord",
+      "url": "/routes/sea-to-ord/"
+    },
+    {
+      "route_key": "sfo-to-ord",
+      "url": "/routes/sfo-to-ord/"
+    },
+    {
+      "route_key": "sgf-to-ord",
+      "url": "/routes/sgf-to-ord/"
+    },
+    {
+      "route_key": "sjc-to-ord",
+      "url": "/routes/sjc-to-ord/"
+    },
+    {
+      "route_key": "sju-to-ord",
+      "url": "/routes/sju-to-ord/"
+    },
+    {
+      "route_key": "slc-to-ord",
+      "url": "/routes/slc-to-ord/"
+    },
+    {
+      "route_key": "sln-to-ord",
+      "url": "/routes/sln-to-ord/"
+    },
+    {
+      "route_key": "smf-to-ord",
+      "url": "/routes/smf-to-ord/"
+    },
+    {
+      "route_key": "sna-to-ord",
+      "url": "/routes/sna-to-ord/"
+    },
+    {
+      "route_key": "srq-to-ord",
+      "url": "/routes/srq-to-ord/"
+    },
+    {
+      "route_key": "stl-to-ord",
+      "url": "/routes/stl-to-ord/"
+    },
+    {
+      "route_key": "stt-to-ord",
+      "url": "/routes/stt-to-ord/"
+    },
+    {
+      "route_key": "sun-to-ord",
+      "url": "/routes/sun-to-ord/"
+    },
+    {
+      "route_key": "sux-to-ord",
+      "url": "/routes/sux-to-ord/"
+    },
+    {
+      "route_key": "syr-to-ord",
+      "url": "/routes/syr-to-ord/"
+    },
+    {
+      "route_key": "tpa-to-ord",
+      "url": "/routes/tpa-to-ord/"
+    },
+    {
+      "route_key": "tul-to-ord",
+      "url": "/routes/tul-to-ord/"
+    },
+    {
+      "route_key": "tus-to-ord",
+      "url": "/routes/tus-to-ord/"
+    },
+    {
+      "route_key": "tvc-to-ord",
+      "url": "/routes/tvc-to-ord/"
+    },
+    {
+      "route_key": "tys-to-ord",
+      "url": "/routes/tys-to-ord/"
+    },
+    {
+      "route_key": "xna-to-ord",
+      "url": "/routes/xna-to-ord/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "ORD",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 280009,
+    "origin_routes": 163,
+    "usable_routes": 151,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/ORD/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

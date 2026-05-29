@@ -1,0 +1,469 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "MCO",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 159578,
+    "origin_routes_count": 91,
+    "operating_airlines_count": 9,
+    "route_sample_quality": {
+      "usable": 71,
+      "thin": 11,
+      "too_small": 9,
+      "total": 91
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.019257,
+    "delay_over_60min_rate": 0.092336,
+    "delay_over_180min_rate": 0.019041,
+    "avg_arrival_delay_minutes": 9.58,
+    "p90_arrival_delay_minutes": 56.0,
+    "avg_delay_recovery_minutes": 0.49
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→MCO",
+      "total_scheduled_flights": 8935,
+      "cancellation_rate": 0.016228,
+      "delay_over_60min_rate": 0.096132,
+      "avg_arrival_delay_minutes": 15.08,
+      "route_page_url": "/routes/atl-to-mco/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→MCO",
+      "total_scheduled_flights": 6563,
+      "cancellation_rate": 0.029712,
+      "delay_over_60min_rate": 0.097676,
+      "avg_arrival_delay_minutes": 6.3,
+      "route_page_url": "/routes/ewr-to-mco/"
+    },
+    {
+      "origin": "SJU",
+      "route": "SJU→MCO",
+      "total_scheduled_flights": 6312,
+      "cancellation_rate": 0.013625,
+      "delay_over_60min_rate": 0.082396,
+      "avg_arrival_delay_minutes": 10.76,
+      "route_page_url": "/routes/sju-to-mco/"
+    },
+    {
+      "origin": "PHL",
+      "route": "PHL→MCO",
+      "total_scheduled_flights": 5574,
+      "cancellation_rate": 0.020093,
+      "delay_over_60min_rate": 0.10985,
+      "avg_arrival_delay_minutes": 11.12,
+      "route_page_url": "/routes/phl-to-mco/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→MCO",
+      "total_scheduled_flights": 5419,
+      "cancellation_rate": 0.01993,
+      "delay_over_60min_rate": 0.120316,
+      "avg_arrival_delay_minutes": 16.98,
+      "route_page_url": "/routes/clt-to-mco/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→MCO",
+      "total_scheduled_flights": 5379,
+      "cancellation_rate": 0.020822,
+      "delay_over_60min_rate": 0.086577,
+      "avg_arrival_delay_minutes": 9.8,
+      "route_page_url": "/routes/bwi-to-mco/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→MCO",
+      "total_scheduled_flights": 5042,
+      "cancellation_rate": 0.015668,
+      "delay_over_60min_rate": 0.088656,
+      "avg_arrival_delay_minutes": 6.7,
+      "route_page_url": "/routes/dca-to-mco/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→MCO",
+      "total_scheduled_flights": 5010,
+      "cancellation_rate": 0.020359,
+      "delay_over_60min_rate": 0.088223,
+      "avg_arrival_delay_minutes": 7.91,
+      "route_page_url": "/routes/ord-to-mco/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→MCO",
+      "total_scheduled_flights": 4954,
+      "cancellation_rate": 0.024223,
+      "delay_over_60min_rate": 0.135705,
+      "avg_arrival_delay_minutes": 20.0,
+      "route_page_url": "/routes/dfw-to-mco/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→MCO",
+      "total_scheduled_flights": 4929,
+      "cancellation_rate": 0.023128,
+      "delay_over_60min_rate": 0.105711,
+      "avg_arrival_delay_minutes": 7.58,
+      "route_page_url": "/routes/lga-to-mco/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "acy-to-mco",
+      "url": "/routes/acy-to-mco/"
+    },
+    {
+      "route_key": "alb-to-mco",
+      "url": "/routes/alb-to-mco/"
+    },
+    {
+      "route_key": "atl-to-mco",
+      "url": "/routes/atl-to-mco/"
+    },
+    {
+      "route_key": "aus-to-mco",
+      "url": "/routes/aus-to-mco/"
+    },
+    {
+      "route_key": "bdl-to-mco",
+      "url": "/routes/bdl-to-mco/"
+    },
+    {
+      "route_key": "bhm-to-mco",
+      "url": "/routes/bhm-to-mco/"
+    },
+    {
+      "route_key": "bna-to-mco",
+      "url": "/routes/bna-to-mco/"
+    },
+    {
+      "route_key": "bos-to-mco",
+      "url": "/routes/bos-to-mco/"
+    },
+    {
+      "route_key": "bqn-to-mco",
+      "url": "/routes/bqn-to-mco/"
+    },
+    {
+      "route_key": "buf-to-mco",
+      "url": "/routes/buf-to-mco/"
+    },
+    {
+      "route_key": "bwi-to-mco",
+      "url": "/routes/bwi-to-mco/"
+    },
+    {
+      "route_key": "cle-to-mco",
+      "url": "/routes/cle-to-mco/"
+    },
+    {
+      "route_key": "clt-to-mco",
+      "url": "/routes/clt-to-mco/"
+    },
+    {
+      "route_key": "cmh-to-mco",
+      "url": "/routes/cmh-to-mco/"
+    },
+    {
+      "route_key": "cvg-to-mco",
+      "url": "/routes/cvg-to-mco/"
+    },
+    {
+      "route_key": "dal-to-mco",
+      "url": "/routes/dal-to-mco/"
+    },
+    {
+      "route_key": "dca-to-mco",
+      "url": "/routes/dca-to-mco/"
+    },
+    {
+      "route_key": "den-to-mco",
+      "url": "/routes/den-to-mco/"
+    },
+    {
+      "route_key": "dfw-to-mco",
+      "url": "/routes/dfw-to-mco/"
+    },
+    {
+      "route_key": "dtw-to-mco",
+      "url": "/routes/dtw-to-mco/"
+    },
+    {
+      "route_key": "ewr-to-mco",
+      "url": "/routes/ewr-to-mco/"
+    },
+    {
+      "route_key": "fll-to-mco",
+      "url": "/routes/fll-to-mco/"
+    },
+    {
+      "route_key": "grr-to-mco",
+      "url": "/routes/grr-to-mco/"
+    },
+    {
+      "route_key": "hou-to-mco",
+      "url": "/routes/hou-to-mco/"
+    },
+    {
+      "route_key": "hpn-to-mco",
+      "url": "/routes/hpn-to-mco/"
+    },
+    {
+      "route_key": "iad-to-mco",
+      "url": "/routes/iad-to-mco/"
+    },
+    {
+      "route_key": "iah-to-mco",
+      "url": "/routes/iah-to-mco/"
+    },
+    {
+      "route_key": "ind-to-mco",
+      "url": "/routes/ind-to-mco/"
+    },
+    {
+      "route_key": "isp-to-mco",
+      "url": "/routes/isp-to-mco/"
+    },
+    {
+      "route_key": "jfk-to-mco",
+      "url": "/routes/jfk-to-mco/"
+    },
+    {
+      "route_key": "las-to-mco",
+      "url": "/routes/las-to-mco/"
+    },
+    {
+      "route_key": "lax-to-mco",
+      "url": "/routes/lax-to-mco/"
+    },
+    {
+      "route_key": "lbe-to-mco",
+      "url": "/routes/lbe-to-mco/"
+    },
+    {
+      "route_key": "lga-to-mco",
+      "url": "/routes/lga-to-mco/"
+    },
+    {
+      "route_key": "mci-to-mco",
+      "url": "/routes/mci-to-mco/"
+    },
+    {
+      "route_key": "mdw-to-mco",
+      "url": "/routes/mdw-to-mco/"
+    },
+    {
+      "route_key": "mem-to-mco",
+      "url": "/routes/mem-to-mco/"
+    },
+    {
+      "route_key": "mht-to-mco",
+      "url": "/routes/mht-to-mco/"
+    },
+    {
+      "route_key": "mia-to-mco",
+      "url": "/routes/mia-to-mco/"
+    },
+    {
+      "route_key": "mke-to-mco",
+      "url": "/routes/mke-to-mco/"
+    },
+    {
+      "route_key": "msp-to-mco",
+      "url": "/routes/msp-to-mco/"
+    },
+    {
+      "route_key": "msy-to-mco",
+      "url": "/routes/msy-to-mco/"
+    },
+    {
+      "route_key": "myr-to-mco",
+      "url": "/routes/myr-to-mco/"
+    },
+    {
+      "route_key": "okc-to-mco",
+      "url": "/routes/okc-to-mco/"
+    },
+    {
+      "route_key": "oma-to-mco",
+      "url": "/routes/oma-to-mco/"
+    },
+    {
+      "route_key": "ord-to-mco",
+      "url": "/routes/ord-to-mco/"
+    },
+    {
+      "route_key": "orf-to-mco",
+      "url": "/routes/orf-to-mco/"
+    },
+    {
+      "route_key": "orh-to-mco",
+      "url": "/routes/orh-to-mco/"
+    },
+    {
+      "route_key": "pdx-to-mco",
+      "url": "/routes/pdx-to-mco/"
+    },
+    {
+      "route_key": "phl-to-mco",
+      "url": "/routes/phl-to-mco/"
+    },
+    {
+      "route_key": "phx-to-mco",
+      "url": "/routes/phx-to-mco/"
+    },
+    {
+      "route_key": "pit-to-mco",
+      "url": "/routes/pit-to-mco/"
+    },
+    {
+      "route_key": "pns-to-mco",
+      "url": "/routes/pns-to-mco/"
+    },
+    {
+      "route_key": "pse-to-mco",
+      "url": "/routes/pse-to-mco/"
+    },
+    {
+      "route_key": "pvd-to-mco",
+      "url": "/routes/pvd-to-mco/"
+    },
+    {
+      "route_key": "pwm-to-mco",
+      "url": "/routes/pwm-to-mco/"
+    },
+    {
+      "route_key": "rdu-to-mco",
+      "url": "/routes/rdu-to-mco/"
+    },
+    {
+      "route_key": "ric-to-mco",
+      "url": "/routes/ric-to-mco/"
+    },
+    {
+      "route_key": "roc-to-mco",
+      "url": "/routes/roc-to-mco/"
+    },
+    {
+      "route_key": "san-to-mco",
+      "url": "/routes/san-to-mco/"
+    },
+    {
+      "route_key": "sat-to-mco",
+      "url": "/routes/sat-to-mco/"
+    },
+    {
+      "route_key": "sdf-to-mco",
+      "url": "/routes/sdf-to-mco/"
+    },
+    {
+      "route_key": "sea-to-mco",
+      "url": "/routes/sea-to-mco/"
+    },
+    {
+      "route_key": "sfo-to-mco",
+      "url": "/routes/sfo-to-mco/"
+    },
+    {
+      "route_key": "sju-to-mco",
+      "url": "/routes/sju-to-mco/"
+    },
+    {
+      "route_key": "slc-to-mco",
+      "url": "/routes/slc-to-mco/"
+    },
+    {
+      "route_key": "stl-to-mco",
+      "url": "/routes/stl-to-mco/"
+    },
+    {
+      "route_key": "stt-to-mco",
+      "url": "/routes/stt-to-mco/"
+    },
+    {
+      "route_key": "syr-to-mco",
+      "url": "/routes/syr-to-mco/"
+    },
+    {
+      "route_key": "ttn-to-mco",
+      "url": "/routes/ttn-to-mco/"
+    },
+    {
+      "route_key": "tys-to-mco",
+      "url": "/routes/tys-to-mco/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "MCO",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 159578,
+    "origin_routes": 91,
+    "usable_routes": 71,
+    "operating_airlines": 9,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/MCO/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

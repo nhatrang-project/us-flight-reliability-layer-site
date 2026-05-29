@@ -1,0 +1,297 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "SJU",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 35435,
+    "origin_routes_count": 36,
+    "operating_airlines_count": 8,
+    "route_sample_quality": {
+      "usable": 28,
+      "thin": 6,
+      "too_small": 2,
+      "total": 36
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.011316,
+    "delay_over_60min_rate": 0.092225,
+    "delay_over_180min_rate": 0.017155,
+    "avg_arrival_delay_minutes": 11.72,
+    "p90_arrival_delay_minutes": 56.0,
+    "avg_delay_recovery_minutes": 0.44
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "MCO",
+      "route": "MCO→SJU",
+      "total_scheduled_flights": 6308,
+      "cancellation_rate": 0.010938,
+      "delay_over_60min_rate": 0.07934,
+      "avg_arrival_delay_minutes": 8.88,
+      "route_page_url": "/routes/mco-to-sju/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→SJU",
+      "total_scheduled_flights": 3725,
+      "cancellation_rate": 0.009664,
+      "delay_over_60min_rate": 0.107075,
+      "avg_arrival_delay_minutes": 12.18,
+      "route_page_url": "/routes/jfk-to-sju/"
+    },
+    {
+      "origin": "MIA",
+      "route": "MIA→SJU",
+      "total_scheduled_flights": 2963,
+      "cancellation_rate": 0.00945,
+      "delay_over_60min_rate": 0.096082,
+      "avg_arrival_delay_minutes": 10.31,
+      "route_page_url": "/routes/mia-to-sju/"
+    },
+    {
+      "origin": "FLL",
+      "route": "FLL→SJU",
+      "total_scheduled_flights": 2409,
+      "cancellation_rate": 0.009548,
+      "delay_over_60min_rate": 0.077536,
+      "avg_arrival_delay_minutes": 10.0,
+      "route_page_url": "/routes/fll-to-sju/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→SJU",
+      "total_scheduled_flights": 2252,
+      "cancellation_rate": 0.013321,
+      "delay_over_60min_rate": 0.110261,
+      "avg_arrival_delay_minutes": 14.36,
+      "route_page_url": "/routes/ewr-to-sju/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→SJU",
+      "total_scheduled_flights": 2117,
+      "cancellation_rate": 0.004251,
+      "delay_over_60min_rate": 0.064042,
+      "avg_arrival_delay_minutes": 7.97,
+      "route_page_url": "/routes/atl-to-sju/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→SJU",
+      "total_scheduled_flights": 2040,
+      "cancellation_rate": 0.012745,
+      "delay_over_60min_rate": 0.119662,
+      "avg_arrival_delay_minutes": 18.29,
+      "route_page_url": "/routes/bos-to-sju/"
+    },
+    {
+      "origin": "TPA",
+      "route": "TPA→SJU",
+      "total_scheduled_flights": 1556,
+      "cancellation_rate": 0.014781,
+      "delay_over_60min_rate": 0.063275,
+      "avg_arrival_delay_minutes": 6.33,
+      "route_page_url": "/routes/tpa-to-sju/"
+    },
+    {
+      "origin": "PHL",
+      "route": "PHL→SJU",
+      "total_scheduled_flights": 1443,
+      "cancellation_rate": 0.016632,
+      "delay_over_60min_rate": 0.116984,
+      "avg_arrival_delay_minutes": 19.93,
+      "route_page_url": "/routes/phl-to-sju/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→SJU",
+      "total_scheduled_flights": 1334,
+      "cancellation_rate": 0.014243,
+      "delay_over_60min_rate": 0.085932,
+      "avg_arrival_delay_minutes": 12.3,
+      "route_page_url": "/routes/bwi-to-sju/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "atl-to-sju",
+      "url": "/routes/atl-to-sju/"
+    },
+    {
+      "route_key": "bdl-to-sju",
+      "url": "/routes/bdl-to-sju/"
+    },
+    {
+      "route_key": "bos-to-sju",
+      "url": "/routes/bos-to-sju/"
+    },
+    {
+      "route_key": "bwi-to-sju",
+      "url": "/routes/bwi-to-sju/"
+    },
+    {
+      "route_key": "cle-to-sju",
+      "url": "/routes/cle-to-sju/"
+    },
+    {
+      "route_key": "clt-to-sju",
+      "url": "/routes/clt-to-sju/"
+    },
+    {
+      "route_key": "dca-to-sju",
+      "url": "/routes/dca-to-sju/"
+    },
+    {
+      "route_key": "den-to-sju",
+      "url": "/routes/den-to-sju/"
+    },
+    {
+      "route_key": "dfw-to-sju",
+      "url": "/routes/dfw-to-sju/"
+    },
+    {
+      "route_key": "dtw-to-sju",
+      "url": "/routes/dtw-to-sju/"
+    },
+    {
+      "route_key": "ewr-to-sju",
+      "url": "/routes/ewr-to-sju/"
+    },
+    {
+      "route_key": "fll-to-sju",
+      "url": "/routes/fll-to-sju/"
+    },
+    {
+      "route_key": "hou-to-sju",
+      "url": "/routes/hou-to-sju/"
+    },
+    {
+      "route_key": "iad-to-sju",
+      "url": "/routes/iad-to-sju/"
+    },
+    {
+      "route_key": "iah-to-sju",
+      "url": "/routes/iah-to-sju/"
+    },
+    {
+      "route_key": "jax-to-sju",
+      "url": "/routes/jax-to-sju/"
+    },
+    {
+      "route_key": "jfk-to-sju",
+      "url": "/routes/jfk-to-sju/"
+    },
+    {
+      "route_key": "mco-to-sju",
+      "url": "/routes/mco-to-sju/"
+    },
+    {
+      "route_key": "mdw-to-sju",
+      "url": "/routes/mdw-to-sju/"
+    },
+    {
+      "route_key": "mia-to-sju",
+      "url": "/routes/mia-to-sju/"
+    },
+    {
+      "route_key": "msp-to-sju",
+      "url": "/routes/msp-to-sju/"
+    },
+    {
+      "route_key": "msy-to-sju",
+      "url": "/routes/msy-to-sju/"
+    },
+    {
+      "route_key": "ord-to-sju",
+      "url": "/routes/ord-to-sju/"
+    },
+    {
+      "route_key": "phl-to-sju",
+      "url": "/routes/phl-to-sju/"
+    },
+    {
+      "route_key": "rdu-to-sju",
+      "url": "/routes/rdu-to-sju/"
+    },
+    {
+      "route_key": "rsw-to-sju",
+      "url": "/routes/rsw-to-sju/"
+    },
+    {
+      "route_key": "stt-to-sju",
+      "url": "/routes/stt-to-sju/"
+    },
+    {
+      "route_key": "tpa-to-sju",
+      "url": "/routes/tpa-to-sju/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "SJU",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 35435,
+    "origin_routes": 36,
+    "usable_routes": 28,
+    "operating_airlines": 8,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/SJU/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

@@ -1,0 +1,801 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "ATL",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 341825,
+    "origin_routes_count": 157,
+    "operating_airlines_count": 13,
+    "route_sample_quality": {
+      "usable": 154,
+      "thin": 3,
+      "too_small": 0,
+      "total": 157
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.01047,
+    "delay_over_60min_rate": 0.062224,
+    "delay_over_180min_rate": 0.015577,
+    "avg_arrival_delay_minutes": 4.67,
+    "p90_arrival_delay_minutes": 35.0,
+    "avg_delay_recovery_minutes": 0.15
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "MCO",
+      "route": "MCO→ATL",
+      "total_scheduled_flights": 8967,
+      "cancellation_rate": 0.015278,
+      "delay_over_60min_rate": 0.098867,
+      "avg_arrival_delay_minutes": 14.33,
+      "route_page_url": "/routes/mco-to-atl/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→ATL",
+      "total_scheduled_flights": 8105,
+      "cancellation_rate": 0.013202,
+      "delay_over_60min_rate": 0.075769,
+      "avg_arrival_delay_minutes": 2.7,
+      "route_page_url": "/routes/lga-to-atl/"
+    },
+    {
+      "origin": "FLL",
+      "route": "FLL→ATL",
+      "total_scheduled_flights": 7702,
+      "cancellation_rate": 0.012205,
+      "delay_over_60min_rate": 0.105284,
+      "avg_arrival_delay_minutes": 15.86,
+      "route_page_url": "/routes/fll-to-atl/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→ATL",
+      "total_scheduled_flights": 6867,
+      "cancellation_rate": 0.01165,
+      "delay_over_60min_rate": 0.064682,
+      "avg_arrival_delay_minutes": 4.1,
+      "route_page_url": "/routes/dca-to-atl/"
+    },
+    {
+      "origin": "TPA",
+      "route": "TPA→ATL",
+      "total_scheduled_flights": 6761,
+      "cancellation_rate": 0.019967,
+      "delay_over_60min_rate": 0.080139,
+      "avg_arrival_delay_minutes": 10.35,
+      "route_page_url": "/routes/tpa-to-atl/"
+    },
+    {
+      "origin": "MIA",
+      "route": "MIA→ATL",
+      "total_scheduled_flights": 6699,
+      "cancellation_rate": 0.011942,
+      "delay_over_60min_rate": 0.10772,
+      "avg_arrival_delay_minutes": 16.98,
+      "route_page_url": "/routes/mia-to-atl/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→ATL",
+      "total_scheduled_flights": 6516,
+      "cancellation_rate": 0.015193,
+      "delay_over_60min_rate": 0.099268,
+      "avg_arrival_delay_minutes": 13.82,
+      "route_page_url": "/routes/dfw-to-atl/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→ATL",
+      "total_scheduled_flights": 6098,
+      "cancellation_rate": 0.008199,
+      "delay_over_60min_rate": 0.062996,
+      "avg_arrival_delay_minutes": 5.27,
+      "route_page_url": "/routes/den-to-atl/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→ATL",
+      "total_scheduled_flights": 6051,
+      "cancellation_rate": 0.017848,
+      "delay_over_60min_rate": 0.096921,
+      "avg_arrival_delay_minutes": 11.51,
+      "route_page_url": "/routes/ewr-to-atl/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→ATL",
+      "total_scheduled_flights": 6019,
+      "cancellation_rate": 0.010965,
+      "delay_over_60min_rate": 0.069713,
+      "avg_arrival_delay_minutes": 7.05,
+      "route_page_url": "/routes/bwi-to-atl/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abe-to-atl",
+      "url": "/routes/abe-to-atl/"
+    },
+    {
+      "route_key": "abq-to-atl",
+      "url": "/routes/abq-to-atl/"
+    },
+    {
+      "route_key": "aby-to-atl",
+      "url": "/routes/aby-to-atl/"
+    },
+    {
+      "route_key": "aex-to-atl",
+      "url": "/routes/aex-to-atl/"
+    },
+    {
+      "route_key": "ags-to-atl",
+      "url": "/routes/ags-to-atl/"
+    },
+    {
+      "route_key": "alb-to-atl",
+      "url": "/routes/alb-to-atl/"
+    },
+    {
+      "route_key": "anc-to-atl",
+      "url": "/routes/anc-to-atl/"
+    },
+    {
+      "route_key": "ase-to-atl",
+      "url": "/routes/ase-to-atl/"
+    },
+    {
+      "route_key": "atw-to-atl",
+      "url": "/routes/atw-to-atl/"
+    },
+    {
+      "route_key": "aus-to-atl",
+      "url": "/routes/aus-to-atl/"
+    },
+    {
+      "route_key": "avl-to-atl",
+      "url": "/routes/avl-to-atl/"
+    },
+    {
+      "route_key": "bdl-to-atl",
+      "url": "/routes/bdl-to-atl/"
+    },
+    {
+      "route_key": "bhm-to-atl",
+      "url": "/routes/bhm-to-atl/"
+    },
+    {
+      "route_key": "bmi-to-atl",
+      "url": "/routes/bmi-to-atl/"
+    },
+    {
+      "route_key": "bna-to-atl",
+      "url": "/routes/bna-to-atl/"
+    },
+    {
+      "route_key": "boi-to-atl",
+      "url": "/routes/boi-to-atl/"
+    },
+    {
+      "route_key": "bos-to-atl",
+      "url": "/routes/bos-to-atl/"
+    },
+    {
+      "route_key": "bqk-to-atl",
+      "url": "/routes/bqk-to-atl/"
+    },
+    {
+      "route_key": "btr-to-atl",
+      "url": "/routes/btr-to-atl/"
+    },
+    {
+      "route_key": "btv-to-atl",
+      "url": "/routes/btv-to-atl/"
+    },
+    {
+      "route_key": "buf-to-atl",
+      "url": "/routes/buf-to-atl/"
+    },
+    {
+      "route_key": "bur-to-atl",
+      "url": "/routes/bur-to-atl/"
+    },
+    {
+      "route_key": "bwi-to-atl",
+      "url": "/routes/bwi-to-atl/"
+    },
+    {
+      "route_key": "bzn-to-atl",
+      "url": "/routes/bzn-to-atl/"
+    },
+    {
+      "route_key": "cae-to-atl",
+      "url": "/routes/cae-to-atl/"
+    },
+    {
+      "route_key": "cha-to-atl",
+      "url": "/routes/cha-to-atl/"
+    },
+    {
+      "route_key": "cho-to-atl",
+      "url": "/routes/cho-to-atl/"
+    },
+    {
+      "route_key": "chs-to-atl",
+      "url": "/routes/chs-to-atl/"
+    },
+    {
+      "route_key": "cid-to-atl",
+      "url": "/routes/cid-to-atl/"
+    },
+    {
+      "route_key": "cle-to-atl",
+      "url": "/routes/cle-to-atl/"
+    },
+    {
+      "route_key": "clt-to-atl",
+      "url": "/routes/clt-to-atl/"
+    },
+    {
+      "route_key": "cmh-to-atl",
+      "url": "/routes/cmh-to-atl/"
+    },
+    {
+      "route_key": "cos-to-atl",
+      "url": "/routes/cos-to-atl/"
+    },
+    {
+      "route_key": "crw-to-atl",
+      "url": "/routes/crw-to-atl/"
+    },
+    {
+      "route_key": "csg-to-atl",
+      "url": "/routes/csg-to-atl/"
+    },
+    {
+      "route_key": "cvg-to-atl",
+      "url": "/routes/cvg-to-atl/"
+    },
+    {
+      "route_key": "dab-to-atl",
+      "url": "/routes/dab-to-atl/"
+    },
+    {
+      "route_key": "dal-to-atl",
+      "url": "/routes/dal-to-atl/"
+    },
+    {
+      "route_key": "day-to-atl",
+      "url": "/routes/day-to-atl/"
+    },
+    {
+      "route_key": "dca-to-atl",
+      "url": "/routes/dca-to-atl/"
+    },
+    {
+      "route_key": "den-to-atl",
+      "url": "/routes/den-to-atl/"
+    },
+    {
+      "route_key": "dfw-to-atl",
+      "url": "/routes/dfw-to-atl/"
+    },
+    {
+      "route_key": "dhn-to-atl",
+      "url": "/routes/dhn-to-atl/"
+    },
+    {
+      "route_key": "dsm-to-atl",
+      "url": "/routes/dsm-to-atl/"
+    },
+    {
+      "route_key": "dtw-to-atl",
+      "url": "/routes/dtw-to-atl/"
+    },
+    {
+      "route_key": "ecp-to-atl",
+      "url": "/routes/ecp-to-atl/"
+    },
+    {
+      "route_key": "ege-to-atl",
+      "url": "/routes/ege-to-atl/"
+    },
+    {
+      "route_key": "elp-to-atl",
+      "url": "/routes/elp-to-atl/"
+    },
+    {
+      "route_key": "evv-to-atl",
+      "url": "/routes/evv-to-atl/"
+    },
+    {
+      "route_key": "ewr-to-atl",
+      "url": "/routes/ewr-to-atl/"
+    },
+    {
+      "route_key": "eyw-to-atl",
+      "url": "/routes/eyw-to-atl/"
+    },
+    {
+      "route_key": "fat-to-atl",
+      "url": "/routes/fat-to-atl/"
+    },
+    {
+      "route_key": "fay-to-atl",
+      "url": "/routes/fay-to-atl/"
+    },
+    {
+      "route_key": "fll-to-atl",
+      "url": "/routes/fll-to-atl/"
+    },
+    {
+      "route_key": "fsd-to-atl",
+      "url": "/routes/fsd-to-atl/"
+    },
+    {
+      "route_key": "fwa-to-atl",
+      "url": "/routes/fwa-to-atl/"
+    },
+    {
+      "route_key": "geg-to-atl",
+      "url": "/routes/geg-to-atl/"
+    },
+    {
+      "route_key": "gnv-to-atl",
+      "url": "/routes/gnv-to-atl/"
+    },
+    {
+      "route_key": "gpt-to-atl",
+      "url": "/routes/gpt-to-atl/"
+    },
+    {
+      "route_key": "grb-to-atl",
+      "url": "/routes/grb-to-atl/"
+    },
+    {
+      "route_key": "grr-to-atl",
+      "url": "/routes/grr-to-atl/"
+    },
+    {
+      "route_key": "gso-to-atl",
+      "url": "/routes/gso-to-atl/"
+    },
+    {
+      "route_key": "gsp-to-atl",
+      "url": "/routes/gsp-to-atl/"
+    },
+    {
+      "route_key": "gtr-to-atl",
+      "url": "/routes/gtr-to-atl/"
+    },
+    {
+      "route_key": "hdn-to-atl",
+      "url": "/routes/hdn-to-atl/"
+    },
+    {
+      "route_key": "hhh-to-atl",
+      "url": "/routes/hhh-to-atl/"
+    },
+    {
+      "route_key": "hnl-to-atl",
+      "url": "/routes/hnl-to-atl/"
+    },
+    {
+      "route_key": "hou-to-atl",
+      "url": "/routes/hou-to-atl/"
+    },
+    {
+      "route_key": "hpn-to-atl",
+      "url": "/routes/hpn-to-atl/"
+    },
+    {
+      "route_key": "hsv-to-atl",
+      "url": "/routes/hsv-to-atl/"
+    },
+    {
+      "route_key": "iad-to-atl",
+      "url": "/routes/iad-to-atl/"
+    },
+    {
+      "route_key": "iah-to-atl",
+      "url": "/routes/iah-to-atl/"
+    },
+    {
+      "route_key": "ict-to-atl",
+      "url": "/routes/ict-to-atl/"
+    },
+    {
+      "route_key": "ilm-to-atl",
+      "url": "/routes/ilm-to-atl/"
+    },
+    {
+      "route_key": "ind-to-atl",
+      "url": "/routes/ind-to-atl/"
+    },
+    {
+      "route_key": "jac-to-atl",
+      "url": "/routes/jac-to-atl/"
+    },
+    {
+      "route_key": "jan-to-atl",
+      "url": "/routes/jan-to-atl/"
+    },
+    {
+      "route_key": "jax-to-atl",
+      "url": "/routes/jax-to-atl/"
+    },
+    {
+      "route_key": "jfk-to-atl",
+      "url": "/routes/jfk-to-atl/"
+    },
+    {
+      "route_key": "las-to-atl",
+      "url": "/routes/las-to-atl/"
+    },
+    {
+      "route_key": "lax-to-atl",
+      "url": "/routes/lax-to-atl/"
+    },
+    {
+      "route_key": "lex-to-atl",
+      "url": "/routes/lex-to-atl/"
+    },
+    {
+      "route_key": "lft-to-atl",
+      "url": "/routes/lft-to-atl/"
+    },
+    {
+      "route_key": "lga-to-atl",
+      "url": "/routes/lga-to-atl/"
+    },
+    {
+      "route_key": "lit-to-atl",
+      "url": "/routes/lit-to-atl/"
+    },
+    {
+      "route_key": "mci-to-atl",
+      "url": "/routes/mci-to-atl/"
+    },
+    {
+      "route_key": "mco-to-atl",
+      "url": "/routes/mco-to-atl/"
+    },
+    {
+      "route_key": "mdt-to-atl",
+      "url": "/routes/mdt-to-atl/"
+    },
+    {
+      "route_key": "mdw-to-atl",
+      "url": "/routes/mdw-to-atl/"
+    },
+    {
+      "route_key": "mem-to-atl",
+      "url": "/routes/mem-to-atl/"
+    },
+    {
+      "route_key": "mgm-to-atl",
+      "url": "/routes/mgm-to-atl/"
+    },
+    {
+      "route_key": "mia-to-atl",
+      "url": "/routes/mia-to-atl/"
+    },
+    {
+      "route_key": "mke-to-atl",
+      "url": "/routes/mke-to-atl/"
+    },
+    {
+      "route_key": "mlb-to-atl",
+      "url": "/routes/mlb-to-atl/"
+    },
+    {
+      "route_key": "mli-to-atl",
+      "url": "/routes/mli-to-atl/"
+    },
+    {
+      "route_key": "mlu-to-atl",
+      "url": "/routes/mlu-to-atl/"
+    },
+    {
+      "route_key": "mob-to-atl",
+      "url": "/routes/mob-to-atl/"
+    },
+    {
+      "route_key": "msn-to-atl",
+      "url": "/routes/msn-to-atl/"
+    },
+    {
+      "route_key": "msp-to-atl",
+      "url": "/routes/msp-to-atl/"
+    },
+    {
+      "route_key": "msy-to-atl",
+      "url": "/routes/msy-to-atl/"
+    },
+    {
+      "route_key": "mtj-to-atl",
+      "url": "/routes/mtj-to-atl/"
+    },
+    {
+      "route_key": "myr-to-atl",
+      "url": "/routes/myr-to-atl/"
+    },
+    {
+      "route_key": "oaj-to-atl",
+      "url": "/routes/oaj-to-atl/"
+    },
+    {
+      "route_key": "oak-to-atl",
+      "url": "/routes/oak-to-atl/"
+    },
+    {
+      "route_key": "okc-to-atl",
+      "url": "/routes/okc-to-atl/"
+    },
+    {
+      "route_key": "oma-to-atl",
+      "url": "/routes/oma-to-atl/"
+    },
+    {
+      "route_key": "ont-to-atl",
+      "url": "/routes/ont-to-atl/"
+    },
+    {
+      "route_key": "ord-to-atl",
+      "url": "/routes/ord-to-atl/"
+    },
+    {
+      "route_key": "orf-to-atl",
+      "url": "/routes/orf-to-atl/"
+    },
+    {
+      "route_key": "pbi-to-atl",
+      "url": "/routes/pbi-to-atl/"
+    },
+    {
+      "route_key": "pdx-to-atl",
+      "url": "/routes/pdx-to-atl/"
+    },
+    {
+      "route_key": "phl-to-atl",
+      "url": "/routes/phl-to-atl/"
+    },
+    {
+      "route_key": "phx-to-atl",
+      "url": "/routes/phx-to-atl/"
+    },
+    {
+      "route_key": "pit-to-atl",
+      "url": "/routes/pit-to-atl/"
+    },
+    {
+      "route_key": "pns-to-atl",
+      "url": "/routes/pns-to-atl/"
+    },
+    {
+      "route_key": "psp-to-atl",
+      "url": "/routes/psp-to-atl/"
+    },
+    {
+      "route_key": "pvd-to-atl",
+      "url": "/routes/pvd-to-atl/"
+    },
+    {
+      "route_key": "pwm-to-atl",
+      "url": "/routes/pwm-to-atl/"
+    },
+    {
+      "route_key": "rdu-to-atl",
+      "url": "/routes/rdu-to-atl/"
+    },
+    {
+      "route_key": "ric-to-atl",
+      "url": "/routes/ric-to-atl/"
+    },
+    {
+      "route_key": "rno-to-atl",
+      "url": "/routes/rno-to-atl/"
+    },
+    {
+      "route_key": "roa-to-atl",
+      "url": "/routes/roa-to-atl/"
+    },
+    {
+      "route_key": "roc-to-atl",
+      "url": "/routes/roc-to-atl/"
+    },
+    {
+      "route_key": "rsw-to-atl",
+      "url": "/routes/rsw-to-atl/"
+    },
+    {
+      "route_key": "san-to-atl",
+      "url": "/routes/san-to-atl/"
+    },
+    {
+      "route_key": "sat-to-atl",
+      "url": "/routes/sat-to-atl/"
+    },
+    {
+      "route_key": "sav-to-atl",
+      "url": "/routes/sav-to-atl/"
+    },
+    {
+      "route_key": "sba-to-atl",
+      "url": "/routes/sba-to-atl/"
+    },
+    {
+      "route_key": "sbn-to-atl",
+      "url": "/routes/sbn-to-atl/"
+    },
+    {
+      "route_key": "sdf-to-atl",
+      "url": "/routes/sdf-to-atl/"
+    },
+    {
+      "route_key": "sea-to-atl",
+      "url": "/routes/sea-to-atl/"
+    },
+    {
+      "route_key": "sfo-to-atl",
+      "url": "/routes/sfo-to-atl/"
+    },
+    {
+      "route_key": "sgf-to-atl",
+      "url": "/routes/sgf-to-atl/"
+    },
+    {
+      "route_key": "shv-to-atl",
+      "url": "/routes/shv-to-atl/"
+    },
+    {
+      "route_key": "sjc-to-atl",
+      "url": "/routes/sjc-to-atl/"
+    },
+    {
+      "route_key": "sju-to-atl",
+      "url": "/routes/sju-to-atl/"
+    },
+    {
+      "route_key": "slc-to-atl",
+      "url": "/routes/slc-to-atl/"
+    },
+    {
+      "route_key": "smf-to-atl",
+      "url": "/routes/smf-to-atl/"
+    },
+    {
+      "route_key": "sna-to-atl",
+      "url": "/routes/sna-to-atl/"
+    },
+    {
+      "route_key": "srq-to-atl",
+      "url": "/routes/srq-to-atl/"
+    },
+    {
+      "route_key": "stl-to-atl",
+      "url": "/routes/stl-to-atl/"
+    },
+    {
+      "route_key": "stt-to-atl",
+      "url": "/routes/stt-to-atl/"
+    },
+    {
+      "route_key": "stx-to-atl",
+      "url": "/routes/stx-to-atl/"
+    },
+    {
+      "route_key": "syr-to-atl",
+      "url": "/routes/syr-to-atl/"
+    },
+    {
+      "route_key": "tlh-to-atl",
+      "url": "/routes/tlh-to-atl/"
+    },
+    {
+      "route_key": "tpa-to-atl",
+      "url": "/routes/tpa-to-atl/"
+    },
+    {
+      "route_key": "tri-to-atl",
+      "url": "/routes/tri-to-atl/"
+    },
+    {
+      "route_key": "ttn-to-atl",
+      "url": "/routes/ttn-to-atl/"
+    },
+    {
+      "route_key": "tul-to-atl",
+      "url": "/routes/tul-to-atl/"
+    },
+    {
+      "route_key": "tus-to-atl",
+      "url": "/routes/tus-to-atl/"
+    },
+    {
+      "route_key": "tys-to-atl",
+      "url": "/routes/tys-to-atl/"
+    },
+    {
+      "route_key": "vld-to-atl",
+      "url": "/routes/vld-to-atl/"
+    },
+    {
+      "route_key": "vps-to-atl",
+      "url": "/routes/vps-to-atl/"
+    },
+    {
+      "route_key": "xna-to-atl",
+      "url": "/routes/xna-to-atl/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "ATL",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 341825,
+    "origin_routes": 157,
+    "usable_routes": 154,
+    "operating_airlines": 13,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/ATL/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

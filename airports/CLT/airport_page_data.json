@@ -1,0 +1,677 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "CLT",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 217545,
+    "origin_routes_count": 132,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 123,
+      "thin": 5,
+      "too_small": 4,
+      "total": 132
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.014098,
+    "delay_over_60min_rate": 0.082908,
+    "delay_over_180min_rate": 0.020109,
+    "avg_arrival_delay_minutes": 11.54,
+    "p90_arrival_delay_minutes": 49.0,
+    "avg_delay_recovery_minutes": -0.7
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LGA",
+      "route": "LGA→CLT",
+      "total_scheduled_flights": 6062,
+      "cancellation_rate": 0.026394,
+      "delay_over_60min_rate": 0.083531,
+      "avg_arrival_delay_minutes": 4.62,
+      "route_page_url": "/routes/lga-to-clt/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→CLT",
+      "total_scheduled_flights": 5413,
+      "cancellation_rate": 0.019582,
+      "delay_over_60min_rate": 0.091954,
+      "avg_arrival_delay_minutes": 11.59,
+      "route_page_url": "/routes/mco-to-clt/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→CLT",
+      "total_scheduled_flights": 5383,
+      "cancellation_rate": 0.010775,
+      "delay_over_60min_rate": 0.061784,
+      "avg_arrival_delay_minutes": 7.05,
+      "route_page_url": "/routes/atl-to-clt/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→CLT",
+      "total_scheduled_flights": 5214,
+      "cancellation_rate": 0.015535,
+      "delay_over_60min_rate": 0.074031,
+      "avg_arrival_delay_minutes": 2.64,
+      "route_page_url": "/routes/bos-to-clt/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→CLT",
+      "total_scheduled_flights": 4521,
+      "cancellation_rate": 0.009732,
+      "delay_over_60min_rate": 0.086665,
+      "avg_arrival_delay_minutes": 14.08,
+      "route_page_url": "/routes/ord-to-clt/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→CLT",
+      "total_scheduled_flights": 4161,
+      "cancellation_rate": 0.014179,
+      "delay_over_60min_rate": 0.106046,
+      "avg_arrival_delay_minutes": 15.35,
+      "route_page_url": "/routes/dfw-to-clt/"
+    },
+    {
+      "origin": "PHL",
+      "route": "PHL→CLT",
+      "total_scheduled_flights": 3986,
+      "cancellation_rate": 0.017311,
+      "delay_over_60min_rate": 0.105948,
+      "avg_arrival_delay_minutes": 13.32,
+      "route_page_url": "/routes/phl-to-clt/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→CLT",
+      "total_scheduled_flights": 3893,
+      "cancellation_rate": 0.022862,
+      "delay_over_60min_rate": 0.100683,
+      "avg_arrival_delay_minutes": 11.19,
+      "route_page_url": "/routes/ewr-to-clt/"
+    },
+    {
+      "origin": "DTW",
+      "route": "DTW→CLT",
+      "total_scheduled_flights": 3890,
+      "cancellation_rate": 0.008997,
+      "delay_over_60min_rate": 0.067704,
+      "avg_arrival_delay_minutes": 3.53,
+      "route_page_url": "/routes/dtw-to-clt/"
+    },
+    {
+      "origin": "TPA",
+      "route": "TPA→CLT",
+      "total_scheduled_flights": 3813,
+      "cancellation_rate": 0.029635,
+      "delay_over_60min_rate": 0.09973,
+      "avg_arrival_delay_minutes": 14.18,
+      "route_page_url": "/routes/tpa-to-clt/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abe-to-clt",
+      "url": "/routes/abe-to-clt/"
+    },
+    {
+      "route_key": "ags-to-clt",
+      "url": "/routes/ags-to-clt/"
+    },
+    {
+      "route_key": "alb-to-clt",
+      "url": "/routes/alb-to-clt/"
+    },
+    {
+      "route_key": "atl-to-clt",
+      "url": "/routes/atl-to-clt/"
+    },
+    {
+      "route_key": "atw-to-clt",
+      "url": "/routes/atw-to-clt/"
+    },
+    {
+      "route_key": "aus-to-clt",
+      "url": "/routes/aus-to-clt/"
+    },
+    {
+      "route_key": "avl-to-clt",
+      "url": "/routes/avl-to-clt/"
+    },
+    {
+      "route_key": "avp-to-clt",
+      "url": "/routes/avp-to-clt/"
+    },
+    {
+      "route_key": "bdl-to-clt",
+      "url": "/routes/bdl-to-clt/"
+    },
+    {
+      "route_key": "bgr-to-clt",
+      "url": "/routes/bgr-to-clt/"
+    },
+    {
+      "route_key": "bhm-to-clt",
+      "url": "/routes/bhm-to-clt/"
+    },
+    {
+      "route_key": "bna-to-clt",
+      "url": "/routes/bna-to-clt/"
+    },
+    {
+      "route_key": "bos-to-clt",
+      "url": "/routes/bos-to-clt/"
+    },
+    {
+      "route_key": "btr-to-clt",
+      "url": "/routes/btr-to-clt/"
+    },
+    {
+      "route_key": "btv-to-clt",
+      "url": "/routes/btv-to-clt/"
+    },
+    {
+      "route_key": "buf-to-clt",
+      "url": "/routes/buf-to-clt/"
+    },
+    {
+      "route_key": "bwi-to-clt",
+      "url": "/routes/bwi-to-clt/"
+    },
+    {
+      "route_key": "cae-to-clt",
+      "url": "/routes/cae-to-clt/"
+    },
+    {
+      "route_key": "cak-to-clt",
+      "url": "/routes/cak-to-clt/"
+    },
+    {
+      "route_key": "cha-to-clt",
+      "url": "/routes/cha-to-clt/"
+    },
+    {
+      "route_key": "chs-to-clt",
+      "url": "/routes/chs-to-clt/"
+    },
+    {
+      "route_key": "cid-to-clt",
+      "url": "/routes/cid-to-clt/"
+    },
+    {
+      "route_key": "cle-to-clt",
+      "url": "/routes/cle-to-clt/"
+    },
+    {
+      "route_key": "cmh-to-clt",
+      "url": "/routes/cmh-to-clt/"
+    },
+    {
+      "route_key": "crw-to-clt",
+      "url": "/routes/crw-to-clt/"
+    },
+    {
+      "route_key": "cvg-to-clt",
+      "url": "/routes/cvg-to-clt/"
+    },
+    {
+      "route_key": "dab-to-clt",
+      "url": "/routes/dab-to-clt/"
+    },
+    {
+      "route_key": "dal-to-clt",
+      "url": "/routes/dal-to-clt/"
+    },
+    {
+      "route_key": "day-to-clt",
+      "url": "/routes/day-to-clt/"
+    },
+    {
+      "route_key": "dca-to-clt",
+      "url": "/routes/dca-to-clt/"
+    },
+    {
+      "route_key": "den-to-clt",
+      "url": "/routes/den-to-clt/"
+    },
+    {
+      "route_key": "dfw-to-clt",
+      "url": "/routes/dfw-to-clt/"
+    },
+    {
+      "route_key": "dsm-to-clt",
+      "url": "/routes/dsm-to-clt/"
+    },
+    {
+      "route_key": "dtw-to-clt",
+      "url": "/routes/dtw-to-clt/"
+    },
+    {
+      "route_key": "ecp-to-clt",
+      "url": "/routes/ecp-to-clt/"
+    },
+    {
+      "route_key": "ewr-to-clt",
+      "url": "/routes/ewr-to-clt/"
+    },
+    {
+      "route_key": "eyw-to-clt",
+      "url": "/routes/eyw-to-clt/"
+    },
+    {
+      "route_key": "fay-to-clt",
+      "url": "/routes/fay-to-clt/"
+    },
+    {
+      "route_key": "fll-to-clt",
+      "url": "/routes/fll-to-clt/"
+    },
+    {
+      "route_key": "fwa-to-clt",
+      "url": "/routes/fwa-to-clt/"
+    },
+    {
+      "route_key": "gnv-to-clt",
+      "url": "/routes/gnv-to-clt/"
+    },
+    {
+      "route_key": "gpt-to-clt",
+      "url": "/routes/gpt-to-clt/"
+    },
+    {
+      "route_key": "grr-to-clt",
+      "url": "/routes/grr-to-clt/"
+    },
+    {
+      "route_key": "gso-to-clt",
+      "url": "/routes/gso-to-clt/"
+    },
+    {
+      "route_key": "gsp-to-clt",
+      "url": "/routes/gsp-to-clt/"
+    },
+    {
+      "route_key": "hhh-to-clt",
+      "url": "/routes/hhh-to-clt/"
+    },
+    {
+      "route_key": "hpn-to-clt",
+      "url": "/routes/hpn-to-clt/"
+    },
+    {
+      "route_key": "hsv-to-clt",
+      "url": "/routes/hsv-to-clt/"
+    },
+    {
+      "route_key": "iad-to-clt",
+      "url": "/routes/iad-to-clt/"
+    },
+    {
+      "route_key": "iah-to-clt",
+      "url": "/routes/iah-to-clt/"
+    },
+    {
+      "route_key": "ilm-to-clt",
+      "url": "/routes/ilm-to-clt/"
+    },
+    {
+      "route_key": "ind-to-clt",
+      "url": "/routes/ind-to-clt/"
+    },
+    {
+      "route_key": "jac-to-clt",
+      "url": "/routes/jac-to-clt/"
+    },
+    {
+      "route_key": "jan-to-clt",
+      "url": "/routes/jan-to-clt/"
+    },
+    {
+      "route_key": "jax-to-clt",
+      "url": "/routes/jax-to-clt/"
+    },
+    {
+      "route_key": "jfk-to-clt",
+      "url": "/routes/jfk-to-clt/"
+    },
+    {
+      "route_key": "las-to-clt",
+      "url": "/routes/las-to-clt/"
+    },
+    {
+      "route_key": "lax-to-clt",
+      "url": "/routes/lax-to-clt/"
+    },
+    {
+      "route_key": "lex-to-clt",
+      "url": "/routes/lex-to-clt/"
+    },
+    {
+      "route_key": "lft-to-clt",
+      "url": "/routes/lft-to-clt/"
+    },
+    {
+      "route_key": "lga-to-clt",
+      "url": "/routes/lga-to-clt/"
+    },
+    {
+      "route_key": "lit-to-clt",
+      "url": "/routes/lit-to-clt/"
+    },
+    {
+      "route_key": "mci-to-clt",
+      "url": "/routes/mci-to-clt/"
+    },
+    {
+      "route_key": "mco-to-clt",
+      "url": "/routes/mco-to-clt/"
+    },
+    {
+      "route_key": "mdt-to-clt",
+      "url": "/routes/mdt-to-clt/"
+    },
+    {
+      "route_key": "mdw-to-clt",
+      "url": "/routes/mdw-to-clt/"
+    },
+    {
+      "route_key": "mem-to-clt",
+      "url": "/routes/mem-to-clt/"
+    },
+    {
+      "route_key": "mht-to-clt",
+      "url": "/routes/mht-to-clt/"
+    },
+    {
+      "route_key": "mia-to-clt",
+      "url": "/routes/mia-to-clt/"
+    },
+    {
+      "route_key": "mke-to-clt",
+      "url": "/routes/mke-to-clt/"
+    },
+    {
+      "route_key": "mlb-to-clt",
+      "url": "/routes/mlb-to-clt/"
+    },
+    {
+      "route_key": "mli-to-clt",
+      "url": "/routes/mli-to-clt/"
+    },
+    {
+      "route_key": "msn-to-clt",
+      "url": "/routes/msn-to-clt/"
+    },
+    {
+      "route_key": "msp-to-clt",
+      "url": "/routes/msp-to-clt/"
+    },
+    {
+      "route_key": "msy-to-clt",
+      "url": "/routes/msy-to-clt/"
+    },
+    {
+      "route_key": "myr-to-clt",
+      "url": "/routes/myr-to-clt/"
+    },
+    {
+      "route_key": "oaj-to-clt",
+      "url": "/routes/oaj-to-clt/"
+    },
+    {
+      "route_key": "okc-to-clt",
+      "url": "/routes/okc-to-clt/"
+    },
+    {
+      "route_key": "oma-to-clt",
+      "url": "/routes/oma-to-clt/"
+    },
+    {
+      "route_key": "ont-to-clt",
+      "url": "/routes/ont-to-clt/"
+    },
+    {
+      "route_key": "ord-to-clt",
+      "url": "/routes/ord-to-clt/"
+    },
+    {
+      "route_key": "orf-to-clt",
+      "url": "/routes/orf-to-clt/"
+    },
+    {
+      "route_key": "pbi-to-clt",
+      "url": "/routes/pbi-to-clt/"
+    },
+    {
+      "route_key": "pdx-to-clt",
+      "url": "/routes/pdx-to-clt/"
+    },
+    {
+      "route_key": "phl-to-clt",
+      "url": "/routes/phl-to-clt/"
+    },
+    {
+      "route_key": "phx-to-clt",
+      "url": "/routes/phx-to-clt/"
+    },
+    {
+      "route_key": "pia-to-clt",
+      "url": "/routes/pia-to-clt/"
+    },
+    {
+      "route_key": "pit-to-clt",
+      "url": "/routes/pit-to-clt/"
+    },
+    {
+      "route_key": "pns-to-clt",
+      "url": "/routes/pns-to-clt/"
+    },
+    {
+      "route_key": "pvd-to-clt",
+      "url": "/routes/pvd-to-clt/"
+    },
+    {
+      "route_key": "pwm-to-clt",
+      "url": "/routes/pwm-to-clt/"
+    },
+    {
+      "route_key": "rap-to-clt",
+      "url": "/routes/rap-to-clt/"
+    },
+    {
+      "route_key": "rdu-to-clt",
+      "url": "/routes/rdu-to-clt/"
+    },
+    {
+      "route_key": "ric-to-clt",
+      "url": "/routes/ric-to-clt/"
+    },
+    {
+      "route_key": "roa-to-clt",
+      "url": "/routes/roa-to-clt/"
+    },
+    {
+      "route_key": "roc-to-clt",
+      "url": "/routes/roc-to-clt/"
+    },
+    {
+      "route_key": "rsw-to-clt",
+      "url": "/routes/rsw-to-clt/"
+    },
+    {
+      "route_key": "san-to-clt",
+      "url": "/routes/san-to-clt/"
+    },
+    {
+      "route_key": "sat-to-clt",
+      "url": "/routes/sat-to-clt/"
+    },
+    {
+      "route_key": "sav-to-clt",
+      "url": "/routes/sav-to-clt/"
+    },
+    {
+      "route_key": "sbn-to-clt",
+      "url": "/routes/sbn-to-clt/"
+    },
+    {
+      "route_key": "sdf-to-clt",
+      "url": "/routes/sdf-to-clt/"
+    },
+    {
+      "route_key": "sea-to-clt",
+      "url": "/routes/sea-to-clt/"
+    },
+    {
+      "route_key": "sfo-to-clt",
+      "url": "/routes/sfo-to-clt/"
+    },
+    {
+      "route_key": "sgf-to-clt",
+      "url": "/routes/sgf-to-clt/"
+    },
+    {
+      "route_key": "shv-to-clt",
+      "url": "/routes/shv-to-clt/"
+    },
+    {
+      "route_key": "sju-to-clt",
+      "url": "/routes/sju-to-clt/"
+    },
+    {
+      "route_key": "slc-to-clt",
+      "url": "/routes/slc-to-clt/"
+    },
+    {
+      "route_key": "smf-to-clt",
+      "url": "/routes/smf-to-clt/"
+    },
+    {
+      "route_key": "sna-to-clt",
+      "url": "/routes/sna-to-clt/"
+    },
+    {
+      "route_key": "srq-to-clt",
+      "url": "/routes/srq-to-clt/"
+    },
+    {
+      "route_key": "stl-to-clt",
+      "url": "/routes/stl-to-clt/"
+    },
+    {
+      "route_key": "stt-to-clt",
+      "url": "/routes/stt-to-clt/"
+    },
+    {
+      "route_key": "stx-to-clt",
+      "url": "/routes/stx-to-clt/"
+    },
+    {
+      "route_key": "syr-to-clt",
+      "url": "/routes/syr-to-clt/"
+    },
+    {
+      "route_key": "tlh-to-clt",
+      "url": "/routes/tlh-to-clt/"
+    },
+    {
+      "route_key": "tpa-to-clt",
+      "url": "/routes/tpa-to-clt/"
+    },
+    {
+      "route_key": "tri-to-clt",
+      "url": "/routes/tri-to-clt/"
+    },
+    {
+      "route_key": "tul-to-clt",
+      "url": "/routes/tul-to-clt/"
+    },
+    {
+      "route_key": "tvc-to-clt",
+      "url": "/routes/tvc-to-clt/"
+    },
+    {
+      "route_key": "tys-to-clt",
+      "url": "/routes/tys-to-clt/"
+    },
+    {
+      "route_key": "vps-to-clt",
+      "url": "/routes/vps-to-clt/"
+    },
+    {
+      "route_key": "xna-to-clt",
+      "url": "/routes/xna-to-clt/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "CLT",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 217545,
+    "origin_routes": 132,
+    "usable_routes": 123,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/CLT/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

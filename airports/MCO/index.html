@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCO Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for MCO (Orlando International Airport). 159,578 flights analyzed across 91 origin routes, 9 airlines. 71 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/MCO/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="MCO">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      MCO
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">MCO</div>
+      <div class="header-name">Orlando International Airport</div>
+      <div class="header-title">MCO Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-expansion">Representative Expansion Airport</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>MCO</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>MCO</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">159,578</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">91</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">9</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">71</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">11</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">9</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">91</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">1.93%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">9.23%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">1.90%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+9.6 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+56.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">+0.5 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>MCO</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>ATL</td>
+          <td><code>ATL→MCO</code></td>
+          <td class="td-num">8,935</td>
+          <td class="td-num">1.62%</td>
+          <td class="td-num">9.61%</td>
+          <td class="td-num">+15.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/atl-to-mco/">ATL→MCO</a></td>
+        </tr>
+        <tr>
+          <td>EWR</td>
+          <td><code>EWR→MCO</code></td>
+          <td class="td-num">6,563</td>
+          <td class="td-num">2.97%</td>
+          <td class="td-num">9.77%</td>
+          <td class="td-num">+6.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ewr-to-mco/">EWR→MCO</a></td>
+        </tr>
+        <tr>
+          <td>SJU</td>
+          <td><code>SJU→MCO</code></td>
+          <td class="td-num">6,312</td>
+          <td class="td-num">1.36%</td>
+          <td class="td-num">8.24%</td>
+          <td class="td-num">+10.8 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sju-to-mco/">SJU→MCO</a></td>
+        </tr>
+        <tr>
+          <td>PHL</td>
+          <td><code>PHL→MCO</code></td>
+          <td class="td-num">5,574</td>
+          <td class="td-num">2.01%</td>
+          <td class="td-num">10.98%</td>
+          <td class="td-num">+11.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/phl-to-mco/">PHL→MCO</a></td>
+        </tr>
+        <tr>
+          <td>CLT</td>
+          <td><code>CLT→MCO</code></td>
+          <td class="td-num">5,419</td>
+          <td class="td-num">1.99%</td>
+          <td class="td-num">12.03%</td>
+          <td class="td-num">+17.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/clt-to-mco/">CLT→MCO</a></td>
+        </tr>
+        <tr>
+          <td>BWI</td>
+          <td><code>BWI→MCO</code></td>
+          <td class="td-num">5,379</td>
+          <td class="td-num">2.08%</td>
+          <td class="td-num">8.66%</td>
+          <td class="td-num">+9.8 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bwi-to-mco/">BWI→MCO</a></td>
+        </tr>
+        <tr>
+          <td>DCA</td>
+          <td><code>DCA→MCO</code></td>
+          <td class="td-num">5,042</td>
+          <td class="td-num">1.57%</td>
+          <td class="td-num">8.87%</td>
+          <td class="td-num">+6.7 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dca-to-mco/">DCA→MCO</a></td>
+        </tr>
+        <tr>
+          <td>ORD</td>
+          <td><code>ORD→MCO</code></td>
+          <td class="td-num">5,010</td>
+          <td class="td-num">2.04%</td>
+          <td class="td-num">8.82%</td>
+          <td class="td-num">+7.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ord-to-mco/">ORD→MCO</a></td>
+        </tr>
+        <tr>
+          <td>DFW</td>
+          <td><code>DFW→MCO</code></td>
+          <td class="td-num">4,954</td>
+          <td class="td-num">2.42%</td>
+          <td class="td-num">13.57%</td>
+          <td class="td-num">+20.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dfw-to-mco/">DFW→MCO</a></td>
+        </tr>
+        <tr>
+          <td>LGA</td>
+          <td><code>LGA→MCO</code></td>
+          <td class="td-num">4,929</td>
+          <td class="td-num">2.31%</td>
+          <td class="td-num">10.57%</td>
+          <td class="td-num">+7.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lga-to-mco/">LGA→MCO</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      71 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      91 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/acy-to-mco/">acy-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/alb-to-mco/">alb-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-mco/">atl-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-mco/">aus-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bdl-to-mco/">bdl-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bhm-to-mco/">bhm-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-mco/">bna-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-mco/">bos-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bqn-to-mco/">bqn-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/buf-to-mco/">buf-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-mco/">bwi-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-mco/">cle-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-mco/">clt-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-mco/">cmh-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-mco/">cvg-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dal-to-mco/">dal-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-mco/">dca-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-mco/">den-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-mco/">dfw-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-mco/">dtw-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-mco/">ewr-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fll-to-mco/">fll-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/grr-to-mco/">grr-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hou-to-mco/">hou-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hpn-to-mco/">hpn-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-mco/">iad-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-mco/">iah-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-mco/">ind-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/isp-to-mco/">isp-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-mco/">jfk-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-mco/">las-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-mco/">lax-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lbe-to-mco/">lbe-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lga-to-mco/">lga-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-mco/">mci-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mdw-to-mco/">mdw-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mem-to-mco/">mem-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mht-to-mco/">mht-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mia-to-mco/">mia-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-mco/">mke-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-mco/">msp-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-mco/">msy-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/myr-to-mco/">myr-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/okc-to-mco/">okc-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oma-to-mco/">oma-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-mco/">ord-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orf-to-mco/">orf-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orh-to-mco/">orh-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-mco/">pdx-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phl-to-mco/">phl-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-mco/">phx-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-mco/">pit-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pns-to-mco/">pns-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pse-to-mco/">pse-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pvd-to-mco/">pvd-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pwm-to-mco/">pwm-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-mco/">rdu-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ric-to-mco/">ric-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/roc-to-mco/">roc-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-mco/">san-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-mco/">sat-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sdf-to-mco/">sdf-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-mco/">sea-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-mco/">sfo-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sju-to-mco/">sju-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-mco/">slc-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stl-to-mco/">stl-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stt-to-mco/">stt-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/syr-to-mco/">syr-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ttn-to-mco/">ttn-to-mco</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tys-to-mco/">tys-to-mco</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for MCO.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "MCO",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 159578,
+    "origin_routes_count": 91,
+    "operating_airlines_count": 9,
+    "route_sample_quality": {
+      "usable": 71,
+      "thin": 11,
+      "too_small": 9,
+      "total": 91
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.019257,
+    "delay_over_60min_rate": 0.092336,
+    "delay_over_180min_rate": 0.019041,
+    "avg_arrival_delay_minutes": 9.58,
+    "p90_arrival_delay_minutes": 56.0,
+    "avg_delay_recovery_minutes": 0.49
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→MCO",
+      "total_scheduled_flights": 8935,
+      "cancellation_rate": 0.016228,
+      "delay_over_60min_rate": 0.096132,
+      "avg_arrival_delay_minutes": 15.08,
+      "route_page_url": "/routes/atl-to-mco/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→MCO",
+      "total_scheduled_flights": 6563,
+      "cancellation_rate": 0.029712,
+      "delay_over_60min_rate": 0.097676,
+      "avg_arrival_delay_minutes": 6.3,
+      "route_page_url": "/routes/ewr-to-mco/"
+    },
+    {
+      "origin": "SJU",
+      "route": "SJU→MCO",
+      "total_scheduled_flights": 6312,
+      "cancellation_rate": 0.013625,
+      "delay_over_60min_rate": 0.082396,
+      "avg_arrival_delay_minutes": 10.76,
+      "route_page_url": "/routes/sju-to-mco/"
+    },
+    {
+      "origin": "PHL",
+      "route": "PHL→MCO",
+      "total_scheduled_flights": 5574,
+      "cancellation_rate": 0.020093,
+      "delay_over_60min_rate": 0.10985,
+      "avg_arrival_delay_minutes": 11.12,
+      "route_page_url": "/routes/phl-to-mco/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→MCO",
+      "total_scheduled_flights": 5419,
+      "cancellation_rate": 0.01993,
+      "delay_over_60min_rate": 0.120316,
+      "avg_arrival_delay_minutes": 16.98,
+      "route_page_url": "/routes/clt-to-mco/"
+    },
+    {
+      "origin": "BWI",
+      "route": "BWI→MCO",
+      "total_scheduled_flights": 5379,
+      "cancellation_rate": 0.020822,
+      "delay_over_60min_rate": 0.086577,
+      "avg_arrival_delay_minutes": 9.8,
+      "route_page_url": "/routes/bwi-to-mco/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→MCO",
+      "total_scheduled_flights": 5042,
+      "cancellation_rate": 0.015668,
+      "delay_over_60min_rate": 0.088656,
+      "avg_arrival_delay_minutes": 6.7,
+      "route_page_url": "/routes/dca-to-mco/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→MCO",
+      "total_scheduled_flights": 5010,
+      "cancellation_rate": 0.020359,
+      "delay_over_60min_rate": 0.088223,
+      "avg_arrival_delay_minutes": 7.91,
+      "route_page_url": "/routes/ord-to-mco/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→MCO",
+      "total_scheduled_flights": 4954,
+      "cancellation_rate": 0.024223,
+      "delay_over_60min_rate": 0.135705,
+      "avg_arrival_delay_minutes": 20.0,
+      "route_page_url": "/routes/dfw-to-mco/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→MCO",
+      "total_scheduled_flights": 4929,
+      "cancellation_rate": 0.023128,
+      "delay_over_60min_rate": 0.105711,
+      "avg_arrival_delay_minutes": 7.58,
+      "route_page_url": "/routes/lga-to-mco/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "acy-to-mco",
+      "url": "/routes/acy-to-mco/"
+    },
+    {
+      "route_key": "alb-to-mco",
+      "url": "/routes/alb-to-mco/"
+    },
+    {
+      "route_key": "atl-to-mco",
+      "url": "/routes/atl-to-mco/"
+    },
+    {
+      "route_key": "aus-to-mco",
+      "url": "/routes/aus-to-mco/"
+    },
+    {
+      "route_key": "bdl-to-mco",
+      "url": "/routes/bdl-to-mco/"
+    },
+    {
+      "route_key": "bhm-to-mco",
+      "url": "/routes/bhm-to-mco/"
+    },
+    {
+      "route_key": "bna-to-mco",
+      "url": "/routes/bna-to-mco/"
+    },
+    {
+      "route_key": "bos-to-mco",
+      "url": "/routes/bos-to-mco/"
+    },
+    {
+      "route_key": "bqn-to-mco",
+      "url": "/routes/bqn-to-mco/"
+    },
+    {
+      "route_key": "buf-to-mco",
+      "url": "/routes/buf-to-mco/"
+    },
+    {
+      "route_key": "bwi-to-mco",
+      "url": "/routes/bwi-to-mco/"
+    },
+    {
+      "route_key": "cle-to-mco",
+      "url": "/routes/cle-to-mco/"
+    },
+    {
+      "route_key": "clt-to-mco",
+      "url": "/routes/clt-to-mco/"
+    },
+    {
+      "route_key": "cmh-to-mco",
+      "url": "/routes/cmh-to-mco/"
+    },
+    {
+      "route_key": "cvg-to-mco",
+      "url": "/routes/cvg-to-mco/"
+    },
+    {
+      "route_key": "dal-to-mco",
+      "url": "/routes/dal-to-mco/"
+    },
+    {
+      "route_key": "dca-to-mco",
+      "url": "/routes/dca-to-mco/"
+    },
+    {
+      "route_key": "den-to-mco",
+      "url": "/routes/den-to-mco/"
+    },
+    {
+      "route_key": "dfw-to-mco",
+      "url": "/routes/dfw-to-mco/"
+    },
+    {
+      "route_key": "dtw-to-mco",
+      "url": "/routes/dtw-to-mco/"
+    },
+    {
+      "route_key": "ewr-to-mco",
+      "url": "/routes/ewr-to-mco/"
+    },
+    {
+      "route_key": "fll-to-mco",
+      "url": "/routes/fll-to-mco/"
+    },
+    {
+      "route_key": "grr-to-mco",
+      "url": "/routes/grr-to-mco/"
+    },
+    {
+      "route_key": "hou-to-mco",
+      "url": "/routes/hou-to-mco/"
+    },
+    {
+      "route_key": "hpn-to-mco",
+      "url": "/routes/hpn-to-mco/"
+    },
+    {
+      "route_key": "iad-to-mco",
+      "url": "/routes/iad-to-mco/"
+    },
+    {
+      "route_key": "iah-to-mco",
+      "url": "/routes/iah-to-mco/"
+    },
+    {
+      "route_key": "ind-to-mco",
+      "url": "/routes/ind-to-mco/"
+    },
+    {
+      "route_key": "isp-to-mco",
+      "url": "/routes/isp-to-mco/"
+    },
+    {
+      "route_key": "jfk-to-mco",
+      "url": "/routes/jfk-to-mco/"
+    },
+    {
+      "route_key": "las-to-mco",
+      "url": "/routes/las-to-mco/"
+    },
+    {
+      "route_key": "lax-to-mco",
+      "url": "/routes/lax-to-mco/"
+    },
+    {
+      "route_key": "lbe-to-mco",
+      "url": "/routes/lbe-to-mco/"
+    },
+    {
+      "route_key": "lga-to-mco",
+      "url": "/routes/lga-to-mco/"
+    },
+    {
+      "route_key": "mci-to-mco",
+      "url": "/routes/mci-to-mco/"
+    },
+    {
+      "route_key": "mdw-to-mco",
+      "url": "/routes/mdw-to-mco/"
+    },
+    {
+      "route_key": "mem-to-mco",
+      "url": "/routes/mem-to-mco/"
+    },
+    {
+      "route_key": "mht-to-mco",
+      "url": "/routes/mht-to-mco/"
+    },
+    {
+      "route_key": "mia-to-mco",
+      "url": "/routes/mia-to-mco/"
+    },
+    {
+      "route_key": "mke-to-mco",
+      "url": "/routes/mke-to-mco/"
+    },
+    {
+      "route_key": "msp-to-mco",
+      "url": "/routes/msp-to-mco/"
+    },
+    {
+      "route_key": "msy-to-mco",
+      "url": "/routes/msy-to-mco/"
+    },
+    {
+      "route_key": "myr-to-mco",
+      "url": "/routes/myr-to-mco/"
+    },
+    {
+      "route_key": "okc-to-mco",
+      "url": "/routes/okc-to-mco/"
+    },
+    {
+      "route_key": "oma-to-mco",
+      "url": "/routes/oma-to-mco/"
+    },
+    {
+      "route_key": "ord-to-mco",
+      "url": "/routes/ord-to-mco/"
+    },
+    {
+      "route_key": "orf-to-mco",
+      "url": "/routes/orf-to-mco/"
+    },
+    {
+      "route_key": "orh-to-mco",
+      "url": "/routes/orh-to-mco/"
+    },
+    {
+      "route_key": "pdx-to-mco",
+      "url": "/routes/pdx-to-mco/"
+    },
+    {
+      "route_key": "phl-to-mco",
+      "url": "/routes/phl-to-mco/"
+    },
+    {
+      "route_key": "phx-to-mco",
+      "url": "/routes/phx-to-mco/"
+    },
+    {
+      "route_key": "pit-to-mco",
+      "url": "/routes/pit-to-mco/"
+    },
+    {
+      "route_key": "pns-to-mco",
+      "url": "/routes/pns-to-mco/"
+    },
+    {
+      "route_key": "pse-to-mco",
+      "url": "/routes/pse-to-mco/"
+    },
+    {
+      "route_key": "pvd-to-mco",
+      "url": "/routes/pvd-to-mco/"
+    },
+    {
+      "route_key": "pwm-to-mco",
+      "url": "/routes/pwm-to-mco/"
+    },
+    {
+      "route_key": "rdu-to-mco",
+      "url": "/routes/rdu-to-mco/"
+    },
+    {
+      "route_key": "ric-to-mco",
+      "url": "/routes/ric-to-mco/"
+    },
+    {
+      "route_key": "roc-to-mco",
+      "url": "/routes/roc-to-mco/"
+    },
+    {
+      "route_key": "san-to-mco",
+      "url": "/routes/san-to-mco/"
+    },
+    {
+      "route_key": "sat-to-mco",
+      "url": "/routes/sat-to-mco/"
+    },
+    {
+      "route_key": "sdf-to-mco",
+      "url": "/routes/sdf-to-mco/"
+    },
+    {
+      "route_key": "sea-to-mco",
+      "url": "/routes/sea-to-mco/"
+    },
+    {
+      "route_key": "sfo-to-mco",
+      "url": "/routes/sfo-to-mco/"
+    },
+    {
+      "route_key": "sju-to-mco",
+      "url": "/routes/sju-to-mco/"
+    },
+    {
+      "route_key": "slc-to-mco",
+      "url": "/routes/slc-to-mco/"
+    },
+    {
+      "route_key": "stl-to-mco",
+      "url": "/routes/stl-to-mco/"
+    },
+    {
+      "route_key": "stt-to-mco",
+      "url": "/routes/stt-to-mco/"
+    },
+    {
+      "route_key": "syr-to-mco",
+      "url": "/routes/syr-to-mco/"
+    },
+    {
+      "route_key": "ttn-to-mco",
+      "url": "/routes/ttn-to-mco/"
+    },
+    {
+      "route_key": "tys-to-mco",
+      "url": "/routes/tys-to-mco/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "MCO",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 159578,
+    "origin_routes": 91,
+    "usable_routes": 71,
+    "operating_airlines": 9,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/MCO/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "MCO Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for MCO (Orlando International Airport). 159,578 flights analyzed across 91 origin routes, 9 airlines. 71 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "MCO",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "MCO airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

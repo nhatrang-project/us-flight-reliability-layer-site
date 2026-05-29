@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIA Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for MIA (Miami International Airport). 109,923 flights analyzed across 88 origin routes, 11 airlines. 73 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/MIA/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="MIA">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      MIA
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">MIA</div>
+      <div class="header-name">Miami International Airport</div>
+      <div class="header-title">MIA Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-hub">Hub Airport (hub14)</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>MIA</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>MIA</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">109,923</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">88</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">11</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">73</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">5</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">10</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">88</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">1.73%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">8.80%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">2.08%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+11.1 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+53.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">-0.5 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>MIA</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>ATL</td>
+          <td><code>ATL→MIA</code></td>
+          <td class="td-num">6,699</td>
+          <td class="td-num">1.13%</td>
+          <td class="td-num">10.28%</td>
+          <td class="td-num">+17.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/atl-to-mia/">ATL→MIA</a></td>
+        </tr>
+        <tr>
+          <td>LGA</td>
+          <td><code>LGA→MIA</code></td>
+          <td class="td-num">5,675</td>
+          <td class="td-num">2.22%</td>
+          <td class="td-num">9.71%</td>
+          <td class="td-num">+7.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lga-to-mia/">LGA→MIA</a></td>
+        </tr>
+        <tr>
+          <td>JFK</td>
+          <td><code>JFK→MIA</code></td>
+          <td class="td-num">5,473</td>
+          <td class="td-num">1.74%</td>
+          <td class="td-num">9.56%</td>
+          <td class="td-num">+8.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/jfk-to-mia/">JFK→MIA</a></td>
+        </tr>
+        <tr>
+          <td>DFW</td>
+          <td><code>DFW→MIA</code></td>
+          <td class="td-num">5,003</td>
+          <td class="td-num">1.90%</td>
+          <td class="td-num">11.57%</td>
+          <td class="td-num">+17.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dfw-to-mia/">DFW→MIA</a></td>
+        </tr>
+        <tr>
+          <td>ORD</td>
+          <td><code>ORD→MIA</code></td>
+          <td class="td-num">4,343</td>
+          <td class="td-num">1.27%</td>
+          <td class="td-num">8.72%</td>
+          <td class="td-num">+7.8 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ord-to-mia/">ORD→MIA</a></td>
+        </tr>
+        <tr>
+          <td>EWR</td>
+          <td><code>EWR→MIA</code></td>
+          <td class="td-num">4,202</td>
+          <td class="td-num">3.05%</td>
+          <td class="td-num">9.82%</td>
+          <td class="td-num">+8.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ewr-to-mia/">EWR→MIA</a></td>
+        </tr>
+        <tr>
+          <td>DCA</td>
+          <td><code>DCA→MIA</code></td>
+          <td class="td-num">3,911</td>
+          <td class="td-num">2.05%</td>
+          <td class="td-num">9.40%</td>
+          <td class="td-num">+8.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dca-to-mia/">DCA→MIA</a></td>
+        </tr>
+        <tr>
+          <td>BOS</td>
+          <td><code>BOS→MIA</code></td>
+          <td class="td-num">3,788</td>
+          <td class="td-num">1.50%</td>
+          <td class="td-num">7.72%</td>
+          <td class="td-num">+2.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bos-to-mia/">BOS→MIA</a></td>
+        </tr>
+        <tr>
+          <td>MCO</td>
+          <td><code>MCO→MIA</code></td>
+          <td class="td-num">3,746</td>
+          <td class="td-num">2.08%</td>
+          <td class="td-num">9.79%</td>
+          <td class="td-num">+12.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/mco-to-mia/">MCO→MIA</a></td>
+        </tr>
+        <tr>
+          <td>CLT</td>
+          <td><code>CLT→MIA</code></td>
+          <td class="td-num">3,629</td>
+          <td class="td-num">1.32%</td>
+          <td class="td-num">9.30%</td>
+          <td class="td-num">+13.8 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/clt-to-mia/">CLT→MIA</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      73 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      88 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-mia/">atl-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-mia/">aus-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/avl-to-mia/">avl-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bdl-to-mia/">bdl-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bhm-to-mia/">bhm-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-mia/">bna-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-mia/">bos-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-mia/">bwi-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/chs-to-mia/">chs-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-mia/">cle-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-mia/">clt-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-mia/">cmh-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-mia/">cvg-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dal-to-mia/">dal-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-mia/">dca-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-mia/">den-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-mia/">dfw-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dsm-to-mia/">dsm-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-mia/">dtw-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ege-to-mia/">ege-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-mia/">ewr-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/eyw-to-mia/">eyw-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gnv-to-mia/">gnv-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/grr-to-mia/">grr-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gso-to-mia/">gso-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gsp-to-mia/">gsp-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hou-to-mia/">hou-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hpn-to-mia/">hpn-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-mia/">iad-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-mia/">iah-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ilm-to-mia/">ilm-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-mia/">ind-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jax-to-mia/">jax-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-mia/">jfk-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-mia/">las-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-mia/">lax-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lga-to-mia/">lga-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-mia/">mci-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mco-to-mia/">mco-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mdw-to-mia/">mdw-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mem-to-mia/">mem-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-mia/">mke-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-mia/">msp-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-mia/">msy-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/okc-to-mia/">okc-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oma-to-mia/">oma-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-mia/">ord-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orf-to-mia/">orf-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-mia/">pdx-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phl-to-mia/">phl-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-mia/">phx-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-mia/">pit-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pns-to-mia/">pns-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-mia/">rdu-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ric-to-mia/">ric-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-mia/">san-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-mia/">sat-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sav-to-mia/">sav-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sdf-to-mia/">sdf-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-mia/">sea-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-mia/">sfo-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sju-to-mia/">sju-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-mia/">slc-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/smf-to-mia/">smf-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sna-to-mia/">sna-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stl-to-mia/">stl-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stt-to-mia/">stt-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stx-to-mia/">stx-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tlh-to-mia/">tlh-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tpa-to-mia/">tpa-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tul-to-mia/">tul-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tys-to-mia/">tys-to-mia</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/xna-to-mia/">xna-to-mia</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for MIA.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "MIA",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 109923,
+    "origin_routes_count": 88,
+    "operating_airlines_count": 11,
+    "route_sample_quality": {
+      "usable": 73,
+      "thin": 5,
+      "too_small": 10,
+      "total": 88
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.017349,
+    "delay_over_60min_rate": 0.087987,
+    "delay_over_180min_rate": 0.02083,
+    "avg_arrival_delay_minutes": 11.12,
+    "p90_arrival_delay_minutes": 53.0,
+    "avg_delay_recovery_minutes": -0.48
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→MIA",
+      "total_scheduled_flights": 6699,
+      "cancellation_rate": 0.011345,
+      "delay_over_60min_rate": 0.102823,
+      "avg_arrival_delay_minutes": 16.97,
+      "route_page_url": "/routes/atl-to-mia/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→MIA",
+      "total_scheduled_flights": 5675,
+      "cancellation_rate": 0.022203,
+      "delay_over_60min_rate": 0.097135,
+      "avg_arrival_delay_minutes": 7.61,
+      "route_page_url": "/routes/lga-to-mia/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→MIA",
+      "total_scheduled_flights": 5473,
+      "cancellation_rate": 0.017358,
+      "delay_over_60min_rate": 0.095575,
+      "avg_arrival_delay_minutes": 8.15,
+      "route_page_url": "/routes/jfk-to-mia/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→MIA",
+      "total_scheduled_flights": 5003,
+      "cancellation_rate": 0.018989,
+      "delay_over_60min_rate": 0.115729,
+      "avg_arrival_delay_minutes": 17.63,
+      "route_page_url": "/routes/dfw-to-mia/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→MIA",
+      "total_scheduled_flights": 4343,
+      "cancellation_rate": 0.012664,
+      "delay_over_60min_rate": 0.08722,
+      "avg_arrival_delay_minutes": 7.81,
+      "route_page_url": "/routes/ord-to-mia/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→MIA",
+      "total_scheduled_flights": 4202,
+      "cancellation_rate": 0.030462,
+      "delay_over_60min_rate": 0.098184,
+      "avg_arrival_delay_minutes": 8.06,
+      "route_page_url": "/routes/ewr-to-mia/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→MIA",
+      "total_scheduled_flights": 3911,
+      "cancellation_rate": 0.020455,
+      "delay_over_60min_rate": 0.09397,
+      "avg_arrival_delay_minutes": 8.49,
+      "route_page_url": "/routes/dca-to-mia/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→MIA",
+      "total_scheduled_flights": 3788,
+      "cancellation_rate": 0.015048,
+      "delay_over_60min_rate": 0.077191,
+      "avg_arrival_delay_minutes": 2.53,
+      "route_page_url": "/routes/bos-to-mia/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→MIA",
+      "total_scheduled_flights": 3746,
+      "cancellation_rate": 0.020822,
+      "delay_over_60min_rate": 0.097874,
+      "avg_arrival_delay_minutes": 12.48,
+      "route_page_url": "/routes/mco-to-mia/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→MIA",
+      "total_scheduled_flights": 3629,
+      "cancellation_rate": 0.013227,
+      "delay_over_60min_rate": 0.092991,
+      "avg_arrival_delay_minutes": 13.78,
+      "route_page_url": "/routes/clt-to-mia/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "atl-to-mia",
+      "url": "/routes/atl-to-mia/"
+    },
+    {
+      "route_key": "aus-to-mia",
+      "url": "/routes/aus-to-mia/"
+    },
+    {
+      "route_key": "avl-to-mia",
+      "url": "/routes/avl-to-mia/"
+    },
+    {
+      "route_key": "bdl-to-mia",
+      "url": "/routes/bdl-to-mia/"
+    },
+    {
+      "route_key": "bhm-to-mia",
+      "url": "/routes/bhm-to-mia/"
+    },
+    {
+      "route_key": "bna-to-mia",
+      "url": "/routes/bna-to-mia/"
+    },
+    {
+      "route_key": "bos-to-mia",
+      "url": "/routes/bos-to-mia/"
+    },
+    {
+      "route_key": "bwi-to-mia",
+      "url": "/routes/bwi-to-mia/"
+    },
+    {
+      "route_key": "chs-to-mia",
+      "url": "/routes/chs-to-mia/"
+    },
+    {
+      "route_key": "cle-to-mia",
+      "url": "/routes/cle-to-mia/"
+    },
+    {
+      "route_key": "clt-to-mia",
+      "url": "/routes/clt-to-mia/"
+    },
+    {
+      "route_key": "cmh-to-mia",
+      "url": "/routes/cmh-to-mia/"
+    },
+    {
+      "route_key": "cvg-to-mia",
+      "url": "/routes/cvg-to-mia/"
+    },
+    {
+      "route_key": "dal-to-mia",
+      "url": "/routes/dal-to-mia/"
+    },
+    {
+      "route_key": "dca-to-mia",
+      "url": "/routes/dca-to-mia/"
+    },
+    {
+      "route_key": "den-to-mia",
+      "url": "/routes/den-to-mia/"
+    },
+    {
+      "route_key": "dfw-to-mia",
+      "url": "/routes/dfw-to-mia/"
+    },
+    {
+      "route_key": "dsm-to-mia",
+      "url": "/routes/dsm-to-mia/"
+    },
+    {
+      "route_key": "dtw-to-mia",
+      "url": "/routes/dtw-to-mia/"
+    },
+    {
+      "route_key": "ege-to-mia",
+      "url": "/routes/ege-to-mia/"
+    },
+    {
+      "route_key": "ewr-to-mia",
+      "url": "/routes/ewr-to-mia/"
+    },
+    {
+      "route_key": "eyw-to-mia",
+      "url": "/routes/eyw-to-mia/"
+    },
+    {
+      "route_key": "gnv-to-mia",
+      "url": "/routes/gnv-to-mia/"
+    },
+    {
+      "route_key": "grr-to-mia",
+      "url": "/routes/grr-to-mia/"
+    },
+    {
+      "route_key": "gso-to-mia",
+      "url": "/routes/gso-to-mia/"
+    },
+    {
+      "route_key": "gsp-to-mia",
+      "url": "/routes/gsp-to-mia/"
+    },
+    {
+      "route_key": "hou-to-mia",
+      "url": "/routes/hou-to-mia/"
+    },
+    {
+      "route_key": "hpn-to-mia",
+      "url": "/routes/hpn-to-mia/"
+    },
+    {
+      "route_key": "iad-to-mia",
+      "url": "/routes/iad-to-mia/"
+    },
+    {
+      "route_key": "iah-to-mia",
+      "url": "/routes/iah-to-mia/"
+    },
+    {
+      "route_key": "ilm-to-mia",
+      "url": "/routes/ilm-to-mia/"
+    },
+    {
+      "route_key": "ind-to-mia",
+      "url": "/routes/ind-to-mia/"
+    },
+    {
+      "route_key": "jax-to-mia",
+      "url": "/routes/jax-to-mia/"
+    },
+    {
+      "route_key": "jfk-to-mia",
+      "url": "/routes/jfk-to-mia/"
+    },
+    {
+      "route_key": "las-to-mia",
+      "url": "/routes/las-to-mia/"
+    },
+    {
+      "route_key": "lax-to-mia",
+      "url": "/routes/lax-to-mia/"
+    },
+    {
+      "route_key": "lga-to-mia",
+      "url": "/routes/lga-to-mia/"
+    },
+    {
+      "route_key": "mci-to-mia",
+      "url": "/routes/mci-to-mia/"
+    },
+    {
+      "route_key": "mco-to-mia",
+      "url": "/routes/mco-to-mia/"
+    },
+    {
+      "route_key": "mdw-to-mia",
+      "url": "/routes/mdw-to-mia/"
+    },
+    {
+      "route_key": "mem-to-mia",
+      "url": "/routes/mem-to-mia/"
+    },
+    {
+      "route_key": "mke-to-mia",
+      "url": "/routes/mke-to-mia/"
+    },
+    {
+      "route_key": "msp-to-mia",
+      "url": "/routes/msp-to-mia/"
+    },
+    {
+      "route_key": "msy-to-mia",
+      "url": "/routes/msy-to-mia/"
+    },
+    {
+      "route_key": "okc-to-mia",
+      "url": "/routes/okc-to-mia/"
+    },
+    {
+      "route_key": "oma-to-mia",
+      "url": "/routes/oma-to-mia/"
+    },
+    {
+      "route_key": "ord-to-mia",
+      "url": "/routes/ord-to-mia/"
+    },
+    {
+      "route_key": "orf-to-mia",
+      "url": "/routes/orf-to-mia/"
+    },
+    {
+      "route_key": "pdx-to-mia",
+      "url": "/routes/pdx-to-mia/"
+    },
+    {
+      "route_key": "phl-to-mia",
+      "url": "/routes/phl-to-mia/"
+    },
+    {
+      "route_key": "phx-to-mia",
+      "url": "/routes/phx-to-mia/"
+    },
+    {
+      "route_key": "pit-to-mia",
+      "url": "/routes/pit-to-mia/"
+    },
+    {
+      "route_key": "pns-to-mia",
+      "url": "/routes/pns-to-mia/"
+    },
+    {
+      "route_key": "rdu-to-mia",
+      "url": "/routes/rdu-to-mia/"
+    },
+    {
+      "route_key": "ric-to-mia",
+      "url": "/routes/ric-to-mia/"
+    },
+    {
+      "route_key": "san-to-mia",
+      "url": "/routes/san-to-mia/"
+    },
+    {
+      "route_key": "sat-to-mia",
+      "url": "/routes/sat-to-mia/"
+    },
+    {
+      "route_key": "sav-to-mia",
+      "url": "/routes/sav-to-mia/"
+    },
+    {
+      "route_key": "sdf-to-mia",
+      "url": "/routes/sdf-to-mia/"
+    },
+    {
+      "route_key": "sea-to-mia",
+      "url": "/routes/sea-to-mia/"
+    },
+    {
+      "route_key": "sfo-to-mia",
+      "url": "/routes/sfo-to-mia/"
+    },
+    {
+      "route_key": "sju-to-mia",
+      "url": "/routes/sju-to-mia/"
+    },
+    {
+      "route_key": "slc-to-mia",
+      "url": "/routes/slc-to-mia/"
+    },
+    {
+      "route_key": "smf-to-mia",
+      "url": "/routes/smf-to-mia/"
+    },
+    {
+      "route_key": "sna-to-mia",
+      "url": "/routes/sna-to-mia/"
+    },
+    {
+      "route_key": "stl-to-mia",
+      "url": "/routes/stl-to-mia/"
+    },
+    {
+      "route_key": "stt-to-mia",
+      "url": "/routes/stt-to-mia/"
+    },
+    {
+      "route_key": "stx-to-mia",
+      "url": "/routes/stx-to-mia/"
+    },
+    {
+      "route_key": "tlh-to-mia",
+      "url": "/routes/tlh-to-mia/"
+    },
+    {
+      "route_key": "tpa-to-mia",
+      "url": "/routes/tpa-to-mia/"
+    },
+    {
+      "route_key": "tul-to-mia",
+      "url": "/routes/tul-to-mia/"
+    },
+    {
+      "route_key": "tys-to-mia",
+      "url": "/routes/tys-to-mia/"
+    },
+    {
+      "route_key": "xna-to-mia",
+      "url": "/routes/xna-to-mia/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "MIA",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 109923,
+    "origin_routes": 88,
+    "usable_routes": 73,
+    "operating_airlines": 11,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/MIA/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "MIA Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for MIA (Miami International Airport). 109,923 flights analyzed across 88 origin routes, 11 airlines. 73 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "MIA",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "MIA airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

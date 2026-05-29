@@ -1,0 +1,525 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "LAX",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 194044,
+    "origin_routes_count": 109,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 85,
+      "thin": 8,
+      "too_small": 16,
+      "total": 109
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.008694,
+    "delay_over_60min_rate": 0.061407,
+    "delay_over_180min_rate": 0.012243,
+    "avg_arrival_delay_minutes": 4.55,
+    "p90_arrival_delay_minutes": 37.0,
+    "avg_delay_recovery_minutes": 0.56
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "SFO",
+      "route": "SFO→LAX",
+      "total_scheduled_flights": 11499,
+      "cancellation_rate": 0.010088,
+      "delay_over_60min_rate": 0.081086,
+      "avg_arrival_delay_minutes": 8.94,
+      "route_page_url": "/routes/sfo-to-lax/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→LAX",
+      "total_scheduled_flights": 9915,
+      "cancellation_rate": 0.003933,
+      "delay_over_60min_rate": 0.060247,
+      "avg_arrival_delay_minutes": -2.95,
+      "route_page_url": "/routes/jfk-to-lax/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→LAX",
+      "total_scheduled_flights": 9559,
+      "cancellation_rate": 0.007741,
+      "delay_over_60min_rate": 0.070216,
+      "avg_arrival_delay_minutes": 7.34,
+      "route_page_url": "/routes/las-to-lax/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→LAX",
+      "total_scheduled_flights": 7754,
+      "cancellation_rate": 0.011865,
+      "delay_over_60min_rate": 0.064474,
+      "avg_arrival_delay_minutes": 5.74,
+      "route_page_url": "/routes/den-to-lax/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→LAX",
+      "total_scheduled_flights": 7380,
+      "cancellation_rate": 0.009892,
+      "delay_over_60min_rate": 0.039277,
+      "avg_arrival_delay_minutes": 1.92,
+      "route_page_url": "/routes/sea-to-lax/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→LAX",
+      "total_scheduled_flights": 7145,
+      "cancellation_rate": 0.003219,
+      "delay_over_60min_rate": 0.049846,
+      "avg_arrival_delay_minutes": 4.61,
+      "route_page_url": "/routes/phx-to-lax/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→LAX",
+      "total_scheduled_flights": 7013,
+      "cancellation_rate": 0.011693,
+      "delay_over_60min_rate": 0.094647,
+      "avg_arrival_delay_minutes": 13.58,
+      "route_page_url": "/routes/dfw-to-lax/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→LAX",
+      "total_scheduled_flights": 6652,
+      "cancellation_rate": 0.012628,
+      "delay_over_60min_rate": 0.08511,
+      "avg_arrival_delay_minutes": 9.1,
+      "route_page_url": "/routes/ord-to-lax/"
+    },
+    {
+      "origin": "SJC",
+      "route": "SJC→LAX",
+      "total_scheduled_flights": 5727,
+      "cancellation_rate": 0.002445,
+      "delay_over_60min_rate": 0.037984,
+      "avg_arrival_delay_minutes": -0.53,
+      "route_page_url": "/routes/sjc-to-lax/"
+    },
+    {
+      "origin": "HNL",
+      "route": "HNL→LAX",
+      "total_scheduled_flights": 5609,
+      "cancellation_rate": 0.00731,
+      "delay_over_60min_rate": 0.043463,
+      "avg_arrival_delay_minutes": -0.23,
+      "route_page_url": "/routes/hnl-to-lax/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-lax",
+      "url": "/routes/abq-to-lax/"
+    },
+    {
+      "route_key": "acv-to-lax",
+      "url": "/routes/acv-to-lax/"
+    },
+    {
+      "route_key": "anc-to-lax",
+      "url": "/routes/anc-to-lax/"
+    },
+    {
+      "route_key": "ase-to-lax",
+      "url": "/routes/ase-to-lax/"
+    },
+    {
+      "route_key": "atl-to-lax",
+      "url": "/routes/atl-to-lax/"
+    },
+    {
+      "route_key": "aus-to-lax",
+      "url": "/routes/aus-to-lax/"
+    },
+    {
+      "route_key": "bdl-to-lax",
+      "url": "/routes/bdl-to-lax/"
+    },
+    {
+      "route_key": "bli-to-lax",
+      "url": "/routes/bli-to-lax/"
+    },
+    {
+      "route_key": "bna-to-lax",
+      "url": "/routes/bna-to-lax/"
+    },
+    {
+      "route_key": "boi-to-lax",
+      "url": "/routes/boi-to-lax/"
+    },
+    {
+      "route_key": "bos-to-lax",
+      "url": "/routes/bos-to-lax/"
+    },
+    {
+      "route_key": "buf-to-lax",
+      "url": "/routes/buf-to-lax/"
+    },
+    {
+      "route_key": "bwi-to-lax",
+      "url": "/routes/bwi-to-lax/"
+    },
+    {
+      "route_key": "bzn-to-lax",
+      "url": "/routes/bzn-to-lax/"
+    },
+    {
+      "route_key": "cle-to-lax",
+      "url": "/routes/cle-to-lax/"
+    },
+    {
+      "route_key": "clt-to-lax",
+      "url": "/routes/clt-to-lax/"
+    },
+    {
+      "route_key": "cmh-to-lax",
+      "url": "/routes/cmh-to-lax/"
+    },
+    {
+      "route_key": "cvg-to-lax",
+      "url": "/routes/cvg-to-lax/"
+    },
+    {
+      "route_key": "dal-to-lax",
+      "url": "/routes/dal-to-lax/"
+    },
+    {
+      "route_key": "dca-to-lax",
+      "url": "/routes/dca-to-lax/"
+    },
+    {
+      "route_key": "den-to-lax",
+      "url": "/routes/den-to-lax/"
+    },
+    {
+      "route_key": "dfw-to-lax",
+      "url": "/routes/dfw-to-lax/"
+    },
+    {
+      "route_key": "dtw-to-lax",
+      "url": "/routes/dtw-to-lax/"
+    },
+    {
+      "route_key": "ege-to-lax",
+      "url": "/routes/ege-to-lax/"
+    },
+    {
+      "route_key": "elp-to-lax",
+      "url": "/routes/elp-to-lax/"
+    },
+    {
+      "route_key": "eug-to-lax",
+      "url": "/routes/eug-to-lax/"
+    },
+    {
+      "route_key": "ewr-to-lax",
+      "url": "/routes/ewr-to-lax/"
+    },
+    {
+      "route_key": "fat-to-lax",
+      "url": "/routes/fat-to-lax/"
+    },
+    {
+      "route_key": "fca-to-lax",
+      "url": "/routes/fca-to-lax/"
+    },
+    {
+      "route_key": "fll-to-lax",
+      "url": "/routes/fll-to-lax/"
+    },
+    {
+      "route_key": "geg-to-lax",
+      "url": "/routes/geg-to-lax/"
+    },
+    {
+      "route_key": "hnl-to-lax",
+      "url": "/routes/hnl-to-lax/"
+    },
+    {
+      "route_key": "hou-to-lax",
+      "url": "/routes/hou-to-lax/"
+    },
+    {
+      "route_key": "iad-to-lax",
+      "url": "/routes/iad-to-lax/"
+    },
+    {
+      "route_key": "iah-to-lax",
+      "url": "/routes/iah-to-lax/"
+    },
+    {
+      "route_key": "ind-to-lax",
+      "url": "/routes/ind-to-lax/"
+    },
+    {
+      "route_key": "jac-to-lax",
+      "url": "/routes/jac-to-lax/"
+    },
+    {
+      "route_key": "jfk-to-lax",
+      "url": "/routes/jfk-to-lax/"
+    },
+    {
+      "route_key": "koa-to-lax",
+      "url": "/routes/koa-to-lax/"
+    },
+    {
+      "route_key": "las-to-lax",
+      "url": "/routes/las-to-lax/"
+    },
+    {
+      "route_key": "lih-to-lax",
+      "url": "/routes/lih-to-lax/"
+    },
+    {
+      "route_key": "mci-to-lax",
+      "url": "/routes/mci-to-lax/"
+    },
+    {
+      "route_key": "mco-to-lax",
+      "url": "/routes/mco-to-lax/"
+    },
+    {
+      "route_key": "mdw-to-lax",
+      "url": "/routes/mdw-to-lax/"
+    },
+    {
+      "route_key": "mem-to-lax",
+      "url": "/routes/mem-to-lax/"
+    },
+    {
+      "route_key": "mia-to-lax",
+      "url": "/routes/mia-to-lax/"
+    },
+    {
+      "route_key": "mry-to-lax",
+      "url": "/routes/mry-to-lax/"
+    },
+    {
+      "route_key": "msp-to-lax",
+      "url": "/routes/msp-to-lax/"
+    },
+    {
+      "route_key": "msy-to-lax",
+      "url": "/routes/msy-to-lax/"
+    },
+    {
+      "route_key": "oak-to-lax",
+      "url": "/routes/oak-to-lax/"
+    },
+    {
+      "route_key": "ogg-to-lax",
+      "url": "/routes/ogg-to-lax/"
+    },
+    {
+      "route_key": "okc-to-lax",
+      "url": "/routes/okc-to-lax/"
+    },
+    {
+      "route_key": "oma-to-lax",
+      "url": "/routes/oma-to-lax/"
+    },
+    {
+      "route_key": "ord-to-lax",
+      "url": "/routes/ord-to-lax/"
+    },
+    {
+      "route_key": "pae-to-lax",
+      "url": "/routes/pae-to-lax/"
+    },
+    {
+      "route_key": "pbi-to-lax",
+      "url": "/routes/pbi-to-lax/"
+    },
+    {
+      "route_key": "pdx-to-lax",
+      "url": "/routes/pdx-to-lax/"
+    },
+    {
+      "route_key": "phl-to-lax",
+      "url": "/routes/phl-to-lax/"
+    },
+    {
+      "route_key": "phx-to-lax",
+      "url": "/routes/phx-to-lax/"
+    },
+    {
+      "route_key": "pit-to-lax",
+      "url": "/routes/pit-to-lax/"
+    },
+    {
+      "route_key": "prc-to-lax",
+      "url": "/routes/prc-to-lax/"
+    },
+    {
+      "route_key": "psc-to-lax",
+      "url": "/routes/psc-to-lax/"
+    },
+    {
+      "route_key": "psp-to-lax",
+      "url": "/routes/psp-to-lax/"
+    },
+    {
+      "route_key": "rdd-to-lax",
+      "url": "/routes/rdd-to-lax/"
+    },
+    {
+      "route_key": "rdm-to-lax",
+      "url": "/routes/rdm-to-lax/"
+    },
+    {
+      "route_key": "rdu-to-lax",
+      "url": "/routes/rdu-to-lax/"
+    },
+    {
+      "route_key": "rno-to-lax",
+      "url": "/routes/rno-to-lax/"
+    },
+    {
+      "route_key": "san-to-lax",
+      "url": "/routes/san-to-lax/"
+    },
+    {
+      "route_key": "sat-to-lax",
+      "url": "/routes/sat-to-lax/"
+    },
+    {
+      "route_key": "sba-to-lax",
+      "url": "/routes/sba-to-lax/"
+    },
+    {
+      "route_key": "sbp-to-lax",
+      "url": "/routes/sbp-to-lax/"
+    },
+    {
+      "route_key": "sdf-to-lax",
+      "url": "/routes/sdf-to-lax/"
+    },
+    {
+      "route_key": "sea-to-lax",
+      "url": "/routes/sea-to-lax/"
+    },
+    {
+      "route_key": "sfo-to-lax",
+      "url": "/routes/sfo-to-lax/"
+    },
+    {
+      "route_key": "sgf-to-lax",
+      "url": "/routes/sgf-to-lax/"
+    },
+    {
+      "route_key": "sjc-to-lax",
+      "url": "/routes/sjc-to-lax/"
+    },
+    {
+      "route_key": "slc-to-lax",
+      "url": "/routes/slc-to-lax/"
+    },
+    {
+      "route_key": "smf-to-lax",
+      "url": "/routes/smf-to-lax/"
+    },
+    {
+      "route_key": "stl-to-lax",
+      "url": "/routes/stl-to-lax/"
+    },
+    {
+      "route_key": "sts-to-lax",
+      "url": "/routes/sts-to-lax/"
+    },
+    {
+      "route_key": "sun-to-lax",
+      "url": "/routes/sun-to-lax/"
+    },
+    {
+      "route_key": "tpa-to-lax",
+      "url": "/routes/tpa-to-lax/"
+    },
+    {
+      "route_key": "tul-to-lax",
+      "url": "/routes/tul-to-lax/"
+    },
+    {
+      "route_key": "tus-to-lax",
+      "url": "/routes/tus-to-lax/"
+    },
+    {
+      "route_key": "xna-to-lax",
+      "url": "/routes/xna-to-lax/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "LAX",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 194044,
+    "origin_routes": 109,
+    "usable_routes": 85,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/LAX/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

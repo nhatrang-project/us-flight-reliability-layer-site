@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JFK Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for JFK (John F. Kennedy International Airport). 123,334 flights analyzed across 73 origin routes, 9 airlines. 68 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/JFK/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="JFK">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      JFK
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">JFK</div>
+      <div class="header-name">John F. Kennedy International Airport</div>
+      <div class="header-title">JFK Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-hub">Hub Airport (hub14)</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>JFK</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>JFK</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">123,334</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">73</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">9</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">68</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">3</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">2</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">73</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">1.91%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">8.44%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">1.94%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+8.2 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+50.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">+0.1 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>JFK</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>LAX</td>
+          <td><code>LAX→JFK</code></td>
+          <td class="td-num">9,915</td>
+          <td class="td-num">0.44%</td>
+          <td class="td-num">6.91%</td>
+          <td class="td-num">+3.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lax-to-jfk/">LAX→JFK</a></td>
+        </tr>
+        <tr>
+          <td>SFO</td>
+          <td><code>SFO→JFK</code></td>
+          <td class="td-num">6,459</td>
+          <td class="td-num">1.11%</td>
+          <td class="td-num">6.95%</td>
+          <td class="td-num">+3.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sfo-to-jfk/">SFO→JFK</a></td>
+        </tr>
+        <tr>
+          <td>BOS</td>
+          <td><code>BOS→JFK</code></td>
+          <td class="td-num">5,577</td>
+          <td class="td-num">1.94%</td>
+          <td class="td-num">7.37%</td>
+          <td class="td-num">+5.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bos-to-jfk/">BOS→JFK</a></td>
+        </tr>
+        <tr>
+          <td>MIA</td>
+          <td><code>MIA→JFK</code></td>
+          <td class="td-num">5,471</td>
+          <td class="td-num">1.81%</td>
+          <td class="td-num">12.40%</td>
+          <td class="td-num">+15.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/mia-to-jfk/">MIA→JFK</a></td>
+        </tr>
+        <tr>
+          <td>MCO</td>
+          <td><code>MCO→JFK</code></td>
+          <td class="td-num">4,571</td>
+          <td class="td-num">2.19%</td>
+          <td class="td-num">11.05%</td>
+          <td class="td-num">+14.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/mco-to-jfk/">MCO→JFK</a></td>
+        </tr>
+        <tr>
+          <td>RDU</td>
+          <td><code>RDU→JFK</code></td>
+          <td class="td-num">3,947</td>
+          <td class="td-num">2.71%</td>
+          <td class="td-num">8.10%</td>
+          <td class="td-num">+8.0 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/rdu-to-jfk/">RDU→JFK</a></td>
+        </tr>
+        <tr>
+          <td>FLL</td>
+          <td><code>FLL→JFK</code></td>
+          <td class="td-num">3,909</td>
+          <td class="td-num">2.15%</td>
+          <td class="td-num">10.72%</td>
+          <td class="td-num">+13.7 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/fll-to-jfk/">FLL→JFK</a></td>
+        </tr>
+        <tr>
+          <td>SJU</td>
+          <td><code>SJU→JFK</code></td>
+          <td class="td-num">3,724</td>
+          <td class="td-num">0.91%</td>
+          <td class="td-num">7.99%</td>
+          <td class="td-num">+7.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sju-to-jfk/">SJU→JFK</a></td>
+        </tr>
+        <tr>
+          <td>CLT</td>
+          <td><code>CLT→JFK</code></td>
+          <td class="td-num">3,596</td>
+          <td class="td-num">2.34%</td>
+          <td class="td-num">9.97%</td>
+          <td class="td-num">+14.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/clt-to-jfk/">CLT→JFK</a></td>
+        </tr>
+        <tr>
+          <td>ATL</td>
+          <td><code>ATL→JFK</code></td>
+          <td class="td-num">3,538</td>
+          <td class="td-num">0.62%</td>
+          <td class="td-num">8.16%</td>
+          <td class="td-num">+10.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/atl-to-jfk/">ATL→JFK</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      68 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      73 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/abq-to-jfk/">abq-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ack-to-jfk/">ack-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-jfk/">atl-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-jfk/">aus-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bgr-to-jfk/">bgr-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-jfk/">bna-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-jfk/">bos-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bqn-to-jfk/">bqn-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/btv-to-jfk/">btv-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/buf-to-jfk/">buf-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bur-to-jfk/">bur-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-jfk/">bwi-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/chs-to-jfk/">chs-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-jfk/">cle-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-jfk/">clt-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-jfk/">cmh-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-jfk/">cvg-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-jfk/">dca-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-jfk/">den-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-jfk/">dfw-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-jfk/">dtw-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ege-to-jfk/">ege-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fll-to-jfk/">fll-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hnl-to-jfk/">hnl-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hya-to-jfk/">hya-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-jfk/">iad-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-jfk/">iah-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-jfk/">ind-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ith-to-jfk/">ith-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jax-to-jfk/">jax-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-jfk/">las-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-jfk/">lax-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-jfk/">mci-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mco-to-jfk/">mco-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mia-to-jfk/">mia-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-jfk/">mke-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-jfk/">msp-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-jfk/">msy-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mvy-to-jfk/">mvy-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ont-to-jfk/">ont-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-jfk/">ord-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orf-to-jfk/">orf-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orh-to-jfk/">orh-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pbi-to-jfk/">pbi-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-jfk/">pdx-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-jfk/">phx-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-jfk/">pit-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pse-to-jfk/">pse-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/psp-to-jfk/">psp-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pwm-to-jfk/">pwm-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-jfk/">rdu-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ric-to-jfk/">ric-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rno-to-jfk/">rno-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/roc-to-jfk/">roc-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rsw-to-jfk/">rsw-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-jfk/">san-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-jfk/">sat-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sav-to-jfk/">sav-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-jfk/">sea-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-jfk/">sfo-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sju-to-jfk/">sju-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-jfk/">slc-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/smf-to-jfk/">smf-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sna-to-jfk/">sna-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/srq-to-jfk/">srq-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stt-to-jfk/">stt-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/syr-to-jfk/">syr-to-jfk</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tpa-to-jfk/">tpa-to-jfk</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for JFK.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "JFK",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 123334,
+    "origin_routes_count": 73,
+    "operating_airlines_count": 9,
+    "route_sample_quality": {
+      "usable": 68,
+      "thin": 3,
+      "too_small": 2,
+      "total": 73
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.019127,
+    "delay_over_60min_rate": 0.084447,
+    "delay_over_180min_rate": 0.01945,
+    "avg_arrival_delay_minutes": 8.2,
+    "p90_arrival_delay_minutes": 50.0,
+    "avg_delay_recovery_minutes": 0.08
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LAX",
+      "route": "LAX→JFK",
+      "total_scheduled_flights": 9915,
+      "cancellation_rate": 0.004438,
+      "delay_over_60min_rate": 0.069091,
+      "avg_arrival_delay_minutes": 3.28,
+      "route_page_url": "/routes/lax-to-jfk/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→JFK",
+      "total_scheduled_flights": 6459,
+      "cancellation_rate": 0.011147,
+      "delay_over_60min_rate": 0.069516,
+      "avg_arrival_delay_minutes": 3.93,
+      "route_page_url": "/routes/sfo-to-jfk/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→JFK",
+      "total_scheduled_flights": 5577,
+      "cancellation_rate": 0.019365,
+      "delay_over_60min_rate": 0.073688,
+      "avg_arrival_delay_minutes": 5.08,
+      "route_page_url": "/routes/bos-to-jfk/"
+    },
+    {
+      "origin": "MIA",
+      "route": "MIA→JFK",
+      "total_scheduled_flights": 5471,
+      "cancellation_rate": 0.018095,
+      "delay_over_60min_rate": 0.123976,
+      "avg_arrival_delay_minutes": 15.25,
+      "route_page_url": "/routes/mia-to-jfk/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→JFK",
+      "total_scheduled_flights": 4571,
+      "cancellation_rate": 0.021877,
+      "delay_over_60min_rate": 0.11049,
+      "avg_arrival_delay_minutes": 14.63,
+      "route_page_url": "/routes/mco-to-jfk/"
+    },
+    {
+      "origin": "RDU",
+      "route": "RDU→JFK",
+      "total_scheduled_flights": 3947,
+      "cancellation_rate": 0.027109,
+      "delay_over_60min_rate": 0.08099,
+      "avg_arrival_delay_minutes": 7.99,
+      "route_page_url": "/routes/rdu-to-jfk/"
+    },
+    {
+      "origin": "FLL",
+      "route": "FLL→JFK",
+      "total_scheduled_flights": 3909,
+      "cancellation_rate": 0.021489,
+      "delay_over_60min_rate": 0.10719,
+      "avg_arrival_delay_minutes": 13.68,
+      "route_page_url": "/routes/fll-to-jfk/"
+    },
+    {
+      "origin": "SJU",
+      "route": "SJU→JFK",
+      "total_scheduled_flights": 3724,
+      "cancellation_rate": 0.00913,
+      "delay_over_60min_rate": 0.079946,
+      "avg_arrival_delay_minutes": 7.6,
+      "route_page_url": "/routes/sju-to-jfk/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→JFK",
+      "total_scheduled_flights": 3596,
+      "cancellation_rate": 0.023359,
+      "delay_over_60min_rate": 0.099658,
+      "avg_arrival_delay_minutes": 14.64,
+      "route_page_url": "/routes/clt-to-jfk/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→JFK",
+      "total_scheduled_flights": 3538,
+      "cancellation_rate": 0.006218,
+      "delay_over_60min_rate": 0.081627,
+      "avg_arrival_delay_minutes": 10.57,
+      "route_page_url": "/routes/atl-to-jfk/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-jfk",
+      "url": "/routes/abq-to-jfk/"
+    },
+    {
+      "route_key": "ack-to-jfk",
+      "url": "/routes/ack-to-jfk/"
+    },
+    {
+      "route_key": "atl-to-jfk",
+      "url": "/routes/atl-to-jfk/"
+    },
+    {
+      "route_key": "aus-to-jfk",
+      "url": "/routes/aus-to-jfk/"
+    },
+    {
+      "route_key": "bgr-to-jfk",
+      "url": "/routes/bgr-to-jfk/"
+    },
+    {
+      "route_key": "bna-to-jfk",
+      "url": "/routes/bna-to-jfk/"
+    },
+    {
+      "route_key": "bos-to-jfk",
+      "url": "/routes/bos-to-jfk/"
+    },
+    {
+      "route_key": "bqn-to-jfk",
+      "url": "/routes/bqn-to-jfk/"
+    },
+    {
+      "route_key": "btv-to-jfk",
+      "url": "/routes/btv-to-jfk/"
+    },
+    {
+      "route_key": "buf-to-jfk",
+      "url": "/routes/buf-to-jfk/"
+    },
+    {
+      "route_key": "bur-to-jfk",
+      "url": "/routes/bur-to-jfk/"
+    },
+    {
+      "route_key": "bwi-to-jfk",
+      "url": "/routes/bwi-to-jfk/"
+    },
+    {
+      "route_key": "chs-to-jfk",
+      "url": "/routes/chs-to-jfk/"
+    },
+    {
+      "route_key": "cle-to-jfk",
+      "url": "/routes/cle-to-jfk/"
+    },
+    {
+      "route_key": "clt-to-jfk",
+      "url": "/routes/clt-to-jfk/"
+    },
+    {
+      "route_key": "cmh-to-jfk",
+      "url": "/routes/cmh-to-jfk/"
+    },
+    {
+      "route_key": "cvg-to-jfk",
+      "url": "/routes/cvg-to-jfk/"
+    },
+    {
+      "route_key": "dca-to-jfk",
+      "url": "/routes/dca-to-jfk/"
+    },
+    {
+      "route_key": "den-to-jfk",
+      "url": "/routes/den-to-jfk/"
+    },
+    {
+      "route_key": "dfw-to-jfk",
+      "url": "/routes/dfw-to-jfk/"
+    },
+    {
+      "route_key": "dtw-to-jfk",
+      "url": "/routes/dtw-to-jfk/"
+    },
+    {
+      "route_key": "ege-to-jfk",
+      "url": "/routes/ege-to-jfk/"
+    },
+    {
+      "route_key": "fll-to-jfk",
+      "url": "/routes/fll-to-jfk/"
+    },
+    {
+      "route_key": "hnl-to-jfk",
+      "url": "/routes/hnl-to-jfk/"
+    },
+    {
+      "route_key": "hya-to-jfk",
+      "url": "/routes/hya-to-jfk/"
+    },
+    {
+      "route_key": "iad-to-jfk",
+      "url": "/routes/iad-to-jfk/"
+    },
+    {
+      "route_key": "iah-to-jfk",
+      "url": "/routes/iah-to-jfk/"
+    },
+    {
+      "route_key": "ind-to-jfk",
+      "url": "/routes/ind-to-jfk/"
+    },
+    {
+      "route_key": "ith-to-jfk",
+      "url": "/routes/ith-to-jfk/"
+    },
+    {
+      "route_key": "jax-to-jfk",
+      "url": "/routes/jax-to-jfk/"
+    },
+    {
+      "route_key": "las-to-jfk",
+      "url": "/routes/las-to-jfk/"
+    },
+    {
+      "route_key": "lax-to-jfk",
+      "url": "/routes/lax-to-jfk/"
+    },
+    {
+      "route_key": "mci-to-jfk",
+      "url": "/routes/mci-to-jfk/"
+    },
+    {
+      "route_key": "mco-to-jfk",
+      "url": "/routes/mco-to-jfk/"
+    },
+    {
+      "route_key": "mia-to-jfk",
+      "url": "/routes/mia-to-jfk/"
+    },
+    {
+      "route_key": "mke-to-jfk",
+      "url": "/routes/mke-to-jfk/"
+    },
+    {
+      "route_key": "msp-to-jfk",
+      "url": "/routes/msp-to-jfk/"
+    },
+    {
+      "route_key": "msy-to-jfk",
+      "url": "/routes/msy-to-jfk/"
+    },
+    {
+      "route_key": "mvy-to-jfk",
+      "url": "/routes/mvy-to-jfk/"
+    },
+    {
+      "route_key": "ont-to-jfk",
+      "url": "/routes/ont-to-jfk/"
+    },
+    {
+      "route_key": "ord-to-jfk",
+      "url": "/routes/ord-to-jfk/"
+    },
+    {
+      "route_key": "orf-to-jfk",
+      "url": "/routes/orf-to-jfk/"
+    },
+    {
+      "route_key": "orh-to-jfk",
+      "url": "/routes/orh-to-jfk/"
+    },
+    {
+      "route_key": "pbi-to-jfk",
+      "url": "/routes/pbi-to-jfk/"
+    },
+    {
+      "route_key": "pdx-to-jfk",
+      "url": "/routes/pdx-to-jfk/"
+    },
+    {
+      "route_key": "phx-to-jfk",
+      "url": "/routes/phx-to-jfk/"
+    },
+    {
+      "route_key": "pit-to-jfk",
+      "url": "/routes/pit-to-jfk/"
+    },
+    {
+      "route_key": "pse-to-jfk",
+      "url": "/routes/pse-to-jfk/"
+    },
+    {
+      "route_key": "psp-to-jfk",
+      "url": "/routes/psp-to-jfk/"
+    },
+    {
+      "route_key": "pwm-to-jfk",
+      "url": "/routes/pwm-to-jfk/"
+    },
+    {
+      "route_key": "rdu-to-jfk",
+      "url": "/routes/rdu-to-jfk/"
+    },
+    {
+      "route_key": "ric-to-jfk",
+      "url": "/routes/ric-to-jfk/"
+    },
+    {
+      "route_key": "rno-to-jfk",
+      "url": "/routes/rno-to-jfk/"
+    },
+    {
+      "route_key": "roc-to-jfk",
+      "url": "/routes/roc-to-jfk/"
+    },
+    {
+      "route_key": "rsw-to-jfk",
+      "url": "/routes/rsw-to-jfk/"
+    },
+    {
+      "route_key": "san-to-jfk",
+      "url": "/routes/san-to-jfk/"
+    },
+    {
+      "route_key": "sat-to-jfk",
+      "url": "/routes/sat-to-jfk/"
+    },
+    {
+      "route_key": "sav-to-jfk",
+      "url": "/routes/sav-to-jfk/"
+    },
+    {
+      "route_key": "sea-to-jfk",
+      "url": "/routes/sea-to-jfk/"
+    },
+    {
+      "route_key": "sfo-to-jfk",
+      "url": "/routes/sfo-to-jfk/"
+    },
+    {
+      "route_key": "sju-to-jfk",
+      "url": "/routes/sju-to-jfk/"
+    },
+    {
+      "route_key": "slc-to-jfk",
+      "url": "/routes/slc-to-jfk/"
+    },
+    {
+      "route_key": "smf-to-jfk",
+      "url": "/routes/smf-to-jfk/"
+    },
+    {
+      "route_key": "sna-to-jfk",
+      "url": "/routes/sna-to-jfk/"
+    },
+    {
+      "route_key": "srq-to-jfk",
+      "url": "/routes/srq-to-jfk/"
+    },
+    {
+      "route_key": "stt-to-jfk",
+      "url": "/routes/stt-to-jfk/"
+    },
+    {
+      "route_key": "syr-to-jfk",
+      "url": "/routes/syr-to-jfk/"
+    },
+    {
+      "route_key": "tpa-to-jfk",
+      "url": "/routes/tpa-to-jfk/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "JFK",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 123334,
+    "origin_routes": 73,
+    "usable_routes": 68,
+    "operating_airlines": 9,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/JFK/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "JFK Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for JFK (John F. Kennedy International Airport). 123,334 flights analyzed across 73 origin routes, 9 airlines. 68 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "JFK",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "JFK airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

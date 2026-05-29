@@ -1,0 +1,529 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "SLC",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 113239,
+    "origin_routes_count": 91,
+    "operating_airlines_count": 11,
+    "route_sample_quality": {
+      "usable": 86,
+      "thin": 2,
+      "too_small": 3,
+      "total": 91
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.006279,
+    "delay_over_60min_rate": 0.052885,
+    "delay_over_180min_rate": 0.01229,
+    "avg_arrival_delay_minutes": 1.91,
+    "p90_arrival_delay_minutes": 29.0,
+    "avg_delay_recovery_minutes": 0.75
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "DEN",
+      "route": "DEN→SLC",
+      "total_scheduled_flights": 8103,
+      "cancellation_rate": 0.007405,
+      "delay_over_60min_rate": 0.070745,
+      "avg_arrival_delay_minutes": 6.73,
+      "route_page_url": "/routes/den-to-slc/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→SLC",
+      "total_scheduled_flights": 5870,
+      "cancellation_rate": 0.002896,
+      "delay_over_60min_rate": 0.039467,
+      "avg_arrival_delay_minutes": 1.19,
+      "route_page_url": "/routes/phx-to-slc/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→SLC",
+      "total_scheduled_flights": 4456,
+      "cancellation_rate": 0.004039,
+      "delay_over_60min_rate": 0.038306,
+      "avg_arrival_delay_minutes": -2.2,
+      "route_page_url": "/routes/lax-to-slc/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→SLC",
+      "total_scheduled_flights": 4428,
+      "cancellation_rate": 0.005872,
+      "delay_over_60min_rate": 0.057928,
+      "avg_arrival_delay_minutes": 3.07,
+      "route_page_url": "/routes/las-to-slc/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→SLC",
+      "total_scheduled_flights": 4001,
+      "cancellation_rate": 0.013997,
+      "delay_over_60min_rate": 0.107985,
+      "avg_arrival_delay_minutes": 17.57,
+      "route_page_url": "/routes/dfw-to-slc/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→SLC",
+      "total_scheduled_flights": 3985,
+      "cancellation_rate": 0.007528,
+      "delay_over_60min_rate": 0.038938,
+      "avg_arrival_delay_minutes": 0.64,
+      "route_page_url": "/routes/sea-to-slc/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→SLC",
+      "total_scheduled_flights": 3388,
+      "cancellation_rate": 0.007084,
+      "delay_over_60min_rate": 0.087693,
+      "avg_arrival_delay_minutes": 10.98,
+      "route_page_url": "/routes/sfo-to-slc/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→SLC",
+      "total_scheduled_flights": 2984,
+      "cancellation_rate": 0.006032,
+      "delay_over_60min_rate": 0.042481,
+      "avg_arrival_delay_minutes": 0.12,
+      "route_page_url": "/routes/atl-to-slc/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→SLC",
+      "total_scheduled_flights": 2920,
+      "cancellation_rate": 0.012671,
+      "delay_over_60min_rate": 0.079778,
+      "avg_arrival_delay_minutes": 7.52,
+      "route_page_url": "/routes/ord-to-slc/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→SLC",
+      "total_scheduled_flights": 2622,
+      "cancellation_rate": 0.006102,
+      "delay_over_60min_rate": 0.057559,
+      "avg_arrival_delay_minutes": 6.3,
+      "route_page_url": "/routes/san-to-slc/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-slc",
+      "url": "/routes/abq-to-slc/"
+    },
+    {
+      "route_key": "anc-to-slc",
+      "url": "/routes/anc-to-slc/"
+    },
+    {
+      "route_key": "atl-to-slc",
+      "url": "/routes/atl-to-slc/"
+    },
+    {
+      "route_key": "aus-to-slc",
+      "url": "/routes/aus-to-slc/"
+    },
+    {
+      "route_key": "bil-to-slc",
+      "url": "/routes/bil-to-slc/"
+    },
+    {
+      "route_key": "bna-to-slc",
+      "url": "/routes/bna-to-slc/"
+    },
+    {
+      "route_key": "boi-to-slc",
+      "url": "/routes/boi-to-slc/"
+    },
+    {
+      "route_key": "bos-to-slc",
+      "url": "/routes/bos-to-slc/"
+    },
+    {
+      "route_key": "btm-to-slc",
+      "url": "/routes/btm-to-slc/"
+    },
+    {
+      "route_key": "bur-to-slc",
+      "url": "/routes/bur-to-slc/"
+    },
+    {
+      "route_key": "bwi-to-slc",
+      "url": "/routes/bwi-to-slc/"
+    },
+    {
+      "route_key": "bzn-to-slc",
+      "url": "/routes/bzn-to-slc/"
+    },
+    {
+      "route_key": "cdc-to-slc",
+      "url": "/routes/cdc-to-slc/"
+    },
+    {
+      "route_key": "cle-to-slc",
+      "url": "/routes/cle-to-slc/"
+    },
+    {
+      "route_key": "clt-to-slc",
+      "url": "/routes/clt-to-slc/"
+    },
+    {
+      "route_key": "cmh-to-slc",
+      "url": "/routes/cmh-to-slc/"
+    },
+    {
+      "route_key": "cos-to-slc",
+      "url": "/routes/cos-to-slc/"
+    },
+    {
+      "route_key": "cpr-to-slc",
+      "url": "/routes/cpr-to-slc/"
+    },
+    {
+      "route_key": "cvg-to-slc",
+      "url": "/routes/cvg-to-slc/"
+    },
+    {
+      "route_key": "dal-to-slc",
+      "url": "/routes/dal-to-slc/"
+    },
+    {
+      "route_key": "dca-to-slc",
+      "url": "/routes/dca-to-slc/"
+    },
+    {
+      "route_key": "den-to-slc",
+      "url": "/routes/den-to-slc/"
+    },
+    {
+      "route_key": "dfw-to-slc",
+      "url": "/routes/dfw-to-slc/"
+    },
+    {
+      "route_key": "dtw-to-slc",
+      "url": "/routes/dtw-to-slc/"
+    },
+    {
+      "route_key": "eko-to-slc",
+      "url": "/routes/eko-to-slc/"
+    },
+    {
+      "route_key": "eug-to-slc",
+      "url": "/routes/eug-to-slc/"
+    },
+    {
+      "route_key": "ewr-to-slc",
+      "url": "/routes/ewr-to-slc/"
+    },
+    {
+      "route_key": "fat-to-slc",
+      "url": "/routes/fat-to-slc/"
+    },
+    {
+      "route_key": "fca-to-slc",
+      "url": "/routes/fca-to-slc/"
+    },
+    {
+      "route_key": "fll-to-slc",
+      "url": "/routes/fll-to-slc/"
+    },
+    {
+      "route_key": "geg-to-slc",
+      "url": "/routes/geg-to-slc/"
+    },
+    {
+      "route_key": "gtf-to-slc",
+      "url": "/routes/gtf-to-slc/"
+    },
+    {
+      "route_key": "hln-to-slc",
+      "url": "/routes/hln-to-slc/"
+    },
+    {
+      "route_key": "hnl-to-slc",
+      "url": "/routes/hnl-to-slc/"
+    },
+    {
+      "route_key": "hou-to-slc",
+      "url": "/routes/hou-to-slc/"
+    },
+    {
+      "route_key": "iad-to-slc",
+      "url": "/routes/iad-to-slc/"
+    },
+    {
+      "route_key": "iah-to-slc",
+      "url": "/routes/iah-to-slc/"
+    },
+    {
+      "route_key": "ida-to-slc",
+      "url": "/routes/ida-to-slc/"
+    },
+    {
+      "route_key": "ind-to-slc",
+      "url": "/routes/ind-to-slc/"
+    },
+    {
+      "route_key": "jac-to-slc",
+      "url": "/routes/jac-to-slc/"
+    },
+    {
+      "route_key": "jfk-to-slc",
+      "url": "/routes/jfk-to-slc/"
+    },
+    {
+      "route_key": "las-to-slc",
+      "url": "/routes/las-to-slc/"
+    },
+    {
+      "route_key": "lax-to-slc",
+      "url": "/routes/lax-to-slc/"
+    },
+    {
+      "route_key": "lgb-to-slc",
+      "url": "/routes/lgb-to-slc/"
+    },
+    {
+      "route_key": "lws-to-slc",
+      "url": "/routes/lws-to-slc/"
+    },
+    {
+      "route_key": "mci-to-slc",
+      "url": "/routes/mci-to-slc/"
+    },
+    {
+      "route_key": "mco-to-slc",
+      "url": "/routes/mco-to-slc/"
+    },
+    {
+      "route_key": "mdw-to-slc",
+      "url": "/routes/mdw-to-slc/"
+    },
+    {
+      "route_key": "mem-to-slc",
+      "url": "/routes/mem-to-slc/"
+    },
+    {
+      "route_key": "mfr-to-slc",
+      "url": "/routes/mfr-to-slc/"
+    },
+    {
+      "route_key": "mia-to-slc",
+      "url": "/routes/mia-to-slc/"
+    },
+    {
+      "route_key": "mke-to-slc",
+      "url": "/routes/mke-to-slc/"
+    },
+    {
+      "route_key": "mso-to-slc",
+      "url": "/routes/mso-to-slc/"
+    },
+    {
+      "route_key": "msp-to-slc",
+      "url": "/routes/msp-to-slc/"
+    },
+    {
+      "route_key": "msy-to-slc",
+      "url": "/routes/msy-to-slc/"
+    },
+    {
+      "route_key": "oak-to-slc",
+      "url": "/routes/oak-to-slc/"
+    },
+    {
+      "route_key": "ogg-to-slc",
+      "url": "/routes/ogg-to-slc/"
+    },
+    {
+      "route_key": "okc-to-slc",
+      "url": "/routes/okc-to-slc/"
+    },
+    {
+      "route_key": "oma-to-slc",
+      "url": "/routes/oma-to-slc/"
+    },
+    {
+      "route_key": "ont-to-slc",
+      "url": "/routes/ont-to-slc/"
+    },
+    {
+      "route_key": "ord-to-slc",
+      "url": "/routes/ord-to-slc/"
+    },
+    {
+      "route_key": "pdx-to-slc",
+      "url": "/routes/pdx-to-slc/"
+    },
+    {
+      "route_key": "phl-to-slc",
+      "url": "/routes/phl-to-slc/"
+    },
+    {
+      "route_key": "phx-to-slc",
+      "url": "/routes/phx-to-slc/"
+    },
+    {
+      "route_key": "pih-to-slc",
+      "url": "/routes/pih-to-slc/"
+    },
+    {
+      "route_key": "psc-to-slc",
+      "url": "/routes/psc-to-slc/"
+    },
+    {
+      "route_key": "psp-to-slc",
+      "url": "/routes/psp-to-slc/"
+    },
+    {
+      "route_key": "rdm-to-slc",
+      "url": "/routes/rdm-to-slc/"
+    },
+    {
+      "route_key": "rdu-to-slc",
+      "url": "/routes/rdu-to-slc/"
+    },
+    {
+      "route_key": "rno-to-slc",
+      "url": "/routes/rno-to-slc/"
+    },
+    {
+      "route_key": "san-to-slc",
+      "url": "/routes/san-to-slc/"
+    },
+    {
+      "route_key": "sat-to-slc",
+      "url": "/routes/sat-to-slc/"
+    },
+    {
+      "route_key": "sba-to-slc",
+      "url": "/routes/sba-to-slc/"
+    },
+    {
+      "route_key": "sea-to-slc",
+      "url": "/routes/sea-to-slc/"
+    },
+    {
+      "route_key": "sfo-to-slc",
+      "url": "/routes/sfo-to-slc/"
+    },
+    {
+      "route_key": "sgu-to-slc",
+      "url": "/routes/sgu-to-slc/"
+    },
+    {
+      "route_key": "sjc-to-slc",
+      "url": "/routes/sjc-to-slc/"
+    },
+    {
+      "route_key": "smf-to-slc",
+      "url": "/routes/smf-to-slc/"
+    },
+    {
+      "route_key": "sna-to-slc",
+      "url": "/routes/sna-to-slc/"
+    },
+    {
+      "route_key": "stl-to-slc",
+      "url": "/routes/stl-to-slc/"
+    },
+    {
+      "route_key": "sun-to-slc",
+      "url": "/routes/sun-to-slc/"
+    },
+    {
+      "route_key": "tpa-to-slc",
+      "url": "/routes/tpa-to-slc/"
+    },
+    {
+      "route_key": "tul-to-slc",
+      "url": "/routes/tul-to-slc/"
+    },
+    {
+      "route_key": "tus-to-slc",
+      "url": "/routes/tus-to-slc/"
+    },
+    {
+      "route_key": "twf-to-slc",
+      "url": "/routes/twf-to-slc/"
+    },
+    {
+      "route_key": "wys-to-slc",
+      "url": "/routes/wys-to-slc/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "SLC",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 113239,
+    "origin_routes": 91,
+    "usable_routes": 86,
+    "operating_airlines": 11,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/SLC/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

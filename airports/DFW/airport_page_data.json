@@ -1,0 +1,905 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "DFW",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 313568,
+    "origin_routes_count": 186,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 180,
+      "thin": 3,
+      "too_small": 3,
+      "total": 186
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.019281,
+    "delay_over_60min_rate": 0.095216,
+    "delay_over_180min_rate": 0.025208,
+    "avg_arrival_delay_minutes": 13.91,
+    "p90_arrival_delay_minutes": 57.0,
+    "avg_delay_recovery_minutes": -0.84
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LAX",
+      "route": "LAX→DFW",
+      "total_scheduled_flights": 7018,
+      "cancellation_rate": 0.012539,
+      "delay_over_60min_rate": 0.091486,
+      "avg_arrival_delay_minutes": 13.95,
+      "route_page_url": "/routes/lax-to-dfw/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→DFW",
+      "total_scheduled_flights": 6523,
+      "cancellation_rate": 0.016557,
+      "delay_over_60min_rate": 0.097272,
+      "avg_arrival_delay_minutes": 16.58,
+      "route_page_url": "/routes/atl-to-dfw/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→DFW",
+      "total_scheduled_flights": 6514,
+      "cancellation_rate": 0.012128,
+      "delay_over_60min_rate": 0.101787,
+      "avg_arrival_delay_minutes": 14.15,
+      "route_page_url": "/routes/ord-to-dfw/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→DFW",
+      "total_scheduled_flights": 6497,
+      "cancellation_rate": 0.021087,
+      "delay_over_60min_rate": 0.090881,
+      "avg_arrival_delay_minutes": 5.99,
+      "route_page_url": "/routes/lga-to-dfw/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→DFW",
+      "total_scheduled_flights": 6210,
+      "cancellation_rate": 0.019646,
+      "delay_over_60min_rate": 0.093627,
+      "avg_arrival_delay_minutes": 13.5,
+      "route_page_url": "/routes/den-to-dfw/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→DFW",
+      "total_scheduled_flights": 6161,
+      "cancellation_rate": 0.017854,
+      "delay_over_60min_rate": 0.090068,
+      "avg_arrival_delay_minutes": 13.65,
+      "route_page_url": "/routes/las-to-dfw/"
+    },
+    {
+      "origin": "IAH",
+      "route": "IAH→DFW",
+      "total_scheduled_flights": 5264,
+      "cancellation_rate": 0.028875,
+      "delay_over_60min_rate": 0.118936,
+      "avg_arrival_delay_minutes": 19.79,
+      "route_page_url": "/routes/iah-to-dfw/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→DFW",
+      "total_scheduled_flights": 5203,
+      "cancellation_rate": 0.013454,
+      "delay_over_60min_rate": 0.079875,
+      "avg_arrival_delay_minutes": 9.77,
+      "route_page_url": "/routes/phx-to-dfw/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→DFW",
+      "total_scheduled_flights": 5010,
+      "cancellation_rate": 0.017964,
+      "delay_over_60min_rate": 0.067073,
+      "avg_arrival_delay_minutes": 10.74,
+      "route_page_url": "/routes/sea-to-dfw/"
+    },
+    {
+      "origin": "MIA",
+      "route": "MIA→DFW",
+      "total_scheduled_flights": 4998,
+      "cancellation_rate": 0.017607,
+      "delay_over_60min_rate": 0.11609,
+      "avg_arrival_delay_minutes": 17.75,
+      "route_page_url": "/routes/mia-to-dfw/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abi-to-dfw",
+      "url": "/routes/abi-to-dfw/"
+    },
+    {
+      "route_key": "abq-to-dfw",
+      "url": "/routes/abq-to-dfw/"
+    },
+    {
+      "route_key": "act-to-dfw",
+      "url": "/routes/act-to-dfw/"
+    },
+    {
+      "route_key": "aex-to-dfw",
+      "url": "/routes/aex-to-dfw/"
+    },
+    {
+      "route_key": "ags-to-dfw",
+      "url": "/routes/ags-to-dfw/"
+    },
+    {
+      "route_key": "alb-to-dfw",
+      "url": "/routes/alb-to-dfw/"
+    },
+    {
+      "route_key": "ama-to-dfw",
+      "url": "/routes/ama-to-dfw/"
+    },
+    {
+      "route_key": "anc-to-dfw",
+      "url": "/routes/anc-to-dfw/"
+    },
+    {
+      "route_key": "ase-to-dfw",
+      "url": "/routes/ase-to-dfw/"
+    },
+    {
+      "route_key": "atl-to-dfw",
+      "url": "/routes/atl-to-dfw/"
+    },
+    {
+      "route_key": "atw-to-dfw",
+      "url": "/routes/atw-to-dfw/"
+    },
+    {
+      "route_key": "aus-to-dfw",
+      "url": "/routes/aus-to-dfw/"
+    },
+    {
+      "route_key": "avl-to-dfw",
+      "url": "/routes/avl-to-dfw/"
+    },
+    {
+      "route_key": "bdl-to-dfw",
+      "url": "/routes/bdl-to-dfw/"
+    },
+    {
+      "route_key": "bfl-to-dfw",
+      "url": "/routes/bfl-to-dfw/"
+    },
+    {
+      "route_key": "bhm-to-dfw",
+      "url": "/routes/bhm-to-dfw/"
+    },
+    {
+      "route_key": "bil-to-dfw",
+      "url": "/routes/bil-to-dfw/"
+    },
+    {
+      "route_key": "bis-to-dfw",
+      "url": "/routes/bis-to-dfw/"
+    },
+    {
+      "route_key": "bmi-to-dfw",
+      "url": "/routes/bmi-to-dfw/"
+    },
+    {
+      "route_key": "bna-to-dfw",
+      "url": "/routes/bna-to-dfw/"
+    },
+    {
+      "route_key": "boi-to-dfw",
+      "url": "/routes/boi-to-dfw/"
+    },
+    {
+      "route_key": "bos-to-dfw",
+      "url": "/routes/bos-to-dfw/"
+    },
+    {
+      "route_key": "bpt-to-dfw",
+      "url": "/routes/bpt-to-dfw/"
+    },
+    {
+      "route_key": "bro-to-dfw",
+      "url": "/routes/bro-to-dfw/"
+    },
+    {
+      "route_key": "btr-to-dfw",
+      "url": "/routes/btr-to-dfw/"
+    },
+    {
+      "route_key": "buf-to-dfw",
+      "url": "/routes/buf-to-dfw/"
+    },
+    {
+      "route_key": "bur-to-dfw",
+      "url": "/routes/bur-to-dfw/"
+    },
+    {
+      "route_key": "bwi-to-dfw",
+      "url": "/routes/bwi-to-dfw/"
+    },
+    {
+      "route_key": "bzn-to-dfw",
+      "url": "/routes/bzn-to-dfw/"
+    },
+    {
+      "route_key": "cae-to-dfw",
+      "url": "/routes/cae-to-dfw/"
+    },
+    {
+      "route_key": "cha-to-dfw",
+      "url": "/routes/cha-to-dfw/"
+    },
+    {
+      "route_key": "chs-to-dfw",
+      "url": "/routes/chs-to-dfw/"
+    },
+    {
+      "route_key": "cid-to-dfw",
+      "url": "/routes/cid-to-dfw/"
+    },
+    {
+      "route_key": "cle-to-dfw",
+      "url": "/routes/cle-to-dfw/"
+    },
+    {
+      "route_key": "cll-to-dfw",
+      "url": "/routes/cll-to-dfw/"
+    },
+    {
+      "route_key": "clt-to-dfw",
+      "url": "/routes/clt-to-dfw/"
+    },
+    {
+      "route_key": "cmh-to-dfw",
+      "url": "/routes/cmh-to-dfw/"
+    },
+    {
+      "route_key": "cmi-to-dfw",
+      "url": "/routes/cmi-to-dfw/"
+    },
+    {
+      "route_key": "cos-to-dfw",
+      "url": "/routes/cos-to-dfw/"
+    },
+    {
+      "route_key": "cou-to-dfw",
+      "url": "/routes/cou-to-dfw/"
+    },
+    {
+      "route_key": "crp-to-dfw",
+      "url": "/routes/crp-to-dfw/"
+    },
+    {
+      "route_key": "cvg-to-dfw",
+      "url": "/routes/cvg-to-dfw/"
+    },
+    {
+      "route_key": "day-to-dfw",
+      "url": "/routes/day-to-dfw/"
+    },
+    {
+      "route_key": "dca-to-dfw",
+      "url": "/routes/dca-to-dfw/"
+    },
+    {
+      "route_key": "den-to-dfw",
+      "url": "/routes/den-to-dfw/"
+    },
+    {
+      "route_key": "dro-to-dfw",
+      "url": "/routes/dro-to-dfw/"
+    },
+    {
+      "route_key": "dsm-to-dfw",
+      "url": "/routes/dsm-to-dfw/"
+    },
+    {
+      "route_key": "dtw-to-dfw",
+      "url": "/routes/dtw-to-dfw/"
+    },
+    {
+      "route_key": "ecp-to-dfw",
+      "url": "/routes/ecp-to-dfw/"
+    },
+    {
+      "route_key": "ege-to-dfw",
+      "url": "/routes/ege-to-dfw/"
+    },
+    {
+      "route_key": "elp-to-dfw",
+      "url": "/routes/elp-to-dfw/"
+    },
+    {
+      "route_key": "eug-to-dfw",
+      "url": "/routes/eug-to-dfw/"
+    },
+    {
+      "route_key": "evv-to-dfw",
+      "url": "/routes/evv-to-dfw/"
+    },
+    {
+      "route_key": "ewr-to-dfw",
+      "url": "/routes/ewr-to-dfw/"
+    },
+    {
+      "route_key": "eyw-to-dfw",
+      "url": "/routes/eyw-to-dfw/"
+    },
+    {
+      "route_key": "far-to-dfw",
+      "url": "/routes/far-to-dfw/"
+    },
+    {
+      "route_key": "fat-to-dfw",
+      "url": "/routes/fat-to-dfw/"
+    },
+    {
+      "route_key": "fca-to-dfw",
+      "url": "/routes/fca-to-dfw/"
+    },
+    {
+      "route_key": "flg-to-dfw",
+      "url": "/routes/flg-to-dfw/"
+    },
+    {
+      "route_key": "fll-to-dfw",
+      "url": "/routes/fll-to-dfw/"
+    },
+    {
+      "route_key": "fsd-to-dfw",
+      "url": "/routes/fsd-to-dfw/"
+    },
+    {
+      "route_key": "fsm-to-dfw",
+      "url": "/routes/fsm-to-dfw/"
+    },
+    {
+      "route_key": "fwa-to-dfw",
+      "url": "/routes/fwa-to-dfw/"
+    },
+    {
+      "route_key": "gck-to-dfw",
+      "url": "/routes/gck-to-dfw/"
+    },
+    {
+      "route_key": "geg-to-dfw",
+      "url": "/routes/geg-to-dfw/"
+    },
+    {
+      "route_key": "ggg-to-dfw",
+      "url": "/routes/ggg-to-dfw/"
+    },
+    {
+      "route_key": "gjt-to-dfw",
+      "url": "/routes/gjt-to-dfw/"
+    },
+    {
+      "route_key": "gnv-to-dfw",
+      "url": "/routes/gnv-to-dfw/"
+    },
+    {
+      "route_key": "gpt-to-dfw",
+      "url": "/routes/gpt-to-dfw/"
+    },
+    {
+      "route_key": "gri-to-dfw",
+      "url": "/routes/gri-to-dfw/"
+    },
+    {
+      "route_key": "grk-to-dfw",
+      "url": "/routes/grk-to-dfw/"
+    },
+    {
+      "route_key": "grr-to-dfw",
+      "url": "/routes/grr-to-dfw/"
+    },
+    {
+      "route_key": "gso-to-dfw",
+      "url": "/routes/gso-to-dfw/"
+    },
+    {
+      "route_key": "gsp-to-dfw",
+      "url": "/routes/gsp-to-dfw/"
+    },
+    {
+      "route_key": "guc-to-dfw",
+      "url": "/routes/guc-to-dfw/"
+    },
+    {
+      "route_key": "hdn-to-dfw",
+      "url": "/routes/hdn-to-dfw/"
+    },
+    {
+      "route_key": "hnl-to-dfw",
+      "url": "/routes/hnl-to-dfw/"
+    },
+    {
+      "route_key": "hou-to-dfw",
+      "url": "/routes/hou-to-dfw/"
+    },
+    {
+      "route_key": "hrl-to-dfw",
+      "url": "/routes/hrl-to-dfw/"
+    },
+    {
+      "route_key": "hsv-to-dfw",
+      "url": "/routes/hsv-to-dfw/"
+    },
+    {
+      "route_key": "iad-to-dfw",
+      "url": "/routes/iad-to-dfw/"
+    },
+    {
+      "route_key": "iah-to-dfw",
+      "url": "/routes/iah-to-dfw/"
+    },
+    {
+      "route_key": "ict-to-dfw",
+      "url": "/routes/ict-to-dfw/"
+    },
+    {
+      "route_key": "ida-to-dfw",
+      "url": "/routes/ida-to-dfw/"
+    },
+    {
+      "route_key": "ilm-to-dfw",
+      "url": "/routes/ilm-to-dfw/"
+    },
+    {
+      "route_key": "ind-to-dfw",
+      "url": "/routes/ind-to-dfw/"
+    },
+    {
+      "route_key": "jac-to-dfw",
+      "url": "/routes/jac-to-dfw/"
+    },
+    {
+      "route_key": "jan-to-dfw",
+      "url": "/routes/jan-to-dfw/"
+    },
+    {
+      "route_key": "jax-to-dfw",
+      "url": "/routes/jax-to-dfw/"
+    },
+    {
+      "route_key": "jfk-to-dfw",
+      "url": "/routes/jfk-to-dfw/"
+    },
+    {
+      "route_key": "las-to-dfw",
+      "url": "/routes/las-to-dfw/"
+    },
+    {
+      "route_key": "law-to-dfw",
+      "url": "/routes/law-to-dfw/"
+    },
+    {
+      "route_key": "lax-to-dfw",
+      "url": "/routes/lax-to-dfw/"
+    },
+    {
+      "route_key": "lbb-to-dfw",
+      "url": "/routes/lbb-to-dfw/"
+    },
+    {
+      "route_key": "lch-to-dfw",
+      "url": "/routes/lch-to-dfw/"
+    },
+    {
+      "route_key": "lex-to-dfw",
+      "url": "/routes/lex-to-dfw/"
+    },
+    {
+      "route_key": "lft-to-dfw",
+      "url": "/routes/lft-to-dfw/"
+    },
+    {
+      "route_key": "lga-to-dfw",
+      "url": "/routes/lga-to-dfw/"
+    },
+    {
+      "route_key": "lit-to-dfw",
+      "url": "/routes/lit-to-dfw/"
+    },
+    {
+      "route_key": "lrd-to-dfw",
+      "url": "/routes/lrd-to-dfw/"
+    },
+    {
+      "route_key": "maf-to-dfw",
+      "url": "/routes/maf-to-dfw/"
+    },
+    {
+      "route_key": "mci-to-dfw",
+      "url": "/routes/mci-to-dfw/"
+    },
+    {
+      "route_key": "mco-to-dfw",
+      "url": "/routes/mco-to-dfw/"
+    },
+    {
+      "route_key": "mdt-to-dfw",
+      "url": "/routes/mdt-to-dfw/"
+    },
+    {
+      "route_key": "mdw-to-dfw",
+      "url": "/routes/mdw-to-dfw/"
+    },
+    {
+      "route_key": "mem-to-dfw",
+      "url": "/routes/mem-to-dfw/"
+    },
+    {
+      "route_key": "mfe-to-dfw",
+      "url": "/routes/mfe-to-dfw/"
+    },
+    {
+      "route_key": "mgm-to-dfw",
+      "url": "/routes/mgm-to-dfw/"
+    },
+    {
+      "route_key": "mhk-to-dfw",
+      "url": "/routes/mhk-to-dfw/"
+    },
+    {
+      "route_key": "mia-to-dfw",
+      "url": "/routes/mia-to-dfw/"
+    },
+    {
+      "route_key": "mke-to-dfw",
+      "url": "/routes/mke-to-dfw/"
+    },
+    {
+      "route_key": "mli-to-dfw",
+      "url": "/routes/mli-to-dfw/"
+    },
+    {
+      "route_key": "mlu-to-dfw",
+      "url": "/routes/mlu-to-dfw/"
+    },
+    {
+      "route_key": "mob-to-dfw",
+      "url": "/routes/mob-to-dfw/"
+    },
+    {
+      "route_key": "mry-to-dfw",
+      "url": "/routes/mry-to-dfw/"
+    },
+    {
+      "route_key": "msn-to-dfw",
+      "url": "/routes/msn-to-dfw/"
+    },
+    {
+      "route_key": "mso-to-dfw",
+      "url": "/routes/mso-to-dfw/"
+    },
+    {
+      "route_key": "msp-to-dfw",
+      "url": "/routes/msp-to-dfw/"
+    },
+    {
+      "route_key": "msy-to-dfw",
+      "url": "/routes/msy-to-dfw/"
+    },
+    {
+      "route_key": "mtj-to-dfw",
+      "url": "/routes/mtj-to-dfw/"
+    },
+    {
+      "route_key": "myr-to-dfw",
+      "url": "/routes/myr-to-dfw/"
+    },
+    {
+      "route_key": "ogg-to-dfw",
+      "url": "/routes/ogg-to-dfw/"
+    },
+    {
+      "route_key": "okc-to-dfw",
+      "url": "/routes/okc-to-dfw/"
+    },
+    {
+      "route_key": "oma-to-dfw",
+      "url": "/routes/oma-to-dfw/"
+    },
+    {
+      "route_key": "ont-to-dfw",
+      "url": "/routes/ont-to-dfw/"
+    },
+    {
+      "route_key": "ord-to-dfw",
+      "url": "/routes/ord-to-dfw/"
+    },
+    {
+      "route_key": "orf-to-dfw",
+      "url": "/routes/orf-to-dfw/"
+    },
+    {
+      "route_key": "pbi-to-dfw",
+      "url": "/routes/pbi-to-dfw/"
+    },
+    {
+      "route_key": "pdx-to-dfw",
+      "url": "/routes/pdx-to-dfw/"
+    },
+    {
+      "route_key": "phl-to-dfw",
+      "url": "/routes/phl-to-dfw/"
+    },
+    {
+      "route_key": "phx-to-dfw",
+      "url": "/routes/phx-to-dfw/"
+    },
+    {
+      "route_key": "pia-to-dfw",
+      "url": "/routes/pia-to-dfw/"
+    },
+    {
+      "route_key": "pit-to-dfw",
+      "url": "/routes/pit-to-dfw/"
+    },
+    {
+      "route_key": "pns-to-dfw",
+      "url": "/routes/pns-to-dfw/"
+    },
+    {
+      "route_key": "psp-to-dfw",
+      "url": "/routes/psp-to-dfw/"
+    },
+    {
+      "route_key": "pvu-to-dfw",
+      "url": "/routes/pvu-to-dfw/"
+    },
+    {
+      "route_key": "rap-to-dfw",
+      "url": "/routes/rap-to-dfw/"
+    },
+    {
+      "route_key": "rdm-to-dfw",
+      "url": "/routes/rdm-to-dfw/"
+    },
+    {
+      "route_key": "rdu-to-dfw",
+      "url": "/routes/rdu-to-dfw/"
+    },
+    {
+      "route_key": "ric-to-dfw",
+      "url": "/routes/ric-to-dfw/"
+    },
+    {
+      "route_key": "rno-to-dfw",
+      "url": "/routes/rno-to-dfw/"
+    },
+    {
+      "route_key": "row-to-dfw",
+      "url": "/routes/row-to-dfw/"
+    },
+    {
+      "route_key": "rsw-to-dfw",
+      "url": "/routes/rsw-to-dfw/"
+    },
+    {
+      "route_key": "saf-to-dfw",
+      "url": "/routes/saf-to-dfw/"
+    },
+    {
+      "route_key": "san-to-dfw",
+      "url": "/routes/san-to-dfw/"
+    },
+    {
+      "route_key": "sat-to-dfw",
+      "url": "/routes/sat-to-dfw/"
+    },
+    {
+      "route_key": "sav-to-dfw",
+      "url": "/routes/sav-to-dfw/"
+    },
+    {
+      "route_key": "sba-to-dfw",
+      "url": "/routes/sba-to-dfw/"
+    },
+    {
+      "route_key": "sbn-to-dfw",
+      "url": "/routes/sbn-to-dfw/"
+    },
+    {
+      "route_key": "sbp-to-dfw",
+      "url": "/routes/sbp-to-dfw/"
+    },
+    {
+      "route_key": "sdf-to-dfw",
+      "url": "/routes/sdf-to-dfw/"
+    },
+    {
+      "route_key": "sea-to-dfw",
+      "url": "/routes/sea-to-dfw/"
+    },
+    {
+      "route_key": "sfo-to-dfw",
+      "url": "/routes/sfo-to-dfw/"
+    },
+    {
+      "route_key": "sgf-to-dfw",
+      "url": "/routes/sgf-to-dfw/"
+    },
+    {
+      "route_key": "sgu-to-dfw",
+      "url": "/routes/sgu-to-dfw/"
+    },
+    {
+      "route_key": "shv-to-dfw",
+      "url": "/routes/shv-to-dfw/"
+    },
+    {
+      "route_key": "sjc-to-dfw",
+      "url": "/routes/sjc-to-dfw/"
+    },
+    {
+      "route_key": "sjt-to-dfw",
+      "url": "/routes/sjt-to-dfw/"
+    },
+    {
+      "route_key": "sju-to-dfw",
+      "url": "/routes/sju-to-dfw/"
+    },
+    {
+      "route_key": "slc-to-dfw",
+      "url": "/routes/slc-to-dfw/"
+    },
+    {
+      "route_key": "smf-to-dfw",
+      "url": "/routes/smf-to-dfw/"
+    },
+    {
+      "route_key": "sna-to-dfw",
+      "url": "/routes/sna-to-dfw/"
+    },
+    {
+      "route_key": "sps-to-dfw",
+      "url": "/routes/sps-to-dfw/"
+    },
+    {
+      "route_key": "srq-to-dfw",
+      "url": "/routes/srq-to-dfw/"
+    },
+    {
+      "route_key": "stl-to-dfw",
+      "url": "/routes/stl-to-dfw/"
+    },
+    {
+      "route_key": "sts-to-dfw",
+      "url": "/routes/sts-to-dfw/"
+    },
+    {
+      "route_key": "swo-to-dfw",
+      "url": "/routes/swo-to-dfw/"
+    },
+    {
+      "route_key": "syr-to-dfw",
+      "url": "/routes/syr-to-dfw/"
+    },
+    {
+      "route_key": "tlh-to-dfw",
+      "url": "/routes/tlh-to-dfw/"
+    },
+    {
+      "route_key": "tpa-to-dfw",
+      "url": "/routes/tpa-to-dfw/"
+    },
+    {
+      "route_key": "tri-to-dfw",
+      "url": "/routes/tri-to-dfw/"
+    },
+    {
+      "route_key": "tul-to-dfw",
+      "url": "/routes/tul-to-dfw/"
+    },
+    {
+      "route_key": "tus-to-dfw",
+      "url": "/routes/tus-to-dfw/"
+    },
+    {
+      "route_key": "tvc-to-dfw",
+      "url": "/routes/tvc-to-dfw/"
+    },
+    {
+      "route_key": "txk-to-dfw",
+      "url": "/routes/txk-to-dfw/"
+    },
+    {
+      "route_key": "tyr-to-dfw",
+      "url": "/routes/tyr-to-dfw/"
+    },
+    {
+      "route_key": "tys-to-dfw",
+      "url": "/routes/tys-to-dfw/"
+    },
+    {
+      "route_key": "vps-to-dfw",
+      "url": "/routes/vps-to-dfw/"
+    },
+    {
+      "route_key": "xna-to-dfw",
+      "url": "/routes/xna-to-dfw/"
+    },
+    {
+      "route_key": "yum-to-dfw",
+      "url": "/routes/yum-to-dfw/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "DFW",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 313568,
+    "origin_routes": 186,
+    "usable_routes": 180,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/DFW/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

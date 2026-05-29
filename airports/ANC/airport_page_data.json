@@ -1,0 +1,297 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "ANC",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 18545,
+    "origin_routes_count": 33,
+    "operating_airlines_count": 4,
+    "route_sample_quality": {
+      "usable": 28,
+      "thin": 4,
+      "too_small": 1,
+      "total": 33
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.015853,
+    "delay_over_60min_rate": 0.048162,
+    "delay_over_180min_rate": 0.006794,
+    "avg_arrival_delay_minutes": 4.6,
+    "p90_arrival_delay_minutes": 37.0,
+    "avg_delay_recovery_minutes": -0.62
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "SEA",
+      "route": "SEA→ANC",
+      "total_scheduled_flights": 7590,
+      "cancellation_rate": 0.00975,
+      "delay_over_60min_rate": 0.044172,
+      "avg_arrival_delay_minutes": 6.32,
+      "route_page_url": "/routes/sea-to-anc/"
+    },
+    {
+      "origin": "JNU",
+      "route": "JNU→ANC",
+      "total_scheduled_flights": 1218,
+      "cancellation_rate": 0.018062,
+      "delay_over_60min_rate": 0.045987,
+      "avg_arrival_delay_minutes": -1.66,
+      "route_page_url": "/routes/jnu-to-anc/"
+    },
+    {
+      "origin": "ADQ",
+      "route": "ADQ→ANC",
+      "total_scheduled_flights": 816,
+      "cancellation_rate": 0.020833,
+      "delay_over_60min_rate": 0.048811,
+      "avg_arrival_delay_minutes": 1.35,
+      "route_page_url": "/routes/adq-to-anc/"
+    },
+    {
+      "origin": "FAI",
+      "route": "FAI→ANC",
+      "total_scheduled_flights": 790,
+      "cancellation_rate": 0.010127,
+      "delay_over_60min_rate": 0.029412,
+      "avg_arrival_delay_minutes": -3.07,
+      "route_page_url": "/routes/fai-to-anc/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→ANC",
+      "total_scheduled_flights": 783,
+      "cancellation_rate": 0.003831,
+      "delay_over_60min_rate": 0.060256,
+      "avg_arrival_delay_minutes": 4.33,
+      "route_page_url": "/routes/ord-to-anc/"
+    },
+    {
+      "origin": "BET",
+      "route": "BET→ANC",
+      "total_scheduled_flights": 726,
+      "cancellation_rate": 0.011019,
+      "delay_over_60min_rate": 0.069638,
+      "avg_arrival_delay_minutes": 12.03,
+      "route_page_url": "/routes/bet-to-anc/"
+    },
+    {
+      "origin": "MSP",
+      "route": "MSP→ANC",
+      "total_scheduled_flights": 655,
+      "cancellation_rate": 0.00916,
+      "delay_over_60min_rate": 0.038521,
+      "avg_arrival_delay_minutes": 4.23,
+      "route_page_url": "/routes/msp-to-anc/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→ANC",
+      "total_scheduled_flights": 604,
+      "cancellation_rate": 0.004967,
+      "delay_over_60min_rate": 0.033278,
+      "avg_arrival_delay_minutes": 1.04,
+      "route_page_url": "/routes/den-to-anc/"
+    },
+    {
+      "origin": "SCC",
+      "route": "SCC→ANC",
+      "total_scheduled_flights": 569,
+      "cancellation_rate": 0.031634,
+      "delay_over_60min_rate": 0.032668,
+      "avg_arrival_delay_minutes": -8.26,
+      "route_page_url": "/routes/scc-to-anc/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→ANC",
+      "total_scheduled_flights": 381,
+      "cancellation_rate": 0.005249,
+      "delay_over_60min_rate": 0.081794,
+      "avg_arrival_delay_minutes": 18.36,
+      "route_page_url": "/routes/dfw-to-anc/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "adk-to-anc",
+      "url": "/routes/adk-to-anc/"
+    },
+    {
+      "route_key": "adq-to-anc",
+      "url": "/routes/adq-to-anc/"
+    },
+    {
+      "route_key": "akn-to-anc",
+      "url": "/routes/akn-to-anc/"
+    },
+    {
+      "route_key": "atl-to-anc",
+      "url": "/routes/atl-to-anc/"
+    },
+    {
+      "route_key": "bet-to-anc",
+      "url": "/routes/bet-to-anc/"
+    },
+    {
+      "route_key": "brw-to-anc",
+      "url": "/routes/brw-to-anc/"
+    },
+    {
+      "route_key": "cdv-to-anc",
+      "url": "/routes/cdv-to-anc/"
+    },
+    {
+      "route_key": "den-to-anc",
+      "url": "/routes/den-to-anc/"
+    },
+    {
+      "route_key": "dfw-to-anc",
+      "url": "/routes/dfw-to-anc/"
+    },
+    {
+      "route_key": "dlg-to-anc",
+      "url": "/routes/dlg-to-anc/"
+    },
+    {
+      "route_key": "ewr-to-anc",
+      "url": "/routes/ewr-to-anc/"
+    },
+    {
+      "route_key": "fai-to-anc",
+      "url": "/routes/fai-to-anc/"
+    },
+    {
+      "route_key": "hnl-to-anc",
+      "url": "/routes/hnl-to-anc/"
+    },
+    {
+      "route_key": "iad-to-anc",
+      "url": "/routes/iad-to-anc/"
+    },
+    {
+      "route_key": "iah-to-anc",
+      "url": "/routes/iah-to-anc/"
+    },
+    {
+      "route_key": "jnu-to-anc",
+      "url": "/routes/jnu-to-anc/"
+    },
+    {
+      "route_key": "las-to-anc",
+      "url": "/routes/las-to-anc/"
+    },
+    {
+      "route_key": "lax-to-anc",
+      "url": "/routes/lax-to-anc/"
+    },
+    {
+      "route_key": "msp-to-anc",
+      "url": "/routes/msp-to-anc/"
+    },
+    {
+      "route_key": "ome-to-anc",
+      "url": "/routes/ome-to-anc/"
+    },
+    {
+      "route_key": "ord-to-anc",
+      "url": "/routes/ord-to-anc/"
+    },
+    {
+      "route_key": "otz-to-anc",
+      "url": "/routes/otz-to-anc/"
+    },
+    {
+      "route_key": "pdx-to-anc",
+      "url": "/routes/pdx-to-anc/"
+    },
+    {
+      "route_key": "phx-to-anc",
+      "url": "/routes/phx-to-anc/"
+    },
+    {
+      "route_key": "scc-to-anc",
+      "url": "/routes/scc-to-anc/"
+    },
+    {
+      "route_key": "sea-to-anc",
+      "url": "/routes/sea-to-anc/"
+    },
+    {
+      "route_key": "sfo-to-anc",
+      "url": "/routes/sfo-to-anc/"
+    },
+    {
+      "route_key": "slc-to-anc",
+      "url": "/routes/slc-to-anc/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "ANC",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 18545,
+    "origin_routes": 33,
+    "usable_routes": 28,
+    "operating_airlines": 4,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/ANC/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

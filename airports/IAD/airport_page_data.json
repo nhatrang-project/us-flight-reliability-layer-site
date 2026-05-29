@@ -1,0 +1,389 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "IAD",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 52895,
+    "origin_routes_count": 69,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 51,
+      "thin": 6,
+      "too_small": 12,
+      "total": 69
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.013631,
+    "delay_over_60min_rate": 0.058305,
+    "delay_over_180min_rate": 0.012305,
+    "avg_arrival_delay_minutes": 3.21,
+    "p90_arrival_delay_minutes": 32.0,
+    "avg_delay_recovery_minutes": -0.02
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ATL",
+      "route": "ATL→IAD",
+      "total_scheduled_flights": 3266,
+      "cancellation_rate": 0.008879,
+      "delay_over_60min_rate": 0.059623,
+      "avg_arrival_delay_minutes": 6.63,
+      "route_page_url": "/routes/atl-to-iad/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→IAD",
+      "total_scheduled_flights": 3247,
+      "cancellation_rate": 0.019095,
+      "delay_over_60min_rate": 0.078179,
+      "avg_arrival_delay_minutes": 9.52,
+      "route_page_url": "/routes/den-to-iad/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→IAD",
+      "total_scheduled_flights": 2757,
+      "cancellation_rate": 0.013783,
+      "delay_over_60min_rate": 0.059213,
+      "avg_arrival_delay_minutes": 1.62,
+      "route_page_url": "/routes/sfo-to-iad/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→IAD",
+      "total_scheduled_flights": 2616,
+      "cancellation_rate": 0.010321,
+      "delay_over_60min_rate": 0.037466,
+      "avg_arrival_delay_minutes": -1.46,
+      "route_page_url": "/routes/lax-to-iad/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→IAD",
+      "total_scheduled_flights": 2246,
+      "cancellation_rate": 0.017809,
+      "delay_over_60min_rate": 0.047597,
+      "avg_arrival_delay_minutes": 2.31,
+      "route_page_url": "/routes/sea-to-iad/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→IAD",
+      "total_scheduled_flights": 2124,
+      "cancellation_rate": 0.009416,
+      "delay_over_60min_rate": 0.070817,
+      "avg_arrival_delay_minutes": 4.6,
+      "route_page_url": "/routes/clt-to-iad/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→IAD",
+      "total_scheduled_flights": 1715,
+      "cancellation_rate": 0.01516,
+      "delay_over_60min_rate": 0.097691,
+      "avg_arrival_delay_minutes": 12.01,
+      "route_page_url": "/routes/dfw-to-iad/"
+    },
+    {
+      "origin": "IAH",
+      "route": "IAH→IAD",
+      "total_scheduled_flights": 1690,
+      "cancellation_rate": 0.012426,
+      "delay_over_60min_rate": 0.076093,
+      "avg_arrival_delay_minutes": 12.2,
+      "route_page_url": "/routes/iah-to-iad/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→IAD",
+      "total_scheduled_flights": 1685,
+      "cancellation_rate": 0.008309,
+      "delay_over_60min_rate": 0.076002,
+      "avg_arrival_delay_minutes": 11.45,
+      "route_page_url": "/routes/ord-to-iad/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→IAD",
+      "total_scheduled_flights": 1671,
+      "cancellation_rate": 0.022741,
+      "delay_over_60min_rate": 0.086957,
+      "avg_arrival_delay_minutes": 7.96,
+      "route_page_url": "/routes/mco-to-iad/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "anc-to-iad",
+      "url": "/routes/anc-to-iad/"
+    },
+    {
+      "route_key": "atl-to-iad",
+      "url": "/routes/atl-to-iad/"
+    },
+    {
+      "route_key": "aus-to-iad",
+      "url": "/routes/aus-to-iad/"
+    },
+    {
+      "route_key": "bdl-to-iad",
+      "url": "/routes/bdl-to-iad/"
+    },
+    {
+      "route_key": "bna-to-iad",
+      "url": "/routes/bna-to-iad/"
+    },
+    {
+      "route_key": "bos-to-iad",
+      "url": "/routes/bos-to-iad/"
+    },
+    {
+      "route_key": "btv-to-iad",
+      "url": "/routes/btv-to-iad/"
+    },
+    {
+      "route_key": "buf-to-iad",
+      "url": "/routes/buf-to-iad/"
+    },
+    {
+      "route_key": "chs-to-iad",
+      "url": "/routes/chs-to-iad/"
+    },
+    {
+      "route_key": "cle-to-iad",
+      "url": "/routes/cle-to-iad/"
+    },
+    {
+      "route_key": "clt-to-iad",
+      "url": "/routes/clt-to-iad/"
+    },
+    {
+      "route_key": "cmh-to-iad",
+      "url": "/routes/cmh-to-iad/"
+    },
+    {
+      "route_key": "cvg-to-iad",
+      "url": "/routes/cvg-to-iad/"
+    },
+    {
+      "route_key": "den-to-iad",
+      "url": "/routes/den-to-iad/"
+    },
+    {
+      "route_key": "dfw-to-iad",
+      "url": "/routes/dfw-to-iad/"
+    },
+    {
+      "route_key": "dtw-to-iad",
+      "url": "/routes/dtw-to-iad/"
+    },
+    {
+      "route_key": "ewr-to-iad",
+      "url": "/routes/ewr-to-iad/"
+    },
+    {
+      "route_key": "fll-to-iad",
+      "url": "/routes/fll-to-iad/"
+    },
+    {
+      "route_key": "hnl-to-iad",
+      "url": "/routes/hnl-to-iad/"
+    },
+    {
+      "route_key": "iah-to-iad",
+      "url": "/routes/iah-to-iad/"
+    },
+    {
+      "route_key": "ind-to-iad",
+      "url": "/routes/ind-to-iad/"
+    },
+    {
+      "route_key": "jax-to-iad",
+      "url": "/routes/jax-to-iad/"
+    },
+    {
+      "route_key": "jfk-to-iad",
+      "url": "/routes/jfk-to-iad/"
+    },
+    {
+      "route_key": "jst-to-iad",
+      "url": "/routes/jst-to-iad/"
+    },
+    {
+      "route_key": "las-to-iad",
+      "url": "/routes/las-to-iad/"
+    },
+    {
+      "route_key": "lax-to-iad",
+      "url": "/routes/lax-to-iad/"
+    },
+    {
+      "route_key": "lga-to-iad",
+      "url": "/routes/lga-to-iad/"
+    },
+    {
+      "route_key": "mco-to-iad",
+      "url": "/routes/mco-to-iad/"
+    },
+    {
+      "route_key": "mia-to-iad",
+      "url": "/routes/mia-to-iad/"
+    },
+    {
+      "route_key": "msp-to-iad",
+      "url": "/routes/msp-to-iad/"
+    },
+    {
+      "route_key": "msy-to-iad",
+      "url": "/routes/msy-to-iad/"
+    },
+    {
+      "route_key": "ord-to-iad",
+      "url": "/routes/ord-to-iad/"
+    },
+    {
+      "route_key": "orf-to-iad",
+      "url": "/routes/orf-to-iad/"
+    },
+    {
+      "route_key": "pdx-to-iad",
+      "url": "/routes/pdx-to-iad/"
+    },
+    {
+      "route_key": "phx-to-iad",
+      "url": "/routes/phx-to-iad/"
+    },
+    {
+      "route_key": "pit-to-iad",
+      "url": "/routes/pit-to-iad/"
+    },
+    {
+      "route_key": "pwm-to-iad",
+      "url": "/routes/pwm-to-iad/"
+    },
+    {
+      "route_key": "rdu-to-iad",
+      "url": "/routes/rdu-to-iad/"
+    },
+    {
+      "route_key": "roc-to-iad",
+      "url": "/routes/roc-to-iad/"
+    },
+    {
+      "route_key": "rsw-to-iad",
+      "url": "/routes/rsw-to-iad/"
+    },
+    {
+      "route_key": "san-to-iad",
+      "url": "/routes/san-to-iad/"
+    },
+    {
+      "route_key": "sat-to-iad",
+      "url": "/routes/sat-to-iad/"
+    },
+    {
+      "route_key": "sdf-to-iad",
+      "url": "/routes/sdf-to-iad/"
+    },
+    {
+      "route_key": "sea-to-iad",
+      "url": "/routes/sea-to-iad/"
+    },
+    {
+      "route_key": "sfo-to-iad",
+      "url": "/routes/sfo-to-iad/"
+    },
+    {
+      "route_key": "sju-to-iad",
+      "url": "/routes/sju-to-iad/"
+    },
+    {
+      "route_key": "slc-to-iad",
+      "url": "/routes/slc-to-iad/"
+    },
+    {
+      "route_key": "smf-to-iad",
+      "url": "/routes/smf-to-iad/"
+    },
+    {
+      "route_key": "srq-to-iad",
+      "url": "/routes/srq-to-iad/"
+    },
+    {
+      "route_key": "stt-to-iad",
+      "url": "/routes/stt-to-iad/"
+    },
+    {
+      "route_key": "tpa-to-iad",
+      "url": "/routes/tpa-to-iad/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "IAD",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 52895,
+    "origin_routes": 69,
+    "usable_routes": 51,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/IAD/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

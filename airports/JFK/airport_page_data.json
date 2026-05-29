@@ -1,0 +1,457 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "JFK",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 123334,
+    "origin_routes_count": 73,
+    "operating_airlines_count": 9,
+    "route_sample_quality": {
+      "usable": 68,
+      "thin": 3,
+      "too_small": 2,
+      "total": 73
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.019127,
+    "delay_over_60min_rate": 0.084447,
+    "delay_over_180min_rate": 0.01945,
+    "avg_arrival_delay_minutes": 8.2,
+    "p90_arrival_delay_minutes": 50.0,
+    "avg_delay_recovery_minutes": 0.08
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LAX",
+      "route": "LAX→JFK",
+      "total_scheduled_flights": 9915,
+      "cancellation_rate": 0.004438,
+      "delay_over_60min_rate": 0.069091,
+      "avg_arrival_delay_minutes": 3.28,
+      "route_page_url": "/routes/lax-to-jfk/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→JFK",
+      "total_scheduled_flights": 6459,
+      "cancellation_rate": 0.011147,
+      "delay_over_60min_rate": 0.069516,
+      "avg_arrival_delay_minutes": 3.93,
+      "route_page_url": "/routes/sfo-to-jfk/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→JFK",
+      "total_scheduled_flights": 5577,
+      "cancellation_rate": 0.019365,
+      "delay_over_60min_rate": 0.073688,
+      "avg_arrival_delay_minutes": 5.08,
+      "route_page_url": "/routes/bos-to-jfk/"
+    },
+    {
+      "origin": "MIA",
+      "route": "MIA→JFK",
+      "total_scheduled_flights": 5471,
+      "cancellation_rate": 0.018095,
+      "delay_over_60min_rate": 0.123976,
+      "avg_arrival_delay_minutes": 15.25,
+      "route_page_url": "/routes/mia-to-jfk/"
+    },
+    {
+      "origin": "MCO",
+      "route": "MCO→JFK",
+      "total_scheduled_flights": 4571,
+      "cancellation_rate": 0.021877,
+      "delay_over_60min_rate": 0.11049,
+      "avg_arrival_delay_minutes": 14.63,
+      "route_page_url": "/routes/mco-to-jfk/"
+    },
+    {
+      "origin": "RDU",
+      "route": "RDU→JFK",
+      "total_scheduled_flights": 3947,
+      "cancellation_rate": 0.027109,
+      "delay_over_60min_rate": 0.08099,
+      "avg_arrival_delay_minutes": 7.99,
+      "route_page_url": "/routes/rdu-to-jfk/"
+    },
+    {
+      "origin": "FLL",
+      "route": "FLL→JFK",
+      "total_scheduled_flights": 3909,
+      "cancellation_rate": 0.021489,
+      "delay_over_60min_rate": 0.10719,
+      "avg_arrival_delay_minutes": 13.68,
+      "route_page_url": "/routes/fll-to-jfk/"
+    },
+    {
+      "origin": "SJU",
+      "route": "SJU→JFK",
+      "total_scheduled_flights": 3724,
+      "cancellation_rate": 0.00913,
+      "delay_over_60min_rate": 0.079946,
+      "avg_arrival_delay_minutes": 7.6,
+      "route_page_url": "/routes/sju-to-jfk/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→JFK",
+      "total_scheduled_flights": 3596,
+      "cancellation_rate": 0.023359,
+      "delay_over_60min_rate": 0.099658,
+      "avg_arrival_delay_minutes": 14.64,
+      "route_page_url": "/routes/clt-to-jfk/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→JFK",
+      "total_scheduled_flights": 3538,
+      "cancellation_rate": 0.006218,
+      "delay_over_60min_rate": 0.081627,
+      "avg_arrival_delay_minutes": 10.57,
+      "route_page_url": "/routes/atl-to-jfk/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-jfk",
+      "url": "/routes/abq-to-jfk/"
+    },
+    {
+      "route_key": "ack-to-jfk",
+      "url": "/routes/ack-to-jfk/"
+    },
+    {
+      "route_key": "atl-to-jfk",
+      "url": "/routes/atl-to-jfk/"
+    },
+    {
+      "route_key": "aus-to-jfk",
+      "url": "/routes/aus-to-jfk/"
+    },
+    {
+      "route_key": "bgr-to-jfk",
+      "url": "/routes/bgr-to-jfk/"
+    },
+    {
+      "route_key": "bna-to-jfk",
+      "url": "/routes/bna-to-jfk/"
+    },
+    {
+      "route_key": "bos-to-jfk",
+      "url": "/routes/bos-to-jfk/"
+    },
+    {
+      "route_key": "bqn-to-jfk",
+      "url": "/routes/bqn-to-jfk/"
+    },
+    {
+      "route_key": "btv-to-jfk",
+      "url": "/routes/btv-to-jfk/"
+    },
+    {
+      "route_key": "buf-to-jfk",
+      "url": "/routes/buf-to-jfk/"
+    },
+    {
+      "route_key": "bur-to-jfk",
+      "url": "/routes/bur-to-jfk/"
+    },
+    {
+      "route_key": "bwi-to-jfk",
+      "url": "/routes/bwi-to-jfk/"
+    },
+    {
+      "route_key": "chs-to-jfk",
+      "url": "/routes/chs-to-jfk/"
+    },
+    {
+      "route_key": "cle-to-jfk",
+      "url": "/routes/cle-to-jfk/"
+    },
+    {
+      "route_key": "clt-to-jfk",
+      "url": "/routes/clt-to-jfk/"
+    },
+    {
+      "route_key": "cmh-to-jfk",
+      "url": "/routes/cmh-to-jfk/"
+    },
+    {
+      "route_key": "cvg-to-jfk",
+      "url": "/routes/cvg-to-jfk/"
+    },
+    {
+      "route_key": "dca-to-jfk",
+      "url": "/routes/dca-to-jfk/"
+    },
+    {
+      "route_key": "den-to-jfk",
+      "url": "/routes/den-to-jfk/"
+    },
+    {
+      "route_key": "dfw-to-jfk",
+      "url": "/routes/dfw-to-jfk/"
+    },
+    {
+      "route_key": "dtw-to-jfk",
+      "url": "/routes/dtw-to-jfk/"
+    },
+    {
+      "route_key": "ege-to-jfk",
+      "url": "/routes/ege-to-jfk/"
+    },
+    {
+      "route_key": "fll-to-jfk",
+      "url": "/routes/fll-to-jfk/"
+    },
+    {
+      "route_key": "hnl-to-jfk",
+      "url": "/routes/hnl-to-jfk/"
+    },
+    {
+      "route_key": "hya-to-jfk",
+      "url": "/routes/hya-to-jfk/"
+    },
+    {
+      "route_key": "iad-to-jfk",
+      "url": "/routes/iad-to-jfk/"
+    },
+    {
+      "route_key": "iah-to-jfk",
+      "url": "/routes/iah-to-jfk/"
+    },
+    {
+      "route_key": "ind-to-jfk",
+      "url": "/routes/ind-to-jfk/"
+    },
+    {
+      "route_key": "ith-to-jfk",
+      "url": "/routes/ith-to-jfk/"
+    },
+    {
+      "route_key": "jax-to-jfk",
+      "url": "/routes/jax-to-jfk/"
+    },
+    {
+      "route_key": "las-to-jfk",
+      "url": "/routes/las-to-jfk/"
+    },
+    {
+      "route_key": "lax-to-jfk",
+      "url": "/routes/lax-to-jfk/"
+    },
+    {
+      "route_key": "mci-to-jfk",
+      "url": "/routes/mci-to-jfk/"
+    },
+    {
+      "route_key": "mco-to-jfk",
+      "url": "/routes/mco-to-jfk/"
+    },
+    {
+      "route_key": "mia-to-jfk",
+      "url": "/routes/mia-to-jfk/"
+    },
+    {
+      "route_key": "mke-to-jfk",
+      "url": "/routes/mke-to-jfk/"
+    },
+    {
+      "route_key": "msp-to-jfk",
+      "url": "/routes/msp-to-jfk/"
+    },
+    {
+      "route_key": "msy-to-jfk",
+      "url": "/routes/msy-to-jfk/"
+    },
+    {
+      "route_key": "mvy-to-jfk",
+      "url": "/routes/mvy-to-jfk/"
+    },
+    {
+      "route_key": "ont-to-jfk",
+      "url": "/routes/ont-to-jfk/"
+    },
+    {
+      "route_key": "ord-to-jfk",
+      "url": "/routes/ord-to-jfk/"
+    },
+    {
+      "route_key": "orf-to-jfk",
+      "url": "/routes/orf-to-jfk/"
+    },
+    {
+      "route_key": "orh-to-jfk",
+      "url": "/routes/orh-to-jfk/"
+    },
+    {
+      "route_key": "pbi-to-jfk",
+      "url": "/routes/pbi-to-jfk/"
+    },
+    {
+      "route_key": "pdx-to-jfk",
+      "url": "/routes/pdx-to-jfk/"
+    },
+    {
+      "route_key": "phx-to-jfk",
+      "url": "/routes/phx-to-jfk/"
+    },
+    {
+      "route_key": "pit-to-jfk",
+      "url": "/routes/pit-to-jfk/"
+    },
+    {
+      "route_key": "pse-to-jfk",
+      "url": "/routes/pse-to-jfk/"
+    },
+    {
+      "route_key": "psp-to-jfk",
+      "url": "/routes/psp-to-jfk/"
+    },
+    {
+      "route_key": "pwm-to-jfk",
+      "url": "/routes/pwm-to-jfk/"
+    },
+    {
+      "route_key": "rdu-to-jfk",
+      "url": "/routes/rdu-to-jfk/"
+    },
+    {
+      "route_key": "ric-to-jfk",
+      "url": "/routes/ric-to-jfk/"
+    },
+    {
+      "route_key": "rno-to-jfk",
+      "url": "/routes/rno-to-jfk/"
+    },
+    {
+      "route_key": "roc-to-jfk",
+      "url": "/routes/roc-to-jfk/"
+    },
+    {
+      "route_key": "rsw-to-jfk",
+      "url": "/routes/rsw-to-jfk/"
+    },
+    {
+      "route_key": "san-to-jfk",
+      "url": "/routes/san-to-jfk/"
+    },
+    {
+      "route_key": "sat-to-jfk",
+      "url": "/routes/sat-to-jfk/"
+    },
+    {
+      "route_key": "sav-to-jfk",
+      "url": "/routes/sav-to-jfk/"
+    },
+    {
+      "route_key": "sea-to-jfk",
+      "url": "/routes/sea-to-jfk/"
+    },
+    {
+      "route_key": "sfo-to-jfk",
+      "url": "/routes/sfo-to-jfk/"
+    },
+    {
+      "route_key": "sju-to-jfk",
+      "url": "/routes/sju-to-jfk/"
+    },
+    {
+      "route_key": "slc-to-jfk",
+      "url": "/routes/slc-to-jfk/"
+    },
+    {
+      "route_key": "smf-to-jfk",
+      "url": "/routes/smf-to-jfk/"
+    },
+    {
+      "route_key": "sna-to-jfk",
+      "url": "/routes/sna-to-jfk/"
+    },
+    {
+      "route_key": "srq-to-jfk",
+      "url": "/routes/srq-to-jfk/"
+    },
+    {
+      "route_key": "stt-to-jfk",
+      "url": "/routes/stt-to-jfk/"
+    },
+    {
+      "route_key": "syr-to-jfk",
+      "url": "/routes/syr-to-jfk/"
+    },
+    {
+      "route_key": "tpa-to-jfk",
+      "url": "/routes/tpa-to-jfk/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "JFK",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 123334,
+    "origin_routes": 73,
+    "usable_routes": 68,
+    "operating_airlines": 9,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/JFK/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

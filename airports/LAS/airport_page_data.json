@@ -1,0 +1,653 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "LAS",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 189264,
+    "origin_routes_count": 131,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 117,
+      "thin": 9,
+      "too_small": 5,
+      "total": 131
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.009452,
+    "delay_over_60min_rate": 0.07465,
+    "delay_over_180min_rate": 0.01078,
+    "avg_arrival_delay_minutes": 7.18,
+    "p90_arrival_delay_minutes": 46.0,
+    "avg_delay_recovery_minutes": 0.66
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LAX",
+      "route": "LAX→LAS",
+      "total_scheduled_flights": 9603,
+      "cancellation_rate": 0.00906,
+      "delay_over_60min_rate": 0.086906,
+      "avg_arrival_delay_minutes": 10.52,
+      "route_page_url": "/routes/lax-to-las/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→LAS",
+      "total_scheduled_flights": 8162,
+      "cancellation_rate": 0.010292,
+      "delay_over_60min_rate": 0.089007,
+      "avg_arrival_delay_minutes": 9.48,
+      "route_page_url": "/routes/den-to-las/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→LAS",
+      "total_scheduled_flights": 7061,
+      "cancellation_rate": 0.006231,
+      "delay_over_60min_rate": 0.080234,
+      "avg_arrival_delay_minutes": 8.9,
+      "route_page_url": "/routes/phx-to-las/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→LAS",
+      "total_scheduled_flights": 6755,
+      "cancellation_rate": 0.0151,
+      "delay_over_60min_rate": 0.097249,
+      "avg_arrival_delay_minutes": 12.77,
+      "route_page_url": "/routes/san-to-las/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→LAS",
+      "total_scheduled_flights": 6627,
+      "cancellation_rate": 0.010261,
+      "delay_over_60min_rate": 0.05885,
+      "avg_arrival_delay_minutes": 6.82,
+      "route_page_url": "/routes/sea-to-las/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→LAS",
+      "total_scheduled_flights": 6167,
+      "cancellation_rate": 0.01654,
+      "delay_over_60min_rate": 0.122012,
+      "avg_arrival_delay_minutes": 17.99,
+      "route_page_url": "/routes/dfw-to-las/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→LAS",
+      "total_scheduled_flights": 5775,
+      "cancellation_rate": 0.017316,
+      "delay_over_60min_rate": 0.115066,
+      "avg_arrival_delay_minutes": 16.85,
+      "route_page_url": "/routes/sfo-to-las/"
+    },
+    {
+      "origin": "SMF",
+      "route": "SMF→LAS",
+      "total_scheduled_flights": 5620,
+      "cancellation_rate": 0.008007,
+      "delay_over_60min_rate": 0.066726,
+      "avg_arrival_delay_minutes": 5.8,
+      "route_page_url": "/routes/smf-to-las/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→LAS",
+      "total_scheduled_flights": 5311,
+      "cancellation_rate": 0.013368,
+      "delay_over_60min_rate": 0.079008,
+      "avg_arrival_delay_minutes": 6.08,
+      "route_page_url": "/routes/ord-to-las/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→LAS",
+      "total_scheduled_flights": 4965,
+      "cancellation_rate": 0.008459,
+      "delay_over_60min_rate": 0.064595,
+      "avg_arrival_delay_minutes": 7.43,
+      "route_page_url": "/routes/atl-to-las/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-las",
+      "url": "/routes/abq-to-las/"
+    },
+    {
+      "route_key": "ama-to-las",
+      "url": "/routes/ama-to-las/"
+    },
+    {
+      "route_key": "anc-to-las",
+      "url": "/routes/anc-to-las/"
+    },
+    {
+      "route_key": "atl-to-las",
+      "url": "/routes/atl-to-las/"
+    },
+    {
+      "route_key": "atw-to-las",
+      "url": "/routes/atw-to-las/"
+    },
+    {
+      "route_key": "aus-to-las",
+      "url": "/routes/aus-to-las/"
+    },
+    {
+      "route_key": "avl-to-las",
+      "url": "/routes/avl-to-las/"
+    },
+    {
+      "route_key": "bhm-to-las",
+      "url": "/routes/bhm-to-las/"
+    },
+    {
+      "route_key": "bil-to-las",
+      "url": "/routes/bil-to-las/"
+    },
+    {
+      "route_key": "bis-to-las",
+      "url": "/routes/bis-to-las/"
+    },
+    {
+      "route_key": "bli-to-las",
+      "url": "/routes/bli-to-las/"
+    },
+    {
+      "route_key": "bna-to-las",
+      "url": "/routes/bna-to-las/"
+    },
+    {
+      "route_key": "boi-to-las",
+      "url": "/routes/boi-to-las/"
+    },
+    {
+      "route_key": "bos-to-las",
+      "url": "/routes/bos-to-las/"
+    },
+    {
+      "route_key": "buf-to-las",
+      "url": "/routes/buf-to-las/"
+    },
+    {
+      "route_key": "bur-to-las",
+      "url": "/routes/bur-to-las/"
+    },
+    {
+      "route_key": "bwi-to-las",
+      "url": "/routes/bwi-to-las/"
+    },
+    {
+      "route_key": "bzn-to-las",
+      "url": "/routes/bzn-to-las/"
+    },
+    {
+      "route_key": "chs-to-las",
+      "url": "/routes/chs-to-las/"
+    },
+    {
+      "route_key": "cid-to-las",
+      "url": "/routes/cid-to-las/"
+    },
+    {
+      "route_key": "cle-to-las",
+      "url": "/routes/cle-to-las/"
+    },
+    {
+      "route_key": "clt-to-las",
+      "url": "/routes/clt-to-las/"
+    },
+    {
+      "route_key": "cmh-to-las",
+      "url": "/routes/cmh-to-las/"
+    },
+    {
+      "route_key": "cos-to-las",
+      "url": "/routes/cos-to-las/"
+    },
+    {
+      "route_key": "cvg-to-las",
+      "url": "/routes/cvg-to-las/"
+    },
+    {
+      "route_key": "dal-to-las",
+      "url": "/routes/dal-to-las/"
+    },
+    {
+      "route_key": "dca-to-las",
+      "url": "/routes/dca-to-las/"
+    },
+    {
+      "route_key": "den-to-las",
+      "url": "/routes/den-to-las/"
+    },
+    {
+      "route_key": "dfw-to-las",
+      "url": "/routes/dfw-to-las/"
+    },
+    {
+      "route_key": "dsm-to-las",
+      "url": "/routes/dsm-to-las/"
+    },
+    {
+      "route_key": "dtw-to-las",
+      "url": "/routes/dtw-to-las/"
+    },
+    {
+      "route_key": "elp-to-las",
+      "url": "/routes/elp-to-las/"
+    },
+    {
+      "route_key": "eug-to-las",
+      "url": "/routes/eug-to-las/"
+    },
+    {
+      "route_key": "ewr-to-las",
+      "url": "/routes/ewr-to-las/"
+    },
+    {
+      "route_key": "far-to-las",
+      "url": "/routes/far-to-las/"
+    },
+    {
+      "route_key": "fat-to-las",
+      "url": "/routes/fat-to-las/"
+    },
+    {
+      "route_key": "fca-to-las",
+      "url": "/routes/fca-to-las/"
+    },
+    {
+      "route_key": "fll-to-las",
+      "url": "/routes/fll-to-las/"
+    },
+    {
+      "route_key": "fnt-to-las",
+      "url": "/routes/fnt-to-las/"
+    },
+    {
+      "route_key": "fsd-to-las",
+      "url": "/routes/fsd-to-las/"
+    },
+    {
+      "route_key": "geg-to-las",
+      "url": "/routes/geg-to-las/"
+    },
+    {
+      "route_key": "gfk-to-las",
+      "url": "/routes/gfk-to-las/"
+    },
+    {
+      "route_key": "gjt-to-las",
+      "url": "/routes/gjt-to-las/"
+    },
+    {
+      "route_key": "gri-to-las",
+      "url": "/routes/gri-to-las/"
+    },
+    {
+      "route_key": "grr-to-las",
+      "url": "/routes/grr-to-las/"
+    },
+    {
+      "route_key": "gtf-to-las",
+      "url": "/routes/gtf-to-las/"
+    },
+    {
+      "route_key": "hnl-to-las",
+      "url": "/routes/hnl-to-las/"
+    },
+    {
+      "route_key": "hou-to-las",
+      "url": "/routes/hou-to-las/"
+    },
+    {
+      "route_key": "iad-to-las",
+      "url": "/routes/iad-to-las/"
+    },
+    {
+      "route_key": "iah-to-las",
+      "url": "/routes/iah-to-las/"
+    },
+    {
+      "route_key": "ict-to-las",
+      "url": "/routes/ict-to-las/"
+    },
+    {
+      "route_key": "ida-to-las",
+      "url": "/routes/ida-to-las/"
+    },
+    {
+      "route_key": "ind-to-las",
+      "url": "/routes/ind-to-las/"
+    },
+    {
+      "route_key": "jfk-to-las",
+      "url": "/routes/jfk-to-las/"
+    },
+    {
+      "route_key": "koa-to-las",
+      "url": "/routes/koa-to-las/"
+    },
+    {
+      "route_key": "lax-to-las",
+      "url": "/routes/lax-to-las/"
+    },
+    {
+      "route_key": "lbb-to-las",
+      "url": "/routes/lbb-to-las/"
+    },
+    {
+      "route_key": "lgb-to-las",
+      "url": "/routes/lgb-to-las/"
+    },
+    {
+      "route_key": "lih-to-las",
+      "url": "/routes/lih-to-las/"
+    },
+    {
+      "route_key": "lit-to-las",
+      "url": "/routes/lit-to-las/"
+    },
+    {
+      "route_key": "lrd-to-las",
+      "url": "/routes/lrd-to-las/"
+    },
+    {
+      "route_key": "maf-to-las",
+      "url": "/routes/maf-to-las/"
+    },
+    {
+      "route_key": "mci-to-las",
+      "url": "/routes/mci-to-las/"
+    },
+    {
+      "route_key": "mco-to-las",
+      "url": "/routes/mco-to-las/"
+    },
+    {
+      "route_key": "mdw-to-las",
+      "url": "/routes/mdw-to-las/"
+    },
+    {
+      "route_key": "mem-to-las",
+      "url": "/routes/mem-to-las/"
+    },
+    {
+      "route_key": "mfe-to-las",
+      "url": "/routes/mfe-to-las/"
+    },
+    {
+      "route_key": "mfr-to-las",
+      "url": "/routes/mfr-to-las/"
+    },
+    {
+      "route_key": "mia-to-las",
+      "url": "/routes/mia-to-las/"
+    },
+    {
+      "route_key": "mke-to-las",
+      "url": "/routes/mke-to-las/"
+    },
+    {
+      "route_key": "mli-to-las",
+      "url": "/routes/mli-to-las/"
+    },
+    {
+      "route_key": "mot-to-las",
+      "url": "/routes/mot-to-las/"
+    },
+    {
+      "route_key": "mry-to-las",
+      "url": "/routes/mry-to-las/"
+    },
+    {
+      "route_key": "mso-to-las",
+      "url": "/routes/mso-to-las/"
+    },
+    {
+      "route_key": "msp-to-las",
+      "url": "/routes/msp-to-las/"
+    },
+    {
+      "route_key": "msy-to-las",
+      "url": "/routes/msy-to-las/"
+    },
+    {
+      "route_key": "oak-to-las",
+      "url": "/routes/oak-to-las/"
+    },
+    {
+      "route_key": "ogg-to-las",
+      "url": "/routes/ogg-to-las/"
+    },
+    {
+      "route_key": "okc-to-las",
+      "url": "/routes/okc-to-las/"
+    },
+    {
+      "route_key": "oma-to-las",
+      "url": "/routes/oma-to-las/"
+    },
+    {
+      "route_key": "ont-to-las",
+      "url": "/routes/ont-to-las/"
+    },
+    {
+      "route_key": "ord-to-las",
+      "url": "/routes/ord-to-las/"
+    },
+    {
+      "route_key": "pae-to-las",
+      "url": "/routes/pae-to-las/"
+    },
+    {
+      "route_key": "pdx-to-las",
+      "url": "/routes/pdx-to-las/"
+    },
+    {
+      "route_key": "phl-to-las",
+      "url": "/routes/phl-to-las/"
+    },
+    {
+      "route_key": "phx-to-las",
+      "url": "/routes/phx-to-las/"
+    },
+    {
+      "route_key": "pia-to-las",
+      "url": "/routes/pia-to-las/"
+    },
+    {
+      "route_key": "pit-to-las",
+      "url": "/routes/pit-to-las/"
+    },
+    {
+      "route_key": "psc-to-las",
+      "url": "/routes/psc-to-las/"
+    },
+    {
+      "route_key": "psp-to-las",
+      "url": "/routes/psp-to-las/"
+    },
+    {
+      "route_key": "rap-to-las",
+      "url": "/routes/rap-to-las/"
+    },
+    {
+      "route_key": "rdu-to-las",
+      "url": "/routes/rdu-to-las/"
+    },
+    {
+      "route_key": "rfd-to-las",
+      "url": "/routes/rfd-to-las/"
+    },
+    {
+      "route_key": "ric-to-las",
+      "url": "/routes/ric-to-las/"
+    },
+    {
+      "route_key": "rno-to-las",
+      "url": "/routes/rno-to-las/"
+    },
+    {
+      "route_key": "san-to-las",
+      "url": "/routes/san-to-las/"
+    },
+    {
+      "route_key": "sat-to-las",
+      "url": "/routes/sat-to-las/"
+    },
+    {
+      "route_key": "sba-to-las",
+      "url": "/routes/sba-to-las/"
+    },
+    {
+      "route_key": "sbn-to-las",
+      "url": "/routes/sbn-to-las/"
+    },
+    {
+      "route_key": "sbp-to-las",
+      "url": "/routes/sbp-to-las/"
+    },
+    {
+      "route_key": "sck-to-las",
+      "url": "/routes/sck-to-las/"
+    },
+    {
+      "route_key": "sdf-to-las",
+      "url": "/routes/sdf-to-las/"
+    },
+    {
+      "route_key": "sea-to-las",
+      "url": "/routes/sea-to-las/"
+    },
+    {
+      "route_key": "sfo-to-las",
+      "url": "/routes/sfo-to-las/"
+    },
+    {
+      "route_key": "sgf-to-las",
+      "url": "/routes/sgf-to-las/"
+    },
+    {
+      "route_key": "shv-to-las",
+      "url": "/routes/shv-to-las/"
+    },
+    {
+      "route_key": "sjc-to-las",
+      "url": "/routes/sjc-to-las/"
+    },
+    {
+      "route_key": "slc-to-las",
+      "url": "/routes/slc-to-las/"
+    },
+    {
+      "route_key": "smf-to-las",
+      "url": "/routes/smf-to-las/"
+    },
+    {
+      "route_key": "smx-to-las",
+      "url": "/routes/smx-to-las/"
+    },
+    {
+      "route_key": "sna-to-las",
+      "url": "/routes/sna-to-las/"
+    },
+    {
+      "route_key": "stl-to-las",
+      "url": "/routes/stl-to-las/"
+    },
+    {
+      "route_key": "tpa-to-las",
+      "url": "/routes/tpa-to-las/"
+    },
+    {
+      "route_key": "tul-to-las",
+      "url": "/routes/tul-to-las/"
+    },
+    {
+      "route_key": "tus-to-las",
+      "url": "/routes/tus-to-las/"
+    },
+    {
+      "route_key": "tys-to-las",
+      "url": "/routes/tys-to-las/"
+    },
+    {
+      "route_key": "xna-to-las",
+      "url": "/routes/xna-to-las/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "LAS",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 189264,
+    "origin_routes": 131,
+    "usable_routes": 117,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/LAS/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

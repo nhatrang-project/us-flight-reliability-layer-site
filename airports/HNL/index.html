@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HNL Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for HNL (Daniel K. Inouye International Airport). 61,558 flights analyzed across 33 origin routes, 6 airlines. 33 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/HNL/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="HNL">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      HNL
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">HNL</div>
+      <div class="header-name">Daniel K. Inouye International Airport</div>
+      <div class="header-title">HNL Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-expansion">Representative Expansion Airport</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>HNL</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>HNL</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">61,558</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">33</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">6</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">33</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">0</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">0</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">33</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">0.95%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">3.39%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">0.61%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+2.5 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+24.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">-0.5 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>HNL</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>OGG</td>
+          <td><code>OGG→HNL</code></td>
+          <td class="td-num">11,642</td>
+          <td class="td-num">1.10%</td>
+          <td class="td-num">1.85%</td>
+          <td class="td-num">+0.4 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ogg-to-hnl/">OGG→HNL</a></td>
+        </tr>
+        <tr>
+          <td>LIH</td>
+          <td><code>LIH→HNL</code></td>
+          <td class="td-num">8,640</td>
+          <td class="td-num">1.26%</td>
+          <td class="td-num">1.84%</td>
+          <td class="td-num">-0.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lih-to-hnl/">LIH→HNL</a></td>
+        </tr>
+        <tr>
+          <td>KOA</td>
+          <td><code>KOA→HNL</code></td>
+          <td class="td-num">8,048</td>
+          <td class="td-num">0.91%</td>
+          <td class="td-num">1.93%</td>
+          <td class="td-num">+1.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/koa-to-hnl/">KOA→HNL</a></td>
+        </tr>
+        <tr>
+          <td>ITO</td>
+          <td><code>ITO→HNL</code></td>
+          <td class="td-num">6,432</td>
+          <td class="td-num">0.92%</td>
+          <td class="td-num">1.99%</td>
+          <td class="td-num">+1.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ito-to-hnl/">ITO→HNL</a></td>
+        </tr>
+        <tr>
+          <td>LAX</td>
+          <td><code>LAX→HNL</code></td>
+          <td class="td-num">5,612</td>
+          <td class="td-num">0.68%</td>
+          <td class="td-num">5.36%</td>
+          <td class="td-num">+4.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lax-to-hnl/">LAX→HNL</a></td>
+        </tr>
+        <tr>
+          <td>SEA</td>
+          <td><code>SEA→HNL</code></td>
+          <td class="td-num">2,912</td>
+          <td class="td-num">1.51%</td>
+          <td class="td-num">5.37%</td>
+          <td class="td-num">+5.8 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sea-to-hnl/">SEA→HNL</a></td>
+        </tr>
+        <tr>
+          <td>SFO</td>
+          <td><code>SFO→HNL</code></td>
+          <td class="td-num">2,528</td>
+          <td class="td-num">1.11%</td>
+          <td class="td-num">6.44%</td>
+          <td class="td-num">+5.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sfo-to-hnl/">SFO→HNL</a></td>
+        </tr>
+        <tr>
+          <td>SAN</td>
+          <td><code>SAN→HNL</code></td>
+          <td class="td-num">1,666</td>
+          <td class="td-num">0.96%</td>
+          <td class="td-num">7.03%</td>
+          <td class="td-num">+10.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/san-to-hnl/">SAN→HNL</a></td>
+        </tr>
+        <tr>
+          <td>LAS</td>
+          <td><code>LAS→HNL</code></td>
+          <td class="td-num">1,563</td>
+          <td class="td-num">0.13%</td>
+          <td class="td-num">4.42%</td>
+          <td class="td-num">+11.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/las-to-hnl/">LAS→HNL</a></td>
+        </tr>
+        <tr>
+          <td>SJC</td>
+          <td><code>SJC→HNL</code></td>
+          <td class="td-num">1,389</td>
+          <td class="td-num">0.72%</td>
+          <td class="td-num">2.68%</td>
+          <td class="td-num">-3.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sjc-to-hnl/">SJC→HNL</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      33 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      33 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/anc-to-hnl/">anc-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-hnl/">atl-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-hnl/">aus-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-hnl/">bos-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-hnl/">den-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-hnl/">dfw-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-hnl/">dtw-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-hnl/">ewr-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gum-to-hnl/">gum-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-hnl/">iad-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-hnl/">iah-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ito-to-hnl/">ito-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-hnl/">jfk-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/koa-to-hnl/">koa-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-hnl/">las-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-hnl/">lax-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lgb-to-hnl/">lgb-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lih-to-hnl/">lih-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-hnl/">msp-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oak-to-hnl/">oak-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ogg-to-hnl/">ogg-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ont-to-hnl/">ont-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-hnl/">ord-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pae-to-hnl/">pae-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-hnl/">pdx-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-hnl/">phx-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ppg-to-hnl/">ppg-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-hnl/">san-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-hnl/">sea-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-hnl/">sfo-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sjc-to-hnl/">sjc-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-hnl/">slc-to-hnl</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/smf-to-hnl/">smf-to-hnl</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for HNL.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "HNL",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 61558,
+    "origin_routes_count": 33,
+    "operating_airlines_count": 6,
+    "route_sample_quality": {
+      "usable": 33,
+      "thin": 0,
+      "too_small": 0,
+      "total": 33
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.009454,
+    "delay_over_60min_rate": 0.033882,
+    "delay_over_180min_rate": 0.006068,
+    "avg_arrival_delay_minutes": 2.48,
+    "p90_arrival_delay_minutes": 24.0,
+    "avg_delay_recovery_minutes": -0.48
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "OGG",
+      "route": "OGG→HNL",
+      "total_scheduled_flights": 11642,
+      "cancellation_rate": 0.010995,
+      "delay_over_60min_rate": 0.018499,
+      "avg_arrival_delay_minutes": 0.37,
+      "route_page_url": "/routes/ogg-to-hnl/"
+    },
+    {
+      "origin": "LIH",
+      "route": "LIH→HNL",
+      "total_scheduled_flights": 8640,
+      "cancellation_rate": 0.012616,
+      "delay_over_60min_rate": 0.018403,
+      "avg_arrival_delay_minutes": -0.06,
+      "route_page_url": "/routes/lih-to-hnl/"
+    },
+    {
+      "origin": "KOA",
+      "route": "KOA→HNL",
+      "total_scheduled_flights": 8048,
+      "cancellation_rate": 0.009071,
+      "delay_over_60min_rate": 0.01931,
+      "avg_arrival_delay_minutes": 1.15,
+      "route_page_url": "/routes/koa-to-hnl/"
+    },
+    {
+      "origin": "ITO",
+      "route": "ITO→HNL",
+      "total_scheduled_flights": 6432,
+      "cancellation_rate": 0.009173,
+      "delay_over_60min_rate": 0.019928,
+      "avg_arrival_delay_minutes": 1.34,
+      "route_page_url": "/routes/ito-to-hnl/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→HNL",
+      "total_scheduled_flights": 5612,
+      "cancellation_rate": 0.006771,
+      "delay_over_60min_rate": 0.053642,
+      "avg_arrival_delay_minutes": 4.06,
+      "route_page_url": "/routes/lax-to-hnl/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→HNL",
+      "total_scheduled_flights": 2912,
+      "cancellation_rate": 0.01511,
+      "delay_over_60min_rate": 0.053696,
+      "avg_arrival_delay_minutes": 5.85,
+      "route_page_url": "/routes/sea-to-hnl/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→HNL",
+      "total_scheduled_flights": 2528,
+      "cancellation_rate": 0.011076,
+      "delay_over_60min_rate": 0.0644,
+      "avg_arrival_delay_minutes": 5.32,
+      "route_page_url": "/routes/sfo-to-hnl/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→HNL",
+      "total_scheduled_flights": 1666,
+      "cancellation_rate": 0.009604,
+      "delay_over_60min_rate": 0.070303,
+      "avg_arrival_delay_minutes": 10.52,
+      "route_page_url": "/routes/san-to-hnl/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→HNL",
+      "total_scheduled_flights": 1563,
+      "cancellation_rate": 0.00128,
+      "delay_over_60min_rate": 0.044202,
+      "avg_arrival_delay_minutes": 11.23,
+      "route_page_url": "/routes/las-to-hnl/"
+    },
+    {
+      "origin": "SJC",
+      "route": "SJC→HNL",
+      "total_scheduled_flights": 1389,
+      "cancellation_rate": 0.007199,
+      "delay_over_60min_rate": 0.026831,
+      "avg_arrival_delay_minutes": -3.93,
+      "route_page_url": "/routes/sjc-to-hnl/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "anc-to-hnl",
+      "url": "/routes/anc-to-hnl/"
+    },
+    {
+      "route_key": "atl-to-hnl",
+      "url": "/routes/atl-to-hnl/"
+    },
+    {
+      "route_key": "aus-to-hnl",
+      "url": "/routes/aus-to-hnl/"
+    },
+    {
+      "route_key": "bos-to-hnl",
+      "url": "/routes/bos-to-hnl/"
+    },
+    {
+      "route_key": "den-to-hnl",
+      "url": "/routes/den-to-hnl/"
+    },
+    {
+      "route_key": "dfw-to-hnl",
+      "url": "/routes/dfw-to-hnl/"
+    },
+    {
+      "route_key": "dtw-to-hnl",
+      "url": "/routes/dtw-to-hnl/"
+    },
+    {
+      "route_key": "ewr-to-hnl",
+      "url": "/routes/ewr-to-hnl/"
+    },
+    {
+      "route_key": "gum-to-hnl",
+      "url": "/routes/gum-to-hnl/"
+    },
+    {
+      "route_key": "iad-to-hnl",
+      "url": "/routes/iad-to-hnl/"
+    },
+    {
+      "route_key": "iah-to-hnl",
+      "url": "/routes/iah-to-hnl/"
+    },
+    {
+      "route_key": "ito-to-hnl",
+      "url": "/routes/ito-to-hnl/"
+    },
+    {
+      "route_key": "jfk-to-hnl",
+      "url": "/routes/jfk-to-hnl/"
+    },
+    {
+      "route_key": "koa-to-hnl",
+      "url": "/routes/koa-to-hnl/"
+    },
+    {
+      "route_key": "las-to-hnl",
+      "url": "/routes/las-to-hnl/"
+    },
+    {
+      "route_key": "lax-to-hnl",
+      "url": "/routes/lax-to-hnl/"
+    },
+    {
+      "route_key": "lgb-to-hnl",
+      "url": "/routes/lgb-to-hnl/"
+    },
+    {
+      "route_key": "lih-to-hnl",
+      "url": "/routes/lih-to-hnl/"
+    },
+    {
+      "route_key": "msp-to-hnl",
+      "url": "/routes/msp-to-hnl/"
+    },
+    {
+      "route_key": "oak-to-hnl",
+      "url": "/routes/oak-to-hnl/"
+    },
+    {
+      "route_key": "ogg-to-hnl",
+      "url": "/routes/ogg-to-hnl/"
+    },
+    {
+      "route_key": "ont-to-hnl",
+      "url": "/routes/ont-to-hnl/"
+    },
+    {
+      "route_key": "ord-to-hnl",
+      "url": "/routes/ord-to-hnl/"
+    },
+    {
+      "route_key": "pae-to-hnl",
+      "url": "/routes/pae-to-hnl/"
+    },
+    {
+      "route_key": "pdx-to-hnl",
+      "url": "/routes/pdx-to-hnl/"
+    },
+    {
+      "route_key": "phx-to-hnl",
+      "url": "/routes/phx-to-hnl/"
+    },
+    {
+      "route_key": "ppg-to-hnl",
+      "url": "/routes/ppg-to-hnl/"
+    },
+    {
+      "route_key": "san-to-hnl",
+      "url": "/routes/san-to-hnl/"
+    },
+    {
+      "route_key": "sea-to-hnl",
+      "url": "/routes/sea-to-hnl/"
+    },
+    {
+      "route_key": "sfo-to-hnl",
+      "url": "/routes/sfo-to-hnl/"
+    },
+    {
+      "route_key": "sjc-to-hnl",
+      "url": "/routes/sjc-to-hnl/"
+    },
+    {
+      "route_key": "slc-to-hnl",
+      "url": "/routes/slc-to-hnl/"
+    },
+    {
+      "route_key": "smf-to-hnl",
+      "url": "/routes/smf-to-hnl/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "HNL",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 61558,
+    "origin_routes": 33,
+    "usable_routes": 33,
+    "operating_airlines": 6,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/HNL/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "HNL Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for HNL (Daniel K. Inouye International Airport). 61,558 flights analyzed across 33 origin routes, 6 airlines. 33 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "HNL",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "HNL airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

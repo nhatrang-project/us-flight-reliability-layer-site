@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nhatrang-project.github.io/us-flight-reliability-layer/sitemap.xml

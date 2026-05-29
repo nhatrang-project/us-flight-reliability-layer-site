@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTR to CLT Flight Reliability Data — 2024 Historical Arrival Patterns</title>
+  <meta name="description" content="Historical flight reliability data for BTR to CLT flights in 2024, including cancellation rate, delay-over-60-minute rate, delay-over-180-minute rate, average arrival delay, and p90 arrival delay patterns.">
+  <meta name="robots" content="index, follow">
+  <style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+a { color: #1a56db; }
+a:hover { text-decoration: underline; }
+.page-wrapper { max-width: 1080px; margin: 0 auto; padding: 0 1rem 3rem; }
+
+/* ── Header ── */
+.page-header {
+    background: #fff;
+    border-bottom: 2px solid #e0e6f0;
+    padding: 1.5rem 0;
+}
+.page-header .inner { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
+.route-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2em 0.75em;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+.page-header h1 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    color: #111;
+    line-height: 1.3;
+}
+.header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.78rem;
+    color: #6b7280;
+    margin-top: 0.4rem;
+}
+.header-meta-item strong { color: #374151; }
+
+/* ── Section cards ── */
+section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.4rem;
+    margin-top: 1.1rem;
+    border: 1px solid #e4e8f0;
+}
+section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f2f6;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ── AI scope ── */
+.scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+.scope-box { background: #f8fafc; border-radius: 6px; padding: 0.8rem; border: 1px solid #e0e8f0; }
+.scope-box h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #6b7280; margin: 0 0 0.5rem; font-weight: 700; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tag {
+    display: inline-block;
+    background: #dbeafe; color: #1e40af;
+    font-size: 0.7rem; padding: 0.15em 0.5em;
+    border-radius: 3px; font-weight: 500;
+}
+.not-tag {
+    display: inline-block;
+    background: #f3f4f6; color: #9ca3af;
+    font-size: 0.7rem; padding: 0.15em 0.5em;
+    border-radius: 3px; text-decoration: line-through;
+}
+.scope-note {
+    margin-top: 0.7rem;
+    font-size: 0.82rem;
+    color: #4b5563;
+    padding: 0.5rem 0.75rem;
+    background: #f0f4f8;
+    border-left: 3px solid #93c5fd;
+    border-radius: 0 4px 4px 0;
+}
+
+/* ── Info grid ── */
+.info-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.35rem 2rem;
+    font-size: 0.875rem;
+}
+.info-label { color: #6b7280; font-weight: 500; white-space: nowrap; }
+
+/* ── Quality badge ── */
+.quality-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 0.15em 0.55em;
+    border-radius: 3px; font-weight: 600;
+    background: #e5e7eb; color: #374151;
+}
+.quality-badge.usable    { background: #dcfce7; color: #166534; }
+.quality-badge.thin      { background: #fef3c7; color: #92400e; }
+.quality-badge.too_small { background: #fee2e2; color: #991b1b; }
+
+/* ── Metric grid ── */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 0.8rem;
+}
+.metric-card {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e0e8f0;
+}
+.metric-label {
+    font-size: 0.7rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+.metric-value { font-size: 1.4rem; font-weight: 700; color: #111; line-height: 1.2; }
+.metric-sub   { font-size: 0.72rem; color: #9ca3af; margin-top: 0.15rem; }
+
+/* ── Signal grid ── */
+.signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+    gap: 0.9rem;
+}
+.signal-card {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 0.95rem;
+    border: 1px solid #e0e8f0;
+}
+.signal-name {
+    font-size: 0.7rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+.signal-status-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 0.1em 0.5em;
+    border-radius: 3px;
+    margin-bottom: 0.45rem;
+    font-weight: 600;
+}
+.signal-status-badge.available       { background: #dcfce7; color: #166534; }
+.signal-status-badge.insufficient_data { background: #fef3c7; color: #92400e; }
+.signal-status-badge.not_applicable  { background: #f0f0f0; color: #666; }
+.signal-metric-label { font-size: 0.78rem; color: #6b7280; margin-bottom: 0.1rem; }
+.signal-route-value  { font-size: 1.05rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+.comparison-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0.18rem 0;
+}
+.comparison-row .label { flex: 1; }
+.cmp-badge {
+    font-size: 0.68rem; font-weight: 700;
+    padding: 0.1em 0.45em; border-radius: 3px; white-space: nowrap;
+}
+.cmp-badge.below { background: #dcfce7; color: #166534; }
+.cmp-badge.above { background: #fee2e2; color: #991b1b; }
+.cmp-badge.at    { background: #dbeafe; color: #1e40af; }
+.cmp-badge.na    { background: #f0f0f0; color: #888; }
+.signal-interpretation {
+    font-size: 0.8rem;
+    color: #4b5563;
+    margin-top: 0.55rem;
+    padding-top: 0.45rem;
+    border-top: 1px solid #e8ecf2;
+    font-style: italic;
+    line-height: 1.5;
+}
+.dual-metric-row  { margin: 0.25rem 0; font-size: 0.8rem; color: #555; }
+.dual-metric-name { font-weight: 600; color: #374151; margin-bottom: 0.08rem; }
+
+/* ── Note boxes ── */
+.note-box {
+    background: #f0f4f8;
+    border-left: 3px solid #93c5fd;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0 5px 5px 0;
+    font-size: 0.84rem;
+    color: #374151;
+    margin-bottom: 0.9rem;
+    line-height: 1.55;
+}
+.note-box.warning { border-left-color: #fbbf24; background: #fffbeb; }
+
+/* ── Tables ── */
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th {
+    background: #f0f4f8;
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #374151;
+    border-bottom: 2px solid #dce3ee;
+}
+td {
+    padding: 0.45rem 0.7rem;
+    border-bottom: 1px solid #f0f2f6;
+    vertical-align: middle;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafc; }
+
+/* ── Downloads ── */
+.download-list { list-style: none; padding: 0; margin: 0; }
+.download-list li { margin: 0.45rem 0; }
+.download-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.875rem;
+}
+
+/* ── Boundaries ── */
+.boundary-list { list-style: none; padding: 0; margin: 0.5rem 0; }
+.boundary-list li {
+    padding: 0.25rem 0 0.25rem 1.2rem;
+    position: relative;
+    font-size: 0.875rem;
+    color: #374151;
+    border-bottom: 1px solid #f0f2f6;
+}
+.boundary-list li:last-child { border-bottom: none; }
+.boundary-list li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    top: 0.32rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .signal-grid { grid-template-columns: 1fr; }
+    .scope-grid  { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 1.15rem; }
+    .info-grid { grid-template-columns: 1fr; gap: 0.1rem; }
+    .info-label::after { content: ":"; }
+}
+</style>
+</head>
+<body>
+<header class="page-header">
+  <div class="inner">
+    <div class="route-badge">BTR → CLT</div>
+    <h1>BTR to CLT Flight Reliability Data — 2024 Historical Arrival Patterns</h1>
+    <div class="header-meta">
+      <span class="header-meta-item"><strong>Data source:</strong> BTS/TranStats On-Time Performance On-Time Performance</span>
+      <span class="header-meta-item"><strong>Coverage:</strong> 2024-01-01 – 2024-12-31</span>
+      <span class="header-meta-item"><strong>Schema:</strong> route_page_data.v2</span>
+      <span class="header-meta-item"><strong>Generated:</strong> 2026-05-28</span>
+    </div>
+  </div>
+</header>
+<div class="page-wrapper">
+  <main>
+<section id="ai-readable-page-scope" aria-label="Machine-readable page scope">
+  <h2>Machine-readable page scope</h2>
+  <p style="font-size:0.9rem;margin:0 0 0.8rem;color:#374151;">Route-level historical flight reliability data for BTR-CLT in 2024.</p>
+  <div class="scope-grid">
+    <div class="scope-box">
+      <h3>Structured fields included</h3>
+      <div class="tag-list"><span class="tag">cancellation_rate</span><span class="tag">delay_over_60min_rate</span><span class="tag">delay_over_180min_rate</span><span class="tag">avg_arrival_delay_minutes</span><span class="tag">p90_arrival_delay_minutes</span><span class="tag">departure_delay_over_30min_rate</span><span class="tag">avg_delay_recovery_minutes</span><span class="tag">monthly_patterns (2024 month-level historical metrics)</span><span class="tag">holiday_period_patterns (thanksgiving_period, christmas_period)</span><span class="tag">by_airline_breakdown</span><span class="tag">by_departure_time_bucket_breakdown</span><span class="tag">decision_signals_historical_comparison</span></div>
+    </div>
+    <div class="scope-box">
+      <h3>Fields outside this dataset</h3>
+      <div class="tag-list"><span class="not-tag">ticket_price</span><span class="not-tag">booking_availability</span><span class="not-tag">terminal_walking_distance</span><span class="not-tag">airport_congestion</span><span class="not-tag">security_recheck_time</span><span class="not-tag">baggage_recheck_requirement</span><span class="not-tag">official_minimum_connection_time</span><span class="not-tag">real_time_weather</span><span class="not-tag">real_time_inventory</span></div>
+    </div>
+  </div>
+  <div class="scope-note">This page provides historical reliability signals, not booking recommendations.</div>
+</section>
+<section id="data-coverage">
+  <h2>Data coverage</h2>
+  <div class="info-grid">
+    <span class="info-label">Data year</span>
+    <span>2024</span>
+    <span class="info-label">Coverage period</span>
+    <span>2024-01-01 — 2024-12-31</span>
+    <span class="info-label">Coverage status</span>
+    <span>full_year</span>
+    <span class="info-label">Months present</span>
+    <span>1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</span>
+    <span class="info-label">Total scheduled flights</span>
+    <span>957</span>
+    <span class="info-label">Sample quality</span>
+    <span><span class="quality-badge usable">usable</span></span>
+    <span class="info-label">Operating airlines</span>
+    <span>MQ, OH</span>
+    <span class="info-label">Origin</span>
+    <span>BTR — </span>
+    <span class="info-label">Destination</span>
+    <span>CLT — Charlotte Douglas International Airport</span>
+    <span class="info-label">Destination type</span>
+    <span>hub14_major_hub</span>
+  </div>
+</section>
+<section id="key-reliability-metrics">
+  <h2>Key reliability metrics — 2024 annual data</h2>
+  <p class="note-box">All rates are 2024 full-year averages from BTS/TranStats On-Time Performance.
+  Rates are decimal fractions (raw data 0–1); displayed here as percentages.
+  Negative delay values indicate early arrivals on average.</p>
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Cancellation rate</div>
+      <div class="metric-value">1.4%</div>
+      <div class="metric-sub">Annual rate of scheduled flights cancelled.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Delay &gt; 60 min rate</div>
+      <div class="metric-value">9.0%</div>
+      <div class="metric-sub">Completed flights arriving ≥60 min late.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Delay &gt; 180 min rate</div>
+      <div class="metric-value">1.7%</div>
+      <div class="metric-sub">Completed flights arriving ≥180 min late.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Avg. arrival delay</div>
+      <div class="metric-value">+11.3 min</div>
+      <div class="metric-sub">Mean arrival delay. Negative = early arrival on average.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">P90 arrival delay</div>
+      <div class="metric-value">+52.0 min</div>
+      <div class="metric-sub">90th percentile arrival delay.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Dep. delay &gt; 30 min rate</div>
+      <div class="metric-value">14.2%</div>
+      <div class="metric-sub">Completed flights departing ≥30 min late.</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Avg. delay recovery</div>
+      <div class="metric-value">-0.3 min</div>
+      <div class="metric-sub">Mean in-flight recovery. Positive = partial recovery.</div>
+    </div>
+  </div>
+</section>
+<section id="monthly-patterns">
+  <h2>Monthly patterns — 2024 historical data</h2>
+  <p class="note-box">Rates and counts are based on completed flights within each calendar month.
+  Rows marked <span class="quality-badge too_small">too_small</span> have fewer than 3 completed flights —
+  rates have low statistical reliability in those rows.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Flights</th>
+          <th>Cancel rate</th>
+          <th>Delay &gt;60 min</th>
+          <th>Avg arr delay</th>
+          <th>P90 arr delay</th>
+          <th>Dep delay &gt;30 min</th>
+          <th>Avg recovery</th>
+          <th>Sample quality</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>Jan</strong></td>
+        <td>62</td>
+        <td>3.2%</td>
+        <td>8.3%</td>
+        <td>+13.9 min</td>
+        <td>+45.1 min</td>
+        <td>20.0%</td>
+        <td>-0.6 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Feb</strong></td>
+        <td>58</td>
+        <td>0.0%</td>
+        <td>5.2%</td>
+        <td>+12.0 min</td>
+        <td>+22.5 min</td>
+        <td>6.9%</td>
+        <td>-1.4 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mar</strong></td>
+        <td>62</td>
+        <td>0.0%</td>
+        <td>3.2%</td>
+        <td>+10.9 min</td>
+        <td>+14.8 min</td>
+        <td>6.5%</td>
+        <td>+0.1 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Apr</strong></td>
+        <td>83</td>
+        <td>0.0%</td>
+        <td>9.6%</td>
+        <td>+21.4 min</td>
+        <td>+35.6 min</td>
+        <td>15.7%</td>
+        <td>-0.3 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>May</strong></td>
+        <td>93</td>
+        <td>0.0%</td>
+        <td>11.8%</td>
+        <td>+18.8 min</td>
+        <td>+73.5 min</td>
+        <td>17.2%</td>
+        <td>-0.7 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Jun</strong></td>
+        <td>87</td>
+        <td>0.0%</td>
+        <td>8.0%</td>
+        <td>+18.6 min</td>
+        <td>+49.6 min</td>
+        <td>11.5%</td>
+        <td>+0.7 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Jul</strong></td>
+        <td>86</td>
+        <td>3.5%</td>
+        <td>10.8%</td>
+        <td>+25.6 min</td>
+        <td>+64.6 min</td>
+        <td>22.9%</td>
+        <td>+1.6 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Aug</strong></td>
+        <td>85</td>
+        <td>4.7%</td>
+        <td>12.3%</td>
+        <td>+19.9 min</td>
+        <td>+69.0 min</td>
+        <td>18.5%</td>
+        <td>-1.1 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Sep</strong></td>
+        <td>89</td>
+        <td>3.4%</td>
+        <td>16.3%</td>
+        <td>+28.5 min</td>
+        <td>+112.0 min</td>
+        <td>20.9%</td>
+        <td>-0.4 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Oct</strong></td>
+        <td>89</td>
+        <td>0.0%</td>
+        <td>7.9%</td>
+        <td>+16.9 min</td>
+        <td>+48.4 min</td>
+        <td>12.4%</td>
+        <td>-2.4 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Nov</strong></td>
+        <td>87</td>
+        <td>0.0%</td>
+        <td>1.1%</td>
+        <td>+5.4 min</td>
+        <td>+20.8 min</td>
+        <td>4.6%</td>
+        <td>-0.9 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dec</strong></td>
+        <td>76</td>
+        <td>1.3%</td>
+        <td>12.0%</td>
+        <td>+18.9 min</td>
+        <td>+62.2 min</td>
+        <td>18.7%</td>
+        <td>+2.3 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="holiday-patterns">
+  <h2>Holiday period patterns — 2024 historical data</h2>
+  <p class="note-box">Rates and counts cover flights within defined holiday date windows.
+  Thanksgiving period: Nov 24 – Dec 1, 2024. Christmas period: Dec 20 – Dec 31, 2024.
+  Rows marked <span class="quality-badge too_small">too_small</span> have fewer than 3 completed flights —
+  rates have low statistical reliability in those rows.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Dates</th>
+          <th>Flights</th>
+          <th>Cancel rate</th>
+          <th>Delay &gt;60 min</th>
+          <th>Avg arr delay</th>
+          <th>P90 arr delay</th>
+          <th>Dep delay &gt;30 min</th>
+          <th>Avg recovery</th>
+          <th>Sample quality</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>Christmas period</strong></td>
+        <td>2024-12-20 – 2024-12-31</td>
+        <td>34</td>
+        <td>2.9%</td>
+        <td>18.2%</td>
+        <td>+27.3 min</td>
+        <td>+83.0 min</td>
+        <td>21.2%</td>
+        <td>+1.8 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      <tr>
+        <td><strong>Thanksgiving period</strong></td>
+        <td>2024-11-24 – 2024-12-01</td>
+        <td>22</td>
+        <td>0.0%</td>
+        <td>4.5%</td>
+        <td>+9.5 min</td>
+        <td>+22.9 min</td>
+        <td>9.1%</td>
+        <td>0.0 min</td>
+        <td><span class="quality-badge usable_month">usable_month</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="historical-reliability-signals">
+  <h2>Historical reliability signals</h2>
+  <p class="note-box">
+    These signals compare this route's 2024 historical reliability metrics to
+    the median of routes serving the same destination airport (destination median)
+    and to the airport21 dataset median (1,920 usable routes, 21 airports).
+    These are historical data comparisons — not booking recommendations or route rankings.
+  </p>
+  <div class="signal-grid">
+<div class="signal-card">
+  <div class="signal-name">Average arrival delay pattern</div>
+  <span class="signal-status-badge available">available</span>
+  <div class="signal-metric-label">Avg. arrival delay</div>
+  <div class="signal-route-value">+11.3 min</div>
+  <div class="comparison-row">
+    <span class="label">vs. destination median (+12.3 min)</span>
+    <span class="cmp-badge below">Below median</span>
+  </div>
+  <div class="comparison-row">
+    <span class="label">vs. airport21 median (+6.4 min)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="signal-interpretation">This route&#x27;s average arrival delay was below the destination median and above the airport21 median in the 2024 airport21 dataset.</div>
+</div>
+<div class="signal-card">
+  <div class="signal-name">Cancellation + delay-over-60-min pattern</div>
+  <span class="signal-status-badge available">available</span>
+  <div class="dual-metric-row">
+    <div class="dual-metric-name">Cancellation rate: 1.4%</div>
+    <div class="comparison-row">
+      <span class="label">vs. dest median (1.2%)</span>
+      <span class="cmp-badge above">Above median</span>
+    </div>
+    <div class="comparison-row">
+      <span class="label">vs. airport21 median (1.1%)</span>
+      <span class="cmp-badge above">Above median</span>
+    </div>
+  </div>
+  <div class="dual-metric-row">
+    <div class="dual-metric-name">Delay &gt;60 min rate: 9.0%</div>
+    <div class="comparison-row">
+      <span class="label">vs. dest median (8.2%)</span>
+      <span class="cmp-badge above">Above median</span>
+    </div>
+    <div class="comparison-row">
+      <span class="label">vs. airport21 median (7.0%)</span>
+      <span class="cmp-badge above">Above median</span>
+    </div>
+  </div>
+  <div class="signal-interpretation">In the 2024 airport21 dataset, this route&#x27;s cancellation rate was above the destination median and its delay-over-60-minute rate was above the destination median.</div>
+</div>
+<div class="signal-card">
+  <div class="signal-name">P90 arrival delay pattern</div>
+  <span class="signal-status-badge available">available</span>
+  <div class="signal-metric-label">P90 arrival delay</div>
+  <div class="signal-route-value">+52.0 min</div>
+  <div class="comparison-row">
+    <span class="label">vs. destination median (+47.0 min)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="comparison-row">
+    <span class="label">vs. airport21 median (+41.0 min)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="signal-interpretation">This route&#x27;s p90 arrival delay was above the destination median and above the airport21 median in the 2024 airport21 dataset.</div>
+</div>
+<div class="signal-card">
+  <div class="signal-name">Cancellation rate pattern</div>
+  <span class="signal-status-badge available">available</span>
+  <div class="signal-metric-label">Cancellation rate</div>
+  <div class="signal-route-value">1.4%</div>
+  <div class="comparison-row">
+    <span class="label">vs. destination median (1.2%)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="comparison-row">
+    <span class="label">vs. airport21 median (1.1%)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="signal-interpretation">This route&#x27;s cancellation rate was above the destination median and above the airport21 median in the 2024 airport21 dataset.</div>
+</div>
+<div class="signal-card">
+  <div class="signal-name">Extreme delay (180+ min) pattern</div>
+  <span class="signal-status-badge available">available</span>
+  <div class="signal-metric-label">Delay &gt;180 min rate</div>
+  <div class="signal-route-value">1.7%</div>
+  <div class="comparison-row">
+    <span class="label">vs. destination median (2.0%)</span>
+    <span class="cmp-badge below">Below median</span>
+  </div>
+  <div class="comparison-row">
+    <span class="label">vs. airport21 median (1.6%)</span>
+    <span class="cmp-badge above">Above median</span>
+  </div>
+  <div class="signal-interpretation">This route&#x27;s delay-over-180-minute rate was below the destination median and above the airport21 median in the 2024 airport21 dataset.</div>
+</div>
+  </div>
+</section>
+<section id="interpretation-boundaries">
+  <h2>Interpretation boundaries</h2>
+  <p class="note-box">This dataset provides historical reliability signals and does not make booking recommendations.</p>
+  <p class="note-box warning">Connection timing values reflect historical arrival and onward departure timing patterns only. They do not confirm whether a specific passenger can complete a connection.</p>
+  <p style="font-size:0.875rem;font-weight:600;margin:0 0 0.4rem;">Not included in this dataset:</p>
+  <ul class="boundary-list">
+    <li>Ticket price / fare data</li>
+    <li>Booking availability / seat inventory</li>
+    <li>Terminal walking distance</li>
+    <li>Airport congestion patterns</li>
+    <li>TSA / security recheck time</li>
+    <li>Baggage recheck requirement</li>
+    <li>Official minimum connection time (MCT)</li>
+    <li>Real-time weather</li>
+    <li>Real-time flight inventory / live status</li>
+  </ul>
+</section>
+<section id="airline-comparison">
+  <h2>By airline — 2024 historical data</h2>
+  <p class="note-box">Airline-level breakdown. Sorted by flight volume (highest first).
+  Historical patterns only — not a ranking.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Flights (2024)</th>
+          <th>Cancel rate</th>
+          <th>Delay &gt;60 min</th>
+          <th>Delay &gt;180 min</th>
+          <th>Avg arrival delay</th>
+          <th>P90 arrival delay</th>
+          <th>Sample quality</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>OH</strong></td>
+        <td>903</td>
+        <td>1.3%</td>
+        <td>9.2%</td>
+        <td>1.8%</td>
+        <td>+11.6 min</td>
+        <td>+52.6 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      <tr>
+        <td><strong>MQ</strong></td>
+        <td>54</td>
+        <td>1.9%</td>
+        <td>5.7%</td>
+        <td>0.0%</td>
+        <td>+6.3 min</td>
+        <td>+26.0 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="departure-time-buckets">
+  <h2>By departure time — 2024 historical data</h2>
+  <p class="note-box">Patterns by scheduled departure time (local time estimate).
+  Buckets with very few flights carry <span class="quality-badge too_small">too_small</span> quality —
+  rates have low statistical reliability in those rows.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time period</th>
+          <th>Hours (local)</th>
+          <th>Flights</th>
+          <th>Cancel rate</th>
+          <th>Delay &gt;60 min</th>
+          <th>Dep. delay &gt;30 min</th>
+          <th>Avg delay recovery</th>
+          <th>Sample quality</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>Early morning</strong></td>
+        <td>05:00-08:59</td>
+        <td>366</td>
+        <td>1.1%</td>
+        <td>5.2%</td>
+        <td>6.9%</td>
+        <td>-2.4 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Late morning</strong></td>
+        <td>09:00-11:59</td>
+        <td>149</td>
+        <td>2.0%</td>
+        <td>12.3%</td>
+        <td>19.9%</td>
+        <td>+1.8 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Afternoon</strong></td>
+        <td>12:00-15:59</td>
+        <td>194</td>
+        <td>0.5%</td>
+        <td>6.2%</td>
+        <td>11.9%</td>
+        <td>+1.1 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Evening</strong></td>
+        <td>16:00-19:59</td>
+        <td>247</td>
+        <td>2.0%</td>
+        <td>14.9%</td>
+        <td>23.6%</td>
+        <td>+0.5 min</td>
+        <td><span class="quality-badge usable">usable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Night</strong></td>
+        <td>20:00-23:59</td>
+        <td>1</td>
+        <td>0.0%</td>
+        <td>0.0%</td>
+        <td>0.0%</td>
+        <td>+3.0 min</td>
+        <td><span class="quality-badge too_small">too_small</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="downloads">
+  <h2>Download data</h2>
+  <ul class="download-list">
+    <li><a href="route_page_data.json">⬇ route_page_data.json — Full route reliability dataset (JSON)</a></li>
+    <li><a href="../../processed_data/bts/route_reliability_2024_airport21.csv">⬇ route_reliability_2024_airport21.csv — Route-level dataset source</a></li>
+    <li><a href="../../processed_data/bts/route_time_bucket_reliability_2024_airport21.csv">⬇ route_time_bucket_reliability_2024_airport21.csv — Time-bucket dataset source</a></li>
+    <li><a href="../../processed_data/bts/route_monthly_reliability_2024_airport21_usable.csv">⬇ route_monthly_reliability_2024_airport21_usable.csv — Monthly-level dataset source</a></li>
+    <li><a href="../../processed_data/bts/route_holiday_period_reliability_2024_airport21_usable.csv">⬇ route_holiday_period_reliability_2024_airport21_usable.csv — Holiday period dataset source</a></li>
+  </ul>
+</section>
+  </main>
+</div>
+<!-- Machine-readable: full route_page_data.json (AI / crawler / debug) -->
+<script type="application/json" id="route-page-data">
+{
+  "schema_version": "route_page_data.v2",
+  "page_type": "route_reliability",
+  "generated_at": "2026-05-28T21:41:23.068102+00:00",
+  "route": {
+    "route_key": "BTR-CLT",
+    "origin": "BTR",
+    "destination": "CLT",
+    "origin_airport_name": null,
+    "destination_airport_name": "Charlotte Douglas International Airport",
+    "destination_airport_expansion_type": "hub14_major_hub"
+  },
+  "data_period": {
+    "year": 2024,
+    "start": "2024-01-01",
+    "end": "2024-12-31",
+    "coverage_status": "full_year",
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "sample": {
+    "sample_quality": "usable",
+    "total_scheduled_flights": 957,
+    "operating_airlines_count": 2,
+    "operating_airlines": [
+      "MQ",
+      "OH"
+    ]
+  },
+  "reliability_metrics": {
+    "cancellation_rate": 0.013584,
+    "delay_over_60min_rate": 0.090042,
+    "delay_over_180min_rate": 0.016949,
+    "avg_arrival_delay_minutes": 11.28,
+    "p90_arrival_delay_minutes": 52.0,
+    "departure_delay_over_30min_rate": 0.141949,
+    "avg_delay_recovery_minutes": -0.27
+  },
+  "monthly_patterns": [
+    {
+      "month": "2024-01",
+      "scheduled_flights": 62,
+      "completed_flights": 60,
+      "cancelled_flights": 2,
+      "cancellation_rate": 0.032258,
+      "delay_over_60min_rate": 0.083333,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 13.88,
+      "p90_arrival_delay_minutes": 45.1,
+      "departure_delay_over_30min_rate": 0.2,
+      "avg_delay_recovery_minutes": -0.55,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-02",
+      "scheduled_flights": 58,
+      "completed_flights": 58,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.051724,
+      "delay_over_180min_rate": 0.017241,
+      "avg_arrival_delay_minutes": 12.02,
+      "p90_arrival_delay_minutes": 22.5,
+      "departure_delay_over_30min_rate": 0.068966,
+      "avg_delay_recovery_minutes": -1.43,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-03",
+      "scheduled_flights": 62,
+      "completed_flights": 62,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.032258,
+      "delay_over_180min_rate": 0.016129,
+      "avg_arrival_delay_minutes": 10.94,
+      "p90_arrival_delay_minutes": 14.8,
+      "departure_delay_over_30min_rate": 0.064516,
+      "avg_delay_recovery_minutes": 0.06,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-04",
+      "scheduled_flights": 83,
+      "completed_flights": 83,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.096386,
+      "delay_over_180min_rate": 0.024096,
+      "avg_arrival_delay_minutes": 21.36,
+      "p90_arrival_delay_minutes": 35.6,
+      "departure_delay_over_30min_rate": 0.156627,
+      "avg_delay_recovery_minutes": -0.33,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-05",
+      "scheduled_flights": 93,
+      "completed_flights": 93,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.11828,
+      "delay_over_180min_rate": 0.010753,
+      "avg_arrival_delay_minutes": 18.78,
+      "p90_arrival_delay_minutes": 73.5,
+      "departure_delay_over_30min_rate": 0.172043,
+      "avg_delay_recovery_minutes": -0.72,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-06",
+      "scheduled_flights": 87,
+      "completed_flights": 87,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.08046,
+      "delay_over_180min_rate": 0.022989,
+      "avg_arrival_delay_minutes": 18.61,
+      "p90_arrival_delay_minutes": 49.6,
+      "departure_delay_over_30min_rate": 0.114943,
+      "avg_delay_recovery_minutes": 0.66,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-07",
+      "scheduled_flights": 86,
+      "completed_flights": 83,
+      "cancelled_flights": 3,
+      "cancellation_rate": 0.034884,
+      "delay_over_60min_rate": 0.108434,
+      "delay_over_180min_rate": 0.048193,
+      "avg_arrival_delay_minutes": 25.63,
+      "p90_arrival_delay_minutes": 64.6,
+      "departure_delay_over_30min_rate": 0.228916,
+      "avg_delay_recovery_minutes": 1.59,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-08",
+      "scheduled_flights": 85,
+      "completed_flights": 81,
+      "cancelled_flights": 4,
+      "cancellation_rate": 0.047059,
+      "delay_over_60min_rate": 0.123457,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 19.88,
+      "p90_arrival_delay_minutes": 69.0,
+      "departure_delay_over_30min_rate": 0.185185,
+      "avg_delay_recovery_minutes": -1.1,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-09",
+      "scheduled_flights": 89,
+      "completed_flights": 86,
+      "cancelled_flights": 3,
+      "cancellation_rate": 0.033708,
+      "delay_over_60min_rate": 0.162791,
+      "delay_over_180min_rate": 0.023256,
+      "avg_arrival_delay_minutes": 28.53,
+      "p90_arrival_delay_minutes": 112.0,
+      "departure_delay_over_30min_rate": 0.209302,
+      "avg_delay_recovery_minutes": -0.42,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-10",
+      "scheduled_flights": 89,
+      "completed_flights": 89,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.078652,
+      "delay_over_180min_rate": 0.022472,
+      "avg_arrival_delay_minutes": 16.88,
+      "p90_arrival_delay_minutes": 48.4,
+      "departure_delay_over_30min_rate": 0.123596,
+      "avg_delay_recovery_minutes": -2.39,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-11",
+      "scheduled_flights": 87,
+      "completed_flights": 87,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.011494,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 5.4,
+      "p90_arrival_delay_minutes": 20.8,
+      "departure_delay_over_30min_rate": 0.045977,
+      "avg_delay_recovery_minutes": -0.86,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-12",
+      "scheduled_flights": 76,
+      "completed_flights": 75,
+      "cancelled_flights": 1,
+      "cancellation_rate": 0.013158,
+      "delay_over_60min_rate": 0.12,
+      "delay_over_180min_rate": 0.013333,
+      "avg_arrival_delay_minutes": 18.89,
+      "p90_arrival_delay_minutes": 62.2,
+      "departure_delay_over_30min_rate": 0.186667,
+      "avg_delay_recovery_minutes": 2.32,
+      "sample_quality_for_month": "usable_month"
+    }
+  ],
+  "holiday_period_patterns": [
+    {
+      "period_name": "christmas_period",
+      "start_date": "2024-12-20",
+      "end_date": "2024-12-31",
+      "scheduled_flights": 34,
+      "completed_flights": 33,
+      "cancelled_flights": 1,
+      "cancellation_rate": 0.029412,
+      "delay_over_60min_rate": 0.181818,
+      "delay_over_180min_rate": 0.030303,
+      "avg_arrival_delay_minutes": 27.27,
+      "p90_arrival_delay_minutes": 83.0,
+      "departure_delay_over_30min_rate": 0.212121,
+      "avg_delay_recovery_minutes": 1.76,
+      "sample_quality_for_period": "usable_month"
+    },
+    {
+      "period_name": "thanksgiving_period",
+      "start_date": "2024-11-24",
+      "end_date": "2024-12-01",
+      "scheduled_flights": 22,
+      "completed_flights": 22,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.045455,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 9.5,
+      "p90_arrival_delay_minutes": 22.9,
+      "departure_delay_over_30min_rate": 0.090909,
+      "avg_delay_recovery_minutes": 0.0,
+      "sample_quality_for_period": "usable_month"
+    }
+  ],
+  "by_airline": [
+    {
+      "airline": "OH",
+      "total_scheduled_flights": 903,
+      "cancellation_rate": 0.013289,
+      "delay_over_60min_rate": 0.092031,
+      "delay_over_180min_rate": 0.017957,
+      "avg_arrival_delay_minutes": 11.58,
+      "p90_arrival_delay_minutes": 52.6,
+      "departure_delay_over_30min_rate": 0.143659,
+      "avg_delay_recovery_minutes": -0.45,
+      "sample_quality": "usable"
+    },
+    {
+      "airline": "MQ",
+      "total_scheduled_flights": 54,
+      "cancellation_rate": 0.018519,
+      "delay_over_60min_rate": 0.056604,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 6.34,
+      "p90_arrival_delay_minutes": 26.0,
+      "departure_delay_over_30min_rate": 0.113208,
+      "avg_delay_recovery_minutes": 2.77,
+      "sample_quality": "usable"
+    }
+  ],
+  "by_departure_time_bucket": [
+    {
+      "bucket": "early_morning",
+      "bucket_hours_local": "05:00-08:59",
+      "total_scheduled_flights": 366,
+      "cancellation_rate": 0.010929,
+      "delay_over_60min_rate": 0.052486,
+      "departure_delay_over_30min_rate": 0.069061,
+      "avg_delay_recovery_minutes": -2.38,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "late_morning",
+      "bucket_hours_local": "09:00-11:59",
+      "total_scheduled_flights": 149,
+      "cancellation_rate": 0.020134,
+      "delay_over_60min_rate": 0.123288,
+      "departure_delay_over_30min_rate": 0.19863,
+      "avg_delay_recovery_minutes": 1.84,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "afternoon",
+      "bucket_hours_local": "12:00-15:59",
+      "total_scheduled_flights": 194,
+      "cancellation_rate": 0.005155,
+      "delay_over_60min_rate": 0.062176,
+      "departure_delay_over_30min_rate": 0.119171,
+      "avg_delay_recovery_minutes": 1.15,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "evening",
+      "bucket_hours_local": "16:00-19:59",
+      "total_scheduled_flights": 247,
+      "cancellation_rate": 0.020243,
+      "delay_over_60min_rate": 0.14876,
+      "departure_delay_over_30min_rate": 0.235537,
+      "avg_delay_recovery_minutes": 0.46,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "night",
+      "bucket_hours_local": "20:00-23:59",
+      "total_scheduled_flights": 1,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.0,
+      "departure_delay_over_30min_rate": 0.0,
+      "avg_delay_recovery_minutes": 3.0,
+      "sample_quality": "too_small"
+    }
+  ],
+  "decision_signals": {
+    "fastest_average_arrival": {
+      "status": "available",
+      "primary_metric": "avg_arrival_delay_minutes",
+      "route_value": 11.28,
+      "comparison_context": {
+        "destination_median": 12.31,
+        "airport21_median": 6.425,
+        "comparison_to_destination_median": "below_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's average arrival delay was below the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_delay_cancel_risk": {
+      "status": "available",
+      "primary_metrics": [
+        "cancellation_rate",
+        "delay_over_60min_rate"
+      ],
+      "route_values": {
+        "cancellation_rate": 0.013584,
+        "delay_over_60min_rate": 0.090042
+      },
+      "comparison_context": {
+        "destination_median": {
+          "cancellation_rate": 0.011609,
+          "delay_over_60min_rate": 0.081591
+        },
+        "airport21_median": {
+          "cancellation_rate": 0.011314,
+          "delay_over_60min_rate": 0.069565
+        },
+        "comparison_to_destination_median": {
+          "cancellation_rate": "above_median",
+          "delay_over_60min_rate": "above_median"
+        },
+        "comparison_to_airport21_median": {
+          "cancellation_rate": "above_median",
+          "delay_over_60min_rate": "above_median"
+        }
+      },
+      "interpretation": "In the 2024 airport21 dataset, this route's cancellation rate was above the destination median and its delay-over-60-minute rate was above the destination median."
+    },
+    "lower_p90_arrival_delay": {
+      "status": "available",
+      "primary_metric": "p90_arrival_delay_minutes",
+      "route_value": 52.0,
+      "comparison_context": {
+        "destination_median": 47.0,
+        "airport21_median": 41.0,
+        "comparison_to_destination_median": "above_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's p90 arrival delay was above the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_cancellation_pattern": {
+      "status": "available",
+      "primary_metric": "cancellation_rate",
+      "route_value": 0.013584,
+      "comparison_context": {
+        "destination_median": 0.011609,
+        "airport21_median": 0.011314,
+        "comparison_to_destination_median": "above_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's cancellation rate was above the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_extreme_delay_pattern": {
+      "status": "available",
+      "primary_metric": "delay_over_180min_rate",
+      "route_value": 0.016949,
+      "comparison_context": {
+        "destination_median": 0.020277,
+        "airport21_median": 0.015625,
+        "comparison_to_destination_median": "below_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's delay-over-180-minute rate was below the destination median and above the airport21 median in the 2024 airport21 dataset."
+    }
+  },
+  "summary_for_ai": {
+    "page_identity": "Route-level historical flight reliability data for BTR-CLT in 2024.",
+    "contains": [
+      "cancellation_rate",
+      "delay_over_60min_rate",
+      "delay_over_180min_rate",
+      "avg_arrival_delay_minutes",
+      "p90_arrival_delay_minutes",
+      "departure_delay_over_30min_rate",
+      "avg_delay_recovery_minutes",
+      "monthly_patterns (2024 month-level historical metrics)",
+      "holiday_period_patterns (thanksgiving_period, christmas_period)",
+      "by_airline_breakdown",
+      "by_departure_time_bucket_breakdown",
+      "decision_signals_historical_comparison"
+    ],
+    "not_contains": [
+      "ticket_price",
+      "booking_availability",
+      "terminal_walking_distance",
+      "airport_congestion",
+      "security_recheck_time",
+      "baggage_recheck_requirement",
+      "official_minimum_connection_time",
+      "real_time_weather",
+      "real_time_inventory"
+    ],
+    "interpretation_note": "This page provides historical reliability signals, not booking recommendations."
+  },
+  "interpretation_boundaries": {
+    "not_included": [
+      "ticket_price",
+      "booking_availability",
+      "terminal_walking_distance",
+      "airport_congestion",
+      "security_recheck_time",
+      "baggage_recheck_requirement",
+      "official_minimum_connection_time",
+      "real_time_weather",
+      "real_time_inventory"
+    ],
+    "connection_timing_note": "Connection timing values reflect historical arrival and onward departure timing patterns only. They do not confirm whether a specific passenger can complete a connection.",
+    "recommendation_note": "This dataset provides historical reliability signals and does not make booking recommendations."
+  },
+  "page_metadata": {
+    "title": "BTR to CLT Flight Reliability Data — 2024 Historical Arrival Patterns",
+    "meta_description": "Historical flight reliability data for BTR to CLT flights in 2024, including cancellation rate, delay-over-60-minute rate, delay-over-180-minute rate, average arrival delay, and p90 arrival delay patterns.",
+    "summary_block": "This page provides route-level historical reliability data for BTR to CLT flights based on 2024 BTS/TranStats data."
+  },
+  "data_sources": [
+    {
+      "name": "BTS/TranStats On-Time Performance",
+      "type": "historical_flight_operations_data",
+      "year": 2024
+    }
+  ],
+  "download_links": {
+    "route_page_json": "route_page_data.json",
+    "source_route_reliability_csv": "../../processed_data/bts/route_reliability_2024_airport21.csv",
+    "source_time_bucket_csv": "../../processed_data/bts/route_time_bucket_reliability_2024_airport21.csv",
+    "source_monthly_reliability_csv": "../../processed_data/bts/route_monthly_reliability_2024_airport21_usable.csv",
+    "source_holiday_period_csv": "../../processed_data/bts/route_holiday_period_reliability_2024_airport21_usable.csv"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "BTR to CLT Flight Reliability Data — 2024 Historical Arrival Patterns",
+  "description": "Historical flight reliability data for BTR to CLT flights in 2024, including cancellation rate, delay-over-60-minute rate, delay-over-180-minute rate, average arrival delay, and p90 arrival delay patterns.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "BTR-CLT",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "route_page_data.json"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "license": "https://www.transportation.gov/data",
+  "keywords": [
+    "flight reliability",
+    "on-time performance",
+    "cancellation rate",
+    "arrival delay",
+    "BTR to CLT",
+    "BTS TranStats",
+    "2024"
+  ]
+}
+</script>
+</body>
+</html>

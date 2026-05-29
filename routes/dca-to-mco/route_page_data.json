@@ -1,0 +1,502 @@
+{
+  "schema_version": "route_page_data.v2",
+  "page_type": "route_reliability",
+  "generated_at": "2026-05-28T21:41:55.355461+00:00",
+  "route": {
+    "route_key": "DCA-MCO",
+    "origin": "DCA",
+    "destination": "MCO",
+    "origin_airport_name": null,
+    "destination_airport_name": "Orlando International Airport",
+    "destination_airport_expansion_type": "leisure_heavy_family_travel"
+  },
+  "data_period": {
+    "year": 2024,
+    "start": "2024-01-01",
+    "end": "2024-12-31",
+    "coverage_status": "full_year",
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "sample": {
+    "sample_quality": "usable",
+    "total_scheduled_flights": 5042,
+    "operating_airlines_count": 4,
+    "operating_airlines": [
+      "AA",
+      "B6",
+      "DL",
+      "WN"
+    ]
+  },
+  "reliability_metrics": {
+    "cancellation_rate": 0.015668,
+    "delay_over_60min_rate": 0.088656,
+    "delay_over_180min_rate": 0.020351,
+    "avg_arrival_delay_minutes": 6.7,
+    "p90_arrival_delay_minutes": 53.0,
+    "departure_delay_over_30min_rate": 0.142454,
+    "avg_delay_recovery_minutes": 0.17
+  },
+  "monthly_patterns": [
+    {
+      "month": "2024-01",
+      "scheduled_flights": 458,
+      "completed_flights": 443,
+      "cancelled_flights": 15,
+      "cancellation_rate": 0.032751,
+      "delay_over_60min_rate": 0.13544,
+      "delay_over_180min_rate": 0.03386,
+      "avg_arrival_delay_minutes": 25.24,
+      "p90_arrival_delay_minutes": 86.9,
+      "departure_delay_over_30min_rate": 0.187359,
+      "avg_delay_recovery_minutes": -3.48,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-02",
+      "scheduled_flights": 433,
+      "completed_flights": 432,
+      "cancelled_flights": 1,
+      "cancellation_rate": 0.002309,
+      "delay_over_60min_rate": 0.078704,
+      "delay_over_180min_rate": 0.009259,
+      "avg_arrival_delay_minutes": 12.87,
+      "p90_arrival_delay_minutes": 38.0,
+      "departure_delay_over_30min_rate": 0.111111,
+      "avg_delay_recovery_minutes": -0.45,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-03",
+      "scheduled_flights": 467,
+      "completed_flights": 464,
+      "cancelled_flights": 3,
+      "cancellation_rate": 0.006424,
+      "delay_over_60min_rate": 0.112069,
+      "delay_over_180min_rate": 0.032328,
+      "avg_arrival_delay_minutes": 22.11,
+      "p90_arrival_delay_minutes": 67.4,
+      "departure_delay_over_30min_rate": 0.185345,
+      "avg_delay_recovery_minutes": -0.23,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-04",
+      "scheduled_flights": 450,
+      "completed_flights": 447,
+      "cancelled_flights": 3,
+      "cancellation_rate": 0.006667,
+      "delay_over_60min_rate": 0.096197,
+      "delay_over_180min_rate": 0.020134,
+      "avg_arrival_delay_minutes": 17.63,
+      "p90_arrival_delay_minutes": 54.6,
+      "departure_delay_over_30min_rate": 0.143177,
+      "avg_delay_recovery_minutes": -0.04,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-05",
+      "scheduled_flights": 430,
+      "completed_flights": 429,
+      "cancelled_flights": 1,
+      "cancellation_rate": 0.002326,
+      "delay_over_60min_rate": 0.111888,
+      "delay_over_180min_rate": 0.027972,
+      "avg_arrival_delay_minutes": 21.58,
+      "p90_arrival_delay_minutes": 66.0,
+      "departure_delay_over_30min_rate": 0.165501,
+      "avg_delay_recovery_minutes": -0.43,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-06",
+      "scheduled_flights": 416,
+      "completed_flights": 413,
+      "cancelled_flights": 3,
+      "cancellation_rate": 0.007212,
+      "delay_over_60min_rate": 0.106538,
+      "delay_over_180min_rate": 0.021792,
+      "avg_arrival_delay_minutes": 24.04,
+      "p90_arrival_delay_minutes": 67.2,
+      "departure_delay_over_30min_rate": 0.169492,
+      "avg_delay_recovery_minutes": 0.96,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-07",
+      "scheduled_flights": 428,
+      "completed_flights": 418,
+      "cancelled_flights": 10,
+      "cancellation_rate": 0.023364,
+      "delay_over_60min_rate": 0.117225,
+      "delay_over_180min_rate": 0.021531,
+      "avg_arrival_delay_minutes": 22.21,
+      "p90_arrival_delay_minutes": 68.6,
+      "departure_delay_over_30min_rate": 0.179426,
+      "avg_delay_recovery_minutes": 0.65,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-08",
+      "scheduled_flights": 396,
+      "completed_flights": 385,
+      "cancelled_flights": 11,
+      "cancellation_rate": 0.027778,
+      "delay_over_60min_rate": 0.109091,
+      "delay_over_180min_rate": 0.023377,
+      "avg_arrival_delay_minutes": 22.8,
+      "p90_arrival_delay_minutes": 69.1,
+      "departure_delay_over_30min_rate": 0.192208,
+      "avg_delay_recovery_minutes": -0.81,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-09",
+      "scheduled_flights": 371,
+      "completed_flights": 371,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.021563,
+      "delay_over_180min_rate": 0.010782,
+      "avg_arrival_delay_minutes": 7.31,
+      "p90_arrival_delay_minutes": 16.0,
+      "departure_delay_over_30min_rate": 0.072776,
+      "avg_delay_recovery_minutes": 1.3,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-10",
+      "scheduled_flights": 418,
+      "completed_flights": 388,
+      "cancelled_flights": 30,
+      "cancellation_rate": 0.07177,
+      "delay_over_60min_rate": 0.051546,
+      "delay_over_180min_rate": 0.018041,
+      "avg_arrival_delay_minutes": 11.48,
+      "p90_arrival_delay_minutes": 23.5,
+      "departure_delay_over_30min_rate": 0.108247,
+      "avg_delay_recovery_minutes": 1.58,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-11",
+      "scheduled_flights": 381,
+      "completed_flights": 379,
+      "cancelled_flights": 2,
+      "cancellation_rate": 0.005249,
+      "delay_over_60min_rate": 0.031662,
+      "delay_over_180min_rate": 0.005277,
+      "avg_arrival_delay_minutes": 6.53,
+      "p90_arrival_delay_minutes": 11.0,
+      "departure_delay_over_30min_rate": 0.079156,
+      "avg_delay_recovery_minutes": 1.98,
+      "sample_quality_for_month": "usable_month"
+    },
+    {
+      "month": "2024-12",
+      "scheduled_flights": 394,
+      "completed_flights": 394,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.083756,
+      "delay_over_180min_rate": 0.015228,
+      "avg_arrival_delay_minutes": 16.21,
+      "p90_arrival_delay_minutes": 46.0,
+      "departure_delay_over_30min_rate": 0.152284,
+      "avg_delay_recovery_minutes": 1.77,
+      "sample_quality_for_month": "usable_month"
+    }
+  ],
+  "holiday_period_patterns": [
+    {
+      "period_name": "christmas_period",
+      "start_date": "2024-12-20",
+      "end_date": "2024-12-31",
+      "scheduled_flights": 148,
+      "completed_flights": 148,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.162162,
+      "delay_over_180min_rate": 0.033784,
+      "avg_arrival_delay_minutes": 29.2,
+      "p90_arrival_delay_minutes": 93.8,
+      "departure_delay_over_30min_rate": 0.256757,
+      "avg_delay_recovery_minutes": 0.97,
+      "sample_quality_for_period": "usable_month"
+    },
+    {
+      "period_name": "thanksgiving_period",
+      "start_date": "2024-11-24",
+      "end_date": "2024-12-01",
+      "scheduled_flights": 96,
+      "completed_flights": 96,
+      "cancelled_flights": 0,
+      "cancellation_rate": 0.0,
+      "delay_over_60min_rate": 0.03125,
+      "delay_over_180min_rate": 0.0,
+      "avg_arrival_delay_minutes": 6.41,
+      "p90_arrival_delay_minutes": 14.5,
+      "departure_delay_over_30min_rate": 0.083333,
+      "avg_delay_recovery_minutes": 1.83,
+      "sample_quality_for_period": "usable_month"
+    }
+  ],
+  "by_airline": [
+    {
+      "airline": "AA",
+      "total_scheduled_flights": 1949,
+      "cancellation_rate": 0.015906,
+      "delay_over_60min_rate": 0.08342,
+      "delay_over_180min_rate": 0.024505,
+      "avg_arrival_delay_minutes": 6.57,
+      "p90_arrival_delay_minutes": 48.0,
+      "departure_delay_over_30min_rate": 0.13243,
+      "avg_delay_recovery_minutes": -0.84,
+      "sample_quality": "usable"
+    },
+    {
+      "airline": "B6",
+      "total_scheduled_flights": 1333,
+      "cancellation_rate": 0.015004,
+      "delay_over_60min_rate": 0.102056,
+      "delay_over_180min_rate": 0.016756,
+      "avg_arrival_delay_minutes": 7.01,
+      "p90_arrival_delay_minutes": 62.4,
+      "departure_delay_over_30min_rate": 0.149276,
+      "avg_delay_recovery_minutes": 0.36,
+      "sample_quality": "usable"
+    },
+    {
+      "airline": "WN",
+      "total_scheduled_flights": 1109,
+      "cancellation_rate": 0.015329,
+      "delay_over_60min_rate": 0.088828,
+      "delay_over_180min_rate": 0.013736,
+      "avg_arrival_delay_minutes": 7.58,
+      "p90_arrival_delay_minutes": 51.0,
+      "departure_delay_over_30min_rate": 0.171245,
+      "avg_delay_recovery_minutes": 2.59,
+      "sample_quality": "usable"
+    },
+    {
+      "airline": "DL",
+      "total_scheduled_flights": 651,
+      "cancellation_rate": 0.016897,
+      "delay_over_60min_rate": 0.076563,
+      "delay_over_180min_rate": 0.026562,
+      "avg_arrival_delay_minutes": 4.95,
+      "p90_arrival_delay_minutes": 41.8,
+      "departure_delay_over_30min_rate": 0.109375,
+      "avg_delay_recovery_minutes": -1.29,
+      "sample_quality": "usable"
+    }
+  ],
+  "by_departure_time_bucket": [
+    {
+      "bucket": "early_morning",
+      "bucket_hours_local": "05:00-08:59",
+      "total_scheduled_flights": 1674,
+      "cancellation_rate": 0.016726,
+      "delay_over_60min_rate": 0.04678,
+      "departure_delay_over_30min_rate": 0.071081,
+      "avg_delay_recovery_minutes": -0.6,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "late_morning",
+      "bucket_hours_local": "09:00-11:59",
+      "total_scheduled_flights": 696,
+      "cancellation_rate": 0.015805,
+      "delay_over_60min_rate": 0.054015,
+      "departure_delay_over_30min_rate": 0.110949,
+      "avg_delay_recovery_minutes": -0.13,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "afternoon",
+      "bucket_hours_local": "12:00-15:59",
+      "total_scheduled_flights": 1397,
+      "cancellation_rate": 0.011453,
+      "delay_over_60min_rate": 0.08979,
+      "departure_delay_over_30min_rate": 0.146995,
+      "avg_delay_recovery_minutes": 0.16,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "evening",
+      "bucket_hours_local": "16:00-19:59",
+      "total_scheduled_flights": 1055,
+      "cancellation_rate": 0.018957,
+      "delay_over_60min_rate": 0.157488,
+      "departure_delay_over_30min_rate": 0.248309,
+      "avg_delay_recovery_minutes": 1.44,
+      "sample_quality": "usable"
+    },
+    {
+      "bucket": "night",
+      "bucket_hours_local": "20:00-23:59",
+      "total_scheduled_flights": 220,
+      "cancellation_rate": 0.018182,
+      "delay_over_60min_rate": 0.180556,
+      "departure_delay_over_30min_rate": 0.25,
+      "avg_delay_recovery_minutes": 1.11,
+      "sample_quality": "usable"
+    }
+  ],
+  "decision_signals": {
+    "fastest_average_arrival": {
+      "status": "available",
+      "primary_metric": "avg_arrival_delay_minutes",
+      "route_value": 6.7,
+      "comparison_context": {
+        "destination_median": 7.91,
+        "airport21_median": 6.425,
+        "comparison_to_destination_median": "below_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's average arrival delay was below the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_delay_cancel_risk": {
+      "status": "available",
+      "primary_metrics": [
+        "cancellation_rate",
+        "delay_over_60min_rate"
+      ],
+      "route_values": {
+        "cancellation_rate": 0.015668,
+        "delay_over_60min_rate": 0.088656
+      },
+      "comparison_context": {
+        "destination_median": {
+          "cancellation_rate": 0.018409,
+          "delay_over_60min_rate": 0.089041
+        },
+        "airport21_median": {
+          "cancellation_rate": 0.011314,
+          "delay_over_60min_rate": 0.069565
+        },
+        "comparison_to_destination_median": {
+          "cancellation_rate": "below_median",
+          "delay_over_60min_rate": "below_median"
+        },
+        "comparison_to_airport21_median": {
+          "cancellation_rate": "above_median",
+          "delay_over_60min_rate": "above_median"
+        }
+      },
+      "interpretation": "In the 2024 airport21 dataset, this route's cancellation rate was below the destination median and its delay-over-60-minute rate was below the destination median."
+    },
+    "lower_p90_arrival_delay": {
+      "status": "available",
+      "primary_metric": "p90_arrival_delay_minutes",
+      "route_value": 53.0,
+      "comparison_context": {
+        "destination_median": 53.0,
+        "airport21_median": 41.0,
+        "comparison_to_destination_median": "at_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's p90 arrival delay was at the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_cancellation_pattern": {
+      "status": "available",
+      "primary_metric": "cancellation_rate",
+      "route_value": 0.015668,
+      "comparison_context": {
+        "destination_median": 0.018409,
+        "airport21_median": 0.011314,
+        "comparison_to_destination_median": "below_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's cancellation rate was below the destination median and above the airport21 median in the 2024 airport21 dataset."
+    },
+    "lower_extreme_delay_pattern": {
+      "status": "available",
+      "primary_metric": "delay_over_180min_rate",
+      "route_value": 0.020351,
+      "comparison_context": {
+        "destination_median": 0.018201,
+        "airport21_median": 0.015625,
+        "comparison_to_destination_median": "above_median",
+        "comparison_to_airport21_median": "above_median"
+      },
+      "interpretation": "This route's delay-over-180-minute rate was above the destination median and above the airport21 median in the 2024 airport21 dataset."
+    }
+  },
+  "summary_for_ai": {
+    "page_identity": "Route-level historical flight reliability data for DCA-MCO in 2024.",
+    "contains": [
+      "cancellation_rate",
+      "delay_over_60min_rate",
+      "delay_over_180min_rate",
+      "avg_arrival_delay_minutes",
+      "p90_arrival_delay_minutes",
+      "departure_delay_over_30min_rate",
+      "avg_delay_recovery_minutes",
+      "monthly_patterns (2024 month-level historical metrics)",
+      "holiday_period_patterns (thanksgiving_period, christmas_period)",
+      "by_airline_breakdown",
+      "by_departure_time_bucket_breakdown",
+      "decision_signals_historical_comparison"
+    ],
+    "not_contains": [
+      "ticket_price",
+      "booking_availability",
+      "terminal_walking_distance",
+      "airport_congestion",
+      "security_recheck_time",
+      "baggage_recheck_requirement",
+      "official_minimum_connection_time",
+      "real_time_weather",
+      "real_time_inventory"
+    ],
+    "interpretation_note": "This page provides historical reliability signals, not booking recommendations."
+  },
+  "interpretation_boundaries": {
+    "not_included": [
+      "ticket_price",
+      "booking_availability",
+      "terminal_walking_distance",
+      "airport_congestion",
+      "security_recheck_time",
+      "baggage_recheck_requirement",
+      "official_minimum_connection_time",
+      "real_time_weather",
+      "real_time_inventory"
+    ],
+    "connection_timing_note": "Connection timing values reflect historical arrival and onward departure timing patterns only. They do not confirm whether a specific passenger can complete a connection.",
+    "recommendation_note": "This dataset provides historical reliability signals and does not make booking recommendations."
+  },
+  "page_metadata": {
+    "title": "DCA to MCO Flight Reliability Data — 2024 Historical Arrival Patterns",
+    "meta_description": "Historical flight reliability data for DCA to MCO flights in 2024, including cancellation rate, delay-over-60-minute rate, delay-over-180-minute rate, average arrival delay, and p90 arrival delay patterns.",
+    "summary_block": "This page provides route-level historical reliability data for DCA to MCO flights based on 2024 BTS/TranStats data."
+  },
+  "data_sources": [
+    {
+      "name": "BTS/TranStats On-Time Performance",
+      "type": "historical_flight_operations_data",
+      "year": 2024
+    }
+  ],
+  "download_links": {
+    "route_page_json": "route_page_data.json",
+    "source_route_reliability_csv": "../../processed_data/bts/route_reliability_2024_airport21.csv",
+    "source_time_bucket_csv": "../../processed_data/bts/route_time_bucket_reliability_2024_airport21.csv",
+    "source_monthly_reliability_csv": "../../processed_data/bts/route_monthly_reliability_2024_airport21_usable.csv",
+    "source_holiday_period_csv": "../../processed_data/bts/route_holiday_period_reliability_2024_airport21_usable.csv"
+  }
+}

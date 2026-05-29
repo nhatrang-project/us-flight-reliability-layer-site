@@ -1,0 +1,517 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "SEA",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 163707,
+    "origin_routes_count": 92,
+    "operating_airlines_count": 11,
+    "route_sample_quality": {
+      "usable": 83,
+      "thin": 1,
+      "too_small": 8,
+      "total": 92
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.012528,
+    "delay_over_60min_rate": 0.052321,
+    "delay_over_180min_rate": 0.008654,
+    "avg_arrival_delay_minutes": 3.01,
+    "p90_arrival_delay_minutes": 34.0,
+    "avg_delay_recovery_minutes": -0.18
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "ANC",
+      "route": "ANC→SEA",
+      "total_scheduled_flights": 7587,
+      "cancellation_rate": 0.011599,
+      "delay_over_60min_rate": 0.036805,
+      "avg_arrival_delay_minutes": -0.34,
+      "route_page_url": "/routes/anc-to-sea/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→SEA",
+      "total_scheduled_flights": 7382,
+      "cancellation_rate": 0.010566,
+      "delay_over_60min_rate": 0.040389,
+      "avg_arrival_delay_minutes": -0.73,
+      "route_page_url": "/routes/lax-to-sea/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→SEA",
+      "total_scheduled_flights": 7161,
+      "cancellation_rate": 0.00796,
+      "delay_over_60min_rate": 0.046734,
+      "avg_arrival_delay_minutes": 3.51,
+      "route_page_url": "/routes/phx-to-sea/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→SEA",
+      "total_scheduled_flights": 6731,
+      "cancellation_rate": 0.008171,
+      "delay_over_60min_rate": 0.069353,
+      "avg_arrival_delay_minutes": 6.86,
+      "route_page_url": "/routes/den-to-sea/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→SEA",
+      "total_scheduled_flights": 6620,
+      "cancellation_rate": 0.011027,
+      "delay_over_60min_rate": 0.060638,
+      "avg_arrival_delay_minutes": 4.66,
+      "route_page_url": "/routes/las-to-sea/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→SEA",
+      "total_scheduled_flights": 6598,
+      "cancellation_rate": 0.016975,
+      "delay_over_60min_rate": 0.07123,
+      "avg_arrival_delay_minutes": 7.04,
+      "route_page_url": "/routes/sfo-to-sea/"
+    },
+    {
+      "origin": "PDX",
+      "route": "PDX→SEA",
+      "total_scheduled_flights": 5280,
+      "cancellation_rate": 0.012311,
+      "delay_over_60min_rate": 0.041035,
+      "avg_arrival_delay_minutes": 2.65,
+      "route_page_url": "/routes/pdx-to-sea/"
+    },
+    {
+      "origin": "GEG",
+      "route": "GEG→SEA",
+      "total_scheduled_flights": 5187,
+      "cancellation_rate": 0.00694,
+      "delay_over_60min_rate": 0.033974,
+      "avg_arrival_delay_minutes": 1.55,
+      "route_page_url": "/routes/geg-to-sea/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→SEA",
+      "total_scheduled_flights": 5008,
+      "cancellation_rate": 0.018371,
+      "delay_over_60min_rate": 0.091945,
+      "avg_arrival_delay_minutes": 12.44,
+      "route_page_url": "/routes/dfw-to-sea/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→SEA",
+      "total_scheduled_flights": 4985,
+      "cancellation_rate": 0.009428,
+      "delay_over_60min_rate": 0.070271,
+      "avg_arrival_delay_minutes": 4.97,
+      "route_page_url": "/routes/ord-to-sea/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-sea",
+      "url": "/routes/abq-to-sea/"
+    },
+    {
+      "route_key": "alw-to-sea",
+      "url": "/routes/alw-to-sea/"
+    },
+    {
+      "route_key": "anc-to-sea",
+      "url": "/routes/anc-to-sea/"
+    },
+    {
+      "route_key": "atl-to-sea",
+      "url": "/routes/atl-to-sea/"
+    },
+    {
+      "route_key": "aus-to-sea",
+      "url": "/routes/aus-to-sea/"
+    },
+    {
+      "route_key": "bli-to-sea",
+      "url": "/routes/bli-to-sea/"
+    },
+    {
+      "route_key": "bna-to-sea",
+      "url": "/routes/bna-to-sea/"
+    },
+    {
+      "route_key": "boi-to-sea",
+      "url": "/routes/boi-to-sea/"
+    },
+    {
+      "route_key": "bos-to-sea",
+      "url": "/routes/bos-to-sea/"
+    },
+    {
+      "route_key": "bur-to-sea",
+      "url": "/routes/bur-to-sea/"
+    },
+    {
+      "route_key": "bwi-to-sea",
+      "url": "/routes/bwi-to-sea/"
+    },
+    {
+      "route_key": "bzn-to-sea",
+      "url": "/routes/bzn-to-sea/"
+    },
+    {
+      "route_key": "chs-to-sea",
+      "url": "/routes/chs-to-sea/"
+    },
+    {
+      "route_key": "cle-to-sea",
+      "url": "/routes/cle-to-sea/"
+    },
+    {
+      "route_key": "clt-to-sea",
+      "url": "/routes/clt-to-sea/"
+    },
+    {
+      "route_key": "cmh-to-sea",
+      "url": "/routes/cmh-to-sea/"
+    },
+    {
+      "route_key": "cvg-to-sea",
+      "url": "/routes/cvg-to-sea/"
+    },
+    {
+      "route_key": "dal-to-sea",
+      "url": "/routes/dal-to-sea/"
+    },
+    {
+      "route_key": "dca-to-sea",
+      "url": "/routes/dca-to-sea/"
+    },
+    {
+      "route_key": "den-to-sea",
+      "url": "/routes/den-to-sea/"
+    },
+    {
+      "route_key": "dfw-to-sea",
+      "url": "/routes/dfw-to-sea/"
+    },
+    {
+      "route_key": "dtw-to-sea",
+      "url": "/routes/dtw-to-sea/"
+    },
+    {
+      "route_key": "eug-to-sea",
+      "url": "/routes/eug-to-sea/"
+    },
+    {
+      "route_key": "ewr-to-sea",
+      "url": "/routes/ewr-to-sea/"
+    },
+    {
+      "route_key": "fai-to-sea",
+      "url": "/routes/fai-to-sea/"
+    },
+    {
+      "route_key": "fat-to-sea",
+      "url": "/routes/fat-to-sea/"
+    },
+    {
+      "route_key": "fll-to-sea",
+      "url": "/routes/fll-to-sea/"
+    },
+    {
+      "route_key": "geg-to-sea",
+      "url": "/routes/geg-to-sea/"
+    },
+    {
+      "route_key": "gtf-to-sea",
+      "url": "/routes/gtf-to-sea/"
+    },
+    {
+      "route_key": "hnl-to-sea",
+      "url": "/routes/hnl-to-sea/"
+    },
+    {
+      "route_key": "iad-to-sea",
+      "url": "/routes/iad-to-sea/"
+    },
+    {
+      "route_key": "iah-to-sea",
+      "url": "/routes/iah-to-sea/"
+    },
+    {
+      "route_key": "ind-to-sea",
+      "url": "/routes/ind-to-sea/"
+    },
+    {
+      "route_key": "jac-to-sea",
+      "url": "/routes/jac-to-sea/"
+    },
+    {
+      "route_key": "jfk-to-sea",
+      "url": "/routes/jfk-to-sea/"
+    },
+    {
+      "route_key": "jnu-to-sea",
+      "url": "/routes/jnu-to-sea/"
+    },
+    {
+      "route_key": "koa-to-sea",
+      "url": "/routes/koa-to-sea/"
+    },
+    {
+      "route_key": "ktn-to-sea",
+      "url": "/routes/ktn-to-sea/"
+    },
+    {
+      "route_key": "las-to-sea",
+      "url": "/routes/las-to-sea/"
+    },
+    {
+      "route_key": "lax-to-sea",
+      "url": "/routes/lax-to-sea/"
+    },
+    {
+      "route_key": "lih-to-sea",
+      "url": "/routes/lih-to-sea/"
+    },
+    {
+      "route_key": "lws-to-sea",
+      "url": "/routes/lws-to-sea/"
+    },
+    {
+      "route_key": "mci-to-sea",
+      "url": "/routes/mci-to-sea/"
+    },
+    {
+      "route_key": "mco-to-sea",
+      "url": "/routes/mco-to-sea/"
+    },
+    {
+      "route_key": "mdw-to-sea",
+      "url": "/routes/mdw-to-sea/"
+    },
+    {
+      "route_key": "mfr-to-sea",
+      "url": "/routes/mfr-to-sea/"
+    },
+    {
+      "route_key": "mia-to-sea",
+      "url": "/routes/mia-to-sea/"
+    },
+    {
+      "route_key": "mke-to-sea",
+      "url": "/routes/mke-to-sea/"
+    },
+    {
+      "route_key": "mry-to-sea",
+      "url": "/routes/mry-to-sea/"
+    },
+    {
+      "route_key": "mso-to-sea",
+      "url": "/routes/mso-to-sea/"
+    },
+    {
+      "route_key": "msp-to-sea",
+      "url": "/routes/msp-to-sea/"
+    },
+    {
+      "route_key": "msy-to-sea",
+      "url": "/routes/msy-to-sea/"
+    },
+    {
+      "route_key": "oak-to-sea",
+      "url": "/routes/oak-to-sea/"
+    },
+    {
+      "route_key": "ogg-to-sea",
+      "url": "/routes/ogg-to-sea/"
+    },
+    {
+      "route_key": "okc-to-sea",
+      "url": "/routes/okc-to-sea/"
+    },
+    {
+      "route_key": "oma-to-sea",
+      "url": "/routes/oma-to-sea/"
+    },
+    {
+      "route_key": "ont-to-sea",
+      "url": "/routes/ont-to-sea/"
+    },
+    {
+      "route_key": "ord-to-sea",
+      "url": "/routes/ord-to-sea/"
+    },
+    {
+      "route_key": "pdx-to-sea",
+      "url": "/routes/pdx-to-sea/"
+    },
+    {
+      "route_key": "phl-to-sea",
+      "url": "/routes/phl-to-sea/"
+    },
+    {
+      "route_key": "phx-to-sea",
+      "url": "/routes/phx-to-sea/"
+    },
+    {
+      "route_key": "pit-to-sea",
+      "url": "/routes/pit-to-sea/"
+    },
+    {
+      "route_key": "psc-to-sea",
+      "url": "/routes/psc-to-sea/"
+    },
+    {
+      "route_key": "psp-to-sea",
+      "url": "/routes/psp-to-sea/"
+    },
+    {
+      "route_key": "rdd-to-sea",
+      "url": "/routes/rdd-to-sea/"
+    },
+    {
+      "route_key": "rdm-to-sea",
+      "url": "/routes/rdm-to-sea/"
+    },
+    {
+      "route_key": "rdu-to-sea",
+      "url": "/routes/rdu-to-sea/"
+    },
+    {
+      "route_key": "rno-to-sea",
+      "url": "/routes/rno-to-sea/"
+    },
+    {
+      "route_key": "rsw-to-sea",
+      "url": "/routes/rsw-to-sea/"
+    },
+    {
+      "route_key": "san-to-sea",
+      "url": "/routes/san-to-sea/"
+    },
+    {
+      "route_key": "sat-to-sea",
+      "url": "/routes/sat-to-sea/"
+    },
+    {
+      "route_key": "sba-to-sea",
+      "url": "/routes/sba-to-sea/"
+    },
+    {
+      "route_key": "sbp-to-sea",
+      "url": "/routes/sbp-to-sea/"
+    },
+    {
+      "route_key": "sfo-to-sea",
+      "url": "/routes/sfo-to-sea/"
+    },
+    {
+      "route_key": "sit-to-sea",
+      "url": "/routes/sit-to-sea/"
+    },
+    {
+      "route_key": "sjc-to-sea",
+      "url": "/routes/sjc-to-sea/"
+    },
+    {
+      "route_key": "slc-to-sea",
+      "url": "/routes/slc-to-sea/"
+    },
+    {
+      "route_key": "smf-to-sea",
+      "url": "/routes/smf-to-sea/"
+    },
+    {
+      "route_key": "sna-to-sea",
+      "url": "/routes/sna-to-sea/"
+    },
+    {
+      "route_key": "stl-to-sea",
+      "url": "/routes/stl-to-sea/"
+    },
+    {
+      "route_key": "sts-to-sea",
+      "url": "/routes/sts-to-sea/"
+    },
+    {
+      "route_key": "tpa-to-sea",
+      "url": "/routes/tpa-to-sea/"
+    },
+    {
+      "route_key": "tus-to-sea",
+      "url": "/routes/tus-to-sea/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "SEA",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 163707,
+    "origin_routes": 92,
+    "usable_routes": 83,
+    "operating_airlines": 11,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/SEA/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

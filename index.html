@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Flight Reliability Layer — Historical Flight Reliability Data</title>
+  <meta name="description" content="AI-readable dataset landing page for the US Flight Reliability Layer. Historical route-level and airport-level flight reliability data derived from 2024 BTS/TranStats On-Time Performance records. 1920 route pages, 21 airport pages, monthly patterns, holiday-period patterns. airport21 coverage.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type"   content="dataset-landing-page">
+  <meta name="data-schema" content="site_index.v1">
+  <meta name="data-year"   content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.65; color: #1a1a1a;
+    background: #f8f9fa;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: "SFMono-Regular", Consolas, monospace;
+         font-size: 12px; background: #f0f0f0;
+         padding: 1px 4px; border-radius: 3px; }
+
+  /* layout */
+  .page-wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px 56px; }
+
+  /* header */
+  .site-header {
+    background: #0d1117; color: #e6edf3;
+    padding: 28px 16px 24px;
+  }
+  .site-header .inner { max-width: 1040px; margin: 0 auto; }
+  .hdr-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+    text-transform: uppercase; color: #7d8590; margin-bottom: 8px;
+  }
+  .hdr-title {
+    font-size: 26px; font-weight: 800; line-height: 1.25;
+    color: #e6edf3; max-width: 760px;
+  }
+  .hdr-sub {
+    font-size: 14px; color: #8d96a0; margin-top: 10px; max-width: 680px;
+  }
+  .hdr-meta {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-top: 16px; font-size: 12px; color: #7d8590;
+  }
+  .hdr-meta span { display: inline-block; }
+  .hdr-meta code { background: #21262d; color: #7ee787; }
+
+  /* sections */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 22px 26px;
+  }
+  section h2 {
+    font-size: 15px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+
+  /* AI scope */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin: 8px 0 4px; }
+  .scope-label:first-child { margin-top: 0; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+
+  /* stat grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .stat-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .stat-label { font-size: 11px; color: #57606a; font-weight: 500; }
+  .stat-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 3px 0 2px; }
+  .stat-sub   { font-size: 11px; color: #8b949e; }
+
+  /* discovery links */
+  .disc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .disc-card {
+    display: flex; flex-direction: column;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 8px; padding: 14px 16px;
+    text-decoration: none; color: #24292f;
+    transition: border-color .15s, background .15s;
+  }
+  .disc-card:hover {
+    background: #ddf4ff; border-color: #b6e3ff; text-decoration: none;
+  }
+  .disc-card-title { font-weight: 700; font-size: 14px; color: #0969da; }
+  .disc-card-desc  { font-size: 12px; color: #57606a; margin-top: 4px; }
+  .disc-card-url   { font-size: 11px; color: #8b949e; margin-top: 6px;
+                     font-family: monospace; }
+
+  /* tables */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th {
+    background: #f6f8fa; text-align: left; padding: 7px 10px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 10px; border-bottom: 1px solid #eaeef2; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-mono { font-family: monospace; font-size: 12px; }
+  .td-num  { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-links { white-space: nowrap; }
+  .td-links a {
+    display: inline-block; margin-right: 5px; padding: 2px 8px;
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px;
+    font-size: 12px; font-weight: 600;
+  }
+  .td-links a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+
+  /* badges */
+  .badge-hub {
+    display: inline-block; padding: 1px 7px; border-radius: 10px;
+    font-size: 11px; font-weight: 600;
+    background: #fff8c5; color: #9a6700; border: 1px solid #f4c952;
+  }
+  .badge-exp {
+    display: inline-block; padding: 1px 7px; border-radius: 10px;
+    font-size: 11px; font-weight: 600;
+    background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff;
+  }
+
+  /* boundaries */
+  .boundary-note {
+    background: #f6f8fa; border-left: 3px solid #d0d7de;
+    padding: 10px 14px; font-size: 13px; color: #57606a;
+    border-radius: 0 4px 4px 0; margin-bottom: 8px;
+  }
+
+  /* downloads */
+  .dl-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .dl-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 1px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* footer */
+  .page-footer {
+    margin-top: 36px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  @media (max-width: 640px) {
+    .hdr-title { font-size: 20px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .disc-grid { grid-template-columns: 1fr; }
+    section { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="hdr-eyebrow">AI-Readable Dataset Landing Page</div>
+      <h1 class="hdr-title">US Flight Reliability Layer</h1>
+      <p class="hdr-sub">
+        Historical route-level and airport-level flight reliability data derived from
+        2024 BTS/TranStats On-Time Performance records.
+        For AI agents, search systems, and data applications.
+        This site does not sell tickets, compare prices, or provide booking recommendations.
+      </p>
+      <div class="hdr-meta">
+        <span>Schema: <code>site_index.v1</code></span>
+        <span>Data year: <strong>2024</strong></span>
+        <span>Source: BTS/TranStats</span>
+        <span>Coverage: <strong>1920</strong> route pages · <strong>21</strong> airport pages</span>
+        <span>Includes: monthly patterns · holiday-period patterns</span>
+        <span>Generated: 2026-05-29</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable site scope">
+    <h2>Machine-readable site scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_type: dataset_landing_page</div>
+      <p style="font-size:13px;color:#24292f;margin:6px 0 10px;">
+        This page is the root entry point for the US Flight Reliability Layer.
+        It indexes historical flight reliability data organized by route and airport,
+        based on 2024 BTS/TranStats data across the airport21 coverage group.
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+        <li>route-level reliability pages (route_page_data.v2)</li>
+        <li>airport-level reliability coverage pages (airport_page_data.v1)</li>
+        <li>monthly reliability patterns (12-month breakdown per route)</li>
+        <li>holiday-period reliability patterns (Thanksgiving · Christmas per route)</li>
+        <li>cancellation_rate</li>
+        <li>delay_over_60min_rate, delay_over_180min_rate</li>
+        <li>avg_arrival_delay_minutes, p90_arrival_delay_minutes</li>
+        <li>historical reliability comparison signals (decision_signals)</li>
+        <li>route_sample_quality classification (usable / thin / too_small)</li>
+      </ul>
+
+      <div class="scope-label">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+        <li>Ticket price or booking availability</li>
+        <li>Real-time flight status or live inventory</li>
+        <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+        <li>Terminal walking distance, airport congestion</li>
+        <li>Official minimum connection time</li>
+        <li>Baggage recheck requirements</li>
+        <li>Real-time weather data</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="coverage" aria-label="Current publishing coverage">
+    <h2>Current publishing coverage</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Data year</div>
+        <div class="stat-value">2024</div>
+        <div class="stat-sub">Full-year (Jan–Dec)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Route pages</div>
+        <div class="stat-value">1920</div>
+        <div class="stat-sub">HTML + route_page_data.json</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Airport pages</div>
+        <div class="stat-value">21</div>
+        <div class="stat-sub">HTML + airport_page_data.json</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Route flights analyzed</div>
+        <div class="stat-value">3,365,713</div>
+        <div class="stat-sub">Across 1920 generated routes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Airport arrivals analyzed</div>
+        <div class="stat-value">3,373,876</div>
+        <div class="stat-sub">Across 21 generated airports</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Coverage status</div>
+        <div class="stat-value" style="font-size:13px;margin-top:4px;">Static sample<br>publishing layer</div>
+        <div class="stat-sub">airport21 subset</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="discovery" aria-label="Main discovery links">
+    <h2>Main discovery links</h2>
+    <div class="disc-grid">
+      <a class="disc-card" href="/us-flight-reliability-layer/routes/">
+        <div class="disc-card-title">Route Reliability Index</div>
+        <div class="disc-card-desc">Index of all generated route-level reliability pages.</div>
+        <div class="disc-card-url">/us-flight-reliability-layer/routes/</div>
+      </a>
+      <a class="disc-card" href="/us-flight-reliability-layer/airports/">
+        <div class="disc-card-title">Airport Reliability Index</div>
+        <div class="disc-card-desc">Index of all generated airport-level reliability coverage pages.</div>
+        <div class="disc-card-url">/us-flight-reliability-layer/airports/</div>
+      </a>
+      <a class="disc-card" href="/us-flight-reliability-layer/sitemap.xml">
+        <div class="disc-card-title">Sitemap</div>
+        <div class="disc-card-desc">XML sitemap of all generated HTML pages.</div>
+        <div class="disc-card-url">/us-flight-reliability-layer/sitemap.xml</div>
+      </a>
+      <a class="disc-card" href="/us-flight-reliability-layer/robots.txt">
+        <div class="disc-card-title">Robots.txt</div>
+        <div class="disc-card-desc">Crawler access policy.</div>
+        <div class="disc-card-url">/us-flight-reliability-layer/robots.txt</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="route-samples" aria-label="Route sample pages">
+    <h2>Route sample pages (top 10 by volume)</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      <strong>1,920</strong> route pages generated in total.
+      Showing 10 highest-volume routes as samples.
+      Each page contains a <code>route_page_data.v1</code> JSON file with 2024 historical reliability metrics.
+      See <a href="/us-flight-reliability-layer/routes/">routes/index.html</a> for the complete index of all 1,920 routes.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Route key</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th class="td-num">Total flights (2024)</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="td-mono">OGG-HNL</td>
+          <td>OGG</td>
+          <td>HNL</td>
+          <td class="td-num">11,642</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/ogg-to-hnl/">page</a><a href="/us-flight-reliability-layer/routes/ogg-to-hnl/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">LAX-SFO</td>
+          <td>LAX</td>
+          <td>SFO</td>
+          <td class="td-num">11,526</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/lax-to-sfo/">page</a><a href="/us-flight-reliability-layer/routes/lax-to-sfo/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">SFO-LAX</td>
+          <td>SFO</td>
+          <td>LAX</td>
+          <td class="td-num">11,499</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/sfo-to-lax/">page</a><a href="/us-flight-reliability-layer/routes/sfo-to-lax/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">LGA-ORD</td>
+          <td>LGA</td>
+          <td>ORD</td>
+          <td class="td-num">10,971</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/lga-to-ord/">page</a><a href="/us-flight-reliability-layer/routes/lga-to-ord/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">JFK-LAX</td>
+          <td>JFK</td>
+          <td>LAX</td>
+          <td class="td-num">9,915</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/jfk-to-lax/">page</a><a href="/us-flight-reliability-layer/routes/jfk-to-lax/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">LAX-JFK</td>
+          <td>LAX</td>
+          <td>JFK</td>
+          <td class="td-num">9,915</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/lax-to-jfk/">page</a><a href="/us-flight-reliability-layer/routes/lax-to-jfk/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">DCA-BOS</td>
+          <td>DCA</td>
+          <td>BOS</td>
+          <td class="td-num">9,658</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/dca-to-bos/">page</a><a href="/us-flight-reliability-layer/routes/dca-to-bos/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">LAX-LAS</td>
+          <td>LAX</td>
+          <td>LAS</td>
+          <td class="td-num">9,603</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/lax-to-las/">page</a><a href="/us-flight-reliability-layer/routes/lax-to-las/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">LAS-LAX</td>
+          <td>LAS</td>
+          <td>LAX</td>
+          <td class="td-num">9,559</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/las-to-lax/">page</a><a href="/us-flight-reliability-layer/routes/las-to-lax/route_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono">PHX-DEN</td>
+          <td>PHX</td>
+          <td>DEN</td>
+          <td class="td-num">9,479</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/routes/phx-to-den/">page</a><a href="/us-flight-reliability-layer/routes/phx-to-den/route_page_data.json">JSON</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="airport-samples" aria-label="Airport sample pages">
+    <h2>Airport coverage pages (21 airports)</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      21 airport pages generated.
+      Each page contains an <code>airport_page_data.v1</code> JSON file with 2024 historical arrival reliability metrics.
+      See <a href="/us-flight-reliability-layer/airports/">airports/index.html</a> for the full index.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>IATA</th>
+            <th>Airport</th>
+            <th>Group</th>
+            <th class="td-num">Total arrivals (2024)</th>
+            <th class="td-num">Origin routes</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="td-mono"><strong>ANC</strong></td>
+          <td>Ted Stevens Anchorage International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">18,545</td>
+          <td class="td-num">33</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/ANC/">page</a><a href="/us-flight-reliability-layer/airports/ANC/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>ATL</strong></td>
+          <td>Hartsfield-Jackson Atlanta International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">341,825</td>
+          <td class="td-num">157</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/ATL/">page</a><a href="/us-flight-reliability-layer/airports/ATL/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>BOS</strong></td>
+          <td>Boston Logan International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">143,491</td>
+          <td class="td-num">76</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/BOS/">page</a><a href="/us-flight-reliability-layer/airports/BOS/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>CLT</strong></td>
+          <td>Charlotte Douglas International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">217,545</td>
+          <td class="td-num">132</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/CLT/">page</a><a href="/us-flight-reliability-layer/airports/CLT/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>DEN</strong></td>
+          <td>Denver International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">308,609</td>
+          <td class="td-num">180</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/DEN/">page</a><a href="/us-flight-reliability-layer/airports/DEN/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>DFW</strong></td>
+          <td>Dallas/Fort Worth International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">313,568</td>
+          <td class="td-num">186</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/DFW/">page</a><a href="/us-flight-reliability-layer/airports/DFW/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>FLL</strong></td>
+          <td>Fort Lauderdale-Hollywood International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">91,897</td>
+          <td class="td-num">92</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/FLL/">page</a><a href="/us-flight-reliability-layer/airports/FLL/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>HNL</strong></td>
+          <td>Daniel K. Inouye International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">61,558</td>
+          <td class="td-num">33</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/HNL/">page</a><a href="/us-flight-reliability-layer/airports/HNL/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>IAD</strong></td>
+          <td>Washington Dulles International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">52,895</td>
+          <td class="td-num">69</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/IAD/">page</a><a href="/us-flight-reliability-layer/airports/IAD/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>JFK</strong></td>
+          <td>John F. Kennedy International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">123,334</td>
+          <td class="td-num">73</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/JFK/">page</a><a href="/us-flight-reliability-layer/airports/JFK/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>LAS</strong></td>
+          <td>Harry Reid International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">189,264</td>
+          <td class="td-num">131</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/LAS/">page</a><a href="/us-flight-reliability-layer/airports/LAS/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>LAX</strong></td>
+          <td>Los Angeles International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">194,044</td>
+          <td class="td-num">109</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/LAX/">page</a><a href="/us-flight-reliability-layer/airports/LAX/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>MCO</strong></td>
+          <td>Orlando International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">159,578</td>
+          <td class="td-num">91</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/MCO/">page</a><a href="/us-flight-reliability-layer/airports/MCO/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>MIA</strong></td>
+          <td>Miami International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">109,923</td>
+          <td class="td-num">88</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/MIA/">page</a><a href="/us-flight-reliability-layer/airports/MIA/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>MSP</strong></td>
+          <td>Minneapolis-Saint Paul International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">126,793</td>
+          <td class="td-num">121</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/MSP/">page</a><a href="/us-flight-reliability-layer/airports/MSP/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>ORD</strong></td>
+          <td>O'Hare International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">280,009</td>
+          <td class="td-num">163</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/ORD/">page</a><a href="/us-flight-reliability-layer/airports/ORD/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>PHX</strong></td>
+          <td>Phoenix Sky Harbor International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">193,542</td>
+          <td class="td-num">111</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/PHX/">page</a><a href="/us-flight-reliability-layer/airports/PHX/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>SEA</strong></td>
+          <td>Seattle-Tacoma International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">163,707</td>
+          <td class="td-num">92</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/SEA/">page</a><a href="/us-flight-reliability-layer/airports/SEA/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>SFO</strong></td>
+          <td>San Francisco International</td>
+          <td><span class="badge-hub">hub14</span></td>
+          <td class="td-num">135,075</td>
+          <td class="td-num">82</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/SFO/">page</a><a href="/us-flight-reliability-layer/airports/SFO/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>SJU</strong></td>
+          <td>Luis Muñoz Marín International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">35,435</td>
+          <td class="td-num">36</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/SJU/">page</a><a href="/us-flight-reliability-layer/airports/SJU/airport_page_data.json">JSON</a></td>
+        </tr>
+        <tr>
+          <td class="td-mono"><strong>SLC</strong></td>
+          <td>Salt Lake City International</td>
+          <td><span class="badge-exp">expansion</span></td>
+          <td class="td-num">113,239</td>
+          <td class="td-num">91</td>
+          <td class="td-links"><a href="/us-flight-reliability-layer/airports/SLC/">page</a><a href="/us-flight-reliability-layer/airports/SLC/airport_page_data.json">JSON</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <div class="boundary-note">
+      This dataset provides historical reliability signals and does not make booking recommendations.
+      All metrics are 2024 historical aggregates from BTS/TranStats On-Time Performance data
+      and do not predict future performance.
+    </div>
+    <div class="boundary-note">
+      This dataset does not include ticket prices, booking availability, real-time flight status,
+      terminal walking distance, airport congestion, official minimum connection time,
+      or baggage recheck requirements.
+    </div>
+  </section>
+
+  <section id="downloads" aria-label="Machine-readable references">
+    <h2>Machine-readable references</h2>
+    <ul class="dl-list">
+      <li>
+        <a href="/us-flight-reliability-layer/routes/">
+          <span class="dl-type">HTML</span>
+          Route reliability index
+        </a>
+      </li>
+      <li>
+        <a href="/us-flight-reliability-layer/airports/">
+          <span class="dl-type">HTML</span>
+          Airport reliability index
+        </a>
+      </li>
+      <li>
+        <a href="/us-flight-reliability-layer/sitemap.xml">
+          <span class="dl-type">XML</span>
+          Sitemap
+        </a>
+      </li>
+      <li>
+        <a href="config/airport_coverage_2024.json">
+          <span class="dl-type">JSON</span>
+          Airport coverage config
+        </a>
+      </li>
+      <li>
+        <a href="processed_data/bts/route_reliability_2024_airport21_summary.json">
+          <span class="dl-type">JSON</span>
+          Route reliability summary
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>site_index.v1</code> &mdash;
+      Generated: 2026-05-29 &mdash;
+      This page provides historical flight reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable site index data (site_index.v1) -->
+  <!-- Full route listing: /routes/  Full airport listing: /airports/ -->
+  <script type="application/json" id="site-index-data">
+{
+  "schema_version": "site_index.v1",
+  "page_type": "dataset_landing_page",
+  "project_name": "US Flight Reliability Layer",
+  "dataset_type": "historical_flight_reliability_data_layer",
+  "data_year": 2024,
+  "source": "BTS/TranStats On-Time Performance",
+  "generated_at": "2026-05-29",
+  "generated_route_pages_count": 1920,
+  "generated_airport_pages_count": 21,
+  "route_index_url": "/us-flight-reliability-layer/routes/",
+  "airport_index_url": "/us-flight-reliability-layer/airports/",
+  "sitemap_url": "/us-flight-reliability-layer/sitemap.xml",
+  "contains": [
+    "cancellation_rate",
+    "delay_over_60min_rate",
+    "delay_over_180min_rate",
+    "avg_arrival_delay_minutes",
+    "p90_arrival_delay_minutes",
+    "historical_reliability_comparison_signals",
+    "route_sample_quality"
+  ],
+  "not_contains": [
+    "ticket_price",
+    "booking_availability",
+    "real_time_flight_status",
+    "terminal_walking_distance",
+    "official_minimum_connection_time",
+    "baggage_recheck_requirement",
+    "real_time_weather",
+    "seat_inventory"
+  ],
+  "sample_route_pages": [
+    {
+      "route_key": "OGG-HNL",
+      "dir": "ogg-to-hnl",
+      "page_url": "/us-flight-reliability-layer/routes/ogg-to-hnl/",
+      "json_url": "/us-flight-reliability-layer/routes/ogg-to-hnl/route_page_data.json",
+      "total_flights": 11642
+    },
+    {
+      "route_key": "LAX-SFO",
+      "dir": "lax-to-sfo",
+      "page_url": "/us-flight-reliability-layer/routes/lax-to-sfo/",
+      "json_url": "/us-flight-reliability-layer/routes/lax-to-sfo/route_page_data.json",
+      "total_flights": 11526
+    },
+    {
+      "route_key": "SFO-LAX",
+      "dir": "sfo-to-lax",
+      "page_url": "/us-flight-reliability-layer/routes/sfo-to-lax/",
+      "json_url": "/us-flight-reliability-layer/routes/sfo-to-lax/route_page_data.json",
+      "total_flights": 11499
+    },
+    {
+      "route_key": "LGA-ORD",
+      "dir": "lga-to-ord",
+      "page_url": "/us-flight-reliability-layer/routes/lga-to-ord/",
+      "json_url": "/us-flight-reliability-layer/routes/lga-to-ord/route_page_data.json",
+      "total_flights": 10971
+    },
+    {
+      "route_key": "JFK-LAX",
+      "dir": "jfk-to-lax",
+      "page_url": "/us-flight-reliability-layer/routes/jfk-to-lax/",
+      "json_url": "/us-flight-reliability-layer/routes/jfk-to-lax/route_page_data.json",
+      "total_flights": 9915
+    },
+    {
+      "route_key": "LAX-JFK",
+      "dir": "lax-to-jfk",
+      "page_url": "/us-flight-reliability-layer/routes/lax-to-jfk/",
+      "json_url": "/us-flight-reliability-layer/routes/lax-to-jfk/route_page_data.json",
+      "total_flights": 9915
+    },
+    {
+      "route_key": "DCA-BOS",
+      "dir": "dca-to-bos",
+      "page_url": "/us-flight-reliability-layer/routes/dca-to-bos/",
+      "json_url": "/us-flight-reliability-layer/routes/dca-to-bos/route_page_data.json",
+      "total_flights": 9658
+    },
+    {
+      "route_key": "LAX-LAS",
+      "dir": "lax-to-las",
+      "page_url": "/us-flight-reliability-layer/routes/lax-to-las/",
+      "json_url": "/us-flight-reliability-layer/routes/lax-to-las/route_page_data.json",
+      "total_flights": 9603
+    },
+    {
+      "route_key": "LAS-LAX",
+      "dir": "las-to-lax",
+      "page_url": "/us-flight-reliability-layer/routes/las-to-lax/",
+      "json_url": "/us-flight-reliability-layer/routes/las-to-lax/route_page_data.json",
+      "total_flights": 9559
+    },
+    {
+      "route_key": "PHX-DEN",
+      "dir": "phx-to-den",
+      "page_url": "/us-flight-reliability-layer/routes/phx-to-den/",
+      "json_url": "/us-flight-reliability-layer/routes/phx-to-den/route_page_data.json",
+      "total_flights": 9479
+    }
+  ],
+  "airport_pages": [
+    {
+      "iata": "ANC",
+      "dir": "ANC",
+      "page_url": "/us-flight-reliability-layer/airports/ANC/",
+      "json_url": "/us-flight-reliability-layer/airports/ANC/airport_page_data.json"
+    },
+    {
+      "iata": "ATL",
+      "dir": "ATL",
+      "page_url": "/us-flight-reliability-layer/airports/ATL/",
+      "json_url": "/us-flight-reliability-layer/airports/ATL/airport_page_data.json"
+    },
+    {
+      "iata": "BOS",
+      "dir": "BOS",
+      "page_url": "/us-flight-reliability-layer/airports/BOS/",
+      "json_url": "/us-flight-reliability-layer/airports/BOS/airport_page_data.json"
+    },
+    {
+      "iata": "CLT",
+      "dir": "CLT",
+      "page_url": "/us-flight-reliability-layer/airports/CLT/",
+      "json_url": "/us-flight-reliability-layer/airports/CLT/airport_page_data.json"
+    },
+    {
+      "iata": "DEN",
+      "dir": "DEN",
+      "page_url": "/us-flight-reliability-layer/airports/DEN/",
+      "json_url": "/us-flight-reliability-layer/airports/DEN/airport_page_data.json"
+    },
+    {
+      "iata": "DFW",
+      "dir": "DFW",
+      "page_url": "/us-flight-reliability-layer/airports/DFW/",
+      "json_url": "/us-flight-reliability-layer/airports/DFW/airport_page_data.json"
+    },
+    {
+      "iata": "FLL",
+      "dir": "FLL",
+      "page_url": "/us-flight-reliability-layer/airports/FLL/",
+      "json_url": "/us-flight-reliability-layer/airports/FLL/airport_page_data.json"
+    },
+    {
+      "iata": "HNL",
+      "dir": "HNL",
+      "page_url": "/us-flight-reliability-layer/airports/HNL/",
+      "json_url": "/us-flight-reliability-layer/airports/HNL/airport_page_data.json"
+    },
+    {
+      "iata": "IAD",
+      "dir": "IAD",
+      "page_url": "/us-flight-reliability-layer/airports/IAD/",
+      "json_url": "/us-flight-reliability-layer/airports/IAD/airport_page_data.json"
+    },
+    {
+      "iata": "JFK",
+      "dir": "JFK",
+      "page_url": "/us-flight-reliability-layer/airports/JFK/",
+      "json_url": "/us-flight-reliability-layer/airports/JFK/airport_page_data.json"
+    },
+    {
+      "iata": "LAS",
+      "dir": "LAS",
+      "page_url": "/us-flight-reliability-layer/airports/LAS/",
+      "json_url": "/us-flight-reliability-layer/airports/LAS/airport_page_data.json"
+    },
+    {
+      "iata": "LAX",
+      "dir": "LAX",
+      "page_url": "/us-flight-reliability-layer/airports/LAX/",
+      "json_url": "/us-flight-reliability-layer/airports/LAX/airport_page_data.json"
+    },
+    {
+      "iata": "MCO",
+      "dir": "MCO",
+      "page_url": "/us-flight-reliability-layer/airports/MCO/",
+      "json_url": "/us-flight-reliability-layer/airports/MCO/airport_page_data.json"
+    },
+    {
+      "iata": "MIA",
+      "dir": "MIA",
+      "page_url": "/us-flight-reliability-layer/airports/MIA/",
+      "json_url": "/us-flight-reliability-layer/airports/MIA/airport_page_data.json"
+    },
+    {
+      "iata": "MSP",
+      "dir": "MSP",
+      "page_url": "/us-flight-reliability-layer/airports/MSP/",
+      "json_url": "/us-flight-reliability-layer/airports/MSP/airport_page_data.json"
+    },
+    {
+      "iata": "ORD",
+      "dir": "ORD",
+      "page_url": "/us-flight-reliability-layer/airports/ORD/",
+      "json_url": "/us-flight-reliability-layer/airports/ORD/airport_page_data.json"
+    },
+    {
+      "iata": "PHX",
+      "dir": "PHX",
+      "page_url": "/us-flight-reliability-layer/airports/PHX/",
+      "json_url": "/us-flight-reliability-layer/airports/PHX/airport_page_data.json"
+    },
+    {
+      "iata": "SEA",
+      "dir": "SEA",
+      "page_url": "/us-flight-reliability-layer/airports/SEA/",
+      "json_url": "/us-flight-reliability-layer/airports/SEA/airport_page_data.json"
+    },
+    {
+      "iata": "SFO",
+      "dir": "SFO",
+      "page_url": "/us-flight-reliability-layer/airports/SFO/",
+      "json_url": "/us-flight-reliability-layer/airports/SFO/airport_page_data.json"
+    },
+    {
+      "iata": "SJU",
+      "dir": "SJU",
+      "page_url": "/us-flight-reliability-layer/airports/SJU/",
+      "json_url": "/us-flight-reliability-layer/airports/SJU/airport_page_data.json"
+    },
+    {
+      "iata": "SLC",
+      "dir": "SLC",
+      "page_url": "/us-flight-reliability-layer/airports/SLC/",
+      "json_url": "/us-flight-reliability-layer/airports/SLC/airport_page_data.json"
+    }
+  ]
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <!-- TODO: replace relative contentUrl values with absolute URLs after deployment domain is confirmed -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "US Flight Reliability Layer",
+  "description": "Historical flight reliability data layer based on 2024 BTS/TranStats On-Time Performance data, including route-level and airport-level reliability pages for the airport21 coverage group.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "/us-flight-reliability-layer/routes/",
+      "name": "Route Reliability Index"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "/us-flight-reliability-layer/airports/",
+      "name": "Airport Reliability Index"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/xml",
+      "contentUrl": "/us-flight-reliability-layer/sitemap.xml",
+      "name": "Sitemap"
+    }
+  ],
+  "keywords": [
+    "flight reliability",
+    "historical flight data",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "AI-readable data layer",
+    "airport21",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

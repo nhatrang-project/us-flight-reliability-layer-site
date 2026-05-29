@@ -1,0 +1,629 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "MSP",
+  "coverage_group": "representative_expansion",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 126793,
+    "origin_routes_count": 121,
+    "operating_airlines_count": 14,
+    "route_sample_quality": {
+      "usable": 111,
+      "thin": 7,
+      "too_small": 3,
+      "total": 121
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.009038,
+    "delay_over_60min_rate": 0.064442,
+    "delay_over_180min_rate": 0.015074,
+    "avg_arrival_delay_minutes": 4.23,
+    "p90_arrival_delay_minutes": 37.0,
+    "avg_delay_recovery_minutes": -0.08
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "DEN",
+      "route": "DEN→MSP",
+      "total_scheduled_flights": 6360,
+      "cancellation_rate": 0.009119,
+      "delay_over_60min_rate": 0.063155,
+      "avg_arrival_delay_minutes": 5.19,
+      "route_page_url": "/routes/den-to-msp/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→MSP",
+      "total_scheduled_flights": 6004,
+      "cancellation_rate": 0.010326,
+      "delay_over_60min_rate": 0.092057,
+      "avg_arrival_delay_minutes": 12.6,
+      "route_page_url": "/routes/ord-to-msp/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→MSP",
+      "total_scheduled_flights": 3701,
+      "cancellation_rate": 0.004593,
+      "delay_over_60min_rate": 0.046145,
+      "avg_arrival_delay_minutes": 2.82,
+      "route_page_url": "/routes/atl-to-msp/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→MSP",
+      "total_scheduled_flights": 3395,
+      "cancellation_rate": 0.005891,
+      "delay_over_60min_rate": 0.048889,
+      "avg_arrival_delay_minutes": 3.32,
+      "route_page_url": "/routes/phx-to-msp/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→MSP",
+      "total_scheduled_flights": 3220,
+      "cancellation_rate": 0.013975,
+      "delay_over_60min_rate": 0.097953,
+      "avg_arrival_delay_minutes": 12.12,
+      "route_page_url": "/routes/dfw-to-msp/"
+    },
+    {
+      "origin": "MDW",
+      "route": "MDW→MSP",
+      "total_scheduled_flights": 2839,
+      "cancellation_rate": 0.00634,
+      "delay_over_60min_rate": 0.072315,
+      "avg_arrival_delay_minutes": 8.29,
+      "route_page_url": "/routes/mdw-to-msp/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→MSP",
+      "total_scheduled_flights": 2787,
+      "cancellation_rate": 0.007894,
+      "delay_over_60min_rate": 0.043761,
+      "avg_arrival_delay_minutes": -1.14,
+      "route_page_url": "/routes/las-to-msp/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→MSP",
+      "total_scheduled_flights": 2731,
+      "cancellation_rate": 0.007323,
+      "delay_over_60min_rate": 0.035411,
+      "avg_arrival_delay_minutes": -1.11,
+      "route_page_url": "/routes/sea-to-msp/"
+    },
+    {
+      "origin": "CLT",
+      "route": "CLT→MSP",
+      "total_scheduled_flights": 2537,
+      "cancellation_rate": 0.009854,
+      "delay_over_60min_rate": 0.070064,
+      "avg_arrival_delay_minutes": 5.54,
+      "route_page_url": "/routes/clt-to-msp/"
+    },
+    {
+      "origin": "LGA",
+      "route": "LGA→MSP",
+      "total_scheduled_flights": 2373,
+      "cancellation_rate": 0.012221,
+      "delay_over_60min_rate": 0.053328,
+      "avg_arrival_delay_minutes": -3.31,
+      "route_page_url": "/routes/lga-to-msp/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-msp",
+      "url": "/routes/abq-to-msp/"
+    },
+    {
+      "route_key": "abr-to-msp",
+      "url": "/routes/abr-to-msp/"
+    },
+    {
+      "route_key": "anc-to-msp",
+      "url": "/routes/anc-to-msp/"
+    },
+    {
+      "route_key": "atl-to-msp",
+      "url": "/routes/atl-to-msp/"
+    },
+    {
+      "route_key": "atw-to-msp",
+      "url": "/routes/atw-to-msp/"
+    },
+    {
+      "route_key": "aus-to-msp",
+      "url": "/routes/aus-to-msp/"
+    },
+    {
+      "route_key": "avl-to-msp",
+      "url": "/routes/avl-to-msp/"
+    },
+    {
+      "route_key": "bdl-to-msp",
+      "url": "/routes/bdl-to-msp/"
+    },
+    {
+      "route_key": "bil-to-msp",
+      "url": "/routes/bil-to-msp/"
+    },
+    {
+      "route_key": "bis-to-msp",
+      "url": "/routes/bis-to-msp/"
+    },
+    {
+      "route_key": "bji-to-msp",
+      "url": "/routes/bji-to-msp/"
+    },
+    {
+      "route_key": "bna-to-msp",
+      "url": "/routes/bna-to-msp/"
+    },
+    {
+      "route_key": "boi-to-msp",
+      "url": "/routes/boi-to-msp/"
+    },
+    {
+      "route_key": "bos-to-msp",
+      "url": "/routes/bos-to-msp/"
+    },
+    {
+      "route_key": "brd-to-msp",
+      "url": "/routes/brd-to-msp/"
+    },
+    {
+      "route_key": "btv-to-msp",
+      "url": "/routes/btv-to-msp/"
+    },
+    {
+      "route_key": "buf-to-msp",
+      "url": "/routes/buf-to-msp/"
+    },
+    {
+      "route_key": "bwi-to-msp",
+      "url": "/routes/bwi-to-msp/"
+    },
+    {
+      "route_key": "bzn-to-msp",
+      "url": "/routes/bzn-to-msp/"
+    },
+    {
+      "route_key": "chs-to-msp",
+      "url": "/routes/chs-to-msp/"
+    },
+    {
+      "route_key": "cid-to-msp",
+      "url": "/routes/cid-to-msp/"
+    },
+    {
+      "route_key": "ciu-to-msp",
+      "url": "/routes/ciu-to-msp/"
+    },
+    {
+      "route_key": "cle-to-msp",
+      "url": "/routes/cle-to-msp/"
+    },
+    {
+      "route_key": "clt-to-msp",
+      "url": "/routes/clt-to-msp/"
+    },
+    {
+      "route_key": "cmh-to-msp",
+      "url": "/routes/cmh-to-msp/"
+    },
+    {
+      "route_key": "cvg-to-msp",
+      "url": "/routes/cvg-to-msp/"
+    },
+    {
+      "route_key": "cwa-to-msp",
+      "url": "/routes/cwa-to-msp/"
+    },
+    {
+      "route_key": "dca-to-msp",
+      "url": "/routes/dca-to-msp/"
+    },
+    {
+      "route_key": "den-to-msp",
+      "url": "/routes/den-to-msp/"
+    },
+    {
+      "route_key": "dfw-to-msp",
+      "url": "/routes/dfw-to-msp/"
+    },
+    {
+      "route_key": "dlh-to-msp",
+      "url": "/routes/dlh-to-msp/"
+    },
+    {
+      "route_key": "dsm-to-msp",
+      "url": "/routes/dsm-to-msp/"
+    },
+    {
+      "route_key": "dtw-to-msp",
+      "url": "/routes/dtw-to-msp/"
+    },
+    {
+      "route_key": "esc-to-msp",
+      "url": "/routes/esc-to-msp/"
+    },
+    {
+      "route_key": "ewr-to-msp",
+      "url": "/routes/ewr-to-msp/"
+    },
+    {
+      "route_key": "far-to-msp",
+      "url": "/routes/far-to-msp/"
+    },
+    {
+      "route_key": "fca-to-msp",
+      "url": "/routes/fca-to-msp/"
+    },
+    {
+      "route_key": "fll-to-msp",
+      "url": "/routes/fll-to-msp/"
+    },
+    {
+      "route_key": "fsd-to-msp",
+      "url": "/routes/fsd-to-msp/"
+    },
+    {
+      "route_key": "fwa-to-msp",
+      "url": "/routes/fwa-to-msp/"
+    },
+    {
+      "route_key": "geg-to-msp",
+      "url": "/routes/geg-to-msp/"
+    },
+    {
+      "route_key": "gfk-to-msp",
+      "url": "/routes/gfk-to-msp/"
+    },
+    {
+      "route_key": "grb-to-msp",
+      "url": "/routes/grb-to-msp/"
+    },
+    {
+      "route_key": "grr-to-msp",
+      "url": "/routes/grr-to-msp/"
+    },
+    {
+      "route_key": "gtf-to-msp",
+      "url": "/routes/gtf-to-msp/"
+    },
+    {
+      "route_key": "hib-to-msp",
+      "url": "/routes/hib-to-msp/"
+    },
+    {
+      "route_key": "hnl-to-msp",
+      "url": "/routes/hnl-to-msp/"
+    },
+    {
+      "route_key": "hrl-to-msp",
+      "url": "/routes/hrl-to-msp/"
+    },
+    {
+      "route_key": "iad-to-msp",
+      "url": "/routes/iad-to-msp/"
+    },
+    {
+      "route_key": "iah-to-msp",
+      "url": "/routes/iah-to-msp/"
+    },
+    {
+      "route_key": "ict-to-msp",
+      "url": "/routes/ict-to-msp/"
+    },
+    {
+      "route_key": "imt-to-msp",
+      "url": "/routes/imt-to-msp/"
+    },
+    {
+      "route_key": "ind-to-msp",
+      "url": "/routes/ind-to-msp/"
+    },
+    {
+      "route_key": "inl-to-msp",
+      "url": "/routes/inl-to-msp/"
+    },
+    {
+      "route_key": "jax-to-msp",
+      "url": "/routes/jax-to-msp/"
+    },
+    {
+      "route_key": "jfk-to-msp",
+      "url": "/routes/jfk-to-msp/"
+    },
+    {
+      "route_key": "las-to-msp",
+      "url": "/routes/las-to-msp/"
+    },
+    {
+      "route_key": "lax-to-msp",
+      "url": "/routes/lax-to-msp/"
+    },
+    {
+      "route_key": "lga-to-msp",
+      "url": "/routes/lga-to-msp/"
+    },
+    {
+      "route_key": "mci-to-msp",
+      "url": "/routes/mci-to-msp/"
+    },
+    {
+      "route_key": "mco-to-msp",
+      "url": "/routes/mco-to-msp/"
+    },
+    {
+      "route_key": "mdw-to-msp",
+      "url": "/routes/mdw-to-msp/"
+    },
+    {
+      "route_key": "mem-to-msp",
+      "url": "/routes/mem-to-msp/"
+    },
+    {
+      "route_key": "mia-to-msp",
+      "url": "/routes/mia-to-msp/"
+    },
+    {
+      "route_key": "mke-to-msp",
+      "url": "/routes/mke-to-msp/"
+    },
+    {
+      "route_key": "mot-to-msp",
+      "url": "/routes/mot-to-msp/"
+    },
+    {
+      "route_key": "msn-to-msp",
+      "url": "/routes/msn-to-msp/"
+    },
+    {
+      "route_key": "mso-to-msp",
+      "url": "/routes/mso-to-msp/"
+    },
+    {
+      "route_key": "msy-to-msp",
+      "url": "/routes/msy-to-msp/"
+    },
+    {
+      "route_key": "myr-to-msp",
+      "url": "/routes/myr-to-msp/"
+    },
+    {
+      "route_key": "okc-to-msp",
+      "url": "/routes/okc-to-msp/"
+    },
+    {
+      "route_key": "oma-to-msp",
+      "url": "/routes/oma-to-msp/"
+    },
+    {
+      "route_key": "ord-to-msp",
+      "url": "/routes/ord-to-msp/"
+    },
+    {
+      "route_key": "orf-to-msp",
+      "url": "/routes/orf-to-msp/"
+    },
+    {
+      "route_key": "pbi-to-msp",
+      "url": "/routes/pbi-to-msp/"
+    },
+    {
+      "route_key": "pdx-to-msp",
+      "url": "/routes/pdx-to-msp/"
+    },
+    {
+      "route_key": "phl-to-msp",
+      "url": "/routes/phl-to-msp/"
+    },
+    {
+      "route_key": "phx-to-msp",
+      "url": "/routes/phx-to-msp/"
+    },
+    {
+      "route_key": "pit-to-msp",
+      "url": "/routes/pit-to-msp/"
+    },
+    {
+      "route_key": "psc-to-msp",
+      "url": "/routes/psc-to-msp/"
+    },
+    {
+      "route_key": "psp-to-msp",
+      "url": "/routes/psp-to-msp/"
+    },
+    {
+      "route_key": "pwm-to-msp",
+      "url": "/routes/pwm-to-msp/"
+    },
+    {
+      "route_key": "rap-to-msp",
+      "url": "/routes/rap-to-msp/"
+    },
+    {
+      "route_key": "rdu-to-msp",
+      "url": "/routes/rdu-to-msp/"
+    },
+    {
+      "route_key": "rhi-to-msp",
+      "url": "/routes/rhi-to-msp/"
+    },
+    {
+      "route_key": "ric-to-msp",
+      "url": "/routes/ric-to-msp/"
+    },
+    {
+      "route_key": "rno-to-msp",
+      "url": "/routes/rno-to-msp/"
+    },
+    {
+      "route_key": "rst-to-msp",
+      "url": "/routes/rst-to-msp/"
+    },
+    {
+      "route_key": "rsw-to-msp",
+      "url": "/routes/rsw-to-msp/"
+    },
+    {
+      "route_key": "san-to-msp",
+      "url": "/routes/san-to-msp/"
+    },
+    {
+      "route_key": "sat-to-msp",
+      "url": "/routes/sat-to-msp/"
+    },
+    {
+      "route_key": "sav-to-msp",
+      "url": "/routes/sav-to-msp/"
+    },
+    {
+      "route_key": "sbn-to-msp",
+      "url": "/routes/sbn-to-msp/"
+    },
+    {
+      "route_key": "sdf-to-msp",
+      "url": "/routes/sdf-to-msp/"
+    },
+    {
+      "route_key": "sea-to-msp",
+      "url": "/routes/sea-to-msp/"
+    },
+    {
+      "route_key": "sfo-to-msp",
+      "url": "/routes/sfo-to-msp/"
+    },
+    {
+      "route_key": "sjc-to-msp",
+      "url": "/routes/sjc-to-msp/"
+    },
+    {
+      "route_key": "sju-to-msp",
+      "url": "/routes/sju-to-msp/"
+    },
+    {
+      "route_key": "slc-to-msp",
+      "url": "/routes/slc-to-msp/"
+    },
+    {
+      "route_key": "smf-to-msp",
+      "url": "/routes/smf-to-msp/"
+    },
+    {
+      "route_key": "sna-to-msp",
+      "url": "/routes/sna-to-msp/"
+    },
+    {
+      "route_key": "srq-to-msp",
+      "url": "/routes/srq-to-msp/"
+    },
+    {
+      "route_key": "stl-to-msp",
+      "url": "/routes/stl-to-msp/"
+    },
+    {
+      "route_key": "syr-to-msp",
+      "url": "/routes/syr-to-msp/"
+    },
+    {
+      "route_key": "tpa-to-msp",
+      "url": "/routes/tpa-to-msp/"
+    },
+    {
+      "route_key": "tus-to-msp",
+      "url": "/routes/tus-to-msp/"
+    },
+    {
+      "route_key": "tvc-to-msp",
+      "url": "/routes/tvc-to-msp/"
+    },
+    {
+      "route_key": "tys-to-msp",
+      "url": "/routes/tys-to-msp/"
+    },
+    {
+      "route_key": "vps-to-msp",
+      "url": "/routes/vps-to-msp/"
+    },
+    {
+      "route_key": "xna-to-msp",
+      "url": "/routes/xna-to-msp/"
+    },
+    {
+      "route_key": "xwa-to-msp",
+      "url": "/routes/xwa-to-msp/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "MSP",
+    "coverage_group": "representative_expansion",
+    "data_year": 2024,
+    "total_arrivals": 126793,
+    "origin_routes": 121,
+    "usable_routes": 111,
+    "operating_airlines": 14,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/MSP/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORD Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for ORD (O&#39;Hare International Airport). 280,009 flights analyzed across 163 origin routes, 12 airlines. 151 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/ORD/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="ORD">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      ORD
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">ORD</div>
+      <div class="header-name">O&#39;Hare International Airport</div>
+      <div class="header-title">ORD Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-hub">Hub Airport (hub14)</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>ORD</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>ORD</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">280,009</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">163</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">12</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">151</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">4</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">8</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">163</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">1.45%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">7.87%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">1.87%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+7.9 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+46.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">-1.1 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>ORD</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>LGA</td>
+          <td><code>LGA→ORD</code></td>
+          <td class="td-num">10,971</td>
+          <td class="td-num">2.22%</td>
+          <td class="td-num">8.92%</td>
+          <td class="td-num">+5.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lga-to-ord/">LGA→ORD</a></td>
+        </tr>
+        <tr>
+          <td>BOS</td>
+          <td><code>BOS→ORD</code></td>
+          <td class="td-num">6,932</td>
+          <td class="td-num">1.36%</td>
+          <td class="td-num">7.55%</td>
+          <td class="td-num">+4.5 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/bos-to-ord/">BOS→ORD</a></td>
+        </tr>
+        <tr>
+          <td>LAX</td>
+          <td><code>LAX→ORD</code></td>
+          <td class="td-num">6,646</td>
+          <td class="td-num">1.34%</td>
+          <td class="td-num">6.62%</td>
+          <td class="td-num">+5.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lax-to-ord/">LAX→ORD</a></td>
+        </tr>
+        <tr>
+          <td>DFW</td>
+          <td><code>DFW→ORD</code></td>
+          <td class="td-num">6,522</td>
+          <td class="td-num">1.27%</td>
+          <td class="td-num">9.38%</td>
+          <td class="td-num">+12.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dfw-to-ord/">DFW→ORD</a></td>
+        </tr>
+        <tr>
+          <td>DEN</td>
+          <td><code>DEN→ORD</code></td>
+          <td class="td-num">6,480</td>
+          <td class="td-num">1.27%</td>
+          <td class="td-num">8.72%</td>
+          <td class="td-num">+10.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/den-to-ord/">DEN→ORD</a></td>
+        </tr>
+        <tr>
+          <td>DCA</td>
+          <td><code>DCA→ORD</code></td>
+          <td class="td-num">6,158</td>
+          <td class="td-num">1.36%</td>
+          <td class="td-num">7.79%</td>
+          <td class="td-num">+5.1 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dca-to-ord/">DCA→ORD</a></td>
+        </tr>
+        <tr>
+          <td>EWR</td>
+          <td><code>EWR→ORD</code></td>
+          <td class="td-num">6,104</td>
+          <td class="td-num">2.42%</td>
+          <td class="td-num">10.61%</td>
+          <td class="td-num">+11.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ewr-to-ord/">EWR→ORD</a></td>
+        </tr>
+        <tr>
+          <td>MSP</td>
+          <td><code>MSP→ORD</code></td>
+          <td class="td-num">6,002</td>
+          <td class="td-num">1.08%</td>
+          <td class="td-num">8.12%</td>
+          <td class="td-num">+8.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/msp-to-ord/">MSP→ORD</a></td>
+        </tr>
+        <tr>
+          <td>PHX</td>
+          <td><code>PHX→ORD</code></td>
+          <td class="td-num">5,946</td>
+          <td class="td-num">1.24%</td>
+          <td class="td-num">6.64%</td>
+          <td class="td-num">+3.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/phx-to-ord/">PHX→ORD</a></td>
+        </tr>
+        <tr>
+          <td>ATL</td>
+          <td><code>ATL→ORD</code></td>
+          <td class="td-num">5,668</td>
+          <td class="td-num">1.16%</td>
+          <td class="td-num">8.19%</td>
+          <td class="td-num">+11.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/atl-to-ord/">ATL→ORD</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      151 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      163 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/abe-to-ord/">abe-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/abq-to-ord/">abq-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/alb-to-ord/">alb-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/anc-to-ord/">anc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ase-to-ord/">ase-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-ord/">atl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atw-to-ord/">atw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-ord/">aus-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/avl-to-ord/">avl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/avp-to-ord/">avp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bdl-to-ord/">bdl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bgr-to-ord/">bgr-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bhm-to-ord/">bhm-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bil-to-ord/">bil-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-ord/">bna-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/boi-to-ord/">boi-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-ord/">bos-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/btv-to-ord/">btv-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/buf-to-ord/">buf-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-ord/">bwi-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bzn-to-ord/">bzn-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cae-to-ord/">cae-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cak-to-ord/">cak-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cha-to-ord/">cha-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cho-to-ord/">cho-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/chs-to-ord/">chs-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cid-to-ord/">cid-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-ord/">cle-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-ord/">clt-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-ord/">cmh-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmi-to-ord/">cmi-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmx-to-ord/">cmx-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cos-to-ord/">cos-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cou-to-ord/">cou-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/crw-to-ord/">crw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-ord/">cvg-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dal-to-ord/">dal-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/day-to-ord/">day-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-ord/">dca-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dec-to-ord/">dec-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-ord/">den-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-ord/">dfw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dlh-to-ord/">dlh-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dsm-to-ord/">dsm-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-ord/">dtw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ecp-to-ord/">ecp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ege-to-ord/">ege-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/elp-to-ord/">elp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-ord/">ewr-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/eyw-to-ord/">eyw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fai-to-ord/">fai-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/far-to-ord/">far-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fat-to-ord/">fat-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fca-to-ord/">fca-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fll-to-ord/">fll-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fnt-to-ord/">fnt-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fod-to-ord/">fod-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fsd-to-ord/">fsd-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fwa-to-ord/">fwa-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/geg-to-ord/">geg-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/grb-to-ord/">grb-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/grr-to-ord/">grr-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gso-to-ord/">gso-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gsp-to-ord/">gsp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hdn-to-ord/">hdn-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hnl-to-ord/">hnl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hpn-to-ord/">hpn-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hsv-to-ord/">hsv-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-ord/">iad-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-ord/">iah-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ict-to-ord/">ict-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ilm-to-ord/">ilm-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-ord/">ind-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jac-to-ord/">jac-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jax-to-ord/">jax-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-ord/">jfk-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jln-to-ord/">jln-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jst-to-ord/">jst-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-ord/">las-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-ord/">lax-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lex-to-ord/">lex-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lga-to-ord/">lga-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lit-to-ord/">lit-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lnk-to-ord/">lnk-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lse-to-ord/">lse-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mbs-to-ord/">mbs-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-ord/">mci-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mco-to-ord/">mco-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mcw-to-ord/">mcw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mdt-to-ord/">mdt-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mem-to-ord/">mem-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mht-to-ord/">mht-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mia-to-ord/">mia-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-ord/">mke-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mli-to-ord/">mli-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mqt-to-ord/">mqt-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msn-to-ord/">msn-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mso-to-ord/">mso-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-ord/">msp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-ord/">msy-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mtj-to-ord/">mtj-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/myr-to-ord/">myr-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ogg-to-ord/">ogg-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/okc-to-ord/">okc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oma-to-ord/">oma-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/orf-to-ord/">orf-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pbi-to-ord/">pbi-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-ord/">pdx-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phl-to-ord/">phl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phx-to-ord/">phx-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pia-to-ord/">pia-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-ord/">pit-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pns-to-ord/">pns-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/psp-to-ord/">psp-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pvd-to-ord/">pvd-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pwm-to-ord/">pwm-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rap-to-ord/">rap-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-ord/">rdu-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ric-to-ord/">ric-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rno-to-ord/">rno-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/roa-to-ord/">roa-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/roc-to-ord/">roc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rst-to-ord/">rst-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rsw-to-ord/">rsw-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-ord/">san-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-ord/">sat-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sav-to-ord/">sav-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sbn-to-ord/">sbn-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sce-to-ord/">sce-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sdf-to-ord/">sdf-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-ord/">sea-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-ord/">sfo-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sgf-to-ord/">sgf-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sjc-to-ord/">sjc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sju-to-ord/">sju-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-ord/">slc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sln-to-ord/">sln-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/smf-to-ord/">smf-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sna-to-ord/">sna-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/srq-to-ord/">srq-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stl-to-ord/">stl-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stt-to-ord/">stt-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sun-to-ord/">sun-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sux-to-ord/">sux-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/syr-to-ord/">syr-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tpa-to-ord/">tpa-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tul-to-ord/">tul-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tus-to-ord/">tus-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tvc-to-ord/">tvc-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tys-to-ord/">tys-to-ord</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/xna-to-ord/">xna-to-ord</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for ORD.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "ORD",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 280009,
+    "origin_routes_count": 163,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 151,
+      "thin": 4,
+      "too_small": 8,
+      "total": 163
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.014542,
+    "delay_over_60min_rate": 0.078728,
+    "delay_over_180min_rate": 0.018671,
+    "avg_arrival_delay_minutes": 7.9,
+    "p90_arrival_delay_minutes": 46.0,
+    "avg_delay_recovery_minutes": -1.1
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LGA",
+      "route": "LGA→ORD",
+      "total_scheduled_flights": 10971,
+      "cancellation_rate": 0.02224,
+      "delay_over_60min_rate": 0.089214,
+      "avg_arrival_delay_minutes": 5.6,
+      "route_page_url": "/routes/lga-to-ord/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→ORD",
+      "total_scheduled_flights": 6932,
+      "cancellation_rate": 0.01356,
+      "delay_over_60min_rate": 0.075461,
+      "avg_arrival_delay_minutes": 4.45,
+      "route_page_url": "/routes/bos-to-ord/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→ORD",
+      "total_scheduled_flights": 6646,
+      "cancellation_rate": 0.013392,
+      "delay_over_60min_rate": 0.066189,
+      "avg_arrival_delay_minutes": 5.22,
+      "route_page_url": "/routes/lax-to-ord/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→ORD",
+      "total_scheduled_flights": 6522,
+      "cancellation_rate": 0.012726,
+      "delay_over_60min_rate": 0.093803,
+      "avg_arrival_delay_minutes": 12.19,
+      "route_page_url": "/routes/dfw-to-ord/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→ORD",
+      "total_scheduled_flights": 6480,
+      "cancellation_rate": 0.012654,
+      "delay_over_60min_rate": 0.087215,
+      "avg_arrival_delay_minutes": 10.32,
+      "route_page_url": "/routes/den-to-ord/"
+    },
+    {
+      "origin": "DCA",
+      "route": "DCA→ORD",
+      "total_scheduled_flights": 6158,
+      "cancellation_rate": 0.013641,
+      "delay_over_60min_rate": 0.077873,
+      "avg_arrival_delay_minutes": 5.1,
+      "route_page_url": "/routes/dca-to-ord/"
+    },
+    {
+      "origin": "EWR",
+      "route": "EWR→ORD",
+      "total_scheduled_flights": 6104,
+      "cancellation_rate": 0.024246,
+      "delay_over_60min_rate": 0.106111,
+      "avg_arrival_delay_minutes": 11.64,
+      "route_page_url": "/routes/ewr-to-ord/"
+    },
+    {
+      "origin": "MSP",
+      "route": "MSP→ORD",
+      "total_scheduled_flights": 6002,
+      "cancellation_rate": 0.01083,
+      "delay_over_60min_rate": 0.081186,
+      "avg_arrival_delay_minutes": 8.2,
+      "route_page_url": "/routes/msp-to-ord/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→ORD",
+      "total_scheduled_flights": 5946,
+      "cancellation_rate": 0.012445,
+      "delay_over_60min_rate": 0.066417,
+      "avg_arrival_delay_minutes": 3.85,
+      "route_page_url": "/routes/phx-to-ord/"
+    },
+    {
+      "origin": "ATL",
+      "route": "ATL→ORD",
+      "total_scheduled_flights": 5668,
+      "cancellation_rate": 0.011644,
+      "delay_over_60min_rate": 0.081935,
+      "avg_arrival_delay_minutes": 11.59,
+      "route_page_url": "/routes/atl-to-ord/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abe-to-ord",
+      "url": "/routes/abe-to-ord/"
+    },
+    {
+      "route_key": "abq-to-ord",
+      "url": "/routes/abq-to-ord/"
+    },
+    {
+      "route_key": "alb-to-ord",
+      "url": "/routes/alb-to-ord/"
+    },
+    {
+      "route_key": "anc-to-ord",
+      "url": "/routes/anc-to-ord/"
+    },
+    {
+      "route_key": "ase-to-ord",
+      "url": "/routes/ase-to-ord/"
+    },
+    {
+      "route_key": "atl-to-ord",
+      "url": "/routes/atl-to-ord/"
+    },
+    {
+      "route_key": "atw-to-ord",
+      "url": "/routes/atw-to-ord/"
+    },
+    {
+      "route_key": "aus-to-ord",
+      "url": "/routes/aus-to-ord/"
+    },
+    {
+      "route_key": "avl-to-ord",
+      "url": "/routes/avl-to-ord/"
+    },
+    {
+      "route_key": "avp-to-ord",
+      "url": "/routes/avp-to-ord/"
+    },
+    {
+      "route_key": "bdl-to-ord",
+      "url": "/routes/bdl-to-ord/"
+    },
+    {
+      "route_key": "bgr-to-ord",
+      "url": "/routes/bgr-to-ord/"
+    },
+    {
+      "route_key": "bhm-to-ord",
+      "url": "/routes/bhm-to-ord/"
+    },
+    {
+      "route_key": "bil-to-ord",
+      "url": "/routes/bil-to-ord/"
+    },
+    {
+      "route_key": "bna-to-ord",
+      "url": "/routes/bna-to-ord/"
+    },
+    {
+      "route_key": "boi-to-ord",
+      "url": "/routes/boi-to-ord/"
+    },
+    {
+      "route_key": "bos-to-ord",
+      "url": "/routes/bos-to-ord/"
+    },
+    {
+      "route_key": "btv-to-ord",
+      "url": "/routes/btv-to-ord/"
+    },
+    {
+      "route_key": "buf-to-ord",
+      "url": "/routes/buf-to-ord/"
+    },
+    {
+      "route_key": "bwi-to-ord",
+      "url": "/routes/bwi-to-ord/"
+    },
+    {
+      "route_key": "bzn-to-ord",
+      "url": "/routes/bzn-to-ord/"
+    },
+    {
+      "route_key": "cae-to-ord",
+      "url": "/routes/cae-to-ord/"
+    },
+    {
+      "route_key": "cak-to-ord",
+      "url": "/routes/cak-to-ord/"
+    },
+    {
+      "route_key": "cha-to-ord",
+      "url": "/routes/cha-to-ord/"
+    },
+    {
+      "route_key": "cho-to-ord",
+      "url": "/routes/cho-to-ord/"
+    },
+    {
+      "route_key": "chs-to-ord",
+      "url": "/routes/chs-to-ord/"
+    },
+    {
+      "route_key": "cid-to-ord",
+      "url": "/routes/cid-to-ord/"
+    },
+    {
+      "route_key": "cle-to-ord",
+      "url": "/routes/cle-to-ord/"
+    },
+    {
+      "route_key": "clt-to-ord",
+      "url": "/routes/clt-to-ord/"
+    },
+    {
+      "route_key": "cmh-to-ord",
+      "url": "/routes/cmh-to-ord/"
+    },
+    {
+      "route_key": "cmi-to-ord",
+      "url": "/routes/cmi-to-ord/"
+    },
+    {
+      "route_key": "cmx-to-ord",
+      "url": "/routes/cmx-to-ord/"
+    },
+    {
+      "route_key": "cos-to-ord",
+      "url": "/routes/cos-to-ord/"
+    },
+    {
+      "route_key": "cou-to-ord",
+      "url": "/routes/cou-to-ord/"
+    },
+    {
+      "route_key": "crw-to-ord",
+      "url": "/routes/crw-to-ord/"
+    },
+    {
+      "route_key": "cvg-to-ord",
+      "url": "/routes/cvg-to-ord/"
+    },
+    {
+      "route_key": "dal-to-ord",
+      "url": "/routes/dal-to-ord/"
+    },
+    {
+      "route_key": "day-to-ord",
+      "url": "/routes/day-to-ord/"
+    },
+    {
+      "route_key": "dca-to-ord",
+      "url": "/routes/dca-to-ord/"
+    },
+    {
+      "route_key": "dec-to-ord",
+      "url": "/routes/dec-to-ord/"
+    },
+    {
+      "route_key": "den-to-ord",
+      "url": "/routes/den-to-ord/"
+    },
+    {
+      "route_key": "dfw-to-ord",
+      "url": "/routes/dfw-to-ord/"
+    },
+    {
+      "route_key": "dlh-to-ord",
+      "url": "/routes/dlh-to-ord/"
+    },
+    {
+      "route_key": "dsm-to-ord",
+      "url": "/routes/dsm-to-ord/"
+    },
+    {
+      "route_key": "dtw-to-ord",
+      "url": "/routes/dtw-to-ord/"
+    },
+    {
+      "route_key": "ecp-to-ord",
+      "url": "/routes/ecp-to-ord/"
+    },
+    {
+      "route_key": "ege-to-ord",
+      "url": "/routes/ege-to-ord/"
+    },
+    {
+      "route_key": "elp-to-ord",
+      "url": "/routes/elp-to-ord/"
+    },
+    {
+      "route_key": "ewr-to-ord",
+      "url": "/routes/ewr-to-ord/"
+    },
+    {
+      "route_key": "eyw-to-ord",
+      "url": "/routes/eyw-to-ord/"
+    },
+    {
+      "route_key": "fai-to-ord",
+      "url": "/routes/fai-to-ord/"
+    },
+    {
+      "route_key": "far-to-ord",
+      "url": "/routes/far-to-ord/"
+    },
+    {
+      "route_key": "fat-to-ord",
+      "url": "/routes/fat-to-ord/"
+    },
+    {
+      "route_key": "fca-to-ord",
+      "url": "/routes/fca-to-ord/"
+    },
+    {
+      "route_key": "fll-to-ord",
+      "url": "/routes/fll-to-ord/"
+    },
+    {
+      "route_key": "fnt-to-ord",
+      "url": "/routes/fnt-to-ord/"
+    },
+    {
+      "route_key": "fod-to-ord",
+      "url": "/routes/fod-to-ord/"
+    },
+    {
+      "route_key": "fsd-to-ord",
+      "url": "/routes/fsd-to-ord/"
+    },
+    {
+      "route_key": "fwa-to-ord",
+      "url": "/routes/fwa-to-ord/"
+    },
+    {
+      "route_key": "geg-to-ord",
+      "url": "/routes/geg-to-ord/"
+    },
+    {
+      "route_key": "grb-to-ord",
+      "url": "/routes/grb-to-ord/"
+    },
+    {
+      "route_key": "grr-to-ord",
+      "url": "/routes/grr-to-ord/"
+    },
+    {
+      "route_key": "gso-to-ord",
+      "url": "/routes/gso-to-ord/"
+    },
+    {
+      "route_key": "gsp-to-ord",
+      "url": "/routes/gsp-to-ord/"
+    },
+    {
+      "route_key": "hdn-to-ord",
+      "url": "/routes/hdn-to-ord/"
+    },
+    {
+      "route_key": "hnl-to-ord",
+      "url": "/routes/hnl-to-ord/"
+    },
+    {
+      "route_key": "hpn-to-ord",
+      "url": "/routes/hpn-to-ord/"
+    },
+    {
+      "route_key": "hsv-to-ord",
+      "url": "/routes/hsv-to-ord/"
+    },
+    {
+      "route_key": "iad-to-ord",
+      "url": "/routes/iad-to-ord/"
+    },
+    {
+      "route_key": "iah-to-ord",
+      "url": "/routes/iah-to-ord/"
+    },
+    {
+      "route_key": "ict-to-ord",
+      "url": "/routes/ict-to-ord/"
+    },
+    {
+      "route_key": "ilm-to-ord",
+      "url": "/routes/ilm-to-ord/"
+    },
+    {
+      "route_key": "ind-to-ord",
+      "url": "/routes/ind-to-ord/"
+    },
+    {
+      "route_key": "jac-to-ord",
+      "url": "/routes/jac-to-ord/"
+    },
+    {
+      "route_key": "jax-to-ord",
+      "url": "/routes/jax-to-ord/"
+    },
+    {
+      "route_key": "jfk-to-ord",
+      "url": "/routes/jfk-to-ord/"
+    },
+    {
+      "route_key": "jln-to-ord",
+      "url": "/routes/jln-to-ord/"
+    },
+    {
+      "route_key": "jst-to-ord",
+      "url": "/routes/jst-to-ord/"
+    },
+    {
+      "route_key": "las-to-ord",
+      "url": "/routes/las-to-ord/"
+    },
+    {
+      "route_key": "lax-to-ord",
+      "url": "/routes/lax-to-ord/"
+    },
+    {
+      "route_key": "lex-to-ord",
+      "url": "/routes/lex-to-ord/"
+    },
+    {
+      "route_key": "lga-to-ord",
+      "url": "/routes/lga-to-ord/"
+    },
+    {
+      "route_key": "lit-to-ord",
+      "url": "/routes/lit-to-ord/"
+    },
+    {
+      "route_key": "lnk-to-ord",
+      "url": "/routes/lnk-to-ord/"
+    },
+    {
+      "route_key": "lse-to-ord",
+      "url": "/routes/lse-to-ord/"
+    },
+    {
+      "route_key": "mbs-to-ord",
+      "url": "/routes/mbs-to-ord/"
+    },
+    {
+      "route_key": "mci-to-ord",
+      "url": "/routes/mci-to-ord/"
+    },
+    {
+      "route_key": "mco-to-ord",
+      "url": "/routes/mco-to-ord/"
+    },
+    {
+      "route_key": "mcw-to-ord",
+      "url": "/routes/mcw-to-ord/"
+    },
+    {
+      "route_key": "mdt-to-ord",
+      "url": "/routes/mdt-to-ord/"
+    },
+    {
+      "route_key": "mem-to-ord",
+      "url": "/routes/mem-to-ord/"
+    },
+    {
+      "route_key": "mht-to-ord",
+      "url": "/routes/mht-to-ord/"
+    },
+    {
+      "route_key": "mia-to-ord",
+      "url": "/routes/mia-to-ord/"
+    },
+    {
+      "route_key": "mke-to-ord",
+      "url": "/routes/mke-to-ord/"
+    },
+    {
+      "route_key": "mli-to-ord",
+      "url": "/routes/mli-to-ord/"
+    },
+    {
+      "route_key": "mqt-to-ord",
+      "url": "/routes/mqt-to-ord/"
+    },
+    {
+      "route_key": "msn-to-ord",
+      "url": "/routes/msn-to-ord/"
+    },
+    {
+      "route_key": "mso-to-ord",
+      "url": "/routes/mso-to-ord/"
+    },
+    {
+      "route_key": "msp-to-ord",
+      "url": "/routes/msp-to-ord/"
+    },
+    {
+      "route_key": "msy-to-ord",
+      "url": "/routes/msy-to-ord/"
+    },
+    {
+      "route_key": "mtj-to-ord",
+      "url": "/routes/mtj-to-ord/"
+    },
+    {
+      "route_key": "myr-to-ord",
+      "url": "/routes/myr-to-ord/"
+    },
+    {
+      "route_key": "ogg-to-ord",
+      "url": "/routes/ogg-to-ord/"
+    },
+    {
+      "route_key": "okc-to-ord",
+      "url": "/routes/okc-to-ord/"
+    },
+    {
+      "route_key": "oma-to-ord",
+      "url": "/routes/oma-to-ord/"
+    },
+    {
+      "route_key": "orf-to-ord",
+      "url": "/routes/orf-to-ord/"
+    },
+    {
+      "route_key": "pbi-to-ord",
+      "url": "/routes/pbi-to-ord/"
+    },
+    {
+      "route_key": "pdx-to-ord",
+      "url": "/routes/pdx-to-ord/"
+    },
+    {
+      "route_key": "phl-to-ord",
+      "url": "/routes/phl-to-ord/"
+    },
+    {
+      "route_key": "phx-to-ord",
+      "url": "/routes/phx-to-ord/"
+    },
+    {
+      "route_key": "pia-to-ord",
+      "url": "/routes/pia-to-ord/"
+    },
+    {
+      "route_key": "pit-to-ord",
+      "url": "/routes/pit-to-ord/"
+    },
+    {
+      "route_key": "pns-to-ord",
+      "url": "/routes/pns-to-ord/"
+    },
+    {
+      "route_key": "psp-to-ord",
+      "url": "/routes/psp-to-ord/"
+    },
+    {
+      "route_key": "pvd-to-ord",
+      "url": "/routes/pvd-to-ord/"
+    },
+    {
+      "route_key": "pwm-to-ord",
+      "url": "/routes/pwm-to-ord/"
+    },
+    {
+      "route_key": "rap-to-ord",
+      "url": "/routes/rap-to-ord/"
+    },
+    {
+      "route_key": "rdu-to-ord",
+      "url": "/routes/rdu-to-ord/"
+    },
+    {
+      "route_key": "ric-to-ord",
+      "url": "/routes/ric-to-ord/"
+    },
+    {
+      "route_key": "rno-to-ord",
+      "url": "/routes/rno-to-ord/"
+    },
+    {
+      "route_key": "roa-to-ord",
+      "url": "/routes/roa-to-ord/"
+    },
+    {
+      "route_key": "roc-to-ord",
+      "url": "/routes/roc-to-ord/"
+    },
+    {
+      "route_key": "rst-to-ord",
+      "url": "/routes/rst-to-ord/"
+    },
+    {
+      "route_key": "rsw-to-ord",
+      "url": "/routes/rsw-to-ord/"
+    },
+    {
+      "route_key": "san-to-ord",
+      "url": "/routes/san-to-ord/"
+    },
+    {
+      "route_key": "sat-to-ord",
+      "url": "/routes/sat-to-ord/"
+    },
+    {
+      "route_key": "sav-to-ord",
+      "url": "/routes/sav-to-ord/"
+    },
+    {
+      "route_key": "sbn-to-ord",
+      "url": "/routes/sbn-to-ord/"
+    },
+    {
+      "route_key": "sce-to-ord",
+      "url": "/routes/sce-to-ord/"
+    },
+    {
+      "route_key": "sdf-to-ord",
+      "url": "/routes/sdf-to-ord/"
+    },
+    {
+      "route_key": "sea-to-ord",
+      "url": "/routes/sea-to-ord/"
+    },
+    {
+      "route_key": "sfo-to-ord",
+      "url": "/routes/sfo-to-ord/"
+    },
+    {
+      "route_key": "sgf-to-ord",
+      "url": "/routes/sgf-to-ord/"
+    },
+    {
+      "route_key": "sjc-to-ord",
+      "url": "/routes/sjc-to-ord/"
+    },
+    {
+      "route_key": "sju-to-ord",
+      "url": "/routes/sju-to-ord/"
+    },
+    {
+      "route_key": "slc-to-ord",
+      "url": "/routes/slc-to-ord/"
+    },
+    {
+      "route_key": "sln-to-ord",
+      "url": "/routes/sln-to-ord/"
+    },
+    {
+      "route_key": "smf-to-ord",
+      "url": "/routes/smf-to-ord/"
+    },
+    {
+      "route_key": "sna-to-ord",
+      "url": "/routes/sna-to-ord/"
+    },
+    {
+      "route_key": "srq-to-ord",
+      "url": "/routes/srq-to-ord/"
+    },
+    {
+      "route_key": "stl-to-ord",
+      "url": "/routes/stl-to-ord/"
+    },
+    {
+      "route_key": "stt-to-ord",
+      "url": "/routes/stt-to-ord/"
+    },
+    {
+      "route_key": "sun-to-ord",
+      "url": "/routes/sun-to-ord/"
+    },
+    {
+      "route_key": "sux-to-ord",
+      "url": "/routes/sux-to-ord/"
+    },
+    {
+      "route_key": "syr-to-ord",
+      "url": "/routes/syr-to-ord/"
+    },
+    {
+      "route_key": "tpa-to-ord",
+      "url": "/routes/tpa-to-ord/"
+    },
+    {
+      "route_key": "tul-to-ord",
+      "url": "/routes/tul-to-ord/"
+    },
+    {
+      "route_key": "tus-to-ord",
+      "url": "/routes/tus-to-ord/"
+    },
+    {
+      "route_key": "tvc-to-ord",
+      "url": "/routes/tvc-to-ord/"
+    },
+    {
+      "route_key": "tys-to-ord",
+      "url": "/routes/tys-to-ord/"
+    },
+    {
+      "route_key": "xna-to-ord",
+      "url": "/routes/xna-to-ord/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "ORD",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 280009,
+    "origin_routes": 163,
+    "usable_routes": 151,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/ORD/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "ORD Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for ORD (O'Hare International Airport). 280,009 flights analyzed across 163 origin routes, 12 airlines. 151 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "ORD",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "ORD airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>

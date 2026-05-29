@@ -1,0 +1,477 @@
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "SFO",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 135075,
+    "origin_routes_count": 82,
+    "operating_airlines_count": 10,
+    "route_sample_quality": {
+      "usable": 73,
+      "thin": 3,
+      "too_small": 6,
+      "total": 82
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.013785,
+    "delay_over_60min_rate": 0.098594,
+    "delay_over_180min_rate": 0.015869,
+    "avg_arrival_delay_minutes": 13.18,
+    "p90_arrival_delay_minutes": 60.0,
+    "avg_delay_recovery_minutes": -1.23
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "LAX",
+      "route": "LAX→SFO",
+      "total_scheduled_flights": 11526,
+      "cancellation_rate": 0.009023,
+      "delay_over_60min_rate": 0.102259,
+      "avg_arrival_delay_minutes": 14.93,
+      "route_page_url": "/routes/lax-to-sfo/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→SFO",
+      "total_scheduled_flights": 6599,
+      "cancellation_rate": 0.013032,
+      "delay_over_60min_rate": 0.093505,
+      "avg_arrival_delay_minutes": 15.22,
+      "route_page_url": "/routes/sea-to-sfo/"
+    },
+    {
+      "origin": "JFK",
+      "route": "JFK→SFO",
+      "total_scheduled_flights": 6457,
+      "cancellation_rate": 0.009292,
+      "delay_over_60min_rate": 0.077693,
+      "avg_arrival_delay_minutes": 2.38,
+      "route_page_url": "/routes/jfk-to-sfo/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→SFO",
+      "total_scheduled_flights": 6364,
+      "cancellation_rate": 0.015399,
+      "delay_over_60min_rate": 0.129907,
+      "avg_arrival_delay_minutes": 21.25,
+      "route_page_url": "/routes/san-to-sfo/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→SFO",
+      "total_scheduled_flights": 5773,
+      "cancellation_rate": 0.016976,
+      "delay_over_60min_rate": 0.112423,
+      "avg_arrival_delay_minutes": 18.05,
+      "route_page_url": "/routes/las-to-sfo/"
+    },
+    {
+      "origin": "DEN",
+      "route": "DEN→SFO",
+      "total_scheduled_flights": 5546,
+      "cancellation_rate": 0.01154,
+      "delay_over_60min_rate": 0.112733,
+      "avg_arrival_delay_minutes": 15.5,
+      "route_page_url": "/routes/den-to-sfo/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→SFO",
+      "total_scheduled_flights": 4967,
+      "cancellation_rate": 0.014093,
+      "delay_over_60min_rate": 0.108025,
+      "avg_arrival_delay_minutes": 13.1,
+      "route_page_url": "/routes/ord-to-sfo/"
+    },
+    {
+      "origin": "PHX",
+      "route": "PHX→SFO",
+      "total_scheduled_flights": 4778,
+      "cancellation_rate": 0.00879,
+      "delay_over_60min_rate": 0.106841,
+      "avg_arrival_delay_minutes": 17.18,
+      "route_page_url": "/routes/phx-to-sfo/"
+    },
+    {
+      "origin": "BOS",
+      "route": "BOS→SFO",
+      "total_scheduled_flights": 4446,
+      "cancellation_rate": 0.009672,
+      "delay_over_60min_rate": 0.086532,
+      "avg_arrival_delay_minutes": 5.67,
+      "route_page_url": "/routes/bos-to-sfo/"
+    },
+    {
+      "origin": "SNA",
+      "route": "SNA→SFO",
+      "total_scheduled_flights": 4279,
+      "cancellation_rate": 0.012386,
+      "delay_over_60min_rate": 0.105774,
+      "avg_arrival_delay_minutes": 16.08,
+      "route_page_url": "/routes/sna-to-sfo/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-sfo",
+      "url": "/routes/abq-to-sfo/"
+    },
+    {
+      "route_key": "acv-to-sfo",
+      "url": "/routes/acv-to-sfo/"
+    },
+    {
+      "route_key": "anc-to-sfo",
+      "url": "/routes/anc-to-sfo/"
+    },
+    {
+      "route_key": "ase-to-sfo",
+      "url": "/routes/ase-to-sfo/"
+    },
+    {
+      "route_key": "atl-to-sfo",
+      "url": "/routes/atl-to-sfo/"
+    },
+    {
+      "route_key": "aus-to-sfo",
+      "url": "/routes/aus-to-sfo/"
+    },
+    {
+      "route_key": "bfl-to-sfo",
+      "url": "/routes/bfl-to-sfo/"
+    },
+    {
+      "route_key": "bih-to-sfo",
+      "url": "/routes/bih-to-sfo/"
+    },
+    {
+      "route_key": "bna-to-sfo",
+      "url": "/routes/bna-to-sfo/"
+    },
+    {
+      "route_key": "boi-to-sfo",
+      "url": "/routes/boi-to-sfo/"
+    },
+    {
+      "route_key": "bos-to-sfo",
+      "url": "/routes/bos-to-sfo/"
+    },
+    {
+      "route_key": "bur-to-sfo",
+      "url": "/routes/bur-to-sfo/"
+    },
+    {
+      "route_key": "bwi-to-sfo",
+      "url": "/routes/bwi-to-sfo/"
+    },
+    {
+      "route_key": "bzn-to-sfo",
+      "url": "/routes/bzn-to-sfo/"
+    },
+    {
+      "route_key": "cle-to-sfo",
+      "url": "/routes/cle-to-sfo/"
+    },
+    {
+      "route_key": "clt-to-sfo",
+      "url": "/routes/clt-to-sfo/"
+    },
+    {
+      "route_key": "cmh-to-sfo",
+      "url": "/routes/cmh-to-sfo/"
+    },
+    {
+      "route_key": "dca-to-sfo",
+      "url": "/routes/dca-to-sfo/"
+    },
+    {
+      "route_key": "den-to-sfo",
+      "url": "/routes/den-to-sfo/"
+    },
+    {
+      "route_key": "dfw-to-sfo",
+      "url": "/routes/dfw-to-sfo/"
+    },
+    {
+      "route_key": "dtw-to-sfo",
+      "url": "/routes/dtw-to-sfo/"
+    },
+    {
+      "route_key": "ege-to-sfo",
+      "url": "/routes/ege-to-sfo/"
+    },
+    {
+      "route_key": "eug-to-sfo",
+      "url": "/routes/eug-to-sfo/"
+    },
+    {
+      "route_key": "ewr-to-sfo",
+      "url": "/routes/ewr-to-sfo/"
+    },
+    {
+      "route_key": "fat-to-sfo",
+      "url": "/routes/fat-to-sfo/"
+    },
+    {
+      "route_key": "fca-to-sfo",
+      "url": "/routes/fca-to-sfo/"
+    },
+    {
+      "route_key": "fll-to-sfo",
+      "url": "/routes/fll-to-sfo/"
+    },
+    {
+      "route_key": "geg-to-sfo",
+      "url": "/routes/geg-to-sfo/"
+    },
+    {
+      "route_key": "hnl-to-sfo",
+      "url": "/routes/hnl-to-sfo/"
+    },
+    {
+      "route_key": "iad-to-sfo",
+      "url": "/routes/iad-to-sfo/"
+    },
+    {
+      "route_key": "iah-to-sfo",
+      "url": "/routes/iah-to-sfo/"
+    },
+    {
+      "route_key": "ind-to-sfo",
+      "url": "/routes/ind-to-sfo/"
+    },
+    {
+      "route_key": "jac-to-sfo",
+      "url": "/routes/jac-to-sfo/"
+    },
+    {
+      "route_key": "jfk-to-sfo",
+      "url": "/routes/jfk-to-sfo/"
+    },
+    {
+      "route_key": "koa-to-sfo",
+      "url": "/routes/koa-to-sfo/"
+    },
+    {
+      "route_key": "las-to-sfo",
+      "url": "/routes/las-to-sfo/"
+    },
+    {
+      "route_key": "lax-to-sfo",
+      "url": "/routes/lax-to-sfo/"
+    },
+    {
+      "route_key": "lih-to-sfo",
+      "url": "/routes/lih-to-sfo/"
+    },
+    {
+      "route_key": "mci-to-sfo",
+      "url": "/routes/mci-to-sfo/"
+    },
+    {
+      "route_key": "mco-to-sfo",
+      "url": "/routes/mco-to-sfo/"
+    },
+    {
+      "route_key": "mdw-to-sfo",
+      "url": "/routes/mdw-to-sfo/"
+    },
+    {
+      "route_key": "mfr-to-sfo",
+      "url": "/routes/mfr-to-sfo/"
+    },
+    {
+      "route_key": "mia-to-sfo",
+      "url": "/routes/mia-to-sfo/"
+    },
+    {
+      "route_key": "mry-to-sfo",
+      "url": "/routes/mry-to-sfo/"
+    },
+    {
+      "route_key": "msp-to-sfo",
+      "url": "/routes/msp-to-sfo/"
+    },
+    {
+      "route_key": "msy-to-sfo",
+      "url": "/routes/msy-to-sfo/"
+    },
+    {
+      "route_key": "ogg-to-sfo",
+      "url": "/routes/ogg-to-sfo/"
+    },
+    {
+      "route_key": "oma-to-sfo",
+      "url": "/routes/oma-to-sfo/"
+    },
+    {
+      "route_key": "ont-to-sfo",
+      "url": "/routes/ont-to-sfo/"
+    },
+    {
+      "route_key": "ord-to-sfo",
+      "url": "/routes/ord-to-sfo/"
+    },
+    {
+      "route_key": "oth-to-sfo",
+      "url": "/routes/oth-to-sfo/"
+    },
+    {
+      "route_key": "pdx-to-sfo",
+      "url": "/routes/pdx-to-sfo/"
+    },
+    {
+      "route_key": "phl-to-sfo",
+      "url": "/routes/phl-to-sfo/"
+    },
+    {
+      "route_key": "phx-to-sfo",
+      "url": "/routes/phx-to-sfo/"
+    },
+    {
+      "route_key": "pit-to-sfo",
+      "url": "/routes/pit-to-sfo/"
+    },
+    {
+      "route_key": "psc-to-sfo",
+      "url": "/routes/psc-to-sfo/"
+    },
+    {
+      "route_key": "psp-to-sfo",
+      "url": "/routes/psp-to-sfo/"
+    },
+    {
+      "route_key": "rdd-to-sfo",
+      "url": "/routes/rdd-to-sfo/"
+    },
+    {
+      "route_key": "rdm-to-sfo",
+      "url": "/routes/rdm-to-sfo/"
+    },
+    {
+      "route_key": "rdu-to-sfo",
+      "url": "/routes/rdu-to-sfo/"
+    },
+    {
+      "route_key": "rno-to-sfo",
+      "url": "/routes/rno-to-sfo/"
+    },
+    {
+      "route_key": "san-to-sfo",
+      "url": "/routes/san-to-sfo/"
+    },
+    {
+      "route_key": "sat-to-sfo",
+      "url": "/routes/sat-to-sfo/"
+    },
+    {
+      "route_key": "sba-to-sfo",
+      "url": "/routes/sba-to-sfo/"
+    },
+    {
+      "route_key": "sbp-to-sfo",
+      "url": "/routes/sbp-to-sfo/"
+    },
+    {
+      "route_key": "sea-to-sfo",
+      "url": "/routes/sea-to-sfo/"
+    },
+    {
+      "route_key": "slc-to-sfo",
+      "url": "/routes/slc-to-sfo/"
+    },
+    {
+      "route_key": "smf-to-sfo",
+      "url": "/routes/smf-to-sfo/"
+    },
+    {
+      "route_key": "sna-to-sfo",
+      "url": "/routes/sna-to-sfo/"
+    },
+    {
+      "route_key": "stl-to-sfo",
+      "url": "/routes/stl-to-sfo/"
+    },
+    {
+      "route_key": "sun-to-sfo",
+      "url": "/routes/sun-to-sfo/"
+    },
+    {
+      "route_key": "tpa-to-sfo",
+      "url": "/routes/tpa-to-sfo/"
+    },
+    {
+      "route_key": "tus-to-sfo",
+      "url": "/routes/tus-to-sfo/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "SFO",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 135075,
+    "origin_routes": 82,
+    "usable_routes": 73,
+    "operating_airlines": 10,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/SFO/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}

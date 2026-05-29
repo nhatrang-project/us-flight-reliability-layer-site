@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHX Arrival Reliability Data — 2024 Historical Patterns</title>
+  <meta name="description" content="2024 BTS/TranStats arrival reliability data for PHX (Phoenix Sky Harbor International Airport). 193,542 flights analyzed across 111 origin routes, 12 airlines. 103 routes have usable sample quality. airport21 dataset.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/us-flight-reliability-layer/airports/PHX/">
+  <!-- AI crawler metadata -->
+  <meta name="data-type" content="airport-reliability-data">
+  <meta name="data-schema" content="airport_page_data.v1">
+  <meta name="data-airport" content="PHX">
+  <meta name="data-year" content="2024">
+  <meta name="data-source" content="BTS/TranStats On-Time Performance">
+
+<style>
+  /* ---- reset / base ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: #1a1a1a;
+    background: #f8f9fa; padding: 0;
+  }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- layout ---- */
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+
+  /* ---- header ---- */
+  .site-header {
+    background: #fff; border-bottom: 2px solid #d0d7de;
+    padding: 20px 16px 16px;
+  }
+  .site-header .inner { max-width: 1080px; margin: 0 auto; }
+  .header-iata {
+    font-size: 48px; font-weight: 800; letter-spacing: -1px;
+    color: #0d1117; line-height: 1;
+  }
+  .header-name { font-size: 17px; color: #57606a; margin-top: 4px; }
+  .header-title { font-size: 20px; font-weight: 600; color: #24292f; margin-top: 8px; }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 12px; font-size: 13px; color: #57606a;
+  }
+  .header-meta span { display: inline-block; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .3px;
+  }
+  .badge-expansion { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+  .badge-hub { background: #fff8c5; color: #9a6700; border: 1px solid #f4c952; }
+  .badge-full-year { background: #dafbe1; color: #1a7f37; border: 1px solid #aef1c4; }
+
+  /* ---- sections ---- */
+  section {
+    background: #fff; border: 1px solid #d0d7de; border-radius: 8px;
+    margin-top: 20px; padding: 20px 24px;
+  }
+  section h2 {
+    font-size: 16px; font-weight: 700; color: #24292f;
+    padding-bottom: 10px; border-bottom: 1px solid #eaeef2;
+    margin-bottom: 14px;
+  }
+  section h3 {
+    font-size: 14px; font-weight: 600; color: #24292f;
+    margin: 14px 0 8px;
+  }
+
+  /* ---- AI scope ---- */
+  .scope-box {
+    background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;
+    padding: 14px 16px; font-size: 13px;
+  }
+  .scope-label { font-weight: 600; color: #57606a; margin-bottom: 4px; }
+  .scope-list { list-style: none; padding: 0; }
+  .scope-list li { padding: 2px 0; color: #24292f; }
+  .scope-list li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
+  .scope-list-out li::before { content: "✗ "; color: #cf222e; }
+  .scope-note { color: #57606a; font-size: 13px; margin-top: 8px; }
+
+  /* ---- data coverage ---- */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin-top: 4px;
+  }
+  .coverage-item { background: #f6f8fa; border-radius: 6px; padding: 10px 14px; }
+  .coverage-label { font-size: 12px; color: #57606a; }
+  .coverage-value { font-size: 17px; font-weight: 700; color: #0d1117; margin-top: 2px; }
+  .coverage-sub { font-size: 12px; color: #57606a; margin-top: 1px; }
+
+  /* ---- metric cards ---- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px; margin-top: 4px;
+  }
+  .metric-card {
+    background: #f6f8fa; border: 1px solid #e8ecf0;
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .metric-label { font-size: 12px; color: #57606a; font-weight: 500; }
+  .metric-value { font-size: 22px; font-weight: 700; color: #0d1117; margin: 4px 0 2px; }
+  .metric-key { font-size: 11px; color: #8b949e; font-family: monospace; }
+
+  /* ---- sample quality pills ---- */
+  .sq-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 20px; padding: 4px 12px; font-size: 13px;
+  }
+  .sq-pill .sq-count { font-weight: 700; }
+  .sq-usable { border-color: #aef1c4; background: #dafbe1; }
+  .sq-thin { border-color: #f4c952; background: #fff8c5; }
+  .sq-too-small { border-color: #f5c6c6; background: #ffd8d8; }
+
+  /* ---- route table ---- */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; min-width: 560px;
+  }
+  th {
+    background: #f6f8fa; text-align: left; padding: 8px 12px;
+    font-size: 12px; font-weight: 600; color: #57606a;
+    border-bottom: 2px solid #d0d7de; white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid #eaeef2; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f6f8fa; }
+  .td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .td-link a { font-weight: 600; }
+  .td-null { color: #8b949e; font-style: italic; font-size: 12px; }
+
+  /* ---- route links ---- */
+  .link-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-list li a {
+    display: inline-block; padding: 5px 14px; background: #f6f8fa;
+    border: 1px solid #d0d7de; border-radius: 20px;
+    font-size: 13px; font-weight: 600; color: #0066cc;
+  }
+  .link-list li a:hover { background: #ddf4ff; border-color: #b6e3ff; }
+  .no-links { color: #8b949e; font-size: 13px; }
+
+  /* ---- boundaries ---- */
+  .boundary-list { list-style: none; padding: 0; }
+  .boundary-list li {
+    padding: 8px 0; border-bottom: 1px solid #eaeef2;
+    font-size: 13px; color: #57606a; line-height: 1.5;
+  }
+  .boundary-list li:last-child { border-bottom: none; }
+  .boundary-list li strong { color: #24292f; display: block; margin-bottom: 2px; }
+
+  /* ---- downloads ---- */
+  .download-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .download-list li a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: #f6f8fa; border: 1px solid #d0d7de;
+    border-radius: 6px; font-size: 13px; font-weight: 600; color: #24292f;
+  }
+  .download-list li a:hover { background: #eaeef2; }
+  .dl-type {
+    font-size: 10px; font-weight: 700; padding: 2px 5px;
+    border-radius: 3px; background: #d0d7de; color: #57606a;
+  }
+
+  /* ---- breadcrumb nav ---- */
+  .breadcrumb {
+    background: #fff; border-bottom: 1px solid #d0d7de;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .breadcrumb .inner { max-width: 1080px; margin: 0 auto; }
+  .breadcrumb a { color: #0066cc; }
+  .breadcrumb span { color: #57606a; margin: 0 4px; }
+
+  /* ---- footer ---- */
+  .page-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #d0d7de;
+    font-size: 12px; color: #8b949e;
+  }
+
+  /* ---- responsive ---- */
+  @media (max-width: 640px) {
+    .header-iata { font-size: 36px; }
+    .coverage-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="inner">
+      <a href="/us-flight-reliability-layer/">US Flight Reliability Layer</a>
+      <span>›</span>
+      <a href="/us-flight-reliability-layer/airports/">Airports</a>
+      <span>›</span>
+      PHX
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="inner">
+      <div class="header-iata">PHX</div>
+      <div class="header-name">Phoenix Sky Harbor International Airport</div>
+      <div class="header-title">PHX Arrival Reliability Data — 2024 Historical Patterns</div>
+      <div class="header-meta">
+        <span><span class="badge badge-hub">Hub Airport (hub14)</span></span>
+        <span>Source: BTS/TranStats On-Time Performance</span>
+        <span>Period: 2024-01-01 – 2024-12-31</span>
+        <span><span class="badge badge-full-year">Full-year data</span></span>
+        <span>Schema: <code>airport_page_data.v1</code></span>
+        <span>Generated: 2026-05-28</span>
+      </div>
+    </div>
+  </header>
+<div class="page-wrap">
+
+  <section id="ai-scope" aria-label="Machine-readable page scope">
+    <h2>Machine-readable page scope</h2>
+    <div class="scope-box">
+      <div class="scope-label">page_identity</div>
+      <p style="font-size:13px;color:#24292f;margin:4px 0 10px;">
+        Airport: <strong>PHX</strong> &mdash;
+        Schema: <code>airport_page_data.v1</code> &mdash;
+        Dataset: <strong>airport21</strong> (2024 BTS/TranStats)
+      </p>
+
+      <div class="scope-label">Structured fields included:</div>
+      <ul class="scope-list">
+    <li>airport_iata</li>
+    <li>coverage_group</li>
+    <li>data_coverage (year, months, coverage_status)</li>
+    <li>arrival_summary (total_arrivals, origin_routes, operating_airlines)</li>
+    <li>route_sample_quality (usable / thin / too_small counts)</li>
+    <li>airport_reliability_metrics (cancellation_rate, delay_over_60min_rate, delay_over_180min_rate, avg_arrival_delay_minutes, p90_arrival_delay_minutes, avg_delay_recovery_minutes)</li>
+    <li>top_origin_routes_by_volume (top 10 by 2024 scheduled flights)</li>
+    <li>route_page_links (links to generated route_page_data.v1 pages)</li>
+      </ul>
+
+      <div class="scope-label" style="margin-top:10px;">Fields outside this dataset:</div>
+      <ul class="scope-list scope-list-out">
+    <li>Individual flight-level records</li>
+    <li>Departure delay metrics (available in reliability_summary.json)</li>
+    <li>Airline-level breakdown (available in reliability_summary.json)</li>
+    <li>Time-bucket reliability breakdown</li>
+    <li>Rating or ranking labels (no level grades, safety grades, or composite scores)</li>
+    <li>Booking or pricing information</li>
+      </ul>
+
+      <p class="scope-note" style="margin-top:10px;">
+        This page provides historical arrival reliability signals for <strong>PHX</strong>
+        in the 2024 airport21 dataset. It does not provide booking recommendations,
+        safety ratings, or comparisons between airports.
+      </p>
+    </div>
+  </section>
+
+  <section id="data-coverage" aria-label="Data coverage">
+    <h2>Data coverage</h2>
+    <div class="coverage-grid">
+      <div class="coverage-item">
+        <div class="coverage-label">Data year</div>
+        <div class="coverage-value">2024</div>
+        <div class="coverage-sub">BTS/TranStats</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Coverage status</div>
+        <div class="coverage-value" style="font-size:14px;">Full year (Jan–Dec 2024)</div>
+        <div class="coverage-sub">Months: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Total arrivals analyzed</div>
+        <div class="coverage-value">193,542</div>
+        <div class="coverage-sub">Scheduled flights</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Origin routes</div>
+        <div class="coverage-value">111</div>
+        <div class="coverage-sub">Unique origins in dataset</div>
+      </div>
+      <div class="coverage-item">
+        <div class="coverage-label">Operating airlines</div>
+        <div class="coverage-value">12</div>
+        <div class="coverage-sub">Carriers in dataset</div>
+      </div>
+    </div>
+
+    <h3>Route sample quality</h3>
+    <div class="sq-row">
+      <div class="sq-pill sq-usable">
+        <span class="sq-count">103</span>
+        <span>usable</span>
+        <span style="color:#8b949e;font-size:11px;">(≥100 flights)</span>
+      </div>
+      <div class="sq-pill sq-thin">
+        <span class="sq-count">3</span>
+        <span>thin</span>
+        <span style="color:#8b949e;font-size:11px;">(30–99 flights)</span>
+      </div>
+      <div class="sq-pill sq-too-small">
+        <span class="sq-count">5</span>
+        <span>too small</span>
+        <span style="color:#8b949e;font-size:11px;">(&lt;30 flights)</span>
+      </div>
+      <div class="sq-pill">
+        <span class="sq-count">111</span>
+        <span>total routes</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="reliability-metrics" aria-label="Airport-level reliability summary">
+    <h2>Airport-level reliability summary</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      All metrics are 2024 full-year historical aggregates across all arriving routes.
+      These are airport-level totals — individual route metrics may differ.
+      Source: <code>airport_reliability_metrics</code> in <code>airport_page_data.v1</code>.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Cancellation rate</div>
+        <div class="metric-value">0.68%</div>
+        <div class="metric-key">cancellation_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Flights cancelled ÷ scheduled</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;60 min rate</div>
+        <div class="metric-value">6.07%</div>
+        <div class="metric-key">delay_over_60min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 60+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Delay &gt;180 min rate</div>
+        <div class="metric-value">1.25%</div>
+        <div class="metric-key">delay_over_180min_rate</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Arrivals delayed 180+ min ÷ completed</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg arrival delay</div>
+        <div class="metric-value">+6.5 min</div>
+        <div class="metric-key">avg_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Negative = early arrival on average</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">P90 arrival delay</div>
+        <div class="metric-value">+36.0 min</div>
+        <div class="metric-key">p90_arrival_delay_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">90th percentile arrival delay</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Avg delay recovery</div>
+        <div class="metric-value">+0.5 min</div>
+        <div class="metric-key">avg_delay_recovery_minutes</div>
+        <div style="font-size:11px;color:#8b949e;margin-top:2px;">Departure delay absorbed en route</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top-routes" aria-label="Top origin routes by volume">
+    <h2>Top origin routes by volume</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      Top 10 origin routes to <strong>PHX</strong> ranked by 2024 total scheduled flights.
+      <em>"Top" refers to volume (flight count), not reliability.</em>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Route</th>
+            <th class="td-num">Total flights</th>
+            <th class="td-num">Cancel rate</th>
+            <th class="td-num">Delay &gt;60 min</th>
+            <th class="td-num">Avg arrival delay</th>
+            <th>Route data page</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>DEN</td>
+          <td><code>DEN→PHX</code></td>
+          <td class="td-num">9,446</td>
+          <td class="td-num">1.07%</td>
+          <td class="td-num">7.32%</td>
+          <td class="td-num">+7.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/den-to-phx/">DEN→PHX</a></td>
+        </tr>
+        <tr>
+          <td>SEA</td>
+          <td><code>SEA→PHX</code></td>
+          <td class="td-num">7,176</td>
+          <td class="td-num">0.86%</td>
+          <td class="td-num">4.61%</td>
+          <td class="td-num">+4.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sea-to-phx/">SEA→PHX</a></td>
+        </tr>
+        <tr>
+          <td>LAX</td>
+          <td><code>LAX→PHX</code></td>
+          <td class="td-num">7,159</td>
+          <td class="td-num">0.47%</td>
+          <td class="td-num">6.16%</td>
+          <td class="td-num">+7.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/lax-to-phx/">LAX→PHX</a></td>
+        </tr>
+        <tr>
+          <td>LAS</td>
+          <td><code>LAS→PHX</code></td>
+          <td class="td-num">7,047</td>
+          <td class="td-num">0.65%</td>
+          <td class="td-num">6.98%</td>
+          <td class="td-num">+6.3 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/las-to-phx/">LAS→PHX</a></td>
+        </tr>
+        <tr>
+          <td>ORD</td>
+          <td><code>ORD→PHX</code></td>
+          <td class="td-num">5,957</td>
+          <td class="td-num">1.01%</td>
+          <td class="td-num">8.02%</td>
+          <td class="td-num">+8.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/ord-to-phx/">ORD→PHX</a></td>
+        </tr>
+        <tr>
+          <td>SLC</td>
+          <td><code>SLC→PHX</code></td>
+          <td class="td-num">5,883</td>
+          <td class="td-num">0.46%</td>
+          <td class="td-num">4.85%</td>
+          <td class="td-num">+3.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/slc-to-phx/">SLC→PHX</a></td>
+        </tr>
+        <tr>
+          <td>SAN</td>
+          <td><code>SAN→PHX</code></td>
+          <td class="td-num">5,688</td>
+          <td class="td-num">1.20%</td>
+          <td class="td-num">6.76%</td>
+          <td class="td-num">+11.2 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/san-to-phx/">SAN→PHX</a></td>
+        </tr>
+        <tr>
+          <td>DFW</td>
+          <td><code>DFW→PHX</code></td>
+          <td class="td-num">5,205</td>
+          <td class="td-num">1.34%</td>
+          <td class="td-num">11.04%</td>
+          <td class="td-num">+18.7 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/dfw-to-phx/">DFW→PHX</a></td>
+        </tr>
+        <tr>
+          <td>SFO</td>
+          <td><code>SFO→PHX</code></td>
+          <td class="td-num">4,777</td>
+          <td class="td-num">0.71%</td>
+          <td class="td-num">8.77%</td>
+          <td class="td-num">+13.9 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sfo-to-phx/">SFO→PHX</a></td>
+        </tr>
+        <tr>
+          <td>SNA</td>
+          <td><code>SNA→PHX</code></td>
+          <td class="td-num">4,350</td>
+          <td class="td-num">0.80%</td>
+          <td class="td-num">4.91%</td>
+          <td class="td-num">+5.6 min</td>
+          <td class="td-link"><a href="/us-flight-reliability-layer/routes/sna-to-phx/">SNA→PHX</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="route-page-links" aria-label="Route page links">
+    <h2>Route page links</h2>
+    <p style="font-size:13px;color:#57606a;margin-bottom:12px;">
+      103 route_page_data.v1 pages have been generated
+      for routes arriving at this airport.
+      111 total origin routes are in the airport21 dataset.
+    </p>
+    <ul class="link-list">
+    <li><a href="/us-flight-reliability-layer/routes/abq-to-phx/">abq-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/anc-to-phx/">anc-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ase-to-phx/">ase-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/atl-to-phx/">atl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/aus-to-phx/">aus-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/avl-to-phx/">avl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bfl-to-phx/">bfl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bil-to-phx/">bil-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bna-to-phx/">bna-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/boi-to-phx/">boi-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bos-to-phx/">bos-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/buf-to-phx/">buf-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bur-to-phx/">bur-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/bwi-to-phx/">bwi-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cid-to-phx/">cid-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cle-to-phx/">cle-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/clt-to-phx/">clt-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cmh-to-phx/">cmh-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cos-to-phx/">cos-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/cvg-to-phx/">cvg-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dal-to-phx/">dal-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dca-to-phx/">dca-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/den-to-phx/">den-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dfw-to-phx/">dfw-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dro-to-phx/">dro-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dsm-to-phx/">dsm-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/dtw-to-phx/">dtw-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/elp-to-phx/">elp-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/eug-to-phx/">eug-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ewr-to-phx/">ewr-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/far-to-phx/">far-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fat-to-phx/">fat-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/flg-to-phx/">flg-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fll-to-phx/">fll-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/fsd-to-phx/">fsd-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/geg-to-phx/">geg-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/gjt-to-phx/">gjt-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/grr-to-phx/">grr-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hnl-to-phx/">hnl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/hou-to-phx/">hou-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iad-to-phx/">iad-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/iah-to-phx/">iah-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ict-to-phx/">ict-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ida-to-phx/">ida-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ind-to-phx/">ind-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jax-to-phx/">jax-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/jfk-to-phx/">jfk-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/koa-to-phx/">koa-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/las-to-phx/">las-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lax-to-phx/">lax-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lbb-to-phx/">lbb-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lgb-to-phx/">lgb-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/lih-to-phx/">lih-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/maf-to-phx/">maf-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mci-to-phx/">mci-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mco-to-phx/">mco-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mdw-to-phx/">mdw-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mem-to-phx/">mem-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mfr-to-phx/">mfr-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mia-to-phx/">mia-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mke-to-phx/">mke-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/mry-to-phx/">mry-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msn-to-phx/">msn-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msp-to-phx/">msp-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/msy-to-phx/">msy-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oak-to-phx/">oak-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ogg-to-phx/">ogg-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/okc-to-phx/">okc-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/oma-to-phx/">oma-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ont-to-phx/">ont-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/ord-to-phx/">ord-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pae-to-phx/">pae-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pdx-to-phx/">pdx-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/phl-to-phx/">phl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pit-to-phx/">pit-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/psc-to-phx/">psc-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/psp-to-phx/">psp-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/pvu-to-phx/">pvu-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdm-to-phx/">rdm-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rdu-to-phx/">rdu-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/rno-to-phx/">rno-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/saf-to-phx/">saf-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/san-to-phx/">san-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sat-to-phx/">sat-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sba-to-phx/">sba-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sbp-to-phx/">sbp-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sck-to-phx/">sck-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sdf-to-phx/">sdf-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sea-to-phx/">sea-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sfo-to-phx/">sfo-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sgu-to-phx/">sgu-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sjc-to-phx/">sjc-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/slc-to-phx/">slc-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/smf-to-phx/">smf-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sna-to-phx/">sna-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/stl-to-phx/">stl-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/sts-to-phx/">sts-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tpa-to-phx/">tpa-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tul-to-phx/">tul-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tus-to-phx/">tus-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/tys-to-phx/">tys-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/xna-to-phx/">xna-to-phx</a></li>
+    <li><a href="/us-flight-reliability-layer/routes/yum-to-phx/">yum-to-phx</a></li>
+    </ul>
+  </section>
+
+  <section id="boundaries" aria-label="Interpretation boundaries">
+    <h2>Interpretation boundaries</h2>
+    <ul class="boundary-list">
+      <li>
+        <strong>Historical data scope</strong>
+        This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.
+      </li>
+      <li>
+        <strong>Airport-level vs route-level</strong>
+        Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.
+      </li>
+      <li>
+        <strong>Route sample quality classification</strong>
+        route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality &#39;usable&#39; have ≥100 flights in 2024.
+      </li>
+    </ul>
+  </section>
+
+  <section id="downloads" aria-label="Download links">
+    <h2>Download data</h2>
+    <ul class="download-list">
+      <li>
+        <a href="airport_page_data.json">
+          <span class="dl-type">JSON</span>
+          airport_page_data.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability_summary.json">
+          <span class="dl-type">JSON</span>
+          reliability_summary.json
+        </a>
+      </li>
+      <li>
+        <a href="reliability.csv">
+          <span class="dl-type">CSV</span>
+          reliability.csv
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:10px;font-size:12px;color:#8b949e;">
+      All files contain 2024 historical data for PHX.
+      <code>airport_page_data.json</code> uses schema version <code>airport_page_data.v1</code>.
+    </p>
+  </section>
+
+  <footer class="page-footer">
+    <p>
+      Data: 2024 BTS/TranStats On-Time Performance &mdash;
+      Schema: <code>airport_page_data.v1</code> &mdash;
+      Generated: 2026-05-28 &mdash;
+      This page provides historical arrival reliability data. It does not provide booking recommendations.
+    </p>
+  </footer>
+</div>
+
+  <!-- Embedded machine-readable airport page data (airport_page_data.v1) -->
+  <script type="application/json" id="airport-page-data">
+{
+  "schema_version": "airport_page_data.v1",
+  "airport_iata": "PHX",
+  "coverage_group": "hub14_major_hub",
+  "data_source": "BTS/TranStats",
+  "period": {
+    "start": "2024-01-01",
+    "end": "2024-12-31"
+  },
+  "data_coverage": {
+    "year": 2024,
+    "months_present": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "expected_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "coverage_status": "full_year",
+    "is_full_year": true
+  },
+  "arrival_summary": {
+    "total_arrivals_analyzed": 193542,
+    "origin_routes_count": 111,
+    "operating_airlines_count": 12,
+    "route_sample_quality": {
+      "usable": 103,
+      "thin": 3,
+      "too_small": 5,
+      "total": 111
+    }
+  },
+  "airport_reliability_metrics": {
+    "cancellation_rate": 0.006758,
+    "delay_over_60min_rate": 0.06065,
+    "delay_over_180min_rate": 0.012532,
+    "avg_arrival_delay_minutes": 6.46,
+    "p90_arrival_delay_minutes": 36.0,
+    "avg_delay_recovery_minutes": 0.51
+  },
+  "top_origin_routes_by_volume": [
+    {
+      "origin": "DEN",
+      "route": "DEN→PHX",
+      "total_scheduled_flights": 9446,
+      "cancellation_rate": 0.010692,
+      "delay_over_60min_rate": 0.073194,
+      "avg_arrival_delay_minutes": 7.56,
+      "route_page_url": "/routes/den-to-phx/"
+    },
+    {
+      "origin": "SEA",
+      "route": "SEA→PHX",
+      "total_scheduled_flights": 7176,
+      "cancellation_rate": 0.00864,
+      "delay_over_60min_rate": 0.046106,
+      "avg_arrival_delay_minutes": 4.28,
+      "route_page_url": "/routes/sea-to-phx/"
+    },
+    {
+      "origin": "LAX",
+      "route": "LAX→PHX",
+      "total_scheduled_flights": 7159,
+      "cancellation_rate": 0.004749,
+      "delay_over_60min_rate": 0.061614,
+      "avg_arrival_delay_minutes": 7.91,
+      "route_page_url": "/routes/lax-to-phx/"
+    },
+    {
+      "origin": "LAS",
+      "route": "LAS→PHX",
+      "total_scheduled_flights": 7047,
+      "cancellation_rate": 0.006528,
+      "delay_over_60min_rate": 0.069847,
+      "avg_arrival_delay_minutes": 6.28,
+      "route_page_url": "/routes/las-to-phx/"
+    },
+    {
+      "origin": "ORD",
+      "route": "ORD→PHX",
+      "total_scheduled_flights": 5957,
+      "cancellation_rate": 0.010072,
+      "delay_over_60min_rate": 0.08021,
+      "avg_arrival_delay_minutes": 8.56,
+      "route_page_url": "/routes/ord-to-phx/"
+    },
+    {
+      "origin": "SLC",
+      "route": "SLC→PHX",
+      "total_scheduled_flights": 5883,
+      "cancellation_rate": 0.004589,
+      "delay_over_60min_rate": 0.048497,
+      "avg_arrival_delay_minutes": 3.18,
+      "route_page_url": "/routes/slc-to-phx/"
+    },
+    {
+      "origin": "SAN",
+      "route": "SAN→PHX",
+      "total_scheduled_flights": 5688,
+      "cancellation_rate": 0.011955,
+      "delay_over_60min_rate": 0.067616,
+      "avg_arrival_delay_minutes": 11.17,
+      "route_page_url": "/routes/san-to-phx/"
+    },
+    {
+      "origin": "DFW",
+      "route": "DFW→PHX",
+      "total_scheduled_flights": 5205,
+      "cancellation_rate": 0.013449,
+      "delay_over_60min_rate": 0.110419,
+      "avg_arrival_delay_minutes": 18.73,
+      "route_page_url": "/routes/dfw-to-phx/"
+    },
+    {
+      "origin": "SFO",
+      "route": "SFO→PHX",
+      "total_scheduled_flights": 4777,
+      "cancellation_rate": 0.007117,
+      "delay_over_60min_rate": 0.087708,
+      "avg_arrival_delay_minutes": 13.9,
+      "route_page_url": "/routes/sfo-to-phx/"
+    },
+    {
+      "origin": "SNA",
+      "route": "SNA→PHX",
+      "total_scheduled_flights": 4350,
+      "cancellation_rate": 0.008046,
+      "delay_over_60min_rate": 0.049131,
+      "avg_arrival_delay_minutes": 5.57,
+      "route_page_url": "/routes/sna-to-phx/"
+    }
+  ],
+  "route_page_links": [
+    {
+      "route_key": "abq-to-phx",
+      "url": "/routes/abq-to-phx/"
+    },
+    {
+      "route_key": "anc-to-phx",
+      "url": "/routes/anc-to-phx/"
+    },
+    {
+      "route_key": "ase-to-phx",
+      "url": "/routes/ase-to-phx/"
+    },
+    {
+      "route_key": "atl-to-phx",
+      "url": "/routes/atl-to-phx/"
+    },
+    {
+      "route_key": "aus-to-phx",
+      "url": "/routes/aus-to-phx/"
+    },
+    {
+      "route_key": "avl-to-phx",
+      "url": "/routes/avl-to-phx/"
+    },
+    {
+      "route_key": "bfl-to-phx",
+      "url": "/routes/bfl-to-phx/"
+    },
+    {
+      "route_key": "bil-to-phx",
+      "url": "/routes/bil-to-phx/"
+    },
+    {
+      "route_key": "bna-to-phx",
+      "url": "/routes/bna-to-phx/"
+    },
+    {
+      "route_key": "boi-to-phx",
+      "url": "/routes/boi-to-phx/"
+    },
+    {
+      "route_key": "bos-to-phx",
+      "url": "/routes/bos-to-phx/"
+    },
+    {
+      "route_key": "buf-to-phx",
+      "url": "/routes/buf-to-phx/"
+    },
+    {
+      "route_key": "bur-to-phx",
+      "url": "/routes/bur-to-phx/"
+    },
+    {
+      "route_key": "bwi-to-phx",
+      "url": "/routes/bwi-to-phx/"
+    },
+    {
+      "route_key": "cid-to-phx",
+      "url": "/routes/cid-to-phx/"
+    },
+    {
+      "route_key": "cle-to-phx",
+      "url": "/routes/cle-to-phx/"
+    },
+    {
+      "route_key": "clt-to-phx",
+      "url": "/routes/clt-to-phx/"
+    },
+    {
+      "route_key": "cmh-to-phx",
+      "url": "/routes/cmh-to-phx/"
+    },
+    {
+      "route_key": "cos-to-phx",
+      "url": "/routes/cos-to-phx/"
+    },
+    {
+      "route_key": "cvg-to-phx",
+      "url": "/routes/cvg-to-phx/"
+    },
+    {
+      "route_key": "dal-to-phx",
+      "url": "/routes/dal-to-phx/"
+    },
+    {
+      "route_key": "dca-to-phx",
+      "url": "/routes/dca-to-phx/"
+    },
+    {
+      "route_key": "den-to-phx",
+      "url": "/routes/den-to-phx/"
+    },
+    {
+      "route_key": "dfw-to-phx",
+      "url": "/routes/dfw-to-phx/"
+    },
+    {
+      "route_key": "dro-to-phx",
+      "url": "/routes/dro-to-phx/"
+    },
+    {
+      "route_key": "dsm-to-phx",
+      "url": "/routes/dsm-to-phx/"
+    },
+    {
+      "route_key": "dtw-to-phx",
+      "url": "/routes/dtw-to-phx/"
+    },
+    {
+      "route_key": "elp-to-phx",
+      "url": "/routes/elp-to-phx/"
+    },
+    {
+      "route_key": "eug-to-phx",
+      "url": "/routes/eug-to-phx/"
+    },
+    {
+      "route_key": "ewr-to-phx",
+      "url": "/routes/ewr-to-phx/"
+    },
+    {
+      "route_key": "far-to-phx",
+      "url": "/routes/far-to-phx/"
+    },
+    {
+      "route_key": "fat-to-phx",
+      "url": "/routes/fat-to-phx/"
+    },
+    {
+      "route_key": "flg-to-phx",
+      "url": "/routes/flg-to-phx/"
+    },
+    {
+      "route_key": "fll-to-phx",
+      "url": "/routes/fll-to-phx/"
+    },
+    {
+      "route_key": "fsd-to-phx",
+      "url": "/routes/fsd-to-phx/"
+    },
+    {
+      "route_key": "geg-to-phx",
+      "url": "/routes/geg-to-phx/"
+    },
+    {
+      "route_key": "gjt-to-phx",
+      "url": "/routes/gjt-to-phx/"
+    },
+    {
+      "route_key": "grr-to-phx",
+      "url": "/routes/grr-to-phx/"
+    },
+    {
+      "route_key": "hnl-to-phx",
+      "url": "/routes/hnl-to-phx/"
+    },
+    {
+      "route_key": "hou-to-phx",
+      "url": "/routes/hou-to-phx/"
+    },
+    {
+      "route_key": "iad-to-phx",
+      "url": "/routes/iad-to-phx/"
+    },
+    {
+      "route_key": "iah-to-phx",
+      "url": "/routes/iah-to-phx/"
+    },
+    {
+      "route_key": "ict-to-phx",
+      "url": "/routes/ict-to-phx/"
+    },
+    {
+      "route_key": "ida-to-phx",
+      "url": "/routes/ida-to-phx/"
+    },
+    {
+      "route_key": "ind-to-phx",
+      "url": "/routes/ind-to-phx/"
+    },
+    {
+      "route_key": "jax-to-phx",
+      "url": "/routes/jax-to-phx/"
+    },
+    {
+      "route_key": "jfk-to-phx",
+      "url": "/routes/jfk-to-phx/"
+    },
+    {
+      "route_key": "koa-to-phx",
+      "url": "/routes/koa-to-phx/"
+    },
+    {
+      "route_key": "las-to-phx",
+      "url": "/routes/las-to-phx/"
+    },
+    {
+      "route_key": "lax-to-phx",
+      "url": "/routes/lax-to-phx/"
+    },
+    {
+      "route_key": "lbb-to-phx",
+      "url": "/routes/lbb-to-phx/"
+    },
+    {
+      "route_key": "lgb-to-phx",
+      "url": "/routes/lgb-to-phx/"
+    },
+    {
+      "route_key": "lih-to-phx",
+      "url": "/routes/lih-to-phx/"
+    },
+    {
+      "route_key": "maf-to-phx",
+      "url": "/routes/maf-to-phx/"
+    },
+    {
+      "route_key": "mci-to-phx",
+      "url": "/routes/mci-to-phx/"
+    },
+    {
+      "route_key": "mco-to-phx",
+      "url": "/routes/mco-to-phx/"
+    },
+    {
+      "route_key": "mdw-to-phx",
+      "url": "/routes/mdw-to-phx/"
+    },
+    {
+      "route_key": "mem-to-phx",
+      "url": "/routes/mem-to-phx/"
+    },
+    {
+      "route_key": "mfr-to-phx",
+      "url": "/routes/mfr-to-phx/"
+    },
+    {
+      "route_key": "mia-to-phx",
+      "url": "/routes/mia-to-phx/"
+    },
+    {
+      "route_key": "mke-to-phx",
+      "url": "/routes/mke-to-phx/"
+    },
+    {
+      "route_key": "mry-to-phx",
+      "url": "/routes/mry-to-phx/"
+    },
+    {
+      "route_key": "msn-to-phx",
+      "url": "/routes/msn-to-phx/"
+    },
+    {
+      "route_key": "msp-to-phx",
+      "url": "/routes/msp-to-phx/"
+    },
+    {
+      "route_key": "msy-to-phx",
+      "url": "/routes/msy-to-phx/"
+    },
+    {
+      "route_key": "oak-to-phx",
+      "url": "/routes/oak-to-phx/"
+    },
+    {
+      "route_key": "ogg-to-phx",
+      "url": "/routes/ogg-to-phx/"
+    },
+    {
+      "route_key": "okc-to-phx",
+      "url": "/routes/okc-to-phx/"
+    },
+    {
+      "route_key": "oma-to-phx",
+      "url": "/routes/oma-to-phx/"
+    },
+    {
+      "route_key": "ont-to-phx",
+      "url": "/routes/ont-to-phx/"
+    },
+    {
+      "route_key": "ord-to-phx",
+      "url": "/routes/ord-to-phx/"
+    },
+    {
+      "route_key": "pae-to-phx",
+      "url": "/routes/pae-to-phx/"
+    },
+    {
+      "route_key": "pdx-to-phx",
+      "url": "/routes/pdx-to-phx/"
+    },
+    {
+      "route_key": "phl-to-phx",
+      "url": "/routes/phl-to-phx/"
+    },
+    {
+      "route_key": "pit-to-phx",
+      "url": "/routes/pit-to-phx/"
+    },
+    {
+      "route_key": "psc-to-phx",
+      "url": "/routes/psc-to-phx/"
+    },
+    {
+      "route_key": "psp-to-phx",
+      "url": "/routes/psp-to-phx/"
+    },
+    {
+      "route_key": "pvu-to-phx",
+      "url": "/routes/pvu-to-phx/"
+    },
+    {
+      "route_key": "rdm-to-phx",
+      "url": "/routes/rdm-to-phx/"
+    },
+    {
+      "route_key": "rdu-to-phx",
+      "url": "/routes/rdu-to-phx/"
+    },
+    {
+      "route_key": "rno-to-phx",
+      "url": "/routes/rno-to-phx/"
+    },
+    {
+      "route_key": "saf-to-phx",
+      "url": "/routes/saf-to-phx/"
+    },
+    {
+      "route_key": "san-to-phx",
+      "url": "/routes/san-to-phx/"
+    },
+    {
+      "route_key": "sat-to-phx",
+      "url": "/routes/sat-to-phx/"
+    },
+    {
+      "route_key": "sba-to-phx",
+      "url": "/routes/sba-to-phx/"
+    },
+    {
+      "route_key": "sbp-to-phx",
+      "url": "/routes/sbp-to-phx/"
+    },
+    {
+      "route_key": "sck-to-phx",
+      "url": "/routes/sck-to-phx/"
+    },
+    {
+      "route_key": "sdf-to-phx",
+      "url": "/routes/sdf-to-phx/"
+    },
+    {
+      "route_key": "sea-to-phx",
+      "url": "/routes/sea-to-phx/"
+    },
+    {
+      "route_key": "sfo-to-phx",
+      "url": "/routes/sfo-to-phx/"
+    },
+    {
+      "route_key": "sgu-to-phx",
+      "url": "/routes/sgu-to-phx/"
+    },
+    {
+      "route_key": "sjc-to-phx",
+      "url": "/routes/sjc-to-phx/"
+    },
+    {
+      "route_key": "slc-to-phx",
+      "url": "/routes/slc-to-phx/"
+    },
+    {
+      "route_key": "smf-to-phx",
+      "url": "/routes/smf-to-phx/"
+    },
+    {
+      "route_key": "sna-to-phx",
+      "url": "/routes/sna-to-phx/"
+    },
+    {
+      "route_key": "stl-to-phx",
+      "url": "/routes/stl-to-phx/"
+    },
+    {
+      "route_key": "sts-to-phx",
+      "url": "/routes/sts-to-phx/"
+    },
+    {
+      "route_key": "tpa-to-phx",
+      "url": "/routes/tpa-to-phx/"
+    },
+    {
+      "route_key": "tul-to-phx",
+      "url": "/routes/tul-to-phx/"
+    },
+    {
+      "route_key": "tus-to-phx",
+      "url": "/routes/tus-to-phx/"
+    },
+    {
+      "route_key": "tys-to-phx",
+      "url": "/routes/tys-to-phx/"
+    },
+    {
+      "route_key": "xna-to-phx",
+      "url": "/routes/xna-to-phx/"
+    },
+    {
+      "route_key": "yum-to-phx",
+      "url": "/routes/yum-to-phx/"
+    }
+  ],
+  "summary_for_ai": {
+    "dataset": "airport21",
+    "airport_iata": "PHX",
+    "coverage_group": "hub14_major_hub",
+    "data_year": 2024,
+    "total_arrivals": 193542,
+    "origin_routes": 111,
+    "usable_routes": 103,
+    "operating_airlines": 12,
+    "contains": [
+      "arrival_reliability_metrics",
+      "top_origin_routes_by_volume",
+      "route_page_links"
+    ]
+  },
+  "interpretation_boundaries": {
+    "recommendation_note": "This dataset does not make booking recommendations. Metrics represent 2024 historical patterns and do not predict future performance.",
+    "data_scope": "Airport-level metrics aggregate all arriving routes. Individual route-level metrics may differ significantly from airport-level aggregates.",
+    "coverage_note": "route_sample_quality counts reflect the airport21 route reliability dataset (routes with dest == this airport). Routes with sample_quality 'usable' have ≥100 flights in 2024."
+  },
+  "page_metadata": {
+    "schema_version": "airport_page_data.v1",
+    "generated_at": "2026-05-28",
+    "data_year": 2024,
+    "source_files": [
+      "airports/PHX/reliability_summary.json",
+      "processed_data/bts/route_reliability_2024_airport21.csv"
+    ]
+  }
+}
+  </script>
+
+  <!-- schema.org Dataset JSON-LD (for search engines and AI crawlers) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "PHX Arrival Reliability Data — 2024 Historical Patterns",
+  "description": "2024 BTS/TranStats arrival reliability data for PHX (Phoenix Sky Harbor International Airport). 193,542 flights analyzed across 111 origin routes, 12 airlines. 103 routes have usable sample quality. airport21 dataset.",
+  "temporalCoverage": "2024-01-01/2024-12-31",
+  "spatialCoverage": "PHX",
+  "creator": {
+    "@type": "Organization",
+    "name": "US Flight Reliability Layer"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "airport_page_data.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "reliability_summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "reliability.csv"
+    }
+  ],
+  "isBasedOn": "BTS/TranStats On-Time Performance",
+  "keywords": [
+    "flight reliability",
+    "airport reliability",
+    "arrival delay",
+    "cancellation rate",
+    "on-time performance",
+    "BTS TranStats",
+    "PHX airport",
+    "2024"
+  ]
+}
+  </script>
+</body>
+</html>
